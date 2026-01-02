@@ -138,6 +138,13 @@ function executeCommand(input) {
     }
 }
 
+// Auto-resize input based on content
+function resizeInput(input) {
+    const value = input.value;
+    const length = value.length;
+    input.style.width = (Math.max(2, length + 1)) + 'ch';
+}
+
 // Handle input
 function handleInput(event) {
     const input = event.target;
@@ -147,24 +154,31 @@ function handleInput(event) {
         const command = input.value;
         executeCommand(command);
         input.value = '';
+        resizeInput(input);
     } else if (key === 'ArrowUp') {
         event.preventDefault();
         if (historyIndex > 0) {
             historyIndex--;
             input.value = commandHistory[historyIndex];
+            resizeInput(input);
         }
     } else if (key === 'ArrowDown') {
         event.preventDefault();
         if (historyIndex < commandHistory.length - 1) {
             historyIndex++;
             input.value = commandHistory[historyIndex];
+            resizeInput(input);
         } else {
             historyIndex = commandHistory.length;
             input.value = '';
+            resizeInput(input);
         }
     } else if (key === 'Tab' && event.shiftKey) {
         event.preventDefault();
         cycleTheme();
+    } else {
+        // Resize on any other key (typing)
+        setTimeout(() => resizeInput(input), 0);
     }
 }
 
@@ -182,6 +196,7 @@ function initTerminal() {
 
     if (input) {
         input.addEventListener('keydown', handleInput);
+        resizeInput(input);
         input.focus();
 
         // Keep input focused when clicking anywhere in terminal
