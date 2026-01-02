@@ -1,8 +1,56 @@
-// Terminal Typing Animation and Theme Switcher
+// Interactive Terminal with Command System
 
 // Theme management
 const themes = ['classic', 'amber', 'white', 'dracula', 'matrix'];
 let currentThemeIndex = 0;
+
+// Command history
+let commandHistory = [];
+let historyIndex = -1;
+
+// Available commands
+const commands = {
+    help: {
+        description: 'Show available commands',
+        execute: () => {
+            return `
+Available commands:
+  help      - Show this help message
+  whoami    - Display information about me
+  clear     - Clear the terminal
+  home      - Return to home page
+
+Keyboard shortcuts:
+  Shift+Tab - Cycle through color themes
+  Up/Down   - Navigate command history
+            `;
+        }
+    },
+    whoami: {
+        description: 'Display information about me',
+        execute: () => {
+            window.location.href = 'whoami.html';
+            return null;
+        }
+    },
+    clear: {
+        description: 'Clear the terminal',
+        execute: () => {
+            const content = document.getElementById('content');
+            const commandLine = content.querySelector('.command-line');
+            content.innerHTML = '';
+            content.appendChild(commandLine);
+            return null;
+        }
+    },
+    home: {
+        description: 'Return to home page',
+        execute: () => {
+            window.location.href = 'index.html';
+            return null;
+        }
+    }
+};
 
 // Initialize theme
 function initTheme() {
@@ -25,67 +73,127 @@ function cycleTheme() {
     applyTheme();
 }
 
-// Keyboard event listener for theme switching
-document.addEventListener('keydown', (e) => {
-    // Shift + Tab to cycle themes
-    if (e.shiftKey && e.key === 'Tab') {
-        e.preventDefault();
+// Add command to history display
+function addToHistory(command, output) {
+    const content = document.getElementById('content');
+    const commandLine = content.querySelector('.command-line');
+
+    // Create history entry
+    const historyEntry = document.createElement('div');
+    historyEntry.className = 'history-line';
+
+    const promptSpan = document.createElement('span');
+    promptSpan.className = 'prompt';
+    promptSpan.textContent = 'michael@portfolio:~$';
+
+    const commandSpan = document.createElement('span');
+    commandSpan.className = 'command';
+    commandSpan.textContent = ' ' + command;
+
+    historyEntry.appendChild(promptSpan);
+    historyEntry.appendChild(commandSpan);
+
+    content.insertBefore(historyEntry, commandLine);
+
+    // Add output if exists
+    if (output) {
+        const outputDiv = document.createElement('div');
+        outputDiv.className = output.isError ? 'error-message' : 'success-message';
+        outputDiv.innerHTML = output.text.replace(/\n/g, '<br>');
+        content.insertBefore(outputDiv, commandLine);
+    }
+
+    // Scroll to bottom
+    const terminalBody = document.querySelector('.terminal-body');
+    terminalBody.scrollTop = terminalBody.scrollHeight;
+}
+
+// Execute command
+function executeCommand(input) {
+    const trimmedInput = input.trim();
+
+    if (!trimmedInput) {
+        return;
+    }
+
+    // Add to command history
+    commandHistory.push(trimmedInput);
+    historyIndex = commandHistory.length;
+
+    const parts = trimmedInput.split(' ');
+    const command = parts[0].toLowerCase();
+
+    if (commands[command]) {
+        const result = commands[command].execute();
+        if (result !== null) {
+            addToHistory(trimmedInput, { text: result, isError: false });
+        } else {
+            addToHistory(trimmedInput, null);
+        }
+    } else {
+        addToHistory(trimmedInput, {
+            text: `Command not found: ${command}\nType 'help' to see available commands.`,
+            isError: true
+        });
+    }
+}
+
+// Handle input
+function handleInput(event) {
+    const input = event.target;
+    const key = event.key;
+
+    if (key === 'Enter') {
+        const command = input.value;
+        executeCommand(command);
+        input.value = '';
+    } else if (key === 'ArrowUp') {
+        event.preventDefault();
+        if (historyIndex > 0) {
+            historyIndex--;
+            input.value = commandHistory[historyIndex];
+        }
+    } else if (key === 'ArrowDown') {
+        event.preventDefault();
+        if (historyIndex < commandHistory.length - 1) {
+            historyIndex++;
+            input.value = commandHistory[historyIndex];
+        } else {
+            historyIndex = commandHistory.length;
+            input.value = '';
+        }
+    } else if (key === 'Tab' && event.shiftKey) {
+        event.preventDefault();
         cycleTheme();
     }
-});
-
-// Typing animation
-function typeCommand(text, element, speed = 100) {
-    return new Promise((resolve) => {
-        let i = 0;
-        const cursor = document.getElementById('cursor');
-
-        function type() {
-            if (i < text.length) {
-                element.textContent += text.charAt(i);
-                i++;
-                setTimeout(type, speed);
-            } else {
-                // Remove typing cursor, show output
-                cursor.style.display = 'none';
-                resolve();
-            }
-        }
-
-        type();
-    });
 }
 
-// Show output with fade-in effect
-function showOutput() {
-    const output = document.getElementById('output');
-    output.classList.remove('hidden');
-    output.classList.add('fade-in');
+// Keep focus on input
+function maintainFocus() {
+    const input = document.getElementById('command-input');
+    if (input && document.activeElement !== input) {
+        input.focus();
+    }
 }
 
-// Initialize terminal on page load
-async function initTerminal() {
-    const commandElement = document.getElementById('initial-command');
-    const command = 'cat about.txt';
+// Initialize terminal
+function initTerminal() {
+    const input = document.getElementById('command-input');
 
-    // Wait a bit before starting to type
-    await new Promise(resolve => setTimeout(resolve, 500));
+    if (input) {
+        input.addEventListener('keydown', handleInput);
+        input.focus();
 
-    // Type the command
-    await typeCommand(command, commandElement, 80);
+        // Keep input focused when clicking anywhere in terminal
+        document.addEventListener('click', maintainFocus);
 
-    // Wait a moment, then show output
-    await new Promise(resolve => setTimeout(resolve, 300));
-    showOutput();
+        // Refocus periodically to handle edge cases
+        setInterval(maintainFocus, 100);
+    }
 }
 
 // Start everything when DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {
     initTheme();
     initTerminal();
-});
-
-// Easter egg: type 'help' command (future enhancement)
-document.addEventListener('keypress', (e) => {
-    // Could add interactive command input here in the future
 });

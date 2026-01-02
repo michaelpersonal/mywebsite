@@ -21,44 +21,17 @@
         </div>
 
         <div class="terminal-body">
-            <div class="terminal-content">
-                <div class="line">
-                    <span class="prompt">michael@portfolio:~$</span>
-                    <span class="command typing" id="initial-command"></span>
-                    <span class="cursor" id="cursor">█</span>
+            <div class="terminal-content" id="content">
+                <div class="welcome-message">
+                    <p>Welcome to Michael's Terminal</p>
+                    <p>Type 'help' to see available commands</p>
+                    <p></p>
                 </div>
 
-                <div id="output" class="output hidden">
-                    <div class="output-section">
-                        <div class="ascii-art">
-  __  __ _      _                _
- |  \/  (_)    | |              | |
- | \  / |_  ___| |__   __ _  ___| |
- | |\/| | |/ __| '_ \ / _` |/ _ \ |
- | |  | | | (__| | | | (_| |  __/ |
- |_|  |_|_|\___|_| |_|\__,_|\___|_|
-                        </div>
-
-                        <div class="bio-section">
-                            <p><span class="label">About:</span> Between technical and non-technical</p>
-                            <p><span class="label">Status:</span> Proud empty nester</p>
-                        </div>
-
-                        <div class="links-section">
-                            <p><span class="label">Links:</span></p>
-                            <ul class="links-list">
-                                <li><a href="#" class="link">→ github</a></li>
-                                <li><a href="#" class="link">→ linkedin</a></li>
-                                <li><a href="#" class="link">→ email</a></li>
-                                <li><a href="#" class="link">→ twitter</a></li>
-                            </ul>
-                        </div>
-                    </div>
-
-                    <div class="line">
-                        <span class="prompt">michael@portfolio:~$</span>
-                        <span class="cursor blink">█</span>
-                    </div>
+                <div class="command-line">
+                    <span class="prompt">michael@portfolio:~$</span>
+                    <input type="text" id="command-input" class="command-input" autofocus autocomplete="off" spellcheck="false">
+                    <span class="cursor blink">█</span>
                 </div>
             </div>
         </div>

@@ -334,3 +334,55 @@ body[data-theme="matrix"] {
         opacity: 1;
     }
 }
+
+/* Interactive Command Line */
+.welcome-message {
+    margin-bottom: 20px;
+    color: var(--text-color);
+    opacity: 0.9;
+}
+
+.welcome-message p {
+    margin-bottom: 8px;
+}
+
+.command-line {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.command-input {
+    background: transparent;
+    border: none;
+    outline: none;
+    color: var(--text-color);
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 16px;
+    flex: 1;
+    caret-color: transparent;
+    padding: 0;
+    margin: 0 5px;
+}
+
+.command-input:focus {
+    outline: none;
+}
+
+.history-line {
+    margin-bottom: 10px;
+}
+
+.history-line .command {
+    color: var(--text-color);
+}
+
+.error-message {
+    color: #ff5555;
+    margin: 10px 0;
+}
+
+.success-message {
+    color: var(--text-color);
+    margin: 10px 0;
+}
