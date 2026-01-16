@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>portfolio - Michael's Terminal</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="terminal-window">
+        <div class="terminal-header">
+            <div class="header-buttons">
+                <span class="btn close"></span>
+                <span class="btn minimize"></span>
+                <span class="btn maximize"></span>
+            </div>
+            <div class="terminal-title">michael@terminal:~</div>
+            <div class="theme-indicator">
+                <span class="theme-hint">shift+tab to cycle themes</span>
+            </div>
+        </div>
+
+        <div class="terminal-body">
+            <div class="terminal-content" id="content">
+                <div class="line">
+                    <span class="prompt">michael@portfolio:~$</span>
+                    <span class="command">portfolio</span>
+                </div>
+
+                <div class="output">
+                    <div class="output-section">
+                        <div class="portfolio-header">
+                            <p><span class="label">Projects</span></p>
+                            <p>Things I've built and open-sourced</p>
+                        </div>
+
+                        <div class="projects-list">
+                            <div class="project-item">
+                                <p class="project-name">→ <a href="https://michaelguo.vercel.app" class="link" target="_blank">Terminal Portfolio</a></p>
+                                <p class="project-desc">Interactive terminal-style personal website</p>
+                                <p class="project-tech">HTML / CSS / JavaScript</p>
+                            </div>
+
+                            <div class="project-item">
+                                <p class="project-name">→ <a href="https://michaelguoblog.vercel.app" class="link" target="_blank">Michael's Blog</a></p>
+                                <p class="project-desc">Tech blog with writings on AI, software, and more</p>
+                                <p class="project-tech">Hugo / PaperMod / Vercel</p>
+                            </div>
+
+                            <div class="project-item">
+                                <p class="project-name">→ <a href="https://github.com/michaelpersonal/readingnotesapp" class="link" target="_blank">Reading Notes App</a></p>
+                                <p class="project-desc">Captures Kindle highlights and turns them into organized Notion notes</p>
+                                <p class="project-tech">Swift / iOS</p>
+                            </div>
+
+                            <div class="project-item">
+                                <p class="project-name">→ <a href="https://github.com/michaelpersonal/garmin-utmb-trail-run-time-tracking" class="link" target="_blank">Garmin UTMB Tracker</a></p>
+                                <p class="project-desc">Track checkpoints and cutoff times for UTMB trail runs on Garmin</p>
+                                <p class="project-tech">Monkey C / Garmin SDK</p>
+                            </div>
+
+                            <div class="project-item">
+                                <p class="project-name">→ <a href="https://github.com/michaelpersonal/video-search-and-summarization" class="link" target="_blank">Video Search & Summarization</a></p>
+                                <p class="project-desc">Search and summarize video content</p>
+                                <p class="project-tech">Python</p>
+                            </div>
+
+                            <div class="project-item">
+                                <p class="project-name">→ <a href="https://github.com/michaelpersonal/compound-engineering" class="link" target="_blank">Compound Engineering</a></p>
+                                <p class="project-desc">AI coding workflow implementations from "Compound Engineering" article</p>
+                                <p class="project-tech">AI / Agents</p>
+                            </div>
+                        </div>
+
+                        <div class="github-link">
+                            <p>View all projects on <a href="https://github.com/michaelpersonal" class="link" target="_blank">GitHub →</a></p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="command-line">
+                    <span class="prompt">michael@portfolio:~$</span>
+                    <input type="text" id="command-input" class="command-input" autofocus autocomplete="off" spellcheck="false">
+                    <span class="cursor blink">█</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

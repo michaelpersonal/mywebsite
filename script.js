@@ -15,9 +15,9 @@ const commands = {
         execute: () => {
             return `
 Available commands:
-  help      - Show this help message
   whoami    - Display information about me
   blog      - Visit my blog
+  portfolio - View my projects
   clear     - Clear the terminal
   home      - Return to home page
 
@@ -56,6 +56,13 @@ Keyboard shortcuts:
         execute: () => {
             window.open('https://michaelguoblog.vercel.app', '_blank');
             return 'Opening blog in new tab...';
+        }
+    },
+    portfolio: {
+        description: 'View my projects',
+        execute: () => {
+            window.location.href = 'portfolio.html';
+            return null;
         }
     }
 };
