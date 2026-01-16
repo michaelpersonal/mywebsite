@@ -400,6 +400,17 @@ body[data-theme="matrix"] {
     margin-top: 10px;
 }
 
+.section-label {
+    color: var(--label-color);
+    font-weight: bold;
+}
+
+/* Placeholder styling */
+.command-input::placeholder {
+    color: var(--text-color);
+    opacity: 0.3;
+}
+
 /* Portfolio page */
 .portfolio-header {
     margin-bottom: 25px;
