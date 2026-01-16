@@ -1,95 +1,126 @@
 # Michael's Terminal Portfolio
 
-A minimalist personal website with a terminal/CLI aesthetic inspired by bentossell.com.
+A minimalist personal website with a terminal/CLI aesthetic. Type commands to explore!
+
+**Live Site:** https://michaelguo.vercel.app
 
 ## Features
 
-- **Terminal UI**: Clean, retro command-line interface design
-- **Typing Animation**: Simulated terminal typing effect on page load
-- **5 Color Themes**: Cycle through classic terminal color schemes
-  - Classic (green on black)
-  - Amber (vintage monitor)
-  - White (high contrast)
-  - Dracula (modern dark theme)
-  - Matrix (green glow)
-- **Theme Switcher**: Press `Shift+Tab` to cycle through themes
-- **Fully Responsive**: Works on desktop, tablet, and mobile
+- **Interactive Terminal**: Type real commands to navigate
+- **5 Color Themes**: Press `Shift+Tab` to cycle through themes
+- **Commands**: `whoami`, `blog`, `portfolio`, `help`, `clear`, `home`
+- **Blog Integration**: Links to Hugo blog at https://michaelguoblog.vercel.app
+- **Responsive**: Works on desktop, tablet, and mobile
 - **Lightweight**: Pure HTML, CSS, and vanilla JavaScript (no frameworks)
+
+## Commands
+
+| Command | Description |
+|---------|-------------|
+| `whoami` | About me and social links |
+| `blog` | Opens my blog in new tab |
+| `portfolio` | View my projects |
+| `help` | Show all available commands |
+| `clear` | Clear the terminal |
+| `home` | Return to home page |
+
+## Themes
+
+Cycle through with `Shift+Tab`:
+- **Classic** - Green on black
+- **Amber** - Vintage monitor style
+- **White** - High contrast
+- **Dracula** - Modern dark theme
+- **Matrix** - Green glow
 
 ## File Structure
 
 ```
 /mywebsite
-├── index.html          # Main HTML structure
-├── styles.css          # Terminal styling and themes
-├── script.js           # Typing animation & theme switching
-└── README.md           # This file
+├── index.html          # Landing page
+├── whoami.html         # Bio page
+├── portfolio.html      # Projects page
+├── styles.css          # Styling and themes
+├── script.js           # Command system
+├── README.md           # This file
+└── AGENTS.md           # AI agent guide
 ```
 
-## How to Use
+## Local Development
 
-1. **View Locally**: Simply open `index.html` in your web browser
-2. **Edit Content**: Modify the bio and links in `index.html` (lines 40-60)
-3. **Customize Themes**: Adjust colors in `styles.css` (lines 16-64)
-4. **Change Animation**: Tweak typing speed in `script.js` (line 47)
+```bash
+# Start local server
+python3 -m http.server 8080
 
-## Customization Guide
-
-### Update Your Bio
-Edit the content in `index.html`:
-```html
-<div class="bio-section">
-    <p><span class="label">About:</span> Your description here</p>
-    <p><span class="label">Status:</span> Your status here</p>
-</div>
+# Open in browser
+open http://localhost:8080
 ```
 
-### Add Real Links
-Replace the `#` placeholders with your actual URLs:
-```html
-<li><a href="https://github.com/yourusername" class="link">→ github</a></li>
+## Deployment
+
+Hosted on Vercel. Auto-deploys on push to main:
+
+```bash
+git add .
+git commit -m "your changes"
+git push
 ```
 
-### Modify Themes
-Add or edit color schemes in `styles.css`:
-```css
-body[data-theme="yourtheme"] {
-    --bg-color: #000000;
-    --text-color: #00ff00;
-    /* ... more colors */
+## Connected Blog
+
+This portfolio links to a Hugo blog:
+- **URL:** https://michaelguoblog.vercel.app
+- **Tech:** Hugo + PaperMod theme
+- **Repo:** https://github.com/michaelpersonal/michaels-blog
+
+## Customization
+
+### Add a Command
+
+In `script.js`, add to the `commands` object:
+
+```javascript
+mycommand: {
+    description: 'What it does',
+    execute: () => {
+        // Navigate to page
+        window.location.href = 'mypage.html';
+        return null;
+        // Or open external link
+        window.open('https://example.com', '_blank');
+        return 'Opening...';
+    }
 }
 ```
 
-## Deployment Options
+### Add a Theme
 
-### GitHub Pages (Free)
-1. Create a new GitHub repository
-2. Push these files to the repository
-3. Go to Settings → Pages
-4. Select your main branch as the source
-5. Your site will be live at `https://yourusername.github.io/repo-name`
+In `styles.css`:
 
-### Netlify (Free)
-1. Drag and drop the folder at netlify.com/drop
-2. Get an instant live URL
+```css
+body[data-theme="mytheme"] {
+    --bg-color: #000000;
+    --text-color: #00ff00;
+    --prompt-color: #00ff00;
+    --cursor-color: #00ff00;
+    --header-bg: #1a1a1a;
+    --link-color: #00cc00;
+    --label-color: #00ff00;
+}
+```
 
-### Vercel (Free)
-1. Install Vercel CLI: `npm i -g vercel`
-2. Run `vercel` in the project directory
-3. Follow the prompts
+Then add `'mytheme'` to the `themes` array in `script.js`.
 
-## Browser Support
+## Social Links
 
-Works in all modern browsers:
-- Chrome/Edge (latest)
-- Firefox (latest)
-- Safari (latest)
-- Mobile browsers
-
-## Keyboard Shortcuts
-
-- `Shift+Tab`: Cycle through color themes
+- **GitHub:** https://github.com/michaelpersonal
+- **X:** https://x.com/MichaelZSGuo
+- **Blog:** https://michaelguoblog.vercel.app
 
 ## Credits
 
 Inspired by [bentossell.com](https://www.bentossell.com/)
+
+---
+
+*There's no place like 127.0.0.1* 🏠
