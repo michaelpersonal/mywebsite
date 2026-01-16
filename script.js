@@ -17,6 +17,7 @@ const commands = {
 Available commands:
   help      - Show this help message
   whoami    - Display information about me
+  blog      - Visit my blog
   clear     - Clear the terminal
   home      - Return to home page
 
@@ -48,6 +49,13 @@ Keyboard shortcuts:
         execute: () => {
             window.location.href = 'index.html';
             return null;
+        }
+    },
+    blog: {
+        description: 'Visit my blog',
+        execute: () => {
+            window.open('https://michaels-blog.vercel.app', '_blank');
+            return 'Opening blog in new tab...';
         }
     }
 };
