@@ -54,7 +54,7 @@ Keyboard shortcuts:
     blog: {
         description: 'Visit my blog',
         execute: () => {
-            window.open('https://michaelguo.vercel.app', '_blank');
+            window.open('https://michaelguoblog.vercel.app', '_blank');
             return 'Opening blog in new tab...';
         }
     }
