@@ -157,8 +157,7 @@ function executeCommand(input) {
 function resizeInput(input) {
     const value = input.value;
     const length = value.length;
-    // Minimum 12ch to fit placeholder "type here..."
-    input.style.width = (Math.max(12, length + 1)) + 'ch';
+    input.style.width = (Math.max(1, length + 1)) + 'ch';
 }
 
 // Handle input
