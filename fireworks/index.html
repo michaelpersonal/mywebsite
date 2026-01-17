@@ -146,7 +146,9 @@
     <div id="container">
         <video id="video" playsinline></video>
         <canvas id="canvas"></canvas>
-        <audio id="background-music" src="background.mp3" loop preload="auto"></audio>
+        <audio id="background-music" loop preload="auto">
+            <source src="background.mp3" type="audio/mpeg">
+        </audio>
         
         <div id="start-screen">
             <h1>🎆 Gesture Fireworks</h1>
@@ -724,6 +726,12 @@
                 
                 try {
                     this.audioContext = new (window.AudioContext || window.webkitAudioContext)();
+                    
+                    // Resume audio context (required after user interaction)
+                    if (this.audioContext.state === 'suspended') {
+                        await this.audioContext.resume();
+                    }
+                    
                     this.initialized = true;
                     console.log('Audio initialized');
                     
@@ -731,7 +739,13 @@
                     this.backgroundMusic = document.getElementById('background-music');
                     if (this.backgroundMusic) {
                         this.backgroundMusic.volume = 0.3; // 30% volume
-                        this.backgroundMusic.play().catch(e => console.log('Music autoplay blocked:', e));
+                        // Must be called directly in response to user interaction
+                        try {
+                            await this.backgroundMusic.play();
+                            console.log('Background music started');
+                        } catch (e) {
+                            console.log('Music play failed:', e);
+                        }
                     }
                 } catch (error) {
                     console.warn('Audio not available:', error);
