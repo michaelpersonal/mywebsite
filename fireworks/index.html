@@ -1022,28 +1022,43 @@
 
             async start() {
                 this.startScreen.classList.add('hidden');
+                console.log('Starting app...');
 
-                // Initialize audio (requires user interaction)
-                await this.audioManager.initialize();
+                try {
+                    // Initialize audio (requires user interaction)
+                    console.log('Initializing audio...');
+                    await this.audioManager.initialize();
+                    console.log('Audio initialized');
 
-                // Initialize hand tracker
-                await this.handTracker.initialize();
+                    // Initialize hand tracker
+                    console.log('Initializing hand tracker...');
+                    await this.handTracker.initialize();
+                    console.log('Hand tracker initialized');
 
-                this.handTracker.onResults((results) => {
-                    this.handsData = results;
-                });
+                    this.handTracker.onResults((results) => {
+                        this.handsData = results;
+                    });
 
-                const success = await this.camera.start();
-                if (!success) {
+                    console.log('Starting camera...');
+                    const success = await this.camera.start();
+                    if (!success) {
+                        console.error('Camera failed to start');
+                        this.errorMessage.classList.add('visible');
+                        return;
+                    }
+                    console.log('Camera started');
+
+                    this.renderer.resize();
+                    this.uiOverlay.classList.add('visible');
+                    this.isRunning = true;
+                    this.lastHandsDetectedTime = Date.now();
+                    console.log('Starting render loop...');
+                    this.loop();
+                } catch (error) {
+                    console.error('Error during startup:', error);
+                    this.errorMessage.querySelector('p').textContent = 'Error: ' + error.message;
                     this.errorMessage.classList.add('visible');
-                    return;
                 }
-
-                this.renderer.resize();
-                this.uiOverlay.classList.add('visible');
-                this.isRunning = true;
-                this.lastHandsDetectedTime = Date.now();
-                this.loop();
             }
 
             async loop() {
@@ -1129,4 +1144,3 @@
     </script>
 </body>
 </html>
-<!-- deployed Sat Jan 17 17:05:54 EST 2026 -->
