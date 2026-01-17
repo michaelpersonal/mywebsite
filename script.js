@@ -197,8 +197,12 @@ function handleInput(event) {
     }
 }
 
-// Keep focus on input
-function maintainFocus() {
+// Keep focus on input (but not when clicking links)
+function maintainFocus(event) {
+    // Don't steal focus from links
+    if (event && event.target && event.target.closest('a')) {
+        return;
+    }
     const input = document.getElementById('command-input');
     if (input && document.activeElement !== input) {
         input.focus();
