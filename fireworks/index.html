@@ -165,7 +165,7 @@
                 <span class="status-indicator waiting"></span>
                 Right hand: Waiting
             </div>
-            <div class="hint">Pinch and release to launch fireworks</div>
+            <div class="hint">Left hand: rocket launch 🚀 | Right hand: instant burst 💥</div>
         </div>
 
         <div id="error-message">
@@ -461,6 +461,7 @@
                 this.particles = [];
                 this.trails = [];
                 this.sparkles = [];
+                this.rockets = [];  // New: rockets that fly up before exploding
                 this.gravity = 0.08;
                 this.maxParticles = 2000;
 
@@ -500,8 +501,59 @@
                 return `rgba(${rgb.r}, ${rgb.g}, ${rgb.b}, ${alpha})`;
             }
 
-            createFirework(x, y, charge) {
+            // Launch a rocket from the ground that flies up and explodes
+            launchGroundRocket(targetX, canvasHeight) {
                 const palette = this.palettes[Math.floor(Math.random() * this.palettes.length)];
+                const colorHex = palette[Math.floor(Math.random() * palette.length)];
+                
+                // Start from bottom of screen
+                const startX = targetX + (Math.random() - 0.5) * 100;
+                const startY = canvasHeight - 20;
+                
+                // Calculate where to explode (upper portion of screen)
+                const explodeY = 100 + Math.random() * (canvasHeight * 0.3);
+                
+                this.rockets.push({
+                    x: startX,
+                    y: startY,
+                    vx: (Math.random() - 0.5) * 1.5,
+                    vy: -14 - Math.random() * 4,  // Strong upward velocity
+                    color: colorHex,
+                    colorRgb: this.hexToRgb(colorHex),
+                    palette: palette,
+                    size: 5,
+                    life: 1,
+                    explodeHeight: explodeY,
+                    trail: [],
+                    phase: 'ignition',  // phases: ignition -> launch -> ascending
+                    ignitionTime: 30,   // frames to show ignition sparks
+                    launched: false
+                });
+                
+                // Create ignition sparks at launch point
+                this.createIgnitionSparks(startX, startY, colorHex);
+            }
+            
+            // Create sparks at the ignition point
+            createIgnitionSparks(x, y, colorHex) {
+                const colorRgb = this.hexToRgb(colorHex);
+                for (let i = 0; i < 30; i++) {
+                    this.sparkles.push({
+                        x: x + (Math.random() - 0.5) * 20,
+                        y: y + Math.random() * 10,
+                        vx: (Math.random() - 0.5) * 3,
+                        vy: -Math.random() * 2,
+                        colorRgb: { r: 255, g: 200 + Math.random() * 55, b: 50 }, // Orange/yellow sparks
+                        size: 2 + Math.random() * 2,
+                        life: 0.5 + Math.random() * 0.5,
+                        decay: 0.03 + Math.random() * 0.02,
+                        gravity: 0.05
+                    });
+                }
+            }
+
+            createFirework(x, y, charge, customPalette = null) {
+                const palette = customPalette || this.palettes[Math.floor(Math.random() * this.palettes.length)];
                 
                 // Main burst particles
                 const mainCount = Math.floor(200 + charge * 200);
@@ -582,6 +634,78 @@
             }
 
             update() {
+                // Update rockets
+                for (let i = this.rockets.length - 1; i >= 0; i--) {
+                    const r = this.rockets[i];
+                    
+                    // Handle ignition phase
+                    if (r.phase === 'ignition') {
+                        r.ignitionTime--;
+                        // Add more ignition sparks
+                        if (r.ignitionTime > 0 && Math.random() > 0.5) {
+                            this.sparkles.push({
+                                x: r.x + (Math.random() - 0.5) * 15,
+                                y: r.y + Math.random() * 5,
+                                vx: (Math.random() - 0.5) * 2,
+                                vy: -Math.random() * 1.5,
+                                colorRgb: { r: 255, g: 150 + Math.random() * 105, b: 0 },
+                                size: 1 + Math.random() * 2,
+                                life: 0.3 + Math.random() * 0.3,
+                                decay: 0.05,
+                                gravity: 0.02
+                            });
+                        }
+                        if (r.ignitionTime <= 0) {
+                            r.phase = 'ascending';
+                            r.launched = true;
+                        }
+                        continue; // Don't move during ignition
+                    }
+                    
+                    // Add trail while ascending
+                    r.trail.push({ x: r.x, y: r.y, life: 1 });
+                    if (r.trail.length > 20) r.trail.shift();
+                    
+                    // Update trail life
+                    for (const t of r.trail) {
+                        t.life -= 0.08;
+                    }
+                    r.trail = r.trail.filter(t => t.life > 0);
+                    
+                    // Add rocket exhaust sparks
+                    if (Math.random() > 0.3) {
+                        this.sparkles.push({
+                            x: r.x + (Math.random() - 0.5) * 6,
+                            y: r.y + 5,
+                            vx: (Math.random() - 0.5) * 2,
+                            vy: 2 + Math.random() * 3,
+                            colorRgb: { r: 255, g: 200 + Math.random() * 55, b: 100 },
+                            size: 1 + Math.random() * 2,
+                            life: 0.3 + Math.random() * 0.2,
+                            decay: 0.05,
+                            gravity: 0.1
+                        });
+                    }
+                    
+                    // Update position
+                    r.x += r.vx;
+                    r.y += r.vy;
+                    r.vy += 0.12; // Gravity slows the rocket
+                    
+                    // Check if rocket should explode (reached peak or target height)
+                    if (r.y <= r.explodeHeight || r.vy >= -2) {
+                        // Explode!
+                        this.createFirework(r.x, r.y, 1.0, r.palette);
+                        this.rockets.splice(i, 1);
+                        continue;
+                    }
+                    
+                    r.life -= 0.003;
+                    if (r.life <= 0) {
+                        this.rockets.splice(i, 1);
+                    }
+                }
+
                 // Update main particles
                 for (let i = this.particles.length - 1; i >= 0; i--) {
                     const p = this.particles[i];
@@ -650,6 +774,51 @@
                 // Use additive blending for glow effect
                 ctx.globalCompositeOperation = 'lighter';
 
+                // Draw rockets and their trails
+                for (const r of this.rockets) {
+                    // During ignition phase, draw the fuse/base
+                    if (r.phase === 'ignition') {
+                        // Draw ignition glow at base
+                        const glowGradient = ctx.createRadialGradient(r.x, r.y, 0, r.x, r.y, 30);
+                        glowGradient.addColorStop(0, 'rgba(255, 200, 50, 0.8)');
+                        glowGradient.addColorStop(0.5, 'rgba(255, 100, 0, 0.4)');
+                        glowGradient.addColorStop(1, 'rgba(255, 50, 0, 0)');
+                        ctx.fillStyle = glowGradient;
+                        ctx.beginPath();
+                        ctx.arc(r.x, r.y, 30, 0, Math.PI * 2);
+                        ctx.fill();
+                        
+                        // Draw rocket body waiting to launch
+                        ctx.fillStyle = r.color;
+                        ctx.beginPath();
+                        ctx.ellipse(r.x, r.y - 10, 4, 12, 0, 0, Math.PI * 2);
+                        ctx.fill();
+                        continue;
+                    }
+                    
+                    // Draw rocket trail (ascending phase)
+                    for (let i = 0; i < r.trail.length; i++) {
+                        const t = r.trail[i];
+                        const alpha = t.life * 0.9;
+                        const size = 2 + 4 * (i / r.trail.length);
+                        ctx.fillStyle = this.rgbaString(r.colorRgb, alpha);
+                        ctx.beginPath();
+                        ctx.arc(t.x, t.y, size, 0, Math.PI * 2);
+                        ctx.fill();
+                    }
+                    
+                    // Draw rocket head with bright glow
+                    const gradient = ctx.createRadialGradient(r.x, r.y, 0, r.x, r.y, r.size * 4);
+                    gradient.addColorStop(0, 'rgba(255, 255, 255, 1)');
+                    gradient.addColorStop(0.2, this.rgbaString(r.colorRgb, 0.9));
+                    gradient.addColorStop(0.6, this.rgbaString(r.colorRgb, 0.4));
+                    gradient.addColorStop(1, 'rgba(255, 100, 0, 0)');
+                    ctx.fillStyle = gradient;
+                    ctx.beginPath();
+                    ctx.arc(r.x, r.y, r.size * 4, 0, Math.PI * 2);
+                    ctx.fill();
+                }
+
                 // Draw trails first (behind particles)
                 for (const t of this.trails) {
                     const alpha = t.life * 0.6;
@@ -708,6 +877,7 @@
                 this.particles = [];
                 this.trails = [];
                 this.sparkles = [];
+                this.rockets = [];
             }
         }
 
@@ -846,9 +1016,25 @@
                 this.PINCH_THRESHOLD = 0.10; // Normalized distance (increased for better detection)
                 this.CHARGE_RATE = 0.025;    // Charge per frame (faster charging)
                 this.MIN_CHARGE = 0.15;      // Minimum to trigger firework (lower threshold)
+                
+                // Swipe detection settings
+                this.SWIPE_VELOCITY_THRESHOLD = 0.025; // Minimum upward velocity to trigger launch
+                this.POSITION_HISTORY_LENGTH = 5;      // Frames to track for velocity calculation
 
-                this.leftHand = { charging: false, charge: 0, wasPinching: false };
-                this.rightHand = { charging: false, charge: 0, wasPinching: false };
+                this.leftHand = { 
+                    charging: false, 
+                    charge: 0, 
+                    wasPinching: false,
+                    positionHistory: [],
+                    lastY: null
+                };
+                this.rightHand = { 
+                    charging: false, 
+                    charge: 0, 
+                    wasPinching: false,
+                    positionHistory: [],
+                    lastY: null
+                };
             }
 
             calculatePinchDistance(landmarks) {
@@ -873,6 +1059,45 @@
                 };
             }
 
+            // Calculate upward velocity from position history
+            calculateUpwardVelocity(handState, currentY) {
+                handState.positionHistory.push(currentY);
+                
+                // Keep only recent positions
+                if (handState.positionHistory.length > this.POSITION_HISTORY_LENGTH) {
+                    handState.positionHistory.shift();
+                }
+                
+                // Need at least 2 positions to calculate velocity
+                if (handState.positionHistory.length < 2) {
+                    return 0;
+                }
+                
+                // Calculate average velocity (negative Y = moving up in screen coords)
+                const oldest = handState.positionHistory[0];
+                const newest = handState.positionHistory[handState.positionHistory.length - 1];
+                const velocity = oldest - newest; // Positive = moving up
+                
+                return velocity;
+            }
+
+            // Check if hand is in "open palm" position (not pinching, fingers spread)
+            isOpenPalm(landmarks) {
+                // Check if fingers are relatively extended by comparing fingertip Y to palm Y
+                const wrist = landmarks[0];
+                const indexTip = landmarks[8];
+                const middleTip = landmarks[12];
+                
+                // Fingers should be above (lower Y) the wrist when palm is open and facing camera
+                const fingersExtended = indexTip.y < wrist.y && middleTip.y < wrist.y;
+                
+                // Also check pinch is NOT active
+                const pinchDist = this.calculatePinchDistance(landmarks);
+                const notPinching = pinchDist > this.PINCH_THRESHOLD * 1.5;
+                
+                return fingersExtended && notPinching;
+            }
+
             update(handsData) {
                 const events = [];
 
@@ -888,6 +1113,7 @@
                         // In mirrored video: actual left hand appears on right side (higher x)
                         // Wrist is landmark 0
                         const wristX = landmarks[0].x;
+                        const wristY = landmarks[0].y;
                         const isLeftHand = wristX > 0.5; // Right side of video = your left hand
                         
                         const handState = isLeftHand ? this.leftHand : this.rightHand;
@@ -897,6 +1123,24 @@
 
                         const pinchDistance = this.calculatePinchDistance(landmarks);
                         const isPinching = pinchDistance < this.PINCH_THRESHOLD;
+
+                        // Check for swipe-up launch gesture (open palm moving up quickly)
+                        const upwardVelocity = this.calculateUpwardVelocity(handState, wristY);
+                        const isOpenPalm = this.isOpenPalm(landmarks);
+                        
+                        if (isOpenPalm && upwardVelocity > this.SWIPE_VELOCITY_THRESHOLD && !handState.launchCooldown) {
+                            // Launch a rocket!
+                            events.push({
+                                type: 'launch',
+                                hand: isLeftHand ? 'left' : 'right',
+                                position: { x: wristX, y: wristY },
+                                velocity: upwardVelocity,
+                                landmarks: landmarks
+                            });
+                            // Cooldown to prevent multiple launches
+                            handState.launchCooldown = true;
+                            setTimeout(() => { handState.launchCooldown = false; }, 500);
+                        }
 
                         if (isPinching) {
                             // Charging
@@ -928,11 +1172,13 @@
                     this.leftHand.charging = false;
                     this.leftHand.charge = 0;
                     this.leftHand.wasPinching = false;
+                    this.leftHand.positionHistory = [];
                 }
                 if (!rightDetected) {
                     this.rightHand.charging = false;
                     this.rightHand.charge = 0;
                     this.rightHand.wasPinching = false;
+                    this.rightHand.positionHistory = [];
                 }
 
                 return events;
@@ -1084,8 +1330,21 @@
                 for (const event of events) {
                     if (event.type === 'firework') {
                         const canvasPos = this.renderer.convertLandmarkToCanvas(event.position);
-                        this.particleSystem.createFirework(canvasPos.x, canvasPos.y, event.charge);
-                        this.audioManager.playExplosion(event.charge);
+                        
+                        if (event.hand === 'left') {
+                            // Left hand: Launch a ground rocket
+                            this.particleSystem.launchGroundRocket(canvasPos.x, this.canvas.height);
+                            this.audioManager.playExplosion(0.2); // Soft ignition sound
+                        } else {
+                            // Right hand: Instant explosion at hand
+                            this.particleSystem.createFirework(canvasPos.x, canvasPos.y, event.charge);
+                            this.audioManager.playExplosion(event.charge);
+                        }
+                    } else if (event.type === 'launch') {
+                        // Swipe-up launch (keeping this as backup)
+                        const canvasPos = this.renderer.convertLandmarkToCanvas(event.position);
+                        this.particleSystem.launchGroundRocket(canvasPos.x, this.canvas.height);
+                        this.audioManager.playExplosion(0.2);
                     }
                 }
 
