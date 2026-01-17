@@ -735,17 +735,13 @@
                     this.initialized = true;
                     console.log('Audio initialized');
                     
-                    // Start background music
+                    // Start background music (non-blocking)
                     this.backgroundMusic = document.getElementById('background-music');
                     if (this.backgroundMusic) {
-                        this.backgroundMusic.volume = 0.3; // 30% volume
-                        // Must be called directly in response to user interaction
-                        try {
-                            await this.backgroundMusic.play();
-                            console.log('Background music started');
-                        } catch (e) {
-                            console.log('Music play failed:', e);
-                        }
+                        this.backgroundMusic.volume = 0.3;
+                        this.backgroundMusic.play()
+                            .then(() => console.log('Background music started'))
+                            .catch(e => console.log('Music play failed:', e));
                     }
                 } catch (error) {
                     console.warn('Audio not available:', error);
