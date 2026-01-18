@@ -1,0 +1,1375 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>福字雨 Fortune Rain 🐴</title>
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/hands@0.4.1675469240/hands.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils@0.3.1675466862/camera_utils.min.js" crossorigin="anonymous"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #1a0000;
+            overflow: hidden;
+            font-family: 'PingFang SC', 'Microsoft YaHei', -apple-system, sans-serif;
+        }
+
+        #container {
+            position: relative;
+            width: 100vw;
+            height: 100vh;
+        }
+
+        #video {
+            display: none;
+        }
+
+        #canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        #start-screen {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #1a0000 0%, #330000 50%, #1a0000 100%);
+            cursor: pointer;
+            z-index: 10;
+        }
+
+        #start-screen h1 {
+            font-size: 4rem;
+            color: #FFD700;
+            margin-bottom: 1rem;
+            text-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
+        }
+
+        #start-screen p {
+            font-size: 1.5rem;
+            color: #B8860B;
+        }
+
+        #start-screen .subtitle {
+            font-size: 1rem;
+            color: #888;
+            margin-top: 2rem;
+        }
+
+        #start-screen.hidden {
+            display: none;
+        }
+
+        #error-message {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(139, 0, 0, 0.9);
+            border: 2px solid #FFD700;
+            padding: 30px 40px;
+            border-radius: 15px;
+            color: #fff;
+            text-align: center;
+            z-index: 20;
+            display: none;
+        }
+
+        #error-message.visible {
+            display: block;
+        }
+
+        #game-ui {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            padding: 20px;
+            z-index: 5;
+            opacity: 0;
+            transition: opacity 0.3s;
+            pointer-events: none;
+        }
+
+        #game-ui.visible {
+            opacity: 1;
+        }
+
+        .top-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 20px;
+        }
+
+        .lives {
+            font-size: 2rem;
+            text-shadow: 0 0 10px rgba(255, 0, 0, 0.5);
+        }
+
+        .target {
+            text-align: center;
+            background: rgba(0, 0, 0, 0.6);
+            padding: 10px 25px;
+            border-radius: 10px;
+            border: 1px solid #FFD700;
+        }
+
+        .target-label {
+            font-size: 0.8rem;
+            color: #B8860B;
+            margin-bottom: 5px;
+        }
+
+        .target-phrase {
+            font-size: 2rem;
+            color: #FFD700;
+            text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+            letter-spacing: 8px;
+        }
+
+        .progress {
+            font-size: 1.5rem;
+            color: #fff;
+            background: rgba(0, 0, 0, 0.6);
+            padding: 10px 15px;
+            border-radius: 10px;
+        }
+
+        .progress .collected {
+            color: #00ff64;
+        }
+
+        .progress .pending {
+            color: #666;
+        }
+
+        .completed-bar {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            background: rgba(0, 0, 0, 0.6);
+            padding: 10px 15px;
+            border-radius: 10px;
+            color: #00ff64;
+            font-size: 1.2rem;
+        }
+
+        .completed-bar:empty {
+            display: none;
+        }
+
+        #victory-screen, #gameover-screen {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #1a0000 0%, #330000 50%, #1a0000 100%);
+            z-index: 30;
+        }
+
+        #victory-screen.visible, #gameover-screen.visible {
+            display: flex;
+        }
+
+        .victory-content, .gameover-content {
+            text-align: center;
+            padding: 40px;
+        }
+
+        .victory-content h1 {
+            font-size: 3rem;
+            color: #FFD700;
+            margin-bottom: 10px;
+            text-shadow: 0 0 30px rgba(255, 215, 0, 0.8);
+        }
+
+        .victory-content h2, .gameover-content h2 {
+            font-size: 1.5rem;
+            color: #B8860B;
+            margin-bottom: 30px;
+        }
+
+        .gameover-content h1 {
+            font-size: 3rem;
+            color: #ff4444;
+            margin-bottom: 10px;
+        }
+
+        .horse-container {
+            position: relative;
+            width: 300px;
+            height: 150px;
+            margin: 30px auto;
+            overflow: hidden;
+        }
+
+        .horse {
+            position: absolute;
+            font-size: 80px;
+            animation: gallop 2s linear infinite;
+        }
+
+        @keyframes gallop {
+            0% { left: -100px; transform: scaleX(1); }
+            45% { left: 300px; transform: scaleX(1); }
+            50% { left: 300px; transform: scaleX(-1); }
+            95% { left: -100px; transform: scaleX(-1); }
+            100% { left: -100px; transform: scaleX(1); }
+        }
+
+        .sparkles {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+
+        .sparkle {
+            position: absolute;
+            font-size: 20px;
+            animation: sparkle 1s ease-out forwards;
+        }
+
+        @keyframes sparkle {
+            0% { opacity: 1; transform: translateY(0) scale(1); }
+            100% { opacity: 0; transform: translateY(-50px) scale(0); }
+        }
+
+        .completed-phrases {
+            margin: 20px 0;
+            font-size: 1.5rem;
+            color: #00ff64;
+        }
+
+        .completed-phrases .phrase {
+            margin: 10px;
+            display: inline-block;
+        }
+
+        .lives-remaining {
+            font-size: 1.2rem;
+            color: #FFD700;
+            margin: 20px 0;
+        }
+
+        .play-again {
+            margin-top: 30px;
+            padding: 15px 40px;
+            font-size: 1.3rem;
+            background: linear-gradient(135deg, #FFD700, #FFA500);
+            border: none;
+            border-radius: 30px;
+            color: #1a0000;
+            cursor: pointer;
+            font-weight: bold;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .play-again:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 30px rgba(255, 215, 0, 0.5);
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <video id="video" playsinline></video>
+        <canvas id="canvas"></canvas>
+        
+        <div id="start-screen">
+            <h1>🐴 福字雨</h1>
+            <p>Fortune Character Rain</p>
+            <p class="subtitle">🤏 捏住抓取 / Pinch to Grab</p>
+            <p class="subtitle" style="margin-top: 10px; opacity: 0.6;">点击开始 / Click to Start</p>
+        </div>
+
+        <div id="error-message">
+            <p>需要摄像头权限</p>
+            <p style="margin-top: 10px; font-size: 0.9rem; color: #B8860B;">Camera access needed</p>
+        </div>
+
+        <div id="game-ui">
+            <div class="top-bar">
+                <div class="lives" id="lives">❤️❤️❤️</div>
+                <div class="target">
+                    <div class="target-label">目标 Target</div>
+                    <div class="target-phrase" id="target-phrase">马到成功</div>
+                </div>
+                <div class="progress" id="progress"></div>
+            </div>
+            <div class="completed-bar" id="completed-bar"></div>
+        </div>
+
+        <div id="victory-screen">
+            <div class="victory-content">
+                <h1>🎊 恭喜发财 🎊</h1>
+                <h2>CONGRATULATIONS!</h2>
+                
+                <div class="horse-container">
+                    <div class="horse" id="horse">🐴</div>
+                    <div class="sparkles" id="sparkles"></div>
+                </div>
+                
+                <div class="completed-phrases" id="victory-phrases"></div>
+                
+                <div class="lives-remaining" id="victory-lives"></div>
+                
+                <button class="play-again" id="play-again-btn">再来一次 Play Again</button>
+            </div>
+        </div>
+
+        <div id="gameover-screen">
+            <div class="gameover-content">
+                <h1>游戏结束</h1>
+                <h2>Game Over</h2>
+                
+                <div class="completed-phrases" id="gameover-phrases"></div>
+                
+                <button class="play-again" id="retry-btn">再来一次 Try Again</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // ============================================
+        // CAMERA MANAGER
+        // ============================================
+        class CameraManager {
+            constructor(videoElement) {
+                this.video = videoElement;
+                this.stream = null;
+            }
+
+            async start() {
+                try {
+                    this.stream = await navigator.mediaDevices.getUserMedia({
+                        video: {
+                            facingMode: 'user',
+                            width: { ideal: 1280 },
+                            height: { ideal: 720 }
+                        }
+                    });
+                    this.video.srcObject = this.stream;
+                    await this.video.play();
+                    return true;
+                } catch (error) {
+                    console.error('Camera error:', error);
+                    return false;
+                }
+            }
+
+            getVideoDimensions() {
+                return {
+                    width: this.video.videoWidth,
+                    height: this.video.videoHeight
+                };
+            }
+        }
+
+        // ============================================
+        // HAND TRACKER
+        // ============================================
+        class HandTracker {
+            constructor() {
+                this.hands = new Hands({
+                    locateFile: (file) => {
+                        return `https://cdn.jsdelivr.net/npm/@mediapipe/hands@0.4.1675469240/${file}`;
+                    }
+                });
+
+                this.hands.setOptions({
+                    maxNumHands: 1,
+                    modelComplexity: 1,
+                    minDetectionConfidence: 0.5,
+                    minTrackingConfidence: 0.4
+                });
+
+                this.latestResults = null;
+                this.onResultsCallback = null;
+            }
+
+            async initialize() {
+                return new Promise((resolve) => {
+                    this.hands.onResults((results) => {
+                        this.latestResults = results;
+                        if (this.onResultsCallback) {
+                            this.onResultsCallback(results);
+                        }
+                    });
+                    this.hands.initialize().then(() => {
+                        console.log('MediaPipe Hands initialized');
+                        resolve();
+                    });
+                });
+            }
+
+            async detectHands(video) {
+                await this.hands.send({ image: video });
+            }
+
+            onResults(callback) {
+                this.onResultsCallback = callback;
+            }
+
+            getIndexFingerTip() {
+                if (this.latestResults && 
+                    this.latestResults.multiHandLandmarks && 
+                    this.latestResults.multiHandLandmarks.length > 0) {
+                    // Landmark 8 is the index finger tip
+                    return this.latestResults.multiHandLandmarks[0][8];
+                }
+                return null;
+            }
+
+            getThumbTip() {
+                if (this.latestResults && 
+                    this.latestResults.multiHandLandmarks && 
+                    this.latestResults.multiHandLandmarks.length > 0) {
+                    // Landmark 4 is the thumb tip
+                    return this.latestResults.multiHandLandmarks[0][4];
+                }
+                return null;
+            }
+
+            // Check if thumb and index finger are pinched together (touching)
+            isPinching() {
+                const indexTip = this.getIndexFingerTip();
+                const thumbTip = this.getThumbTip();
+                
+                if (!indexTip || !thumbTip) return false;
+                
+                const dx = indexTip.x - thumbTip.x;
+                const dy = indexTip.y - thumbTip.y;
+                const dz = (indexTip.z || 0) - (thumbTip.z || 0);
+                const distance = Math.sqrt(dx * dx + dy * dy + dz * dz);
+                
+                // Tight threshold - fingers must actually touch (~0.045 in normalized coords)
+                return distance < 0.045;
+            }
+
+            // Get the midpoint between thumb and index (pinch position)
+            getPinchPosition() {
+                const indexTip = this.getIndexFingerTip();
+                const thumbTip = this.getThumbTip();
+                
+                if (!indexTip || !thumbTip) return null;
+                
+                return {
+                    x: (indexTip.x + thumbTip.x) / 2,
+                    y: (indexTip.y + thumbTip.y) / 2
+                };
+            }
+        }
+
+        // ============================================
+        // GAME STATE
+        // ============================================
+        class GameState {
+            constructor() {
+                this.PHRASES = ['新年快乐', '马到成功', '快马加鞭', '马上发财'];
+                this.PHRASE_CHARS = '新年快乐马到成功加鞭上发财';
+                this.DISTRACTOR_CHARS = '人大中国天地日月水火金木土心爱福龙虎春富贵吉祥';
+                
+                this.lives = 3;
+                this.currentPhraseIndex = -1;
+                this.currentPhrase = '';
+                this.collectedChars = '';
+                this.completedPhrases = [];
+                this.remainingPhrases = [...this.PHRASES];
+                this.difficulty = 1;
+                this.gameOver = false;
+                this.victory = false;
+            }
+
+            reset() {
+                this.lives = 3;
+                this.currentPhraseIndex = -1;
+                this.currentPhrase = '';
+                this.collectedChars = '';
+                this.completedPhrases = [];
+                this.remainingPhrases = [...this.PHRASES];
+                this.difficulty = 1;
+                this.gameOver = false;
+                this.victory = false;
+                this.selectNextPhrase();
+            }
+
+            selectNextPhrase() {
+                if (this.remainingPhrases.length === 0) {
+                    this.victory = true;
+                    return;
+                }
+                
+                const randomIndex = Math.floor(Math.random() * this.remainingPhrases.length);
+                this.currentPhrase = this.remainingPhrases[randomIndex];
+                this.remainingPhrases.splice(randomIndex, 1);
+                this.collectedChars = '';
+            }
+
+            getNextNeededChar() {
+                return this.currentPhrase[this.collectedChars.length] || null;
+            }
+
+            isCorrectChar(char) {
+                return char === this.getNextNeededChar();
+            }
+
+            isWrongChar(char) {
+                return char !== this.getNextNeededChar();
+            }
+
+            collectChar(char) {
+                if (this.isCorrectChar(char)) {
+                    this.collectedChars += char;
+                    
+                    if (this.collectedChars === this.currentPhrase) {
+                        this.completedPhrases.push(this.currentPhrase);
+                        this.difficulty++;
+                        this.selectNextPhrase();
+                        return 'phrase_complete';
+                    }
+                    return 'correct';
+                }
+                return 'wrong';
+            }
+
+            loseLife() {
+                this.lives--;
+                if (this.lives <= 0) {
+                    this.gameOver = true;
+                }
+            }
+
+            getDifficultySettings() {
+                const settings = [
+                    { fallSpeed: 2, spawnRate: 800, maxChars: 10 },
+                    { fallSpeed: 3, spawnRate: 600, maxChars: 15 },
+                    { fallSpeed: 4, spawnRate: 400, maxChars: 20 },
+                    { fallSpeed: 5, spawnRate: 300, maxChars: 30 },
+                ];
+                return settings[Math.min(this.difficulty - 1, settings.length - 1)];
+            }
+        }
+
+        // ============================================
+        // CHARACTER RAIN
+        // ============================================
+        class CharacterRain {
+            constructor(gameState) {
+                this.gameState = gameState;
+                this.characters = [];
+                this.lastSpawnTime = 0;
+            }
+
+            spawnCharacter(canvasWidth) {
+                const settings = this.gameState.getDifficultySettings();
+                
+                if (this.characters.length >= settings.maxChars) return;
+
+                let char;
+                if (Math.random() < 0.4) {
+                    const phraseChars = this.gameState.PHRASE_CHARS;
+                    char = phraseChars[Math.floor(Math.random() * phraseChars.length)];
+                } else {
+                    const distractors = this.gameState.DISTRACTOR_CHARS;
+                    char = distractors[Math.floor(Math.random() * distractors.length)];
+                }
+
+                this.characters.push({
+                    char: char,
+                    x: 50 + Math.random() * (canvasWidth - 100),
+                    y: -50,
+                    speed: settings.fallSpeed * (0.8 + Math.random() * 0.4),
+                    drift: (Math.random() - 0.5) * 0.5,
+                    size: 40 + Math.random() * 20,
+                    opacity: 1,
+                    collected: false,
+                    wrong: false,
+                    trail: []  // Store trail positions
+                });
+            }
+
+            update(canvasWidth, canvasHeight, deltaTime) {
+                const settings = this.gameState.getDifficultySettings();
+                const now = Date.now();
+
+                if (now - this.lastSpawnTime > settings.spawnRate) {
+                    this.spawnCharacter(canvasWidth);
+                    this.lastSpawnTime = now;
+                }
+
+                for (let i = this.characters.length - 1; i >= 0; i--) {
+                    const c = this.characters[i];
+                    
+                    // Initialize trail frame counter if not exists
+                    if (c.trailFrame === undefined) c.trailFrame = 0;
+                    c.trailFrame++;
+                    
+                    // Add trail position every 2 frames for dense, long trail
+                    if (!c.collected && !c.wrong && c.trailFrame % 2 === 0) {
+                        c.trail.push({ x: c.x, y: c.y, opacity: 1.0 });
+                        // Much longer trail - almost full screen worth
+                        if (c.trail.length > 50) {
+                            c.trail.shift();
+                        }
+                    }
+                    
+                    // Very slow fade so trail persists
+                    for (let t of c.trail) {
+                        t.opacity -= 0.015;
+                    }
+                    c.trail = c.trail.filter(t => t.opacity > 0);
+                    
+                    c.y += c.speed;
+                    c.x += c.drift;
+
+                    if (c.collected) {
+                        c.opacity -= 0.1;
+                        c.size += 2;
+                    }
+                    if (c.wrong) {
+                        c.opacity -= 0.08;
+                    }
+
+                    if (c.y > canvasHeight + 50 || c.opacity <= 0) {
+                        this.characters.splice(i, 1);
+                    }
+                }
+            }
+
+            checkCollision(fingerX, fingerY, hitboxRadius) {
+                const neededChar = this.gameState.getNextNeededChar();
+
+                for (let i = this.characters.length - 1; i >= 0; i--) {
+                    const c = this.characters[i];
+                    if (c.collected || c.wrong) continue;
+
+                    const dx = c.x - fingerX;
+                    const dy = c.y - fingerY;
+                    const distance = Math.sqrt(dx * dx + dy * dy);
+                    const charRadius = c.size / 2;
+
+                    if (distance < hitboxRadius + charRadius) {
+                        if (c.char === neededChar) {
+                            c.collected = true;
+                            return { type: 'correct', char: c.char };
+                        } else {
+                            c.wrong = true;
+                            return { type: 'wrong', char: c.char };
+                        }
+                    }
+                }
+                return null;
+            }
+
+            // Spawn the next needed character immediately
+            spawnNextNeeded(canvasWidth) {
+                const neededChar = this.gameState.getNextNeededChar();
+                if (!neededChar) return;
+
+                const settings = this.gameState.getDifficultySettings();
+                
+                this.characters.push({
+                    char: neededChar,
+                    x: 50 + Math.random() * (canvasWidth - 100),
+                    y: -50,
+                    speed: settings.fallSpeed * (0.8 + Math.random() * 0.4),
+                    drift: (Math.random() - 0.5) * 0.5,
+                    size: 40 + Math.random() * 20,
+                    opacity: 1,
+                    collected: false,
+                    wrong: false,
+                    trail: []
+                });
+            }
+
+            clear() {
+                this.characters = [];
+            }
+        }
+
+        // ============================================
+        // RENDERER
+        // ============================================
+        class Renderer {
+            constructor(canvas, video) {
+                this.canvas = canvas;
+                this.ctx = canvas.getContext('2d');
+                this.video = video;
+                this.videoBounds = null;
+            }
+
+            resize() {
+                this.canvas.width = window.innerWidth;
+                this.canvas.height = window.innerHeight;
+            }
+
+            clear() {
+                // Fill with dark red background
+                this.ctx.fillStyle = '#1a0000';
+                this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
+            }
+
+            drawGrid() {
+                const ctx = this.ctx;
+                const { width, height } = this.canvas;
+                const gridSize = 80;
+                
+                // Pulsing effect
+                const pulse = 0.6 + 0.4 * Math.sin(Date.now() / 1500);
+                
+                ctx.save();
+                
+                // Grid lines - more visible orange/red
+                ctx.strokeStyle = `rgba(255, 80, 30, ${0.25 * pulse})`;
+                ctx.lineWidth = 1;
+                
+                // Vertical lines
+                for (let x = 0; x < width; x += gridSize) {
+                    ctx.beginPath();
+                    ctx.moveTo(x, 0);
+                    ctx.lineTo(x, height);
+                    ctx.stroke();
+                }
+                
+                // Horizontal lines
+                for (let y = 0; y < height; y += gridSize) {
+                    ctx.beginPath();
+                    ctx.moveTo(0, y);
+                    ctx.lineTo(width, y);
+                    ctx.stroke();
+                }
+                
+                // Glowing intersection points - larger and brighter
+                ctx.fillStyle = `rgba(255, 150, 50, ${0.5 * pulse})`;
+                ctx.shadowColor = '#ff6600';
+                ctx.shadowBlur = 8;
+                for (let x = 0; x < width; x += gridSize) {
+                    for (let y = 0; y < height; y += gridSize) {
+                        ctx.beginPath();
+                        ctx.arc(x, y, 3, 0, Math.PI * 2);
+                        ctx.fill();
+                    }
+                }
+                ctx.shadowBlur = 0;
+                
+                ctx.restore();
+            }
+
+            drawVideo() {
+                const { width, height } = this.canvas;
+                const videoAspect = this.video.videoWidth / this.video.videoHeight;
+                const canvasAspect = width / height;
+
+                let drawWidth, drawHeight, offsetX, offsetY;
+
+                if (canvasAspect > videoAspect) {
+                    drawWidth = width;
+                    drawHeight = width / videoAspect;
+                    offsetX = 0;
+                    offsetY = (height - drawHeight) / 2;
+                } else {
+                    drawHeight = height;
+                    drawWidth = height * videoAspect;
+                    offsetX = (width - drawWidth) / 2;
+                    offsetY = 0;
+                }
+
+                this.ctx.save();
+                
+                // Mirror the video horizontally
+                this.ctx.translate(width, 0);
+                this.ctx.scale(-1, 1);
+
+                // Draw dimmed video (30% opacity)
+                this.ctx.globalAlpha = 0.3;
+                this.ctx.drawImage(this.video, offsetX, offsetY, drawWidth, drawHeight);
+                this.ctx.globalAlpha = 1.0;
+
+                this.ctx.restore();
+
+                // Store video bounds for coordinate conversion
+                this.videoBounds = { offsetX, offsetY, drawWidth, drawHeight };
+            }
+
+            // Convert normalized landmark (0-1) to canvas coordinates
+            landmarkToCanvas(landmark) {
+                if (!this.videoBounds) return { x: 0, y: 0 };
+                
+                const { offsetX, offsetY, drawWidth, drawHeight } = this.videoBounds;
+                
+                // Mirror X coordinate (video is mirrored)
+                const x = this.canvas.width - (offsetX + landmark.x * drawWidth);
+                const y = offsetY + landmark.y * drawHeight;
+                
+                return { x, y };
+            }
+
+            drawFingerCursor(landmark, isPinching = false) {
+                if (!landmark) return;
+                
+                const pos = this.landmarkToCanvas(landmark);
+                const radius = isPinching ? 20 : 25;
+
+                if (isPinching) {
+                    // Active pinch state - bright green/gold, ready to grab
+                    this.ctx.beginPath();
+                    this.ctx.arc(pos.x, pos.y, radius, 0, Math.PI * 2);
+                    this.ctx.strokeStyle = '#00ff64';
+                    this.ctx.lineWidth = 4;
+                    this.ctx.shadowColor = '#00ff64';
+                    this.ctx.shadowBlur = 25;
+                    this.ctx.stroke();
+
+                    // Filled center when pinching
+                    this.ctx.beginPath();
+                    this.ctx.arc(pos.x, pos.y, radius * 0.6, 0, Math.PI * 2);
+                    this.ctx.fillStyle = 'rgba(0, 255, 100, 0.5)';
+                    this.ctx.fill();
+                } else {
+                    // Inactive state - dim gold ring
+                    this.ctx.beginPath();
+                    this.ctx.arc(pos.x, pos.y, radius, 0, Math.PI * 2);
+                    this.ctx.strokeStyle = 'rgba(255, 215, 0, 0.5)';
+                    this.ctx.lineWidth = 2;
+                    this.ctx.shadowColor = '#FFD700';
+                    this.ctx.shadowBlur = 5;
+                    this.ctx.stroke();
+
+                    // Dim inner
+                    this.ctx.beginPath();
+                    this.ctx.arc(pos.x, pos.y, radius * 0.3, 0, Math.PI * 2);
+                    this.ctx.fillStyle = 'rgba(255, 255, 255, 0.3)';
+                    this.ctx.fill();
+                }
+
+                this.ctx.shadowBlur = 0;
+            }
+
+            drawCharacters(characterRain, neededChar) {
+                const ctx = this.ctx;
+                
+                for (const c of characterRain.characters) {
+                    const isNeeded = c.char === neededChar;
+                    const isPhraseChar = characterRain.gameState.PHRASE_CHARS.includes(c.char);
+                    
+                    // Draw line tail first (vertical glowing line behind the character)
+                    if (c.trail.length > 0 && !c.collected && !c.wrong) {
+                        ctx.save();
+                        
+                        // Get the oldest trail position for line start
+                        const oldest = c.trail[0];
+                        
+                        // Create gradient for the line tail
+                        const gradient = ctx.createLinearGradient(c.x, oldest.y, c.x, c.y);
+                        
+                        if (isNeeded) {
+                            gradient.addColorStop(0, 'rgba(255, 215, 0, 0)');
+                            gradient.addColorStop(0.5, 'rgba(255, 215, 0, 0.6)');
+                            gradient.addColorStop(1, 'rgba(255, 255, 200, 0.9)');
+                        } else if (isPhraseChar) {
+                            gradient.addColorStop(0, 'rgba(255, 180, 0, 0)');
+                            gradient.addColorStop(0.5, 'rgba(255, 180, 0, 0.4)');
+                            gradient.addColorStop(1, 'rgba(255, 200, 100, 0.7)');
+                        } else {
+                            gradient.addColorStop(0, 'rgba(180, 120, 60, 0)');
+                            gradient.addColorStop(0.5, 'rgba(180, 120, 60, 0.3)');
+                            gradient.addColorStop(1, 'rgba(200, 150, 80, 0.5)');
+                        }
+                        
+                        ctx.strokeStyle = gradient;
+                        ctx.lineWidth = isNeeded ? 4 : 2;
+                        ctx.lineCap = 'round';
+                        
+                        if (isNeeded) {
+                            ctx.shadowColor = '#FFD700';
+                            ctx.shadowBlur = 10;
+                        }
+                        
+                        ctx.beginPath();
+                        ctx.moveTo(oldest.x, oldest.y);
+                        
+                        // Draw through trail points for smooth curve
+                        for (const t of c.trail) {
+                            ctx.lineTo(t.x, t.y);
+                        }
+                        ctx.lineTo(c.x, c.y);
+                        ctx.stroke();
+                        
+                        ctx.restore();
+                    }
+                    
+                    // Draw fading character copies along the trail (every 6th position for spacing)
+                    for (let i = 0; i < c.trail.length; i += 6) {
+                        const t = c.trail[i];
+                        const progress = i / c.trail.length;
+                        const trailSize = c.size * (0.2 + 0.6 * progress);
+                        
+                        ctx.save();
+                        ctx.font = `bold ${trailSize}px 'PingFang SC', 'Microsoft YaHei', sans-serif`;
+                        ctx.textAlign = 'center';
+                        ctx.textBaseline = 'middle';
+                        
+                        // Trail color - fading based on position and opacity
+                        if (isNeeded) {
+                            ctx.fillStyle = `rgba(255, 215, 0, ${t.opacity * 0.6 * progress})`;
+                        } else if (isPhraseChar) {
+                            ctx.fillStyle = `rgba(255, 180, 0, ${t.opacity * 0.4 * progress})`;
+                        } else {
+                            ctx.fillStyle = `rgba(180, 120, 60, ${t.opacity * 0.3 * progress})`;
+                        }
+                        
+                        ctx.fillText(c.char, t.x, t.y);
+                        ctx.restore();
+                    }
+                    
+                    // Draw the main character
+                    ctx.save();
+                    ctx.font = `bold ${c.size}px 'PingFang SC', 'Microsoft YaHei', sans-serif`;
+                    ctx.textAlign = 'center';
+                    ctx.textBaseline = 'middle';
+                    
+                    if (c.collected) {
+                        ctx.fillStyle = `rgba(0, 255, 100, ${c.opacity})`;
+                        ctx.shadowColor = '#00ff64';
+                        ctx.shadowBlur = 20;
+                    } else if (c.wrong) {
+                        ctx.fillStyle = `rgba(255, 50, 50, ${c.opacity})`;
+                    } else if (isNeeded) {
+                        const pulse = 0.7 + 0.3 * Math.sin(Date.now() / 150);
+                        ctx.fillStyle = '#FFFFFF';
+                        ctx.shadowColor = '#FFD700';
+                        ctx.shadowBlur = 20 + 10 * pulse;
+                    } else if (isPhraseChar) {
+                        ctx.fillStyle = `rgba(255, 215, 0, ${c.opacity})`;
+                        ctx.shadowColor = '#FFD700';
+                        ctx.shadowBlur = 5;
+                    } else {
+                        ctx.fillStyle = `rgba(184, 134, 11, ${c.opacity * 0.7})`;
+                    }
+                    
+                    ctx.fillText(c.char, c.x, c.y);
+                    ctx.restore();
+                }
+            }
+
+            updateUI(gameState) {
+                const livesEl = document.getElementById('lives');
+                if (livesEl) {
+                    livesEl.textContent = '❤️'.repeat(gameState.lives) + '🖤'.repeat(3 - gameState.lives);
+                }
+                
+                const targetEl = document.getElementById('target-phrase');
+                if (targetEl) {
+                    targetEl.textContent = gameState.currentPhrase;
+                }
+                
+                const progressEl = document.getElementById('progress');
+                if (progressEl) {
+                    let progressHTML = '';
+                    for (let i = 0; i < gameState.currentPhrase.length; i++) {
+                        const char = gameState.currentPhrase[i];
+                        if (i < gameState.collectedChars.length) {
+                            progressHTML += `<span class="collected">${char}</span>`;
+                        } else {
+                            progressHTML += `<span class="pending">${char}</span>`;
+                        }
+                    }
+                    progressEl.innerHTML = progressHTML;
+                }
+                
+                const completedEl = document.getElementById('completed-bar');
+                if (completedEl) {
+                    if (gameState.completedPhrases.length > 0) {
+                        completedEl.innerHTML = '完成: ' + gameState.completedPhrases.map(p => `✓${p}`).join(' ');
+                    } else {
+                        completedEl.innerHTML = '';
+                    }
+                }
+            }
+
+            showUI() {
+                const el = document.getElementById('game-ui');
+                if (el) el.classList.add('visible');
+            }
+
+            hideUI() {
+                const el = document.getElementById('game-ui');
+                if (el) el.classList.remove('visible');
+            }
+
+            flashScreen(color, duration = 200) {
+                const overlay = document.createElement('div');
+                overlay.style.cssText = `
+                    position: fixed;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    background: ${color};
+                    pointer-events: none;
+                    z-index: 100;
+                    opacity: 0.5;
+                    transition: opacity ${duration}ms;
+                `;
+                document.body.appendChild(overlay);
+                
+                requestAnimationFrame(() => {
+                    overlay.style.opacity = '0';
+                    setTimeout(() => overlay.remove(), duration);
+                });
+            }
+
+            flashGreen() {
+                this.flashScreen('rgba(0, 255, 100, 0.3)', 150);
+            }
+
+            flashRed() {
+                this.flashScreen('rgba(255, 0, 0, 0.4)', 200);
+            }
+
+            flashGold() {
+                this.flashScreen('rgba(255, 215, 0, 0.4)', 300);
+            }
+        }
+
+        // ============================================
+        // AUDIO MANAGER
+        // ============================================
+        class AudioManager {
+            constructor() {
+                this.audioContext = null;
+                this.initialized = false;
+            }
+
+            async initialize() {
+                if (this.initialized) return;
+                
+                try {
+                    this.audioContext = new (window.AudioContext || window.webkitAudioContext)();
+                    if (this.audioContext.state === 'suspended') {
+                        await this.audioContext.resume();
+                    }
+                    this.initialized = true;
+                } catch (error) {
+                    console.warn('Audio not available:', error);
+                }
+            }
+
+            playCollect() {
+                if (!this.audioContext) return;
+                
+                const osc = this.audioContext.createOscillator();
+                const gain = this.audioContext.createGain();
+                
+                osc.type = 'sine';
+                osc.frequency.setValueAtTime(880, this.audioContext.currentTime);
+                osc.frequency.exponentialRampToValueAtTime(1320, this.audioContext.currentTime + 0.1);
+                
+                gain.gain.setValueAtTime(0.3, this.audioContext.currentTime);
+                gain.gain.exponentialRampToValueAtTime(0.01, this.audioContext.currentTime + 0.3);
+                
+                osc.connect(gain);
+                gain.connect(this.audioContext.destination);
+                
+                osc.start();
+                osc.stop(this.audioContext.currentTime + 0.3);
+            }
+
+            playWrong() {
+                if (!this.audioContext) return;
+                
+                const osc = this.audioContext.createOscillator();
+                const gain = this.audioContext.createGain();
+                
+                osc.type = 'triangle';
+                osc.frequency.setValueAtTime(150, this.audioContext.currentTime);
+                osc.frequency.exponentialRampToValueAtTime(50, this.audioContext.currentTime + 0.2);
+                
+                gain.gain.setValueAtTime(0.4, this.audioContext.currentTime);
+                gain.gain.exponentialRampToValueAtTime(0.01, this.audioContext.currentTime + 0.2);
+                
+                osc.connect(gain);
+                gain.connect(this.audioContext.destination);
+                
+                osc.start();
+                osc.stop(this.audioContext.currentTime + 0.2);
+            }
+
+            playPhraseComplete() {
+                if (!this.audioContext) return;
+                
+                const notes = [523, 659, 784, 1047];
+                
+                notes.forEach((freq, i) => {
+                    const osc = this.audioContext.createOscillator();
+                    const gain = this.audioContext.createGain();
+                    
+                    osc.type = 'sine';
+                    osc.frequency.setValueAtTime(freq, this.audioContext.currentTime + i * 0.1);
+                    
+                    gain.gain.setValueAtTime(0, this.audioContext.currentTime + i * 0.1);
+                    gain.gain.linearRampToValueAtTime(0.3, this.audioContext.currentTime + i * 0.1 + 0.05);
+                    gain.gain.exponentialRampToValueAtTime(0.01, this.audioContext.currentTime + i * 0.1 + 0.4);
+                    
+                    osc.connect(gain);
+                    gain.connect(this.audioContext.destination);
+                    
+                    osc.start(this.audioContext.currentTime + i * 0.1);
+                    osc.stop(this.audioContext.currentTime + i * 0.1 + 0.4);
+                });
+            }
+
+            playVictory() {
+                this.playPhraseComplete();
+                setTimeout(() => this.playPhraseComplete(), 500);
+            }
+
+            playGameOver() {
+                if (!this.audioContext) return;
+                
+                const osc = this.audioContext.createOscillator();
+                const gain = this.audioContext.createGain();
+                
+                osc.type = 'sine';
+                osc.frequency.setValueAtTime(400, this.audioContext.currentTime);
+                osc.frequency.exponentialRampToValueAtTime(100, this.audioContext.currentTime + 0.8);
+                
+                gain.gain.setValueAtTime(0.3, this.audioContext.currentTime);
+                gain.gain.exponentialRampToValueAtTime(0.01, this.audioContext.currentTime + 0.8);
+                
+                osc.connect(gain);
+                gain.connect(this.audioContext.destination);
+                
+                osc.start();
+                osc.stop(this.audioContext.currentTime + 0.8);
+            }
+        }
+
+        // ============================================
+        // MAIN APP
+        // ============================================
+        class FortuneRainApp {
+            constructor() {
+                this.video = document.getElementById('video');
+                this.canvas = document.getElementById('canvas');
+                this.startScreen = document.getElementById('start-screen');
+                this.errorMessage = document.getElementById('error-message');
+
+                this.camera = new CameraManager(this.video);
+                this.renderer = new Renderer(this.canvas, this.video);
+                this.handTracker = new HandTracker();
+                this.gameState = new GameState();
+                this.characterRain = new CharacterRain(this.gameState);
+                this.audioManager = new AudioManager();
+
+                this.isRunning = false;
+                this.lastTime = 0;
+                
+                this.CURSOR_HITBOX = 20;  // Smaller hitbox for precise grabbing
+
+                this.setupEventListeners();
+            }
+
+            setupEventListeners() {
+                this.startScreen.addEventListener('click', () => this.start());
+                window.addEventListener('resize', () => this.renderer.resize());
+            }
+
+            async start() {
+                this.startScreen.querySelector('.subtitle').textContent = '加载中... Loading...';
+
+                try {
+                    await this.audioManager.initialize();
+                    await this.handTracker.initialize();
+                    
+                    const success = await this.camera.start();
+                    if (!success) {
+                        this.errorMessage.classList.add('visible');
+                        return;
+                    }
+
+                    this.startScreen.classList.add('hidden');
+                    this.renderer.resize();
+                    this.renderer.showUI();
+                    
+                    this.gameState.reset();
+                    this.characterRain.clear();
+                    // Spawn the first needed character immediately
+                    this.characterRain.spawnNextNeeded(this.canvas.width);
+                    
+                    this.isRunning = true;
+                    this.lastTime = Date.now();
+                    this.loop();
+                } catch (error) {
+                    console.error('Startup error:', error);
+                    this.errorMessage.classList.add('visible');
+                }
+            }
+
+            loop() {
+                if (!this.isRunning) return;
+                
+                const now = Date.now();
+                const deltaTime = now - this.lastTime;
+                this.lastTime = now;
+
+                this.handTracker.detectHands(this.video);
+
+                const fingerTip = this.handTracker.getIndexFingerTip();
+                const isPinching = this.handTracker.isPinching();
+                const pinchPos = this.handTracker.getPinchPosition();
+                
+                let cursorPos = null;
+                if (pinchPos) {
+                    cursorPos = this.renderer.landmarkToCanvas(pinchPos);
+                } else if (fingerTip) {
+                    cursorPos = this.renderer.landmarkToCanvas(fingerTip);
+                }
+
+                this.characterRain.update(this.canvas.width, this.canvas.height, deltaTime);
+
+                // Only check collisions when PINCHING
+                if (cursorPos && isPinching && !this.gameState.gameOver && !this.gameState.victory) {
+                    const collision = this.characterRain.checkCollision(
+                        cursorPos.x, cursorPos.y, this.CURSOR_HITBOX
+                    );
+                    
+                    if (collision) {
+                        if (collision.type === 'correct') {
+                            const result = this.gameState.collectChar(collision.char);
+                            this.audioManager.playCollect();
+                            this.renderer.flashGreen();
+                            if (result === 'phrase_complete') {
+                                this.audioManager.playPhraseComplete();
+                                this.renderer.flashGold();
+                            }
+                            // Immediately spawn the next needed character
+                            this.characterRain.spawnNextNeeded(this.canvas.width);
+                        } else if (collision.type === 'wrong') {
+                            this.gameState.loseLife();
+                            this.audioManager.playWrong();
+                            this.renderer.flashRed();
+                        }
+                    }
+                }
+
+                this.renderer.clear();
+                this.renderer.drawGrid();
+                this.renderer.drawVideo();
+                this.renderer.drawCharacters(this.characterRain, this.gameState.getNextNeededChar());
+                this.renderer.drawFingerCursor(pinchPos || fingerTip, isPinching);
+                this.renderer.updateUI(this.gameState);
+
+                if (this.gameState.gameOver) {
+                    this.showGameOver();
+                    return;
+                }
+                
+                if (this.gameState.victory) {
+                    this.showVictory();
+                    return;
+                }
+
+                requestAnimationFrame(() => this.loop());
+            }
+
+            showGameOver() {
+                this.isRunning = false;
+                this.renderer.hideUI();
+                this.audioManager.playGameOver();
+                
+                const screen = document.getElementById('gameover-screen');
+                
+                const phrasesEl = document.getElementById('gameover-phrases');
+                if (this.gameState.completedPhrases.length > 0) {
+                    phrasesEl.innerHTML = '完成: ' + this.gameState.completedPhrases
+                        .map(p => `<span class="phrase">✓ ${p}</span>`)
+                        .join('');
+                } else {
+                    phrasesEl.innerHTML = '没有完成任何词语';
+                }
+                
+                screen.classList.add('visible');
+                
+                document.getElementById('retry-btn').onclick = () => {
+                    screen.classList.remove('visible');
+                    this.restart();
+                };
+            }
+
+            showVictory() {
+                this.isRunning = false;
+                this.renderer.hideUI();
+                this.audioManager.playVictory();
+                
+                const screen = document.getElementById('victory-screen');
+                
+                const phrasesEl = document.getElementById('victory-phrases');
+                phrasesEl.innerHTML = this.gameState.completedPhrases
+                    .map(p => `<span class="phrase">✓ ${p}</span>`)
+                    .join('');
+                
+                document.getElementById('victory-lives').textContent = 
+                    `剩余生命 Lives: ${'❤️'.repeat(this.gameState.lives)}`;
+                
+                screen.classList.add('visible');
+                
+                this.sparkleInterval = setInterval(() => this.spawnSparkle(), 200);
+                
+                document.getElementById('play-again-btn').onclick = () => {
+                    clearInterval(this.sparkleInterval);
+                    screen.classList.remove('visible');
+                    this.restart();
+                };
+            }
+
+            spawnSparkle() {
+                const container = document.getElementById('sparkles');
+                const sparkle = document.createElement('div');
+                sparkle.className = 'sparkle';
+                sparkle.textContent = ['✨', '💫', '⭐', '🌟', '💰', '🧧'][Math.floor(Math.random() * 6)];
+                sparkle.style.left = Math.random() * 280 + 'px';
+                sparkle.style.top = Math.random() * 130 + 'px';
+                container.appendChild(sparkle);
+                
+                setTimeout(() => sparkle.remove(), 1000);
+            }
+
+            restart() {
+                this.gameState.reset();
+                this.characterRain.clear();
+                // Spawn the first needed character immediately
+                this.characterRain.spawnNextNeeded(this.canvas.width);
+                this.renderer.showUI();
+                this.isRunning = true;
+                this.lastTime = Date.now();
+                this.loop();
+            }
+        }
+
+        // Initialize
+        const app = new FortuneRainApp();
+    </script>
+</body>
+</html>
