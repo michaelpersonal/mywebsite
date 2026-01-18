@@ -8,6 +8,11 @@ let currentThemeIndex = 0;
 let commandHistory = [];
 let historyIndex = -1;
 
+// Autocomplete state
+let autocompleteMatches = [];
+let autocompleteIndex = -1;
+let lastAutocompletePrefix = '';
+
 // Available commands
 const commands = {
     help: {
@@ -160,6 +165,44 @@ function resizeInput(input) {
     input.style.width = (Math.max(1, length + 1)) + 'ch';
 }
 
+// Autocomplete command
+function autocomplete(input) {
+    const currentValue = input.value.toLowerCase().trim();
+    
+    // If empty, do nothing
+    if (!currentValue) {
+        autocompleteMatches = [];
+        autocompleteIndex = -1;
+        return;
+    }
+    
+    // If prefix changed, find new matches
+    if (currentValue !== lastAutocompletePrefix) {
+        lastAutocompletePrefix = currentValue;
+        autocompleteMatches = Object.keys(commands).filter(cmd => 
+            cmd.startsWith(currentValue)
+        );
+        autocompleteIndex = -1;
+    }
+    
+    // If no matches, do nothing
+    if (autocompleteMatches.length === 0) {
+        return;
+    }
+    
+    // Cycle to next match
+    autocompleteIndex = (autocompleteIndex + 1) % autocompleteMatches.length;
+    input.value = autocompleteMatches[autocompleteIndex];
+    resizeInput(input);
+}
+
+// Reset autocomplete state when typing
+function resetAutocomplete() {
+    autocompleteMatches = [];
+    autocompleteIndex = -1;
+    lastAutocompletePrefix = '';
+}
+
 // Handle input
 function handleInput(event) {
     const input = event.target;
@@ -191,8 +234,12 @@ function handleInput(event) {
     } else if (key === 'Tab' && event.shiftKey) {
         event.preventDefault();
         cycleTheme();
+    } else if (key === 'Tab' && !event.shiftKey) {
+        event.preventDefault();
+        autocomplete(input);
     } else {
-        // Resize on any other key (typing)
+        // Reset autocomplete and resize on any other key (typing)
+        resetAutocomplete();
         setTimeout(() => resizeInput(input), 0);
     }
 }
