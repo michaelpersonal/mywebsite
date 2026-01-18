@@ -7,6 +7,7 @@ A minimalist personal website with a terminal/CLI aesthetic. Type commands to ex
 ## Features
 
 - **Interactive Terminal**: Type real commands to navigate
+- **Tab Autocomplete**: Press Tab to autocomplete commands (Unix-style)
 - **5 Color Themes**: Press `Shift+Tab` to cycle through themes
 - **Commands**: `whoami`, `blog`, `portfolio`, `help`, `clear`, `home`
 - **Blog Integration**: Links to Hugo blog at https://michaelguoblog.vercel.app
@@ -23,6 +24,15 @@ A minimalist personal website with a terminal/CLI aesthetic. Type commands to ex
 | `help` | Show all available commands |
 | `clear` | Clear the terminal |
 | `home` | Return to home page |
+
+## Keyboard Shortcuts
+
+| Key | Action |
+|-----|--------|
+| `Tab` | Autocomplete command |
+| `Shift+Tab` | Cycle themes |
+| `↑` / `↓` | Navigate command history |
+| `Enter` | Execute command |
 
 ## Themes
 

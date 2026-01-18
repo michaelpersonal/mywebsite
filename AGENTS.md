@@ -18,11 +18,12 @@ A minimalist personal portfolio website with an interactive terminal/CLI aesthet
 
 1. **Interactive Terminal Interface**: Real command-line input where users can type commands
 2. **Command System**: Navigate between pages using terminal commands (`whoami`, `blog`, `portfolio`, `help`, `clear`, `home`)
-3. **Theme Switcher**: 5 color themes (classic, amber, white, dracula, matrix) - cycle with `Shift+Tab`
-4. **Command History**: Navigate previous commands with up/down arrow keys
-5. **Dynamic Input Sizing**: Input field expands as user types
-6. **Responsive Design**: Works on desktop, tablet, and mobile devices
-7. **Blog Integration**: Links to Hugo blog deployed on Vercel
+3. **Tab Autocomplete**: Press Tab to autocomplete commands (Unix-style), cycles through matches
+4. **Theme Switcher**: 5 color themes (classic, amber, white, dracula, matrix) - cycle with `Shift+Tab`
+5. **Command History**: Navigate previous commands with up/down arrow keys
+6. **Dynamic Input Sizing**: Input field expands as user types
+7. **Responsive Design**: Works on desktop, tablet, and mobile devices
+8. **Blog Integration**: Links to Hugo blog deployed on Vercel
 
 ## File Structure
 
