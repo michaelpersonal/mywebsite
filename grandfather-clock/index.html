@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grandfather Clock</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.8.49/Tone.js"></script>
+</head>
+<body>
+    <div id="start-overlay">
+        <div class="start-message">
+            <h1>Grandfather Clock</h1>
+            <button id="start-btn">Wind the Clock</button>
+            <p class="subtitle">(Click to enable audio)</p>
+        </div>
+    </div>
+
+    <div class="clock-container">
+        <div class="clock-cabinet">
+            <!-- Pendulum Layer (Behind Face) -->
+            <div class="pendulum-container">
+                <div class="pendulum-rod"></div>
+                <div class="pendulum-bob"></div>
+            </div>
+
+            <!-- Clock Face -->
+            <div class="clock-face">
+                <div class="marker twelve">12</div>
+                <div class="marker three">3</div>
+                <div class="marker six">6</div>
+                <div class="marker nine">9</div>
+            </div>
+
+            <!-- Hands Layer -->
+            <div class="hands-container">
+                <div class="hand hour-hand" id="hour"></div>
+                <div class="hand minute-hand" id="minute"></div>
+                <div class="hand second-hand" id="second"></div>
+                <div class="center-nut"></div>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

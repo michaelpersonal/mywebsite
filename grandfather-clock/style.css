@@ -1,0 +1,254 @@
+body {
+    background-color: #1a1a1a;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    overflow: hidden;
+    font-family: 'Garamond', 'Times New Roman', serif;
+}
+
+/* Start Overlay */
+#start-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.85);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    backdrop-filter: blur(5px);
+    transition: opacity 0.5s ease;
+}
+
+#start-overlay.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.start-message {
+    text-align: center;
+    color: #f4e4bc;
+    border: 2px solid #d4af37;
+    padding: 40px;
+    background-color: #281812;
+    border-radius: 10px;
+    box-shadow: 0 0 30px rgba(212, 175, 55, 0.2);
+}
+
+.start-message h1 {
+    font-size: 3rem;
+    margin-bottom: 30px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+    color: #d4af37;
+}
+
+#start-btn {
+    padding: 15px 40px;
+    font-size: 1.5rem;
+    background: linear-gradient(to bottom, #d4af37, #8c7327);
+    color: #281812;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-family: inherit;
+    font-weight: bold;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    transition: transform 0.1s, box-shadow 0.1s;
+}
+
+#start-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+    background: linear-gradient(to bottom, #ebd587, #a88a32);
+}
+
+#start-btn:active {
+    transform: translateY(1px);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+}
+
+.subtitle {
+    margin-top: 20px;
+    font-size: 0.9rem;
+    opacity: 0.7;
+    font-style: italic;
+}
+
+.clock-container {
+    transform: scale(1);
+    filter: drop-shadow(0 20px 50px rgba(0,0,0,0.8));
+}
+
+/* Cabinet - Procedural Wood Texture */
+.clock-cabinet {
+    position: relative;
+    width: 300px;
+    height: 800px;
+    /* Dark Walnut Base */
+    background-color: #3e2723;
+    /* Wood Grain Effect */
+    background-image: 
+        repeating-linear-gradient(90deg, transparent 0, transparent 2px, rgba(0,0,0,0.2) 3px, transparent 4px),
+        repeating-linear-gradient(0deg, transparent 0, transparent 40px, rgba(0,0,0,0.1) 41px, transparent 42px),
+        linear-gradient(to bottom, rgba(0,0,0,0.3), transparent 10%, transparent 90%, rgba(0,0,0,0.5));
+    border: 12px solid #281812;
+    border-radius: 40px 40px 10px 10px;
+    box-shadow: inset 0 0 50px rgba(0,0,0,0.7);
+}
+
+/* Pendulum Window (Cutout) */
+.clock-cabinet::after {
+    content: '';
+    position: absolute;
+    bottom: 50px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 180px;
+    height: 350px;
+    background: linear-gradient(135deg, rgba(255,255,255,0.1), rgba(255,255,255,0.05));
+    border: 8px solid #281812;
+    border-radius: 20px;
+    box-shadow: inset 0 0 20px rgba(0,0,0,0.5);
+    z-index: 5;
+    backdrop-filter: blur(1px); /* Slight glass effect */
+}
+
+/* Pendulum */
+.pendulum-container {
+    position: absolute;
+    top: 380px;
+    left: 50%;
+    width: 40px;
+    height: 300px;
+    transform-origin: top center;
+    animation: swing 2s ease-in-out infinite;
+    z-index: 2;
+}
+
+.pendulum-rod {
+    width: 8px;
+    height: 250px;
+    background: linear-gradient(90deg, #8c7327, #f4e4bc, #8c7327);
+    margin: 0 auto;
+    box-shadow: 2px 0 5px rgba(0,0,0,0.5);
+}
+
+.pendulum-bob {
+    width: 70px;
+    height: 70px;
+    /* Brass Radial Shine */
+    background: radial-gradient(circle at 30% 30%, #ffecb3, #d4af37, #8c7327);
+    border-radius: 50%;
+    margin: -10px auto 0;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.6);
+    border: 2px solid #5a4a1b;
+}
+
+@keyframes swing {
+    0% { transform: translateX(-50%) rotate(12deg); }
+    50% { transform: translateX(-50%) rotate(-12deg); }
+    100% { transform: translateX(-50%) rotate(12deg); }
+}
+
+/* Face */
+.clock-face {
+    position: absolute;
+    top: 60px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 240px;
+    height: 240px;
+    /* Parchment / Old Enamel */
+    background: radial-gradient(circle, #fffbf0, #e6dcc3);
+    border-radius: 50%;
+    border: 8px solid #d4af37; /* Brass Rim */
+    box-shadow: 
+        inset 0 0 20px rgba(0,0,0,0.3),
+        0 5px 15px rgba(0,0,0,0.5);
+    z-index: 10;
+}
+
+/* Decorative Ring inside Face */
+.clock-face::before {
+    content: '';
+    position: absolute;
+    top: 10px; left: 10px; right: 10px; bottom: 10px;
+    border: 1px solid rgba(0,0,0,0.2);
+    border-radius: 50%;
+}
+
+.marker {
+    position: absolute;
+    font-size: 32px;
+    font-weight: bold;
+    color: #1a1a1a;
+    font-family: 'Times New Roman', serif;
+    text-shadow: 1px 1px 0px rgba(255,255,255,0.5);
+}
+
+.twelve { top: 15px; left: 50%; transform: translateX(-50%); }
+.six { bottom: 15px; left: 50%; transform: translateX(-50%); }
+.three { right: 15px; top: 50%; transform: translateY(-50%); }
+.nine { left: 15px; top: 50%; transform: translateY(-50%); }
+
+/* Hands */
+.hands-container {
+    position: absolute;
+    top: 60px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 240px;
+    height: 240px;
+    pointer-events: none;
+    z-index: 20;
+}
+
+.hand {
+    position: absolute;
+    bottom: 50%;
+    left: 50%;
+    transform-origin: bottom center;
+    border-radius: 50% 50% 0 0;
+    box-shadow: 2px 2px 4px rgba(0,0,0,0.4);
+}
+
+.hour-hand {
+    width: 8px;
+    height: 60px;
+    background: #000;
+    /* Ornate shape hint */
+    border-radius: 4px;
+}
+
+.minute-hand {
+    width: 5px;
+    height: 90px;
+    background: #000;
+    border-radius: 3px;
+}
+
+.second-hand {
+    width: 2px;
+    height: 100px;
+    background: #b71c1c; /* Deep Red */
+    box-shadow: none;
+}
+
+/* Center Nut */
+.center-nut {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 16px;
+    height: 16px;
+    background: radial-gradient(circle at 30% 30%, #d4af37, #8c7327);
+    border-radius: 50%;
+    z-index: 30;
+    box-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+}
