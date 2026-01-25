@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gesture Fireworks - Phase 2</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background-color: #000;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            color: white;
+        }
+
+        #container {
+            position: relative;
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        video {
+            display: none; /* Hide the raw video */
+        }
+
+        canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        #fireworks_canvas {
+            z-index: 5;
+            pointer-events: none;
+        }
+
+        #output_canvas {
+            z-index: 6;
+            pointer-events: none;
+            opacity: 0.6; /* Slight transparency to see fireworks clearly */
+        }
+
+        #overlay {
+            position: absolute;
+            z-index: 10;
+            text-align: center;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 2rem;
+            border-radius: 1rem;
+            border: 1px solid #444;
+        }
+
+        button {
+            background: #ff4757;
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            font-size: 1.2rem;
+            border-radius: 0.5rem;
+            cursor: pointer;
+            transition: transform 0.1s, background 0.2s;
+        }
+
+        button:hover {
+            background: #ff6b81;
+        }
+
+        button:active {
+            transform: scale(0.95);
+        }
+
+        #status {
+            margin-top: 1rem;
+            font-size: 0.9rem;
+            color: #aaa;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <video id="webcam" autoplay playsinline></video>
+        <canvas id="output_canvas"></canvas>
+        <canvas id="fireworks_canvas"></canvas>
+        
+        <div id="overlay">
+            <h1>Gesture Fireworks</h1>
+            <p>Phase 4: Web Audio & Ground Rockets</p>
+            <button id="startButton">START WEBCAM</button>
+            <div id="status">Waiting for user interaction...</div>
+        </div>
+    </div>
+
+    <!-- MediaPipe Hands via CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/drawing_utils/drawing_utils.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/hands/hands.js" crossorigin="anonymous"></script>
+
+    <script>
+        const video = document.getElementById('webcam');
+        const canvasElement = document.getElementById('output_canvas');
+        const canvasCtx = canvasElement.getContext('2d');
+        const fireworksCanvas = document.getElementById('fireworks_canvas');
+        const fireworksCtx = fireworksCanvas.getContext('2d');
+        const startButton = document.getElementById('startButton');
+        const overlay = document.getElementById('overlay');
+        const statusDiv = document.getElementById('status');
+
+        let hands;
+        let cameraActive = false;
+        let audioCtx;
+
+        // Sound Synthesis Functions
+        function initAudio() {
+            if (!audioCtx) {
+                audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+            }
+        }
+
+        function playWhoosh() {
+            if (!audioCtx) return;
+            const osc = audioCtx.createOscillator();
+            const gain = audioCtx.createGain();
+
+            osc.type = 'triangle';
+            osc.frequency.setValueAtTime(200, audioCtx.currentTime);
+            osc.frequency.exponentialRampToValueAtTime(800, audioCtx.currentTime + 0.5);
+
+            gain.gain.setValueAtTime(0.3, audioCtx.currentTime);
+            gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.5);
+
+            osc.connect(gain);
+            gain.connect(audioCtx.destination);
+
+            osc.start();
+            osc.stop(audioCtx.currentTime + 0.5);
+        }
+
+        function playPop() {
+            if (!audioCtx) return;
+            const bufferSize = audioCtx.sampleRate * 0.1; // 100ms burst
+            const buffer = audioCtx.createBuffer(1, bufferSize, audioCtx.sampleRate);
+            const data = buffer.getChannelData(0);
+            for (let i = 0; i < bufferSize; i++) {
+                data[i] = Math.random() * 2 - 1;
+            }
+
+            const noise = audioCtx.createBufferSource();
+            noise.buffer = buffer;
+
+            const filter = audioCtx.createBiquadFilter();
+            filter.type = 'lowpass';
+            filter.frequency.setValueAtTime(1000, audioCtx.currentTime);
+
+            const gain = audioCtx.createGain();
+            gain.gain.setValueAtTime(0.4, audioCtx.currentTime);
+            gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.1);
+
+            noise.connect(filter);
+            filter.connect(gain);
+            gain.connect(audioCtx.destination);
+
+            noise.start();
+            noise.stop(audioCtx.currentTime + 0.1);
+        }
+
+        // Pinch state tracking
+        const handStates = {
+            'Left': { isPinching: false, lastPinchTime: 0 },
+            'Right': { isPinching: false, lastPinchTime: 0 }
+        };
+
+        const PINCH_THRESHOLD = 0.05;
+        const DEBOUNCE_MS = 100;
+
+        // Particle Class
+        class Particle {
+            constructor(x, y, color, vx, vy, decay) {
+                this.x = x;
+                this.y = y;
+                this.color = color;
+                this.life = 1.0;
+                this.decay = decay || (Math.random() * 0.02 + 0.005);
+                
+                // Use provided velocity or random 360 degrees
+                if (vx !== undefined && vy !== undefined) {
+                    this.vx = vx;
+                    this.vy = vy;
+                } else {
+                    const angle = Math.random() * Math.PI * 2;
+                    const speed = Math.random() * 8 + 2;
+                    this.vx = Math.cos(angle) * speed;
+                    this.vy = Math.sin(angle) * speed;
+                }
+                this.radius = Math.random() * 2 + 1;
+            }
+
+            update() {
+                this.vx *= 0.98; // friction
+                this.vy *= 0.98; // friction
+                this.vy += 0.1;  // gravity
+                this.x += this.vx;
+                this.y += this.vy;
+                this.life -= this.decay;
+            }
+
+            draw(ctx) {
+                ctx.save();
+                ctx.globalAlpha = this.life;
+                ctx.fillStyle = this.color;
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+                ctx.fill();
+                ctx.restore();
+            }
+        }
+
+        // Rocket Class (Ground Launch)
+        class Rocket {
+            constructor(targetX, targetY, colors, onExplode) {
+                this.x = targetX;
+                this.y = window.innerHeight; // Start at bottom
+                this.targetY = targetY;
+                this.colors = colors;
+                this.onExplode = onExplode;
+                this.speed = 10 + Math.random() * 5;
+                this.life = 1.0;
+                this.isDead = false;
+            }
+
+            update() {
+                this.y -= this.speed;
+                if (this.y <= this.targetY) {
+                    this.isDead = true;
+                    this.onExplode(this.x, this.targetY);
+                }
+            }
+
+            draw(ctx) {
+                ctx.save();
+                ctx.fillStyle = '#FFFFFF';
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, 3, 0, Math.PI * 2);
+                ctx.fill();
+                
+                // Trail
+                ctx.fillStyle = 'rgba(255, 255, 255, 0.3)';
+                ctx.beginPath();
+                ctx.arc(this.x, this.y + 10, 2, 0, Math.PI * 2);
+                ctx.fill();
+                ctx.restore();
+            }
+        }
+
+        // Firework Manager
+        class FireworkManager {
+            constructor() {
+                this.particles = [];
+                this.rockets = [];
+                this.colors = ['#FFD700', '#FFA500', '#FF4500', '#FFFFFF']; // Gold, Orange, Red, White
+            }
+
+            launch(targetX, targetY) {
+                playWhoosh();
+                this.rockets.push(new Rocket(targetX, targetY, this.colors, (x, y) => this.explode(x, y)));
+            }
+
+            explode(x, y) {
+                playPop();
+                const count = Math.floor(Math.random() * 51) + 50; // 50-100
+                for (let i = 0; i < count; i++) {
+                    const color = this.colors[Math.floor(Math.random() * this.colors.length)];
+                    this.particles.push(new Particle(x, y, color));
+                }
+            }
+
+            update() {
+                // Update Rockets
+                for (let i = this.rockets.length - 1; i >= 0; i--) {
+                    this.rockets[i].update();
+                    if (this.rockets[i].isDead) {
+                        this.rockets.splice(i, 1);
+                    }
+                }
+
+                // Update Particles
+                for (let i = this.particles.length - 1; i >= 0; i--) {
+                    this.particles[i].update();
+                    if (this.particles[i].life <= 0) {
+                        this.particles.splice(i, 1);
+                    }
+                }
+            }
+
+            draw(ctx) {
+                ctx.globalCompositeOperation = 'lighter';
+                this.rockets.forEach(r => r.draw(ctx));
+                this.particles.forEach(p => p.draw(ctx));
+            }
+        }
+
+        const fireworkManager = new FireworkManager();
+
+        function updateStatus(msg) {
+            statusDiv.innerText = msg;
+            console.log(msg);
+        }
+
+        // Initialize MediaPipe Hands
+        function initHands() {
+            hands = new Hands({
+                locateFile: (file) => {
+                    return `https://cdn.jsdelivr.net/npm/@mediapipe/hands/${file}`;
+                }
+            });
+
+            hands.setOptions({
+                maxNumHands: 2,
+                modelComplexity: 1,
+                minDetectionConfidence: 0.5,
+                minTrackingConfidence: 0.5
+            });
+
+            hands.onResults(onResults);
+        }
+
+        function calculateDistance(p1, p2) {
+            return Math.sqrt(Math.pow(p1.x - p2.x, 2) + Math.pow(p1.y - p2.y, 2) + Math.pow(p1.z - p2.z, 2));
+        }
+
+        function onResults(results) {
+            // Resize canvases to match window size (High-DPI)
+            const dpr = window.devicePixelRatio || 1;
+            const width = window.innerWidth;
+            const height = window.innerHeight;
+
+            if (canvasElement.width !== width * dpr || canvasElement.height !== height * dpr) {
+                canvasElement.width = width * dpr;
+                canvasElement.height = height * dpr;
+                canvasCtx.scale(dpr, dpr);
+                
+                fireworksCanvas.width = width * dpr;
+                fireworksCanvas.height = height * dpr;
+                fireworksCtx.scale(dpr, dpr);
+            }
+
+            // Draw hand tracking results
+            canvasCtx.save();
+            canvasCtx.clearRect(0, 0, width, height);
+            
+            // Mirror horizontal for natural feel
+            canvasCtx.translate(width, 0);
+            canvasCtx.scale(-1, 1);
+
+            // Draw trails and update particles on fireworks canvas
+            fireworksCtx.fillStyle = 'rgba(0, 0, 0, 0.1)';
+            fireworksCtx.globalCompositeOperation = 'source-over';
+            fireworksCtx.fillRect(0, 0, width, height);
+            
+            fireworkManager.update();
+            fireworkManager.draw(fireworksCtx);
+
+            if (results.multiHandLandmarks && results.multiHandedness) {
+                for (let i = 0; i < results.multiHandLandmarks.length; i++) {
+                    const landmarks = results.multiHandLandmarks[i];
+                    const handedness = results.multiHandedness[i];
+                    const label = handedness.label; // 'Left' or 'Right'
+                    
+                    // Draw hand skeleton
+                    drawConnectors(canvasCtx, landmarks, HAND_CONNECTIONS, {color: '#00FF00', lineWidth: 5});
+                    drawLandmarks(canvasCtx, landmarks, {color: '#FF0000', lineWidth: 2});
+
+                    // Pinch Logic
+                    const thumbTip = landmarks[4];
+                    const indexTip = landmarks[8];
+                    const distance = calculateDistance(thumbTip, indexTip);
+                    const isPinchingNow = distance < PINCH_THRESHOLD;
+
+                    const now = Date.now();
+                    const state = handStates[label];
+
+                    // Debounce & State Update
+                    if (isPinchingNow !== state.isPinching) {
+                        if (now - state.lastPinchTime > DEBOUNCE_MS) {
+                            state.isPinching = isPinchingNow;
+                            state.lastPinchTime = now;
+                            
+                            if (state.isPinching) {
+                                // Landmarks are 0-1, mirror them to match canvas
+                                const x = (1 - indexTip.x) * width;
+                                const y = indexTip.y * height;
+                                
+                                if (label === 'Right') {
+                                    // Right hand: instant explosion
+                                    fireworkManager.explode(x, y);
+                                } else if (label === 'Left') {
+                                    // Left hand: ground launch
+                                    fireworkManager.launch(x, y);
+                                }
+                            }
+                        }
+                    }
+
+                    // Visual Feedback (Text and Highlight)
+                    if (state.isPinching) {
+                        // Position text near the hand (adjusting for mirrored canvas)
+                        canvasCtx.save();
+                        canvasCtx.translate(thumbTip.x * width, thumbTip.y * height);
+                        canvasCtx.scale(-1, 1); // Flip text back so it's readable
+                        
+                        canvasCtx.fillStyle = label === 'Right' ? '#ff4757' : '#2ed573';
+                        canvasCtx.font = 'bold 24px Arial';
+                        canvasCtx.fillText(`${label} Pinch!`, 20, 0);
+                        
+                        // Draw a circle at the pinch point
+                        canvasCtx.beginPath();
+                        canvasCtx.arc(0, 0, 15, 0, 2 * Math.PI);
+                        canvasCtx.strokeStyle = 'white';
+                        canvasCtx.lineWidth = 3;
+                        canvasCtx.stroke();
+                        canvasCtx.restore();
+                    }
+                }
+            }
+            canvasCtx.restore();
+        }
+
+        async function startApp() {
+            updateStatus("Initializing...");
+            try {
+                initAudio();
+                initHands();
+                
+                const stream = await navigator.mediaDevices.getUserMedia({
+                    video: { width: 1280, height: 720 }
+                });
+                
+                video.srcObject = stream;
+                cameraActive = true;
+                
+                overlay.style.display = 'none';
+
+                // Render loop
+                async function detectionLoop() {
+                    if (cameraActive) {
+                        await hands.send({image: video});
+                    }
+                    requestAnimationFrame(detectionLoop);
+                }
+                
+                video.onloadedmetadata = () => {
+                    detectionLoop();
+                };
+
+            } catch (err) {
+                updateStatus("Error: " + err.message);
+                console.error(err);
+            }
+        }
+
+        startButton.addEventListener('click', startApp);
+    </script>
+</body>
+</html>
