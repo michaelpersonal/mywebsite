@@ -1,0 +1,1168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GOAL FORGE — The Anatomy of a Perfect Specification</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Inter:wght@300;400;500;600&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --ink: #0a0a0a;
+      --paper: #f5f2ec;
+      --cream: #faf8f4;
+      --gold: #b8924a;
+      --gold-light: #d4aa6a;
+      --mid: #7a7065;
+      --rule: #d6d0c4;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--cream);
+      color: var(--ink);
+      font-family: 'Inter', sans-serif;
+      font-size: 16px;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── MASTHEAD ── */
+    .masthead {
+      background: var(--ink);
+      color: var(--paper);
+      text-align: center;
+      padding: 0;
+      overflow: hidden;
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+    }
+
+    .masthead-image {
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(to bottom, rgba(10,10,10,0.15) 0%, rgba(10,10,10,0.55) 60%, rgba(10,10,10,0.92) 100%),
+        url('https://images.unsplash.com/photo-1518770660439-4636190af475?w=1600&q=80&fit=crop') center/cover no-repeat;
+      filter: grayscale(30%);
+    }
+
+    .masthead-content {
+      position: relative;
+      z-index: 2;
+      padding: 60px 40px 80px;
+    }
+
+    .masthead-kicker {
+      font-family: 'Inter', sans-serif;
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: var(--gold-light);
+      margin-bottom: 28px;
+    }
+
+    .masthead-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(64px, 12vw, 140px);
+      font-weight: 900;
+      line-height: 0.88;
+      letter-spacing: -0.02em;
+      color: var(--paper);
+      margin-bottom: 32px;
+    }
+
+    .masthead-title em {
+      font-style: italic;
+      color: var(--gold-light);
+    }
+
+    .masthead-deck {
+      font-family: 'EB Garamond', serif;
+      font-size: clamp(18px, 2.5vw, 26px);
+      font-weight: 400;
+      font-style: italic;
+      color: rgba(245,242,236,0.8);
+      max-width: 640px;
+      margin: 0 auto 48px;
+      line-height: 1.5;
+    }
+
+    .masthead-rule {
+      width: 60px;
+      height: 1px;
+      background: var(--gold);
+      margin: 0 auto 24px;
+    }
+
+    .masthead-meta {
+      font-size: 10px;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: rgba(245,242,236,0.5);
+    }
+
+    /* ── PULL QUOTE BANNER ── */
+    .pull-banner {
+      background: var(--gold);
+      padding: 36px 40px;
+      text-align: center;
+    }
+
+    .pull-banner p {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(20px, 3vw, 32px);
+      font-style: italic;
+      font-weight: 700;
+      color: var(--ink);
+      max-width: 900px;
+      margin: 0 auto;
+      line-height: 1.3;
+    }
+
+    /* ── SECTION CONTAINER ── */
+    .section {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 100px 40px;
+    }
+
+    .section-full {
+      padding: 100px 0;
+    }
+
+    /* ── EDITORIAL INTRO ── */
+    .intro-grid {
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: 80px;
+      align-items: start;
+    }
+
+    .intro-label {
+      font-size: 10px;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--gold);
+      font-weight: 600;
+      border-top: 1px solid var(--gold);
+      padding-top: 16px;
+      margin-bottom: 32px;
+    }
+
+    .intro-number {
+      font-family: 'Playfair Display', serif;
+      font-size: 180px;
+      font-weight: 900;
+      color: var(--rule);
+      line-height: 1;
+      margin-top: -20px;
+    }
+
+    .intro-headline {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(36px, 5vw, 60px);
+      font-weight: 700;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      margin-bottom: 28px;
+    }
+
+    .intro-headline em { font-style: italic; color: var(--gold); }
+
+    .intro-body {
+      font-family: 'EB Garamond', serif;
+      font-size: 20px;
+      line-height: 1.75;
+      color: #2a2520;
+      max-width: 600px;
+    }
+
+    .intro-body + .intro-body { margin-top: 20px; }
+
+    /* ── DIVIDER ── */
+    .divider {
+      border: none;
+      border-top: 1px solid var(--rule);
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    /* ── PHILOSOPHY BLOCK ── */
+    .philosophy {
+      background: var(--ink);
+      color: var(--paper);
+      padding: 120px 40px;
+      text-align: center;
+    }
+
+    .philosophy-label {
+      font-size: 10px;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 40px;
+      font-weight: 600;
+    }
+
+    .philosophy-quote {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(28px, 4vw, 52px);
+      font-weight: 400;
+      font-style: italic;
+      line-height: 1.35;
+      max-width: 900px;
+      margin: 0 auto 40px;
+      color: var(--paper);
+    }
+
+    .philosophy-quote strong {
+      font-weight: 700;
+      font-style: normal;
+      color: var(--gold-light);
+    }
+
+    .philosophy-attr {
+      font-size: 11px;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--mid);
+    }
+
+    /* ── FLOW DIAGRAM ── */
+    .flow-section {
+      background: var(--paper);
+      padding: 100px 40px;
+    }
+
+    .flow-header {
+      text-align: center;
+      margin-bottom: 80px;
+    }
+
+    .flow-header .label {
+      font-size: 10px;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: var(--gold);
+      font-weight: 600;
+      margin-bottom: 20px;
+    }
+
+    .flow-header h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(36px, 5vw, 64px);
+      font-weight: 900;
+      letter-spacing: -0.02em;
+      line-height: 1;
+    }
+
+    .flow-diagram {
+      max-width: 960px;
+      margin: 0 auto;
+      position: relative;
+    }
+
+    /* SVG Flow */
+    .flow-svg-wrap {
+      width: 100%;
+      overflow: visible;
+    }
+
+    /* ── STAGES GRID ── */
+    .stages {
+      background: var(--cream);
+    }
+
+    .stages-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 100px 40px;
+    }
+
+    .stages-header {
+      display: flex;
+      align-items: baseline;
+      gap: 40px;
+      margin-bottom: 80px;
+      border-bottom: 1px solid var(--rule);
+      padding-bottom: 40px;
+    }
+
+    .stages-header h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(36px, 5vw, 60px);
+      font-weight: 900;
+      letter-spacing: -0.02em;
+    }
+
+    .stages-header p {
+      font-family: 'EB Garamond', serif;
+      font-size: 20px;
+      font-style: italic;
+      color: var(--mid);
+      max-width: 480px;
+    }
+
+    .stage-row {
+      display: grid;
+      grid-template-columns: 80px 1fr 1fr;
+      gap: 40px 60px;
+      align-items: start;
+      padding: 60px 0;
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .stage-row:last-child { border-bottom: none; }
+
+    .stage-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 80px;
+      font-weight: 900;
+      color: var(--rule);
+      line-height: 1;
+      margin-top: -10px;
+    }
+
+    .stage-info { }
+
+    .stage-tag {
+      font-size: 9px;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: var(--gold);
+      font-weight: 600;
+      margin-bottom: 12px;
+    }
+
+    .stage-name {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(28px, 3vw, 40px);
+      font-weight: 700;
+      line-height: 1.1;
+      margin-bottom: 20px;
+    }
+
+    .stage-name em { font-style: italic; color: var(--mid); }
+
+    .stage-desc {
+      font-family: 'EB Garamond', serif;
+      font-size: 19px;
+      line-height: 1.7;
+      color: #2a2520;
+    }
+
+    .stage-details { }
+
+    .stage-gate {
+      background: var(--ink);
+      color: var(--paper);
+      padding: 20px 24px;
+      margin-bottom: 24px;
+    }
+
+    .stage-gate-label {
+      font-size: 8px;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: var(--gold-light);
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+
+    .stage-gate p {
+      font-family: 'EB Garamond', serif;
+      font-size: 17px;
+      font-style: italic;
+      line-height: 1.5;
+    }
+
+    .stage-bullets {
+      list-style: none;
+      padding: 0;
+    }
+
+    .stage-bullets li {
+      font-size: 13px;
+      color: var(--mid);
+      letter-spacing: 0.02em;
+      padding: 8px 0;
+      border-bottom: 1px solid var(--rule);
+      padding-left: 20px;
+      position: relative;
+    }
+
+    .stage-bullets li::before {
+      content: '—';
+      position: absolute;
+      left: 0;
+      color: var(--gold);
+    }
+
+    /* ── XML ANATOMY ── */
+    .anatomy {
+      background: var(--ink);
+      padding: 100px 40px;
+    }
+
+    .anatomy-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .anatomy-header {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      margin-bottom: 80px;
+      align-items: end;
+    }
+
+    .anatomy-header h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(40px, 5vw, 72px);
+      font-weight: 900;
+      letter-spacing: -0.02em;
+      color: var(--paper);
+      line-height: 1;
+    }
+
+    .anatomy-header h2 em {
+      font-style: italic;
+      color: var(--gold-light);
+    }
+
+    .anatomy-header p {
+      font-family: 'EB Garamond', serif;
+      font-size: 20px;
+      font-style: italic;
+      color: rgba(245,242,236,0.6);
+      line-height: 1.6;
+    }
+
+    .anatomy-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1px;
+      background: rgba(255,255,255,0.08);
+    }
+
+    .anatomy-block {
+      background: var(--ink);
+      padding: 32px 28px;
+      border: 1px solid rgba(255,255,255,0.06);
+      transition: border-color 0.2s;
+    }
+
+    .anatomy-block:hover { border-color: var(--gold); }
+
+    .anatomy-block-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 48px;
+      font-weight: 900;
+      color: rgba(255,255,255,0.06);
+      line-height: 1;
+      margin-bottom: 16px;
+    }
+
+    .anatomy-block-tag {
+      font-family: 'Inter', monospace;
+      font-size: 11px;
+      color: var(--gold);
+      letter-spacing: 0.05em;
+      font-weight: 600;
+      margin-bottom: 12px;
+    }
+
+    .anatomy-block-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--paper);
+      margin-bottom: 12px;
+    }
+
+    .anatomy-block-desc {
+      font-size: 13px;
+      color: rgba(245,242,236,0.5);
+      line-height: 1.6;
+    }
+
+    /* ── CONFIG SECTION ── */
+    .config-section {
+      background: var(--paper);
+      padding: 100px 40px;
+    }
+
+    .config-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 100px;
+      align-items: start;
+    }
+
+    .config-editorial h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(36px, 4vw, 60px);
+      font-weight: 900;
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+      margin-bottom: 32px;
+    }
+
+    .config-editorial h2 em {
+      font-style: italic;
+      color: var(--gold);
+    }
+
+    .config-editorial p {
+      font-family: 'EB Garamond', serif;
+      font-size: 20px;
+      line-height: 1.75;
+      color: #2a2520;
+      margin-bottom: 20px;
+    }
+
+    .config-warning {
+      border-left: 3px solid var(--gold);
+      padding-left: 20px;
+      margin-top: 32px;
+    }
+
+    .config-warning p {
+      font-size: 14px !important;
+      font-family: 'Inter', sans-serif !important;
+      color: var(--mid) !important;
+      font-style: normal !important;
+      line-height: 1.6 !important;
+    }
+
+    .config-code-wrap {
+      background: var(--ink);
+      padding: 40px;
+    }
+
+    .config-code-label {
+      font-size: 9px;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--gold);
+      font-weight: 600;
+      margin-bottom: 24px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .config-code pre {
+      font-family: 'Inter', monospace;
+      font-size: 13px;
+      line-height: 2;
+      color: rgba(245,242,236,0.8);
+    }
+
+    .config-code .key { color: var(--gold-light); }
+    .config-code .val { color: #a8d8a8; }
+    .config-code .comment { color: rgba(245,242,236,0.25); font-style: italic; }
+    .config-code .section { color: rgba(245,242,236,0.35); margin-top: 8px; }
+
+    .config-badges {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-top: 32px;
+    }
+
+    .config-badge {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 16px 20px;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .config-badge-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--gold);
+      flex-shrink: 0;
+    }
+
+    .config-badge-text {
+      font-size: 12px;
+      color: rgba(245,242,236,0.6);
+      line-height: 1.4;
+    }
+
+    .config-badge-text strong {
+      color: var(--paper);
+      font-weight: 600;
+      display: block;
+      font-size: 13px;
+    }
+
+    /* ── DIRECTORY ── */
+    .directory-section {
+      background: var(--cream);
+      padding: 100px 40px;
+    }
+
+    .directory-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .directory-header {
+      text-align: center;
+      margin-bottom: 80px;
+    }
+
+    .directory-header h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(36px, 4vw, 56px);
+      font-weight: 900;
+      letter-spacing: -0.02em;
+    }
+
+    .directory-tree {
+      max-width: 640px;
+      margin: 0 auto;
+      font-family: 'Inter', monospace;
+      font-size: 14px;
+      background: var(--ink);
+      color: var(--paper);
+      padding: 48px;
+    }
+
+    .tree-root { color: var(--gold-light); font-weight: 600; margin-bottom: 8px; }
+    .tree-dir { color: var(--gold); padding-left: 20px; }
+    .tree-file { color: rgba(245,242,236,0.6); padding-left: 40px; }
+    .tree-desc { color: rgba(245,242,236,0.25); font-style: italic; padding-left: 8px; }
+    .tree-line { color: rgba(255,255,255,0.1); margin-right: 4px; }
+    .tree-item { line-height: 2.2; }
+
+    /* ── COLOPHON ── */
+    .colophon {
+      background: var(--ink);
+      padding: 80px 40px;
+      text-align: center;
+    }
+
+    .colophon h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(28px, 4vw, 48px);
+      font-weight: 900;
+      font-style: italic;
+      color: var(--paper);
+      margin-bottom: 24px;
+      letter-spacing: -0.02em;
+    }
+
+    .colophon p {
+      font-family: 'EB Garamond', serif;
+      font-size: 18px;
+      color: rgba(245,242,236,0.5);
+      max-width: 560px;
+      margin: 0 auto 48px;
+      line-height: 1.7;
+    }
+
+    .colophon-rule {
+      width: 40px;
+      height: 1px;
+      background: var(--gold);
+      margin: 0 auto 32px;
+    }
+
+    .colophon-meta {
+      font-size: 10px;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: rgba(245,242,236,0.25);
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      .intro-grid { grid-template-columns: 1fr; gap: 40px; }
+      .intro-number { font-size: 80px; }
+      .stage-row { grid-template-columns: 1fr; gap: 24px; }
+      .stage-num { font-size: 48px; }
+      .anatomy-grid { grid-template-columns: repeat(2, 1fr); }
+      .anatomy-header { grid-template-columns: 1fr; gap: 40px; }
+      .config-inner { grid-template-columns: 1fr; gap: 60px; }
+      .stages-header { flex-direction: column; gap: 20px; }
+    }
+
+    @media (max-width: 480px) {
+      .anatomy-grid { grid-template-columns: 1fr; }
+      .section { padding: 60px 24px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ══════════════════════════════════════
+       MASTHEAD
+  ══════════════════════════════════════ -->
+  <header class="masthead">
+    <div class="masthead-image"></div>
+    <div class="masthead-content">
+      <p class="masthead-kicker">Codex Skills — Deep Study — May 2026</p>
+      <h1 class="masthead-title">GOAL<br><em>FORGE</em></h1>
+      <div class="masthead-rule"></div>
+      <p class="masthead-deck">The uncompromising discipline of specification — how a four-stage pipeline transforms rough intention into executable contract</p>
+      <p class="masthead-meta">github.com/michaelpersonal/goal-forge</p>
+    </div>
+  </header>
+
+  <!-- ══════════════════════════════════════
+       PULL BANNER
+  ══════════════════════════════════════ -->
+  <div class="pull-banner">
+    <p>"Long-running <code>/goal</code> runs succeed or fail on upfront specification discipline."</p>
+  </div>
+
+  <!-- ══════════════════════════════════════
+       INTRODUCTION
+  ══════════════════════════════════════ -->
+  <section>
+    <div class="section">
+      <div class="intro-grid">
+        <div>
+          <p class="intro-label">What it is</p>
+          <div class="intro-number">01</div>
+        </div>
+        <div>
+          <h2 class="intro-headline">The art of making an AI agent<br><em>actually finish.</em></h2>
+          <p class="intro-body">Goal Forge is a Codex skill — invoked via <code>$goal-forge</code> — that converts the vague spark of a coding idea into a rigorously structured <code>GOAL.md</code> contract. Not a plan. Not a to-do list. A contract.</p>
+          <p class="intro-body">The skill exists because long autonomous AI runs collapse under ambiguity. It enforces a sequence: interrogate, tighten, compile, verify. Nothing ships until every exit criterion is testable and every boundary is explicit.</p>
+          <p class="intro-body">Think of it as the editor who won't let you go to press until every word earns its place — relentless, structural, and completely necessary.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider" />
+
+  <!-- ══════════════════════════════════════
+       PHILOSOPHY
+  ══════════════════════════════════════ -->
+  <div class="philosophy">
+    <p class="philosophy-label">Core Doctrine</p>
+    <blockquote class="philosophy-quote">
+      "Every <strong>done_when</strong> item must name a command, a file artifact, or an observable behaviour — so the agent knows, without asking, when to stop."
+    </blockquote>
+    <p class="philosophy-attr">— Goal Forge, SKILL.md</p>
+  </div>
+
+  <!-- ══════════════════════════════════════
+       FLOW DIAGRAM
+  ══════════════════════════════════════ -->
+  <section class="flow-section">
+    <div style="max-width:1100px; margin:0 auto;">
+      <div class="flow-header">
+        <p class="label">The Pipeline</p>
+        <h2>From rough idea<br>to executable contract</h2>
+      </div>
+
+      <div class="flow-diagram">
+        <svg viewBox="0 0 960 560" fill="none" xmlns="http://www.w3.org/2000/svg"
+             style="width:100%; height:auto; display:block;">
+
+          <!-- Background grid lines -->
+          <line x1="0" y1="280" x2="960" y2="280" stroke="#d6d0c4" stroke-width="1" stroke-dasharray="4 8"/>
+
+          <!-- Node: Rough Idea -->
+          <rect x="20" y="228" width="160" height="104" fill="#0a0a0a"/>
+          <text x="100" y="264" font-family="'Playfair Display', serif" font-size="11" fill="#b8924a" text-anchor="middle" letter-spacing="2" font-weight="600">INPUT</text>
+          <text x="100" y="288" font-family="'Playfair Display', serif" font-size="18" fill="#f5f2ec" text-anchor="middle" font-weight="700">Rough</text>
+          <text x="100" y="308" font-family="'Playfair Display', serif" font-size="18" fill="#f5f2ec" text-anchor="middle" font-style="italic">Idea</text>
+
+          <!-- Arrow 1 -->
+          <line x1="180" y1="280" x2="226" y2="280" stroke="#b8924a" stroke-width="1.5"/>
+          <polygon points="226,275 236,280 226,285" fill="#b8924a"/>
+
+          <!-- Stage 1: Interview -->
+          <rect x="236" y="180" width="160" height="200" fill="#1a1a14"/>
+          <rect x="236" y="180" width="160" height="4" fill="#b8924a"/>
+          <text x="316" y="226" font-family="'Inter', sans-serif" font-size="9" fill="#b8924a" text-anchor="middle" letter-spacing="3" font-weight="600">STAGE 01</text>
+          <text x="316" y="258" font-family="'Playfair Display', serif" font-size="22" fill="#f5f2ec" text-anchor="middle" font-weight="700">Inter-</text>
+          <text x="316" y="282" font-family="'Playfair Display', serif" font-size="22" fill="#f5f2ec" text-anchor="middle" font-style="italic">view</text>
+          <text x="316" y="312" font-family="'Inter', sans-serif" font-size="10" fill="rgba(245,242,236,0.4)" text-anchor="middle">Open-ended</text>
+          <text x="316" y="328" font-family="'Inter', sans-serif" font-size="10" fill="rgba(245,242,236,0.4)" text-anchor="middle">discovery →</text>
+          <text x="316" y="344" font-family="'Inter', sans-serif" font-size="10" fill="rgba(245,242,236,0.4)" text-anchor="middle">SPEC.md</text>
+
+          <!-- Loopback arrow for Interview -->
+          <path d="M236 230 Q 190 140 236 185" stroke="#b8924a" stroke-width="1" stroke-dasharray="3 4" fill="none" opacity="0.5"/>
+          <text x="180" y="162" font-family="'Inter', sans-serif" font-size="9" fill="#b8924a" text-anchor="middle" letter-spacing="1">no done_when</text>
+          <text x="180" y="174" font-family="'Inter', sans-serif" font-size="9" fill="#b8924a" text-anchor="middle" letter-spacing="1">→ loop back</text>
+
+          <!-- Arrow 2 -->
+          <line x1="396" y1="280" x2="442" y2="280" stroke="#b8924a" stroke-width="1.5"/>
+          <polygon points="442,275 452,280 442,285" fill="#b8924a"/>
+
+          <!-- Stage 2: Tighten -->
+          <rect x="452" y="180" width="160" height="200" fill="#1a1a14"/>
+          <rect x="452" y="180" width="160" height="4" fill="#d4aa6a"/>
+          <text x="532" y="226" font-family="'Inter', sans-serif" font-size="9" fill="#d4aa6a" text-anchor="middle" letter-spacing="3" font-weight="600">STAGE 02</text>
+          <text x="532" y="258" font-family="'Playfair Display', serif" font-size="22" fill="#f5f2ec" text-anchor="middle" font-weight="700">Tighten</text>
+          <text x="532" y="282" font-family="'Playfair Display', serif" font-size="22" fill="#f5f2ec" text-anchor="middle" font-style="italic"> </text>
+          <text x="532" y="312" font-family="'Inter', sans-serif" font-size="10" fill="rgba(245,242,236,0.4)" text-anchor="middle">Dual interp.</text>
+          <text x="532" y="328" font-family="'Inter', sans-serif" font-size="10" fill="rgba(245,242,236,0.4)" text-anchor="middle">+ recom-</text>
+          <text x="532" y="344" font-family="'Inter', sans-serif" font-size="10" fill="rgba(245,242,236,0.4)" text-anchor="middle">mendation</text>
+
+          <!-- Loopback from Tighten to Interview -->
+          <path d="M452 200 Q 424 100 400 200" stroke="#7a7065" stroke-width="1" stroke-dasharray="3 4" fill="none" opacity="0.4"/>
+          <text x="425" y="90" font-family="'Inter', sans-serif" font-size="9" fill="#7a7065" text-anchor="middle">ambiguous</text>
+
+          <!-- Arrow 3 -->
+          <line x1="612" y1="280" x2="658" y2="280" stroke="#b8924a" stroke-width="1.5"/>
+          <polygon points="658,275 668,280 658,285" fill="#b8924a"/>
+
+          <!-- Stage 3: Compile -->
+          <rect x="668" y="180" width="160" height="200" fill="#1a1a14"/>
+          <rect x="668" y="180" width="160" height="4" fill="#f5f2ec"/>
+          <text x="748" y="226" font-family="'Inter', sans-serif" font-size="9" fill="#f5f2ec" text-anchor="middle" letter-spacing="3" font-weight="600">STAGE 03</text>
+          <text x="748" y="258" font-family="'Playfair Display', serif" font-size="22" fill="#f5f2ec" text-anchor="middle" font-weight="700">Com-</text>
+          <text x="748" y="282" font-family="'Playfair Display', serif" font-size="22" fill="#f5f2ec" text-anchor="middle" font-style="italic">pile</text>
+          <text x="748" y="312" font-family="'Inter', sans-serif" font-size="10" fill="rgba(245,242,236,0.4)" text-anchor="middle">SPEC.md →</text>
+          <text x="748" y="328" font-family="'Inter', sans-serif" font-size="10" fill="rgba(245,242,236,0.4)" text-anchor="middle">GOAL.md</text>
+          <text x="748" y="344" font-family="'Inter', sans-serif" font-size="10" fill="rgba(245,242,236,0.4)" text-anchor="middle">XML blocks</text>
+
+          <!-- Loopback compile → tighten/interview -->
+          <path d="M668 370 Q 534 430 400 370" stroke="#7a7065" stroke-width="1" stroke-dasharray="3 4" fill="none" opacity="0.4"/>
+          <text x="534" y="448" font-family="'Inter', sans-serif" font-size="9" fill="#7a7065" text-anchor="middle">weak spec → reroute</text>
+
+          <!-- Arrow 4 -->
+          <line x1="828" y1="280" x2="870" y2="280" stroke="#b8924a" stroke-width="1.5"/>
+          <polygon points="870,275 880,280 870,285" fill="#b8924a"/>
+
+          <!-- Stage 4: Check Config -->
+          <rect x="880" y="228" width="60" height="104" fill="#0a0a0a" rx="0"/>
+          <rect x="880" y="228" width="60" height="4" fill="#b8924a"/>
+          <text x="910" y="268" font-family="'Inter', sans-serif" font-size="8" fill="#b8924a" text-anchor="middle" letter-spacing="1.5" font-weight="600">CHECK</text>
+          <text x="910" y="290" font-family="'Playfair Display', serif" font-size="11" fill="#f5f2ec" text-anchor="middle" font-weight="700">Con-</text>
+          <text x="910" y="306" font-family="'Playfair Display', serif" font-size="11" fill="#f5f2ec" text-anchor="middle" font-style="italic">fig</text>
+          <text x="910" y="322" font-family="'Inter', sans-serif" font-size="8" fill="rgba(245,242,236,0.4)" text-anchor="middle">ready</text>
+
+          <!-- Output labels below stages -->
+          <text x="316" y="410" font-family="'Inter', sans-serif" font-size="10" fill="#b8924a" text-anchor="middle" font-weight="600" letter-spacing="1">→ SPEC.md v1</text>
+          <text x="532" y="410" font-family="'Inter', sans-serif" font-size="10" fill="#b8924a" text-anchor="middle" font-weight="600" letter-spacing="1">→ SPEC.md v2</text>
+          <text x="748" y="410" font-family="'Inter', sans-serif" font-size="10" fill="#b8924a" text-anchor="middle" font-weight="600" letter-spacing="1">→ GOAL.md</text>
+          <text x="910" y="355" font-family="'Inter', sans-serif" font-size="9" fill="#b8924a" text-anchor="middle" font-weight="600">→ /goal</text>
+
+          <!-- Gate markers -->
+          <circle cx="316" cy="380" r="5" fill="#b8924a"/>
+          <circle cx="532" cy="380" r="5" fill="#b8924a"/>
+          <circle cx="748" cy="380" r="5" fill="#b8924a"/>
+
+          <!-- Gate lines -->
+          <line x1="316" y1="380" x2="316" y2="408" stroke="#b8924a" stroke-width="1"/>
+          <line x1="532" y1="380" x2="532" y2="408" stroke="#b8924a" stroke-width="1"/>
+          <line x1="748" y1="380" x2="748" y2="408" stroke="#b8924a" stroke-width="1"/>
+
+        </svg>
+      </div>
+
+      <!-- Legend -->
+      <div style="display:flex; gap:40px; justify-content:center; margin-top:48px; flex-wrap:wrap;">
+        <div style="display:flex; align-items:center; gap:12px;">
+          <div style="width:32px; height:2px; background:#b8924a;"></div>
+          <span style="font-size:11px; letter-spacing:0.1em; color:#7a7065; text-transform:uppercase;">Forward flow</span>
+        </div>
+        <div style="display:flex; align-items:center; gap:12px;">
+          <svg width="32" height="8"><line x1="0" y1="4" x2="32" y2="4" stroke="#7a7065" stroke-dasharray="3 4" stroke-width="1.5"/></svg>
+          <span style="font-size:11px; letter-spacing:0.1em; color:#7a7065; text-transform:uppercase;">Reroute on failure</span>
+        </div>
+        <div style="display:flex; align-items:center; gap:12px;">
+          <div style="width:10px; height:10px; background:#b8924a; border-radius:50%;"></div>
+          <span style="font-size:11px; letter-spacing:0.1em; color:#7a7065; text-transform:uppercase;">Stage gate</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════
+       FOUR STAGES
+  ══════════════════════════════════════ -->
+  <section class="stages">
+    <div class="stages-inner">
+      <div class="stages-header">
+        <h2>The Four<br>Stages</h2>
+        <p>Each stage is a discipline. Each gate is non-negotiable. The sequence cannot be shortcut.</p>
+      </div>
+
+      <!-- Stage 1 -->
+      <div class="stage-row">
+        <div class="stage-num">01</div>
+        <div class="stage-info">
+          <p class="stage-tag">Stage One / Discovery</p>
+          <h3 class="stage-name">Interview <em>Mode</em></h3>
+          <p class="stage-desc">Open-ended, Socratic questioning designed not to confirm what you think you want — but to expose what you haven't decided yet. The AI reads an existing <code>SPEC.md</code> if present, or treats the raw idea as seed material, then asks the questions that reveal scope, architecture, and edge cases.</p>
+        </div>
+        <div class="stage-details">
+          <div class="stage-gate">
+            <p class="stage-gate-label">Critical Gate</p>
+            <p>Will not advance to compile until <code>done_when</code> contains user-approved, measurable completion criteria. No approximations accepted.</p>
+          </div>
+          <ul class="stage-bullets">
+            <li>Forces decisions on scope boundaries</li>
+            <li>Avoids "obvious" checklist questions</li>
+            <li>Asks only what exposes genuine ambiguity</li>
+            <li>Loops until criteria are unambiguous</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Stage 2 -->
+      <div class="stage-row">
+        <div class="stage-num">02</div>
+        <div class="stage-info">
+          <p class="stage-tag">Stage Two / Critique</p>
+          <h3 class="stage-name">Tighten <em>Mode</em></h3>
+          <p class="stage-desc">The spec that survived Interview is not finished — it is merely a candidate. Tighten Mode attacks it skeptically: surfacing every ambiguity, presenting dual interpretations side by side, and recommending the most maintainable resolution. Nothing is updated until choices are unambiguous.</p>
+        </div>
+        <div class="stage-details">
+          <div class="stage-gate">
+            <p class="stage-gate-label">Output Requirements</p>
+            <p>Final spec must include: goals, non-goals, architecture, edge cases, risks, verification commands, and <code>done_when</code>. All eight. No exceptions.</p>
+          </div>
+          <ul class="stage-bullets">
+            <li>Presents two distinct interpretations per ambiguity</li>
+            <li>Explains why each ambiguity matters</li>
+            <li>Routes ambiguous specs back to Interview</li>
+            <li>Recommends the most maintainable approach</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Stage 3 -->
+      <div class="stage-row">
+        <div class="stage-num">03</div>
+        <div class="stage-info">
+          <p class="stage-tag">Stage Three / Compilation</p>
+          <h3 class="stage-name">Compile <em>Mode</em></h3>
+          <p class="stage-desc">The tightened <code>SPEC.md</code> is transformed into <code>GOAL.md</code> using an eight-block XML structure. This is the document that Codex actually executes. Every block maps to an agent behaviour: what to read, what to build, how to verify, when to stop. Weak specs are rejected and routed backward.</p>
+        </div>
+        <div class="stage-details">
+          <div class="stage-gate">
+            <p class="stage-gate-label">Rejection Criteria</p>
+            <p>Specs lacking measurable <code>done_when</code>, boundaries, verification commands, or repo context are refused and returned to earlier stages with specific deficiencies listed.</p>
+          </div>
+          <ul class="stage-bullets">
+            <li>Maps spec into eight XML goal blocks</li>
+            <li>Self-checks measurability before output</li>
+            <li>Saves only the block body — no wrapper markup</li>
+            <li>Verifies execution-orientation of the goal</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Stage 4 -->
+      <div class="stage-row">
+        <div class="stage-num">04</div>
+        <div class="stage-info">
+          <p class="stage-tag">Stage Four / Readiness</p>
+          <h3 class="stage-name">Check Config <em>Mode</em></h3>
+          <p class="stage-desc">Before a multi-hour autonomous Codex run begins, the environment itself must be verified. The skill runs <code>scripts/inspect_codex_config.py</code> — a read-only reporter that validates model version, context window, reasoning effort, approval policy, and sandbox access. One status: <em>ready</em> or <em>not ready</em>.</p>
+        </div>
+        <div class="stage-details">
+          <div class="stage-gate">
+            <p class="stage-gate-label">Validated Settings</p>
+            <p>Reports version, config keys, trusted-project status, and all gaps against the required autonomous configuration profile.</p>
+          </div>
+          <ul class="stage-bullets">
+            <li>Checks gpt-5.5 model with 1,050,000-token window</li>
+            <li>Validates reasoning effort levels</li>
+            <li>Confirms approval policy and sandbox mode</li>
+            <li>Reports <code>autonomous_goal_status: ready</code></li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════
+       XML ANATOMY
+  ══════════════════════════════════════ -->
+  <section class="anatomy">
+    <div class="anatomy-inner">
+      <div class="anatomy-header">
+        <h2>The Eight<br><em>Blocks</em></h2>
+        <p>Every GOAL.md is structured into eight XML blocks. Together they form a complete contract — the deliverable, the context, the constraints, and the precise conditions of completion.</p>
+      </div>
+
+      <div class="anatomy-grid">
+        <div class="anatomy-block">
+          <div class="anatomy-block-num">01</div>
+          <div class="anatomy-block-tag">&lt;goal&gt;</div>
+          <div class="anatomy-block-name">Goal</div>
+          <p class="anatomy-block-desc">Deliverable description. Specific, measurable, execution-focused. Describes what to build — not how to build it. No vague terms without metrics.</p>
+        </div>
+        <div class="anatomy-block">
+          <div class="anatomy-block-num">02</div>
+          <div class="anatomy-block-tag">&lt;context&gt;</div>
+          <div class="anatomy-block-name">Context</div>
+          <p class="anatomy-block-desc">Required reads, system inspections, discovery commands. Concrete file paths where known; <code>rg</code> / <code>find</code> commands when uncertain.</p>
+        </div>
+        <div class="anatomy-block">
+          <div class="anatomy-block-num">03</div>
+          <div class="anatomy-block-tag">&lt;constraints&gt;</div>
+          <div class="anatomy-block-name">Constraints</div>
+          <p class="anatomy-block-desc">Architecture rules, non-goals, risk boundaries, and anti-patterns. What the agent must never do is as important as what it must do.</p>
+        </div>
+        <div class="anatomy-block">
+          <div class="anatomy-block-num">04</div>
+          <div class="anatomy-block-tag">&lt;done_when&gt;</div>
+          <div class="anatomy-block-name">Done When</div>
+          <p class="anatomy-block-desc">Concrete completion criteria. Each item names a command, file artifact, or observable behaviour. The agent determines completion autonomously against these.</p>
+        </div>
+        <div class="anatomy-block">
+          <div class="anatomy-block-num">05</div>
+          <div class="anatomy-block-tag">&lt;workflow&gt;</div>
+          <div class="anatomy-block-name">Workflow</div>
+          <p class="anatomy-block-desc">Step-by-step execution order with parallelisation notes. Structured phases: inspect → plan → implement → verify → refine → review.</p>
+        </div>
+        <div class="anatomy-block">
+          <div class="anatomy-block-num">06</div>
+          <div class="anatomy-block-tag">&lt;verification_loop&gt;</div>
+          <div class="anatomy-block-name">Verification Loop</div>
+          <p class="anatomy-block-desc">Post-change commands and fallback checks. Leads with focused checks, progresses to broad validation. Specifies manual QA evidence thresholds.</p>
+        </div>
+        <div class="anatomy-block">
+          <div class="anatomy-block-num">07</div>
+          <div class="anatomy-block-tag">&lt;execution_rules&gt;</div>
+          <div class="anatomy-block-name">Execution Rules</div>
+          <p class="anatomy-block-desc">Repo hygiene, editing standards, testing requirements. The standing operating procedures that apply to every action in the run.</p>
+        </div>
+        <div class="anatomy-block">
+          <div class="anatomy-block-num">08</div>
+          <div class="anatomy-block-tag">&lt;output_contract&gt;</div>
+          <div class="anatomy-block-name">Output Contract</div>
+          <p class="anatomy-block-desc">Final artifacts and response format. What the agent must produce and how it must present the result. The shape of done.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════
+       CONFIG SECTION
+  ══════════════════════════════════════ -->
+  <section class="config-section">
+    <div class="config-inner">
+      <div class="config-editorial">
+        <h2>Autonomous<br>Configuration<br><em>Profile</em></h2>
+        <p>For multi-hour sessions, Goal Forge targets a specific Codex environment. These are not suggestions — they are prerequisites for the kind of extended, unsupervised execution that the <code>/goal</code> contract is designed to enable.</p>
+        <p>The model must be gpt-5.5 with a 1,050,000-token context window. Reasoning effort must be high during execution, xhigh during planning. Auto-compaction triggers at 997,500 tokens.</p>
+        <div class="config-warning">
+          <p><strong>Safety note:</strong> <code>approval_policy = "never"</code> and <code>sandbox_mode = "danger-full-access"</code> must only be applied to explicitly trusted projects. These settings grant the agent full write access to the filesystem — they are not defaults. They are a conscious choice, made with full awareness of what they permit.</p>
+        </div>
+      </div>
+
+      <div>
+        <div class="config-code-wrap">
+          <div class="config-code">
+            <p class="config-code-label">codex.toml — Target Autonomous Configuration</p>
+            <pre><span class="key">model</span>                          = <span class="val">"gpt-5.5"</span>
+<span class="key">model_context_window</span>           = <span class="val">1_050_000</span>
+<span class="key">model_auto_compact_token_limit</span> = <span class="val">997_500</span>
+
+<span class="key">model_reasoning_effort</span>         = <span class="val">"high"</span>    <span class="comment"># execution</span>
+<span class="key">plan_mode_reasoning_effort</span>     = <span class="val">"xhigh"</span>   <span class="comment"># planning</span>
+
+<span class="key">approval_policy</span>                = <span class="val">"never"</span>
+<span class="key">sandbox_mode</span>                   = <span class="val">"danger-full-access"</span>
+
+<span class="section">[features]</span>
+<span class="key">goals</span>                          = <span class="val">true</span></pre>
+          </div>
+
+          <div class="config-badges">
+            <div class="config-badge">
+              <div class="config-badge-dot"></div>
+              <div class="config-badge-text">
+                <strong>1,050,000 tokens</strong>
+                Context window — enough for very long multi-file autonomous runs without losing early context
+              </div>
+            </div>
+            <div class="config-badge">
+              <div class="config-badge-dot"></div>
+              <div class="config-badge-text">
+                <strong>xhigh reasoning effort</strong>
+                Applied during planning phases to maximise architectural foresight before writing code
+              </div>
+            </div>
+            <div class="config-badge">
+              <div class="config-badge-dot"></div>
+              <div class="config-badge-text">
+                <strong>approval_policy: never</strong>
+                Trusted projects only — agent executes without interruption, relying entirely on the GOAL.md contract
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════
+       DIRECTORY
+  ══════════════════════════════════════ -->
+  <section class="directory-section">
+    <div class="directory-inner">
+      <div class="directory-header">
+        <p class="intro-label" style="text-align:center; border-top:none; border-bottom:1px solid var(--gold); padding-bottom:16px; padding-top:0; display:inline-block; min-width:120px;">Repository Structure</p>
+        <h2 style="font-family:'Playfair Display',serif; font-size:clamp(28px,3.5vw,48px); font-weight:900; letter-spacing:-0.02em; margin-top:32px;">The Architecture<br><em style="font-style:italic; color:var(--gold);">of discipline</em></h2>
+      </div>
+
+      <div class="directory-tree">
+        <div class="tree-item tree-root">goal-forge/</div>
+        <div class="tree-item tree-file" style="padding-left:24px;"><span class="tree-line">├─</span> SKILL.md<span class="tree-desc"> — invocation triggers, operating modes, all gates</span></div>
+        <div class="tree-item tree-dir" style="padding-left:24px; color:#d4aa6a;"><span class="tree-line">├─</span> agents/</div>
+        <div class="tree-item tree-file" style="padding-left:56px;"><span class="tree-line">└─</span> openai.yaml<span class="tree-desc"> — metadata, $goal-forge trigger, implicit invocation</span></div>
+        <div class="tree-item tree-dir" style="padding-left:24px; color:#d4aa6a;"><span class="tree-line">├─</span> references/</div>
+        <div class="tree-item tree-file" style="padding-left:56px;"><span class="tree-line">├─</span> goal_prompt_blocks.md<span class="tree-desc"> — eight XML block definitions</span></div>
+        <div class="tree-item tree-file" style="padding-left:56px;"><span class="tree-line">├─</span> config_checklist.md<span class="tree-desc"> — long-run configuration notes</span></div>
+        <div class="tree-item tree-file" style="padding-left:56px;"><span class="tree-line">└─</span> standard_execution_rules.md<span class="tree-desc"> — compile-time rules</span></div>
+        <div class="tree-item tree-dir" style="padding-left:24px; color:#d4aa6a;"><span class="tree-line">└─</span> scripts/</div>
+        <div class="tree-item tree-file" style="padding-left:56px;"><span class="tree-line">└─</span> inspect_codex_config.py<span class="tree-desc"> — read-only config readiness reporter</span></div>
+      </div>
+
+      <div style="max-width:640px; margin:48px auto 0; display:grid; grid-template-columns:1fr 1fr; gap:32px;">
+        <div style="border-top:2px solid var(--gold); padding-top:20px;">
+          <p style="font-size:9px; letter-spacing:0.3em; text-transform:uppercase; color:var(--gold); font-weight:600; margin-bottom:8px;">Install</p>
+          <p style="font-family:'EB Garamond',serif; font-size:17px; color:#2a2520; line-height:1.6;">Clone into your Codex skills directory. Invoke with <code>$goal-forge</code> or natural-language triggers.</p>
+        </div>
+        <div style="border-top:2px solid var(--ink); padding-top:20px;">
+          <p style="font-size:9px; letter-spacing:0.3em; text-transform:uppercase; color:var(--ink); font-weight:600; margin-bottom:8px;">Verify</p>
+          <p style="font-family:'EB Garamond',serif; font-size:17px; color:#2a2520; line-height:1.6;">Run <code>inspect_codex_config.py</code> from project root. Confirm status: <code>autonomous_goal_status: ready</code>.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════
+       COLOPHON
+  ══════════════════════════════════════ -->
+  <footer class="colophon">
+    <div class="colophon-rule"></div>
+    <h2>Specification is<br>the only luxury.</h2>
+    <p>Goal Forge operationalises a single, unfashionable conviction: that the quality of an autonomous AI run is determined entirely before the first token of execution is generated.</p>
+    <div class="colophon-rule"></div>
+    <p class="colophon-meta">github.com/michaelpersonal/goal-forge &nbsp;·&nbsp; May 2026 &nbsp;·&nbsp; A Claude Code Editorial</p>
+  </footer>
+
+</body>
+</html>
