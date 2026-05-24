@@ -143,10 +143,14 @@ def generate_summary(text):
 
 def process_tweet(tweet):
     pm = tweet["public_metrics"]
+    # Use article title if available (X articles have no text body)
+    article_title = tweet.get("article", {}).get("title", "")
+    title = article_title if article_title else generate_title(tweet["text"])
+    summary = article_title if (article_title and not clean_text(tweet["text"])) else generate_summary(tweet["text"])
     return {
         "id": tweet["id"],
-        "title": generate_title(tweet["text"]),
-        "summary": generate_summary(tweet["text"]),
+        "title": title,
+        "summary": summary,
         "tags": generate_tags(tweet["text"]),
         "impressions": pm["impression_count"],
         "likes": pm["like_count"],
