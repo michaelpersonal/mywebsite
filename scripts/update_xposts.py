@@ -28,6 +28,8 @@ if not TOKEN:
     print("Error: X_BEARER_TOKEN env var not set")
     sys.exit(1)
 
+DEEPSEEK_API_KEY = os.environ.get("DEEPSEEK_API_KEY")
+
 SEARCH_RECENT_URL = "https://api.twitter.com/2/tweets/search/recent"
 SEARCH_ALL_URL = "https://api.twitter.com/2/tweets/search/all"
 
@@ -101,7 +103,89 @@ def clean_text(text):
     return text.strip()
 
 
-def generate_tags(text):
+def get_existing_tags():
+    """Get all tags already used in existing posts for consistency."""
+    if DATA_FILE.exists():
+        with open(DATA_FILE) as f:
+            posts = json.load(f)
+        return sorted(set(t for p in posts for t in p.get("tags", [])))
+    return []
+
+
+def call_deepseek(prompt):
+    """Call DeepSeek API and return the response text."""
+    url = "https://api.deepseek.com/chat/completions"
+    payload = json.dumps({
+        "model": "deepseek-chat",
+        "messages": [{"role": "user", "content": prompt}],
+        "temperature": 0.3,
+    }).encode()
+    req = urllib.request.Request(url, data=payload, headers={
+        "Authorization": f"Bearer {DEEPSEEK_API_KEY}",
+        "Content-Type": "application/json",
+    })
+    with urllib.request.urlopen(req) as resp:
+        data = json.loads(resp.read())
+    return data["choices"][0]["message"]["content"].strip()
+
+
+def generate_metadata_llm(tweets):
+    """Use DeepSeek to generate title, summary, and tags for a batch of tweets."""
+    existing_tags = get_existing_tags()
+    tags_list = ", ".join(existing_tags) if existing_tags else "none yet"
+
+    results = {}
+    # Process in batches of 10
+    for i in range(0, len(tweets), 10):
+        batch = tweets[i:i+10]
+        tweets_text = ""
+        for j, tweet in enumerate(batch):
+            text = tweet.get("article", {}).get("title", "") or tweet["text"]
+            tweets_text += f"\n[{j}] {text}\n"
+
+        prompt = f"""You are generating metadata for X/Twitter posts to display on a website.
+
+Existing tags used so far: [{tags_list}]
+
+For each post below, generate:
+1. title: A short descriptive title (max 60 chars). If the post is in Chinese, title can be in Chinese.
+2. summary: 1-2 sentence summary (max 200 chars)
+3. tags: 1-4 tags. Reuse existing tags when they fit. Only create a new tag if the topic is genuinely new and not covered by existing tags.
+
+Posts:
+{tweets_text}
+
+Respond in JSON array format, one object per post in order:
+[{{"title": "...", "summary": "...", "tags": ["...", "..."]}}]
+
+Return ONLY the JSON array, no other text."""
+
+        try:
+            response = call_deepseek(prompt)
+            # Parse JSON from response (handle markdown code blocks)
+            response = response.strip()
+            if response.startswith("```"):
+                response = re.sub(r'^```\w*\n?', '', response)
+                response = re.sub(r'\n?```$', '', response)
+            parsed = json.loads(response)
+            for j, meta in enumerate(parsed):
+                idx = i + j
+                if idx < len(tweets):
+                    results[tweets[idx]["id"]] = meta
+        except Exception as e:
+            print(f"  DeepSeek error on batch {i//10 + 1}: {e}")
+            # Fall back to keyword-based for this batch
+            for tweet in batch:
+                results[tweet["id"]] = None
+
+        if i + 10 < len(tweets):
+            time.sleep(0.5)
+
+    return results
+
+
+def generate_tags_keyword(text):
+    """Fallback keyword-based tag generation."""
     tags = []
     text_lower = text.lower()
 
@@ -146,7 +230,8 @@ def generate_tags(text):
     return list(set(tags))[:4]
 
 
-def generate_title(text):
+def generate_title_keyword(text):
+    """Fallback keyword-based title generation."""
     text_clean = clean_text(text)
     first_sentence = re.split(r'[.。!！\n]', text_clean)[0].strip()
     if len(first_sentence) > 60:
@@ -156,7 +241,8 @@ def generate_title(text):
     return first_sentence
 
 
-def generate_summary(text):
+def generate_summary_keyword(text):
+    """Fallback keyword-based summary generation."""
     text_clean = clean_text(text)
     sentences = re.split(r'[.。!！\n]', text_clean)
     sentences = [s.strip() for s in sentences if len(s.strip()) > 10]
@@ -166,24 +252,44 @@ def generate_summary(text):
     return summary
 
 
-def process_tweet(tweet):
-    pm = tweet["public_metrics"]
-    # Use article title if available (X articles have no text body)
-    article_title = tweet.get("article", {}).get("title", "")
-    title = article_title if article_title else generate_title(tweet["text"])
-    summary = article_title if (article_title and not clean_text(tweet["text"])) else generate_summary(tweet["text"])
-    return {
-        "id": tweet["id"],
-        "title": title,
-        "summary": summary,
-        "tags": generate_tags(tweet["text"]),
-        "impressions": pm["impression_count"],
-        "likes": pm["like_count"],
-        "retweets": pm["retweet_count"],
-        "bookmarks": pm["bookmark_count"],
-        "date": tweet["created_at"][:10],
-        "url": f"https://x.com/{USERNAME}/status/{tweet['id']}"
-    }
+def process_tweets(tweets):
+    """Process tweets with LLM if available, otherwise fall back to keywords."""
+    llm_metadata = {}
+    if DEEPSEEK_API_KEY:
+        print("Using DeepSeek for title/summary/tag generation...")
+        llm_metadata = generate_metadata_llm(tweets)
+    else:
+        print("No DEEPSEEK_API_KEY set, using keyword-based tagging (set it for better results)")
+
+    results = []
+    for tweet in tweets:
+        pm = tweet["public_metrics"]
+        article_title = tweet.get("article", {}).get("title", "")
+        meta = llm_metadata.get(tweet["id"])
+
+        if meta:
+            title = meta.get("title", "") or article_title or generate_title_keyword(tweet["text"])
+            summary = meta.get("summary", "") or generate_summary_keyword(tweet["text"])
+            tags = meta.get("tags", []) or generate_tags_keyword(tweet["text"])
+        else:
+            title = article_title if article_title else generate_title_keyword(tweet["text"])
+            summary = article_title if (article_title and not clean_text(tweet["text"])) else generate_summary_keyword(tweet["text"])
+            tags = generate_tags_keyword(tweet["text"])
+
+        results.append({
+            "id": tweet["id"],
+            "title": title,
+            "summary": summary,
+            "tags": tags[:4],
+            "impressions": pm["impression_count"],
+            "likes": pm["like_count"],
+            "retweets": pm["retweet_count"],
+            "bookmarks": pm["bookmark_count"],
+            "date": tweet["created_at"][:10],
+            "url": f"https://x.com/{USERNAME}/status/{tweet['id']}"
+        })
+
+    return results
 
 
 def merge_posts(existing, new_posts):
@@ -410,7 +516,7 @@ def main():
         print(f"Found {len(raw_tweets)} posts with {MIN_IMPRESSIONS}+ impressions in last 7 days")
 
     # Process and merge
-    new_posts = [process_tweet(t) for t in raw_tweets]
+    new_posts = process_tweets(raw_tweets)
     merged, added = merge_posts(existing, new_posts)
     print(f"Added {added} new posts (total: {len(merged)})")
 

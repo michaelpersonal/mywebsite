@@ -20,6 +20,7 @@ jobs:
       - name: Fetch and update X posts
         env:
           X_BEARER_TOKEN: ${{ secrets.X_BEARER_TOKEN }}
+          DEEPSEEK_API_KEY: ${{ secrets.DEEPSEEK_API_KEY }}
         run: python3 scripts/update_xposts.py
 
       - name: Commit and push if changed

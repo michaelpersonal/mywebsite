@@ -16,6 +16,7 @@ Fetches your top-performing X (Twitter) posts and publishes them as a searchable
 
 - Python 3.10+
 - An X API Bearer Token (Basic tier or higher — needs access to `impression_count` in `public_metrics`)
+- (Optional) A DeepSeek API key — for LLM-powered title/summary/tag generation. Without it, falls back to keyword matching.
 
 ### Get your X API token
 
@@ -27,6 +28,7 @@ Fetches your top-performing X (Twitter) posts and publishes them as a searchable
 
 ```bash
 export X_BEARER_TOKEN="your-bearer-token"
+export DEEPSEEK_API_KEY="your-deepseek-key"  # optional, for better tagging
 
 # Weekly update (last 7 days, default)
 python3 scripts/update_xposts.py
@@ -45,6 +47,7 @@ To set it up:
 
 1. Go to your repo → Settings → Secrets and variables → Actions
 2. Add a secret named `X_BEARER_TOKEN` with your bearer token
+3. (Optional) Add a secret named `DEEPSEEK_API_KEY` for LLM-powered metadata generation
 
 You can also trigger it manually from the Actions tab → "Update X Posts" → "Run workflow".
 
@@ -62,14 +65,9 @@ Edit these variables at the top of `update_xposts.py`:
 
 ### Tags
 
-Tags are currently generated via keyword matching. The tag map lives in the `generate_tags()` function. To add a new tag category, add an entry like:
+When `DEEPSEEK_API_KEY` is set, the script uses DeepSeek to generate titles, summaries, and tags. It passes the existing tag list as context so new posts stay consistent with existing categories, and only introduces new tags when the topic is genuinely new.
 
-```python
-if any(k in text_lower for k in ['rust', 'cargo', 'rustlang']):
-    tags.append('Rust')
-```
-
-Future plan: replace with an LLM call (e.g., DeepSeek) for automatic tag generation that stays consistent with existing tags.
+Without the API key, it falls back to keyword matching. You can add new keyword rules in `generate_tags_keyword()`.
 
 ## How it works
 
