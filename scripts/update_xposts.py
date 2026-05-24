@@ -30,8 +30,13 @@ if not TOKEN:
 
 SEARCH_RECENT_URL = "https://api.twitter.com/2/tweets/search/recent"
 SEARCH_ALL_URL = "https://api.twitter.com/2/tweets/search/all"
+
+# --- Configure these for your own use ---
 USERNAME = "michaelzsguo"
 MIN_IMPRESSIONS = 2000
+SITE_TITLE = "X Posts"
+BACK_LINK_URL = "index.html"
+BACK_LINK_TEXT = "back to terminal"
 
 
 def fetch_posts(backfill_days=None):
@@ -231,7 +236,7 @@ def build_html(posts):
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>X Posts - Michael Guo (@michaelzsguo)</title>
+    <title>{SITE_TITLE} - @{USERNAME}</title>
     <style>
         * {{ margin: 0; padding: 0; box-sizing: border-box; }}
         body {{
@@ -307,10 +312,10 @@ def build_html(posts):
 </head>
 <body>
     <div class="container">
-        <a href="index.html" class="back-link">&larr; back to terminal</a>
+        <a href="{BACK_LINK_URL}" class="back-link">&larr; {BACK_LINK_TEXT}</a>
         <header>
-            <h1>X Posts</h1>
-            <p class="subtitle">Top posts by <a href="https://x.com/{USERNAME}" target="_blank">@{USERNAME}</a> &mdash; {len(posts)} posts with 2,000+ impressions</p>
+            <h1>{SITE_TITLE}</h1>
+            <p class="subtitle">Top posts by <a href="https://x.com/{USERNAME}" target="_blank">@{USERNAME}</a> &mdash; {len(posts)} posts with {MIN_IMPRESSIONS:,}+ impressions</p>
         </header>
         <div class="controls">
             <input type="text" class="search-box" placeholder="Search posts... (e.g. DeepSeek, local LLM, harness)" id="search">

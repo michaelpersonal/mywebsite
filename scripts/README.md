@@ -56,6 +56,9 @@ Edit these variables at the top of `update_xposts.py`:
 |----------|---------|-------------|
 | `USERNAME` | `michaelzsguo` | X handle to fetch posts from |
 | `MIN_IMPRESSIONS` | `2000` | Minimum impressions threshold |
+| `SITE_TITLE` | `X Posts` | Page heading |
+| `BACK_LINK_URL` | `index.html` | "Back" link destination (or remove if standalone) |
+| `BACK_LINK_TEXT` | `back to terminal` | "Back" link label |
 
 ### Tags
 
