@@ -94,9 +94,18 @@ X API (/search/recent, 7-day window)
 
 1. Fork this repo
 2. Change `USERNAME` in the script to your X handle
-3. Add your `X_BEARER_TOKEN` as a GitHub secret
+3. Update `SITE_TITLE`, `BACK_LINK_URL`, and `BACK_LINK_TEXT` for your site
 4. Adjust `MIN_IMPRESSIONS` to your threshold
-5. Push — the action will start running weekly
+5. Delete `xposts-data.json` (that's my data, you want a fresh start)
+6. Run the initial backfill to generate your page:
+   ```bash
+   export X_BEARER_TOKEN="your-bearer-token"
+   export DEEPSEEK_API_KEY="your-deepseek-key"  # optional
+   python3 scripts/update_xposts.py --backfill 90
+   ```
+   This fetches your posts from the last 90 days (adjust as needed), generates titles/summaries/tags, and creates both `xposts-data.json` and `xposts.html`.
+7. Add `X_BEARER_TOKEN` (and optionally `DEEPSEEK_API_KEY`) as GitHub repo secrets
+8. Push — the action will start running weekly to pick up new posts
 
 ## Limitations
 
