@@ -23,6 +23,7 @@ Available commands:
   whoami    - Display information about me
   blog      - Visit my blog
   portfolio - View my projects
+  xposts   - View my top X posts
   clear     - Clear the terminal
   home      - Return to home page
 
@@ -67,6 +68,13 @@ Keyboard shortcuts:
         description: 'View my projects',
         execute: () => {
             window.location.href = 'portfolio.html';
+            return null;
+        }
+    },
+    xposts: {
+        description: 'View my top X posts',
+        execute: () => {
+            window.location.href = 'xposts.html';
             return null;
         }
     }

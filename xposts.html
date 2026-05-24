@@ -1,0 +1,3180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>X Posts - Michael Guo (@michaelzsguo)</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background: #0a0a0a;
+            color: #e0e0e0;
+            min-height: 100vh;
+            padding: 2rem 1rem;
+        }
+        .container { max-width: 900px; margin: 0 auto; }
+        header { margin-bottom: 2rem; padding-bottom: 1.5rem; border-bottom: 1px solid #222; }
+        h1 { font-size: 1.8rem; font-weight: 700; margin-bottom: 0.5rem; color: #fff; }
+        .subtitle { color: #888; font-size: 0.9rem; }
+        .subtitle a { color: #1d9bf0; text-decoration: none; }
+        .back-link { display: inline-block; margin-bottom: 1rem; color: #1d9bf0; text-decoration: none; font-size: 0.85rem; }
+        .back-link:hover { text-decoration: underline; }
+        .controls { display: flex; flex-direction: column; gap: 1rem; margin-bottom: 1.5rem; }
+        .search-box {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            border: 1px solid #333;
+            border-radius: 8px;
+            background: #111;
+            color: #e0e0e0;
+            font-size: 0.95rem;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+        .search-box:focus { border-color: #1d9bf0; }
+        .search-box::placeholder { color: #555; }
+        .filters { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+        .filter-btn {
+            padding: 0.4rem 0.8rem;
+            border: 1px solid #333;
+            border-radius: 20px;
+            background: transparent;
+            color: #aaa;
+            font-size: 0.8rem;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .filter-btn:hover { border-color: #1d9bf0; color: #1d9bf0; }
+        .filter-btn.active { background: #1d9bf0; border-color: #1d9bf0; color: #fff; }
+        .results-count { font-size: 0.85rem; color: #666; margin-bottom: 1rem; }
+        .posts-list { display: flex; flex-direction: column; gap: 0.75rem; }
+        .post-card {
+            display: block;
+            padding: 1.25rem;
+            border: 1px solid #1a1a1a;
+            border-radius: 10px;
+            background: #111;
+            text-decoration: none;
+            color: inherit;
+            transition: all 0.2s;
+        }
+        .post-card:hover { border-color: #333; background: #161616; transform: translateY(-1px); }
+        .post-header { display: flex; justify-content: space-between; align-items: flex-start; gap: 1rem; margin-bottom: 0.5rem; }
+        .post-title { font-size: 1rem; font-weight: 600; color: #fff; line-height: 1.4; }
+        .post-date { font-size: 0.75rem; color: #666; white-space: nowrap; flex-shrink: 0; }
+        .post-summary { font-size: 0.85rem; color: #999; line-height: 1.5; margin-bottom: 0.75rem; }
+        .post-footer { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem; }
+        .post-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+        .tag { padding: 0.2rem 0.5rem; border-radius: 4px; background: #1a2a3a; color: #5ba3d9; font-size: 0.7rem; font-weight: 500; }
+        .post-stats { display: flex; gap: 0.75rem; }
+        .stat { font-size: 0.75rem; color: #555; }
+        .no-results { text-align: center; padding: 3rem; color: #555; }
+        @media (max-width: 600px) {
+            body { padding: 1rem 0.75rem; }
+            .post-header { flex-direction: column; gap: 0.25rem; }
+            .post-footer { flex-direction: column; align-items: flex-start; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="index.html" class="back-link">&larr; back to terminal</a>
+        <header>
+            <h1>X Posts</h1>
+            <p class="subtitle">Top posts by <a href="https://x.com/michaelzsguo" target="_blank">@michaelzsguo</a> &mdash; 200 posts with 2,000+ impressions</p>
+        </header>
+        <div class="controls">
+            <input type="text" class="search-box" placeholder="Search posts... (e.g. DeepSeek, local LLM, harness)" id="search">
+            <div class="filters">
+                <button class="filter-btn active" data-filter="all">All</button>
+      <button class="filter-btn" data-filter="ai">AI</button>
+      <button class="filter-btn" data-filter="ai agents">AI Agents</button>
+      <button class="filter-btn" data-filter="ai tools">AI Tools</button>
+      <button class="filter-btn" data-filter="claude">Claude</button>
+      <button class="filter-btn" data-filter="codex">Codex</button>
+      <button class="filter-btn" data-filter="deepseek">DeepSeek</button>
+      <button class="filter-btn" data-filter="fine-tuning">Fine-tuning</button>
+      <button class="filter-btn" data-filter="google">Google</button>
+      <button class="filter-btn" data-filter="hardware">Hardware</button>
+      <button class="filter-btn" data-filter="llm internals">LLM Internals</button>
+      <button class="filter-btn" data-filter="local llm">Local LLM</button>
+      <button class="filter-btn" data-filter="openai">OpenAI</button>
+      <button class="filter-btn" data-filter="qwen">Qwen</button>
+      <button class="filter-btn" data-filter="remote dev">Remote Dev</button>
+      <button class="filter-btn" data-filter="security">Security</button>
+      <button class="filter-btn" data-filter="skills">Skills</button>
+      <button class="filter-btn" data-filter="structured output">Structured Output</button>
+      <button class="filter-btn" data-filter="中文">中文</button>
+
+            </div>
+        </div>
+        <div class="results-count" id="results-count">200 posts</div>
+        <div class="posts-list" id="posts-list">
+    <a href="https://x.com/michaelzsguo/status/2055317248923848713" target="_blank" class="post-card" data-tags="codex deepseek ai agents local llm" data-impressions="221703">
+      <div class="post-header">
+        <h3 class="post-title">DeepSeek V4 Pro: 100M Tokens for $1.85</h3>
+        <span class="post-date">2026-05-15</span>
+      </div>
+      <p class="post-summary">My Deepseek V4 Pro agent (inside codex) has been pursuing goal for more than 13 hours, burning ~100M tokens, and has only costed me $1. Yes you saw it right</p>
+      <div class="post-footer">
+        <div class="post-tags"><span class="tag">Codex</span> <span class="tag">DeepSeek</span> <span class="tag">AI Agents</span> <span class="tag">Local LLM</span></div>
+        <div class="post-stats">
+          <span class="stat">221.7k views</span>
+          <span class="stat">3.0k likes</span>
+          <span class="stat">1.8k saves</span>
+        </div>
+      </div>
+    </a>
+    <a href="https://x.com/michaelzsguo/status/2050380832007721213" target="_blank" class="post-card" data-tags="local llm qwen" data-impressions="84494">
+      <div class="post-header">
+        <h3 class="post-title">Qwen 3.6 Running on 12GB VRAM</h3>
+        <span class="post-date">2026-05-02</span>
+      </div>
+      <p class="post-summary">People are posting Qwen 3. 6 configs that deliver fast TPS on as little as 12GB VRAM</p>
+      <div class="post-footer">
+        <div class="post-tags"><span class="tag">Local LLM</span> <span class="tag">Qwen</span></div>
+        <div class="post-stats">
+          <span class="stat">84.5k views</span>
+          <span class="stat">1.7k likes</span>
+          <span class="stat">2.5k saves</span>
+        </div>
+      </div>
+    </a>
+    <a href="https://x.com/michaelzsguo/status/2053217139369095252" target="_blank" class="post-card" data-tags="local llm" data-impressions="72803">
+      <div class="post-header">
+        <h3 class="post-title"></h3>
+        <span class="post-date">2026-05-09</span>
+      </div>
+      <p class="post-summary"></p>
+      <div class="post-footer">
+        <div class="post-tags"><span class="tag">Local LLM</span></div>
+        <div class="post-stats">
+          <span class="stat">72.8k views</span>
+          <span class="stat">202 likes</span>
+          <span class="stat">552 saves</span>
+        </div>
+      </div>
+    </a>
+    <a href="https://x.com/michaelzsguo/status/2035102518552707261" target="_blank" class="post-card" data-tags="local llm ai tools 中文" data-impressions="70356">
+      <div class="post-header">
+        <h3 class="post-title">这个事件基本可以告一段落，这本质上就是一次典乌龙</h3>
+        <span class="post-date">2026-03-20</span>
+      </div>
+      <p class="post-summary">这个事件基本可以告一段落，这本质上就是一次典乌龙. Fireworks AI 其实早在 21 小时前就已经发布过 Composer 2 的消息并明确说了这是基于他们基础设施进行 RL 训练的模型</p>
+      <div class="post-footer">
+        <div class="post-tags"><span class="tag">Local LLM</span> <span class="tag">AI Tools</span> <span class="tag">中文</span></div>
+        <div class="post-stats">
+          <span class="stat">70.4k views</span>
+          <span class="stat">165 likes</span>
+          <span class="stat">68 saves</span>
+        </div>
+      </div>
+    </a>
+    <a href="https://x.com/michaelzsguo/status/2051006950691709320" target="_blank" class="post-card" data-tags="codex deepseek claude local llm" data-impressions="58063">
+      <div class="post-header">
+        <h3 class="post-title">I needed to pursue /goal inside Codex, but I burned throu...</h3>
+        <span class="post-date">2026-05-03</span>
+      </div>
+      <p class="post-summary">I needed to pursue /goal inside Codex, but I burned through my Plus membership tokens. Luckily, I have a capable and very cheap DeepSeek V4 Pro setup that I can connect to Codex</p>
+      <div class="post-footer">
+        <div class="post-tags"><span class="tag">Codex</span> <span class="tag">DeepSeek</span> <span class="tag">Claude</span> <span class="tag">Local LLM</span></div>
+        <div class="post-stats">
+          <span class="stat">58.1k views</span>
+          <span class="stat">255 likes</span>
+          <span class="stat">732 saves</span>
+        </div>
+      </div>
+    </a>
+    <a href="https://x.com/michaelzsguo/status/2050302597853040642" target="_blank" class="post-card" data-tags="openai 中文 codex ai agents" data-impressions="49262">
+      <div class="post-header">
+        <h3 class="post-title">OpenAI 推出了能够让Agent长时间连续运行的 /goal</h3>
+        <span class="post-date">2026-05-01</span>
+      </div>
+      <p class="post-summary">OpenAI 推出了能够让Agent长时间连续运行的 /goal. Peter Steinberger 的一项 Goal 已经运行了 11 小时 31 分钟</p>
+      <div class="post-footer">
+        <div class="post-tags"><span class="tag">OpenAI</span> <span class="tag">中文</span> <span class="tag">Codex</span> <span class="tag">AI Agents</span></div>
+        <div class="post-stats">
+          <span class="stat">49.3k views</span>
+          <span class="stat">170 likes</span>
+          <span class="stat">197 saves</span>
+        </div>
+      </div>
+    </a>
+    <a href="https://x.com/michaelzsguo/status/2035382508624159100" target="_blank" class="post-card" data-tags="local llm 中文 claude" data-impressions="48658">
+      <div class="post-header">
+        <h3 class="post-title">是Claude Code 开发团队里文章写的最棒的（我很好奇他们的产品经理没有太多文章也许我没看到）</h3>
+        <span class="post-date">2026-03-21</span>
+      </div>
+      <p class="post-summary">是Claude Code 开发团队里文章写的最棒的（我很好奇他们的产品经理没有太多文章也许我没看到）. 他把他所有的文章都列在这个Thread里</p>
+      <div class="post-footer">
+        <div class="post-tags"><span class="tag">Local LLM</span> <span class="tag">中文</span> <span class="tag">Claude</span></div>
+        <div class="post-stats">
+          <span class="stat">48.7k views</span>
+          <span class="stat">157 likes</span>
+          <span class="stat">250 saves</span>
+        </div>
+      </div>
+    </a>
+    <a href="https://x.com/michaelzsguo/status/2053229425555050734" target="_blank" class="post-card" data-tags="local llm" data-impressions="34530">
+      <div class="post-header">
+        <h3 class="post-title">If you understand these terms in the article, you are alr...</h3>
+        <span class="post-date">2026-05-09</span>
+      </div>
+      <p class="post-summary">If you understand these terms in the article, you are already halfway into local LLMs</p>
+      <div class="post-footer">
+        <div class="post-tags"><span class="tag">Local LLM</span></div>
+        <div class="post-stats">
+          <span class="stat">34.5k views</span>
+          <span class="stat">269 likes</span>
+          <span class="stat">386 saves</span>
+        </div>
+      </div>
+    </a>
+    <a href="https://x.com/michaelzsguo/status/2055615235508093056" target="_blank" class="post-card" data-tags="local llm codex deepseek" data-impressions="32713">
+      <div class="post-header">
+        <h3 class="post-title">Many of you asked the setup Deepseek inside codex</h3>
+        <span class="post-date">2026-05-16</span>
+      </div>
+      <p class="post-summary">Many of you asked the setup Deepseek inside codex. I wish x provided better way to see my previous posts but here it is for your easy reference</p>
+      <div class="post-footer">
+        <div class="post-tags"><span class="tag">Local LLM</span> <span class="tag">Codex</span> <span class="tag">DeepSeek</span></div>
+        <div class="post-stats">
+          <span class="stat">32.7k views</span>
+          <span class="stat">182 likes</span>
+          <span class="stat">387 saves</span>
+        </div>
+      </div>
+    </a>
+    <a href="https://x.com/michaelzsguo/status/2050316203718041640" target="_blank" class="post-card" data-tags="local llm skills codex" data-impressions="29555">
+      <div class="post-header">
+        <h3 class="post-title">this is so cute</h3>
+        <span class="post-date">2026-05-01</span>
+      </div>
+      <p class="post-summary">this is so cute. here is my Codex pet</p>
+      <div class="post-footer">
+        <div class="post-tags"><span class="tag">Local LLM</span> <span class="tag">Skills</span> <span class="tag">Codex</span></div>
+        <div class="post-stats">
+          <span class="stat">29.6k views</span>
+          <span class="stat">62 likes</span>
+          <span class="stat">30 saves</span>
+        </div>
+      </div>
+    </a>
+    <a href="https://x.com/michaelzsguo/status/2040844920475287733" target="_blank" class="post-card" data-tags="local llm 中文 claude ai agents" data-impressions="28899">
+      <div class="post-header">
+        <h3 class="post-title">罗福莉刚刚写了一篇很不错的文章</h3>
+        <span class="post-date">2026-04-05</span>
+      </div>
+      <p class="post-summary">罗福莉刚刚写了一篇很不错的文章. 即使 Anthropic 正在切断 OpenClaw 这类第三方 agent 对 Claude 订阅的接入，罗福莉依然给整个 AI 生态提供了一个相对乐观的视角</p>
+      <div class="post-footer">
+        <div class="post-tags"><span class="tag">Local LLM</span> <span class="tag">中文</span> <span class="tag">Claude</span> <span class="tag">AI Agents</span></div>
+        <div class="post-stats">
+          <span class="stat">28.9k views</span>
+          <span class="stat">29 likes</span>
+          <span class="stat">21 saves</span>
+        </div>
+      </div>
+    </a>
+    <a href="https://x.com/michaelzsguo/status/2054698337186582963" target="_blank" class="post-card" data-tags="local llm 中文" data-impressions="28724">
+      <div class="post-header">
+        <h3 class="post-title">北京的那家也不错， 都已经投入到实际仓库了</h3>
+        <span class="post-date">2026-05-13</span>
+      </div>
+      <p class="post-summary">北京的那家也不错， 都已经投入到实际仓库了</p>
+      <div class="post-footer">
+        <div class="post-tags"><span class="tag">Local LLM</span> <span class="tag">中文</span></div>
+        <div class="post-stats">
+          <span class="stat">28.7k views</span>
+          <span class="stat">7 likes</span>
+          <span class="stat">5 saves</span>
+        </div>
+      </div>
+    </a>
+    <a href="https://x.com/michaelzsguo/status/2046272375184826512" target="_blank" class="post-card" data-tags="local llm" data-impressions="28475">
+      <div class="post-header">
+        <h3 class="post-title">you did the right thing, sir</h3>
+        <span class="post-date">2026-04-20</span>
+      </div>
+      <p class="post-summary">you did the right thing, sir. they actually listened to you and built a strike team with sergey taking the lead again</p>
+      <div class="post-footer">
+        <div class="post-tags"><span class="tag">Local LLM</span></div>
+        <div class="post-stats">
+          <span class="stat">28.5k views</span>
+          <span class="stat">193 likes</span>
+          <span class="stat">34 saves</span>
+        </div>
+      </div>
+    </a>
+    <a href="https://x.com/michaelzsguo/status/2036796140813697327" target="_blank" class="post-card" data-tags="local llm 中文 ai agents" data-impressions="26723">
+      <div class="post-header">
+        <h3 class="post-title">我觉得 Harness 这里最难的是，它不是单纯的“工具”或者“框架”，而是一个驾驭、约束、编排、使其可用可控的外部系统</h3>
+        <span class="post-date">2026-03-25</span>
+      </div>
+      <p class="post-summary">我觉得 Harness 这里最难的是，它不是单纯的“工具”或者“框架”，而是一个驾驭、约束、编排、使其可用可控的外部系统. 如果让我来翻译， 就叫驭构工程</p>
+      <div class="post-footer">
+        <div class="post-tags"><span class="tag">Local LLM</span> <span class="tag">中文</span> <span class="tag">AI Agents</span></div>
+        <div class="post-stats">
+          <span class="stat">26.7k views</span>
+          <span class="stat">156 likes</span>
+          <span class="stat">108 saves</span>
+        </div>
+      </div>
+    </a>
+    <a href="https://x.com/michaelzsguo/status/2044423748619542609" target="_blank" class="post-card" data-tags="中文" data-impressions="24660">
+      <div class="post-header">
+        <h3 class="post-title">你是收到了还是只是申请表😂 我几个星期前就登记了，到现在还没收到</h3>
+        <span class="post-date">2026-04-15</span>
+      </div>
+      <p class="post-summary">你是收到了还是只是申请表😂 我几个星期前就登记了，到现在还没收到. 4000只，怎么也不够啊</p>
+      <div class="post-footer">
+        <div class="post-tags"><span class="tag">中文</span></div>
+        <div class="post-stats">
+          <span class="stat">24.7k views</span>
+          <span class="stat">99 likes</span>
+          <span class="stat">1 saves</span>
+        </div>
+      </div>
+    </a>
+    <a href="https://x.com/michaelzsguo/status/2055401971394257101" target="_blank" class="post-card" data-tags="local llm skills codex ai agents" data-impressions="23846">
+      <div class="post-header">
+        <h3 class="post-title">Long-running Codex /goal runs are powerful, but they crea...</h3>
+        <span class="post-date">2026-05-15</span>
+      </div>
+      <p class="post-summary">Long-running Codex /goal runs are powerful, but they create a new question:. What happens while the agent is 3 hours into a run and you want to help without stopping it?</p>
+      <div class="post-footer">
+        <div class="post-tags"><span class="tag">Local LLM</span> <span class="tag">Skills</span> <span class="tag">Codex</span> <span class="tag">AI Agents</span></div>
+        <div class="post-stats">
+          <span class="stat">23.8k views</span>
+          <span class="stat">45 likes</span>
+          <span class="stat">109 saves</span>
+        </div>
+      </div>
+    </a>
+    <a href="https://x.com/michaelzsguo/status/2052940731317137614" target="_blank" class="post-card" data-tags="local llm skills hardware llm internals" data-impressions="22990">
+      <div class="post-header">
+        <h3 class="post-title">Two days ago, I asked whether I should buy a Mac Studio f...</h3>
+        <span class="post-date">2026-05-09</span>
+      </div>
+      <p class="post-summary">Two days ago, I asked whether I should buy a Mac Studio for local LLMs. I was genuinely humbled by how much great feedback I received</p>
+      <div class="post-footer">
+        <div class="post-tags"><span class="tag">Local LLM</span> <span class="tag">Skills</span> <span class="tag">Hardware</span> <span class="tag">LLM Internals</span></div>
+        <div class="post-stats">
+          <span class="stat">23.0k views</span>
+          <span class="stat">192 likes</span>
+          <span class="stat">303 saves</span>
+        </div>
+      </div>
+    </a>
+    <a href="https://x.com/michaelzsguo/status/2053501640481636528" target="_blank" class="post-card" data-tags="local llm security ai agents" data-impressions="22336">
+      <div class="post-header">
+        <h3 class="post-title">Hackers can use a crafted GGUF file to leak private infor...</h3>
+        <span class="post-date">2026-05-10</span>
+      </div>
+      <p class="post-summary">Hackers can use a crafted GGUF file to leak private information you put into your local LLM or agent. Many people may not have a good understanding of what GGUF is, so here is a simple primer</p>
+      <div class="post-footer">
+        <div class="post-tags"><span class="tag">Local LLM</span> <span class="tag">Security</span> <span class="tag">AI Agents</span></div>
+        <div class="post-stats">
+          <span class="stat">22.3k views</span>
+          <span class="stat">265 likes</span>
+          <span class="stat">293 saves</span>
+        </div>
+      </div>
+    </a>
+    <a href="https://x.com/michaelzsguo/status/2052380361422671901" target="_blank" class="post-card" data-tags="local llm" data-impressions="22064">
+      <div class="post-header">
+        <h3 class="post-title">my local LLM community, give me one reason I shouldn't pl...</h3>
+        <span class="post-date">2026-05-07</span>
+      </div>
+      <p class="post-summary">my local LLM community, give me one reason I shouldn't place the order</p>
+      <div class="post-footer">
+        <div class="post-tags"><span class="tag">Local LLM</span></div>
+        <div class="post-stats">
+          <span class="stat">22.1k views</span>
+          <span class="stat">67 likes</span>
+          <span class="stat">16 saves</span>
+        </div>
+      </div>
+    </a>
+    <a href="https://x.com/michaelzsguo/status/2053217651175063740" target="_blank" class="post-card" data-tags="local llm hardware llm internals" data-impressions="22029">
+      <div class="post-header">
+        <h3 class="post-title">A lot of people hear about local LLMs and feel the same m...</h3>
+        <span class="post-date">2026-05-09</span>
+      </div>
+      <p class="post-summary">A lot of people hear about local LLMs and feel the same mix of curiosity and anxiety:. where do I even start?</p>
+      <div class="post-footer">
+        <div class="post-tags"><span class="tag">Local LLM</span> <span class="tag">Hardware</span> <span class="tag">LLM Internals</span></div>
+        <div class="post-stats">
+          <span class="stat">22.0k views</span>
+          <span class="stat">140 likes</span>
+          <span class="stat">268 saves</span>
+        </div>
+      </div>
+    </a>
+    <a href="https://x.com/michaelzsguo/status/2055992629905576197" target="_blank" class="post-card" data-tags="skills qwen hardware local llm" data-impressions="21623">
+      <div class="post-header">
+        <h3 class="post-title">So you bought the 128GB MacBook Pro</h3>
+        <span class="post-date">2026-05-17</span>
+      </div>
+      <p class="post-summary">So you bought the 128GB MacBook Pro. Now the question is not, “Which local model gets the highest TPS?”</p>
+      <div class="post-footer">
+        <div class="post-tags"><span class="tag">Skills</span> <span class="tag">Qwen</span> <span class="tag">Hardware</span> <span class="tag">Local LLM</span></div>
+        <div class="post-stats">
+          <span class="stat">21.6k views</span>
+          <span class="stat">258 likes</span>
+          <span class="stat">389 saves</span>
+        </div>
+      </div>
+    </a>
+    <a href="https://x.com/michaelzsguo/status/2044496740145840575" target="_blank" class="post-card" data-tags="security" data-impressions="21540">
+      <div class="post-header">
+        <h3 class="post-title">The 30-minute China debate was fascinating precisely beca...</h3>
+        <span class="post-date">2026-04-15</span>
+      </div>
+      <p class="post-summary">The 30-minute China debate was fascinating precisely because the topic is so tricky and fascinating itself: there’s no clear winning side. You lose by selling advanced chips to China (risk accelera...</p>
+      <div class="post-footer">
+        <div class="post-tags"><span class="tag">Security</span></div>
+        <div class="post-stats">
+          <span class="stat">21.5k views</span>
+          <span class="stat">156 likes</span>
+          <span class="stat">8 saves</span>
+        </div>
+      </div>
+    </a>
+    <a href="https://x.com/michaelzsguo/status/2058027617350017178" target="_blank" class="post-card" data-tags="skills codex fine-tuning deepseek" data-impressions="21339">
+      <div class="post-header">
+        <h3 class="post-title">&gt; MacBook Pro 128GB: $5,500</h3>
+        <span class="post-date">2026-05-23</span>
+      </div>
+      <p class="post-summary">&gt; MacBook Pro 128GB: $5,500. &gt; DeepSeek Pro tokens burned: 1,075,351,274</p>
+      <div class="post-footer">
+        <div class="post-tags"><span class="tag">Skills</span> <span class="tag">Codex</span> <span class="tag">Fine-tuning</span> <span class="tag">DeepSeek</span></div>
+        <div class="post-stats">
+          <span class="stat">21.3k views</span>
+          <span class="stat">222 likes</span>
+          <span class="stat">158 saves</span>
+        </div>
+      </div>
+    </a>
+    <a href="https://x.com/michaelzsguo/status/2048839639067140545" target="_blank" class="post-card" data-tags="中文 structured output qwen google" data-impressions="21338">
+      <div class="post-header">
+        <h3 class="post-title">这个太聪明了。真希望上个周末做 bake-off test 的时候能用到这个技巧，我花了好长时间去适配话痨的 Gemma</h3>
+        <span class="post-date">2026-04-27</span>
+      </div>
+      <p class="post-summary">真希望上个周末做 bake-off test 的时候能用到这个技巧，我花了好长时间去适配话痨的 Gemma 和 Qwen. 理解一下这个技巧：它用 GBNF 控制模型输出</p>
+      <div class="post-footer">
+        <div class="post-tags"><span class="tag">中文</span> <span class="tag">Structured Output</span> <span class="tag">Qwen</span> <span class="tag">Google</span></div>
+        <div class="post-stats">
+          <span class="stat">21.3k views</span>
+          <span class="stat">76 likes</span>
+          <span class="stat">84 saves</span>
+        </div>
+      </div>
+    </a>
+    <a href="https://x.com/michaelzsguo/status/2048911983156568371" target="_blank" class="post-card" data-tags="中文 structured output qwen google" data-impressions="20894">
+      <div class="post-header">
+        <h3 class="post-title">用这个技巧重新做了一遍周末的模型测试</h3>
+        <span class="post-date">2026-04-27</span>
+      </div>
+      <p class="post-summary">用这个技巧重新做了一遍周末的模型测试. 几行 GBNF grammar，把 Qwen 3</p>
+      <div class="post-footer">
+        <div class="post-tags"><span class="tag">中文</span> <span class="tag">Structured Output</span> <span class="tag">Qwen</span> <span class="tag">Google</span></div>
+        <div class="post-stats">
+          <span class="stat">20.9k views</span>
+          <span class="stat">198 likes</span>
+          <span class="stat">291 saves</span>
+        </div>
+      </div>
+    </a>
+    <a href="https://x.com/michaelzsguo/status/2056493133580337603" target="_blank" class="post-card" data-tags="skills qwen codex claude" data-impressions="20039">
+      <div class="post-header">
+        <h3 class="post-title">I’ve tried driving Qwen 3</h3>
+        <span class="post-date">2026-05-18</span>
+      </div>
+      <p class="post-summary">I’ve tried driving Qwen 3. 6 on my MacBook Pro with a few different agent harnesses:</p>
+      <div class="post-footer">
+        <div class="post-tags"><span class="tag">Skills</span> <span class="tag">Qwen</span> <span class="tag">Codex</span> <span class="tag">Claude</span></div>
+        <div class="post-stats">
+          <span class="stat">20.0k views</span>
+          <span class="stat">130 likes</span>
+          <span class="stat">141 saves</span>
+        </div>
+      </div>
+    </a>
+    <a href="https://x.com/michaelzsguo/status/2046417788911132789" target="_blank" class="post-card" data-tags="local llm 中文" data-impressions="20036">
+      <div class="post-header">
+        <h3 class="post-title">这期张小珺的播客又是很精彩的一期</h3>
+        <span class="post-date">2026-04-21</span>
+      </div>
+      <p class="post-summary">这期张小珺的播客又是很精彩的一期. 主角是00后”华人女孩洪乐潼（Carina Hong @CarinaLHong )</p>
+      <div class="post-footer">
+        <div class="post-tags"><span class="tag">Local LLM</span> <span class="tag">中文</span></div>
+        <div class="post-stats">
+          <span class="stat">20.0k views</span>
+          <span class="stat">49 likes</span>
+          <span class="stat">48 saves</span>
+        </div>
+      </div>
+    </a>
+    <a href="https://x.com/michaelzsguo/status/2055619733198688670" target="_blank" class="post-card" data-tags="codex deepseek claude ai agents" data-impressions="18364">
+      <div class="post-header">
+        <h3 class="post-title">I write about the tools behind practical AI agents: Codex...</h3>
+        <span class="post-date">2026-05-16</span>
+      </div>
+      <p class="post-summary">I write about the tools behind practical AI agents: Codex, DeepSeek, Claude Code, local LLMs, agentic coding workflows, and the messy configs that make them actually work. Follow me for more field ...</p>
+      <div class="post-footer">
+        <div class="post-tags"><span class="tag">Codex</span> <span class="tag">DeepSeek</span> <span class="tag">Claude</span> <span class="tag">AI Agents</span></div>
+        <div class="post-stats">
+          <span class="stat">18.4k views</span>
+          <span class="stat">42 likes</span>
+          <span class="stat">23 saves</span>
+        </div>
+      </div>
+    </a>
+    <a href="https://x.com/michaelzsguo/status/2055650628601307543" target="_blank" class="post-card" data-tags="local llm skills claude codex" data-impressions="17846">
+      <div class="post-header">
+        <h3 class="post-title">You also need a tight goal in order for codex to run that...</h3>
+        <span class="post-date">2026-05-16</span>
+      </div>
+      <p class="post-summary">You also need a tight goal in order for codex to run that long. Here is a skill goal-forge that turns your rough ideas to codex/claude goals</p>
+      <div class="post-footer">
+        <div class="post-tags"><span class="tag">Local LLM</span> <span class="tag">Skills</span> <span class="tag">Claude</span> <span class="tag">Codex</span></div>
+        <div class="post-stats">
+          <span class="stat">17.8k views</span>
+          <span class="stat">31 likes</span>
+          <span class="stat">73 saves</span>
+        </div>
+      </div>
+    </a>
+    <a href="https://x.com/michaelzsguo/status/2053818528130617353" target="_blank" class="post-card" data-tags="local llm skills hardware" data-impressions="17433">
+      <div class="post-header">
+        <h3 class="post-title">We had a great discussion here about what hardware we nee...</h3>
+        <span class="post-date">2026-05-11</span>
+      </div>
+      <p class="post-summary">We had a great discussion here about what hardware we need for local LLMs. I thought I would give an update on what I bought, and also share the thinking behind the decision for others on the same ...</p>
+      <div class="post-footer">
+        <div class="post-tags"><span class="tag">Local LLM</span> <span class="tag">Skills</span> <span class="tag">Hardware</span></div>
+        <div class="post-stats">
+          <span class="stat">17.4k views</span>
+          <span class="stat">73 likes</span>
+          <span class="stat">47 saves</span>
+        </div>
+      </div>
+    </a>
+    <a href="https://x.com/michaelzsguo/status/2058259075603853576" target="_blank" class="post-card" data-tags="local llm llm internals deepseek" data-impressions="17123">
+      <div class="post-header">
+        <h3 class="post-title">Found this great tool that may be handy for your local LL...</h3>
+        <span class="post-date">2026-05-23</span>
+      </div>
+      <p class="post-summary">Found this great tool that may be handy for your local LLM inference optimization:. And apparently 1M tokens for DeepSeek V4 Pro only takes 5GB of RAM</p>
+      <div class="post-footer">
+        <div class="post-tags"><span class="tag">Local LLM</span> <span class="tag">LLM Internals</span> <span class="tag">DeepSeek</span></div>
+        <div class="post-stats">
+          <span class="stat">17.1k views</span>
+          <span class="stat">237 likes</span>
+          <span class="stat">327 saves</span>
+        </div>
+      </div>
+    </a>
+    <a href="https://x.com/michaelzsguo/status/2041956656024522784" target="_blank" class="post-card" data-tags="local llm claude ai agents" data-impressions="16514">
+      <div class="post-header">
+        <h3 class="post-title">Anthropic keeps moving up the stack</h3>
+        <span class="post-date">2026-04-08</span>
+      </div>
+      <p class="post-summary">Anthropic keeps moving up the stack. Opus helps you think</p>
+      <div class="post-footer">
+        <div class="post-tags"><span class="tag">Local LLM</span> <span class="tag">Claude</span> <span class="tag">AI Agents</span></div>
+        <div class="post-stats">
+          <span class="stat">16.5k views</span>
+          <span class="stat">38 likes</span>
+          <span class="stat">28 saves</span>
+        </div>
+      </div>
+    </a>
+    <a href="https://x.com/michaelzsguo/status/2036545487281725655" target="_blank" class="post-card" data-tags="local llm 中文" data-impressions="15473">
+      <div class="post-header">
+        <h3 class="post-title">根据事故详细报告：攻击者并没有通过正常的 GitHub 工作流提交恶意版本，所以 LiteLLM 的维护者没能及时...</h3>
+        <span class="post-date">2026-03-24</span>
+      </div>
+      <p class="post-summary">根据事故详细报告：攻击者并没有通过正常的 GitHub 工作流提交恶意版本，所以 LiteLLM 的维护者没能及时发现 1. 相反，攻击者使用了一个被窃取的 PyPI 发布令牌，直接把被投毒的包上传到了 PyPI，完全绕过了代码审查</p>
+      <div class="post-footer">
+        <div class="post-tags"><span class="tag">Local LLM</span> <span class="tag">中文</span></div>
+        <div class="post-stats">
+          <span class="stat">15.5k views</span>
+          <span class="stat">47 likes</span>
+          <span class="stat">22 saves</span>
+        </div>
+      </div>
+    </a>
+    <a href="https://x.com/michaelzsguo/status/2051063189693956134" target="_blank" class="post-card" data-tags="local llm claude llm internals deepseek" data-impressions="14112">
+      <div class="post-header">
+        <h3 class="post-title">I experienced firsthand how cost-effective DeepSeek V4 Pr...</h3>
+        <span class="post-date">2026-05-03</span>
+      </div>
+      <p class="post-summary">I experienced firsthand how cost-effective DeepSeek V4 Pro can be. I used it extensively this weekend for some fairly sophisticated coding work and burned nearly 31M tokens</p>
+      <div class="post-footer">
+        <div class="post-tags"><span class="tag">Local LLM</span> <span class="tag">Claude</span> <span class="tag">LLM Internals</span> <span class="tag">DeepSeek</span></div>
+        <div class="post-stats">
+          <span class="stat">14.1k views</span>
+          <span class="stat">166 likes</span>
+          <span class="stat">27 saves</span>
+        </div>
+      </div>
+    </a>
+    <a href="https://x.com/michaelzsguo/status/2048495521225195947" target="_blank" class="post-card" data-tags="qwen claude hardware google" data-impressions="13749">
+      <div class="post-header">
+        <h3 class="post-title">A summary of this weekend’s AI bake-off: Opus 4</h3>
+        <span class="post-date">2026-04-26</span>
+      </div>
+      <p class="post-summary">A summary of this weekend’s AI bake-off: Opus 4. 6, Gemma 4 26B, and Qwen 3</p>
+      <div class="post-footer">
+        <div class="post-tags"><span class="tag">Qwen</span> <span class="tag">Claude</span> <span class="tag">Hardware</span> <span class="tag">Google</span></div>
+        <div class="post-stats">
+          <span class="stat">13.7k views</span>
+          <span class="stat">21 likes</span>
+          <span class="stat">15 saves</span>
+        </div>
+      </div>
+    </a>
+    <a href="https://x.com/michaelzsguo/status/2041953666077266113" target="_blank" class="post-card" data-tags="local llm claude ai agents" data-impressions="13530">
+      <div class="post-header">
+        <h3 class="post-title">This is a big shift</h3>
+        <span class="post-date">2026-04-08</span>
+      </div>
+      <p class="post-summary">This is a big shift. Anthropic no longer just wants to be your model provider</p>
+      <div class="post-footer">
+        <div class="post-tags"><span class="tag">Local LLM</span> <span class="tag">Claude</span> <span class="tag">AI Agents</span></div>
+        <div class="post-stats">
+          <span class="stat">13.5k views</span>
+          <span class="stat">22 likes</span>
+          <span class="stat">19 saves</span>
+        </div>
+      </div>
+    </a>
+    <a href="https://x.com/michaelzsguo/status/2057980676767646057" target="_blank" class="post-card" data-tags="local llm codex ai agents deepseek" data-impressions="12753">
+      <div class="post-header">
+        <h3 class="post-title">While DeepSeek is pursuing the goal, my Codex agent and I...</h3>
+        <span class="post-date">2026-05-23</span>
+      </div>
+      <p class="post-summary">While DeepSeek is pursuing the goal, my Codex agent and I monitor it in the sidecar and guide or correct it as needed. So I thought I would ask Codex to objectively judge DeepSeek’s capability base...</p>
+      <div class="post-footer">
+        <div class="post-tags"><span class="tag">Local LLM</span> <span class="tag">Codex</span> <span class="tag">AI Agents</span> <span class="tag">DeepSeek</span></div>
+        <div class="post-stats">
+          <span class="stat">12.8k views</span>
+          <span class="stat">134 likes</span>
+          <span class="stat">77 saves</span>
+        </div>
+      </div>
+    </a>
+    <a href="https://x.com/michaelzsguo/status/2050625358001496219" target="_blank" class="post-card" data-tags="local llm hardware" data-impressions="12161">
+      <div class="post-header">
+        <h3 class="post-title">Most people start with the wrong question when they want ...</h3>
+        <span class="post-date">2026-05-02</span>
+      </div>
+      <p class="post-summary">Most people start with the wrong question when they want to run a local LLM. They ask: “Which model format should I use?”</p>
+      <div class="post-footer">
+        <div class="post-tags"><span class="tag">Local LLM</span> <span class="tag">Hardware</span></div>
+        <div class="post-stats">
+          <span class="stat">12.2k views</span>
+          <span class="stat">191 likes</span>
+          <span class="stat">197 saves</span>
+        </div>
+      </div>
+    </a>
+    <a href="https://x.com/michaelzsguo/status/2046621472945308152" target="_blank" class="post-card" data-tags="中文 claude hardware codex" data-impressions="11647">
+      <div class="post-header">
+        <h3 class="post-title">我也压codex。感觉他们家的更Polish，产品精雕细琢，更有品味。而且越来越聪明，能记住事儿。使用Claude我经常</h3>
+        <span class="post-date">2026-04-21</span>
+      </div>
+      <p class="post-summary">感觉他们家的更Polish，产品精雕细琢，更有品味. 而且越来越聪明，能记住事儿</p>
+      <div class="post-footer">
+        <div class="post-tags"><span class="tag">中文</span> <span class="tag">Claude</span> <span class="tag">Hardware</span> <span class="tag">Codex</span></div>
+        <div class="post-stats">
+          <span class="stat">11.6k views</span>
+          <span class="stat">12 likes</span>
+          <span class="stat">5 saves</span>
+        </div>
+      </div>
+    </a>
+    <a href="https://x.com/michaelzsguo/status/2055311882118922365" target="_blank" class="post-card" data-tags="local llm 中文" data-impressions="10378">
+      <div class="post-header">
+        <h3 class="post-title">FDE在AI时代流行，是因为企业不再只需要会写代码的人，而是需要能把客户问题、产品判断和软件实现连在一起的人</h3>
+        <span class="post-date">2026-05-15</span>
+      </div>
+      <p class="post-summary">FDE在AI时代流行，是因为企业不再只需要会写代码的人，而是需要能把客户问题、产品判断和软件实现连在一起的人. AI降低了写代码的门槛，但也放大了真实场景、业务理解、系统集成和落地判断的重要性</p>
+      <div class="post-footer">
+        <div class="post-tags"><span class="tag">Local LLM</span> <span class="tag">中文</span></div>
+        <div class="post-stats">
+          <span class="stat">10.4k views</span>
+          <span class="stat">8 likes</span>
+          <span class="stat">6 saves</span>
+        </div>
+      </div>
+    </a>
+    <a href="https://x.com/michaelzsguo/status/2046624387370020899" target="_blank" class="post-card" data-tags="local llm" data-impressions="10335">
+      <div class="post-header">
+        <h3 class="post-title">You are not alone</h3>
+        <span class="post-date">2026-04-21</span>
+      </div>
+      <p class="post-summary">You are not alone</p>
+      <div class="post-footer">
+        <div class="post-tags"><span class="tag">Local LLM</span></div>
+        <div class="post-stats">
+          <span class="stat">10.3k views</span>
+          <span class="stat">10 likes</span>
+          <span class="stat">0 saves</span>
+        </div>
+      </div>
+    </a>
+    <a href="https://x.com/michaelzsguo/status/2055459871567536365" target="_blank" class="post-card" data-tags="qwen fine-tuning" data-impressions="9797">
+      <div class="post-header">
+        <h3 class="post-title">Totally fair</h3>
+        <span class="post-date">2026-05-16</span>
+      </div>
+      <p class="post-summary">Totally fair. The 13 hours wasn’t “one prompt thinking really hard,” it was an autonomous loop doing the unglamorous work:</p>
+      <div class="post-footer">
+        <div class="post-tags"><span class="tag">Qwen</span> <span class="tag">Fine-tuning</span></div>
+        <div class="post-stats">
+          <span class="stat">9.8k views</span>
+          <span class="stat">39 likes</span>
+          <span class="stat">18 saves</span>
+        </div>
+      </div>
+    </a>
+    <a href="https://x.com/michaelzsguo/status/2053071974847353016" target="_blank" class="post-card" data-tags="local llm hardware deepseek" data-impressions="9794">
+      <div class="post-header">
+        <h3 class="post-title">ds4.c is a tiny, purpose-built inference engine from Antirez</h3>
+        <span class="post-date">2026-05-09</span>
+      </div>
+      <p class="post-summary">c is a tiny, purpose-built inference engine from Antirez, the original creator of Redis and one of the most respected systems programmers in open source. The project runs DeepSeek V4 Flash, a 284B ...</p>
+      <div class="post-footer">
+        <div class="post-tags"><span class="tag">Local LLM</span> <span class="tag">Hardware</span> <span class="tag">DeepSeek</span></div>
+        <div class="post-stats">
+          <span class="stat">9.8k views</span>
+          <span class="stat">101 likes</span>
+          <span class="stat">94 saves</span>
+        </div>
+      </div>
+    </a>
+    <a href="https://x.com/michaelzsguo/status/2053217839729791221" target="_blank" class="post-card" data-tags="local llm" data-impressions="9638">
+      <div class="post-header">
+        <h3 class="post-title"></h3>
+        <span class="post-date">2026-05-09</span>
+      </div>
+      <p class="post-summary"></p>
+      <div class="post-footer">
+        <div class="post-tags"><span class="tag">Local LLM</span></div>
+        <div class="post-stats">
+          <span class="stat">9.6k views</span>
+          <span class="stat">74 likes</span>
+          <span class="stat">130 saves</span>
+        </div>
+      </div>
+    </a>
+    <a href="https://x.com/michaelzsguo/status/2043760317516132718" target="_blank" class="post-card" data-tags="local llm google" data-impressions="8953">
+      <div class="post-header">
+        <h3 class="post-title">Google needs to hire this engineer</h3>
+        <span class="post-date">2026-04-13</span>
+      </div>
+      <p class="post-summary">Google needs to hire this engineer</p>
+      <div class="post-footer">
+        <div class="post-tags"><span class="tag">Local LLM</span> <span class="tag">Google</span></div>
+        <div class="post-stats">
+          <span class="stat">9.0k views</span>
+          <span class="stat">23 likes</span>
+          <span class="stat">4 saves</span>
+        </div>
+      </div>
+    </a>
+    <a href="https://x.com/michaelzsguo/status/2044934560304013663" target="_blank" class="post-card" data-tags="openai 中文 codex ai agents" data-impressions="8815">
+      <div class="post-header">
+        <h3 class="post-title">OpenAI 最近推出的 Codex，最令人惊艳的一点，是它的 Computer Use 功能</h3>
+        <span class="post-date">2026-04-17</span>
+      </div>
+      <p class="post-summary">OpenAI 最近推出的 Codex，最令人惊艳的一点，是它的 Computer Use 功能. 这个能力让 AI 真的可以“使用”你的电脑</p>
+      <div class="post-footer">
+        <div class="post-tags"><span class="tag">OpenAI</span> <span class="tag">中文</span> <span class="tag">Codex</span> <span class="tag">AI Agents</span></div>
+        <div class="post-stats">
+          <span class="stat">8.8k views</span>
+          <span class="stat">19 likes</span>
+          <span class="stat">14 saves</span>
+        </div>
+      </div>
+    </a>
+    <a href="https://x.com/michaelzsguo/status/2041144929070596305" target="_blank" class="post-card" data-tags="中文" data-impressions="8764">
+      <div class="post-header">
+        <h3 class="post-title">seriously though</h3>
+        <span class="post-date">2026-04-06</span>
+      </div>
+      <p class="post-summary">seriously though. 昨天听了一个播客， 里面的嘉宾提到：在这个AI铺天盖地的时代， 有三种不同反应的人：感到焦虑， 感到兴奋， 满不在乎</p>
+      <div class="post-footer">
+        <div class="post-tags"><span class="tag">中文</span></div>
+        <div class="post-stats">
+          <span class="stat">8.8k views</span>
+          <span class="stat">11 likes</span>
+          <span class="stat">0 saves</span>
+        </div>
+      </div>
+    </a>
+    <a href="https://x.com/michaelzsguo/status/2040832704040575098" target="_blank" class="post-card" data-tags="local llm skills claude" data-impressions="8555">
+      <div class="post-header">
+        <h3 class="post-title">#BookToSkill</h3>
+        <span class="post-date">2026-04-05</span>
+      </div>
+      <p class="post-summary">#BookToSkill. I've been turning books into executable Claude Code skills, started with Never Split the Difference (negotiation tactics), then Radical Candor (tough feedback frameworks)</p>
+      <div class="post-footer">
+        <div class="post-tags"><span class="tag">Local LLM</span> <span class="tag">Skills</span> <span class="tag">Claude</span></div>
+        <div class="post-stats">
+          <span class="stat">8.6k views</span>
+          <span class="stat">13 likes</span>
+          <span class="stat">21 saves</span>
+        </div>
+      </div>
+    </a>
+    <a href="https://x.com/michaelzsguo/status/2047663071804461396" target="_blank" class="post-card" data-tags="local llm 中文 llm internals deepseek" data-impressions="8488">
+      <div class="post-header">
+        <h3 class="post-title">今天看到Deepseek和华为升腾首付的Slide， 他们刚好谈到内存要求， 并给了蛮详细的公式</h3>
+        <span class="post-date">2026-04-24</span>
+      </div>
+      <p class="post-summary">今天看到Deepseek和华为升腾首付的Slide， 他们刚好谈到内存要求， 并给了蛮详细的公式. 正好就最近大家玩本地模型要怎么样的硬件配置，再详细讲讲</p>
+      <div class="post-footer">
+        <div class="post-tags"><span class="tag">Local LLM</span> <span class="tag">中文</span> <span class="tag">LLM Internals</span> <span class="tag">DeepSeek</span></div>
+        <div class="post-stats">
+          <span class="stat">8.5k views</span>
+          <span class="stat">18 likes</span>
+          <span class="stat">40 saves</span>
+        </div>
+      </div>
+    </a>
+    <a href="https://x.com/michaelzsguo/status/2041492611526008919" target="_blank" class="post-card" data-tags="local llm" data-impressions="8433">
+      <div class="post-header">
+        <h3 class="post-title">We builders should read and re-read the README</h3>
+        <span class="post-date">2026-04-07</span>
+      </div>
+      <p class="post-summary">We builders should read and re-read the README. she (or Ben) is telling a story, not a technical architecture</p>
+      <div class="post-footer">
+        <div class="post-tags"><span class="tag">Local LLM</span></div>
+        <div class="post-stats">
+          <span class="stat">8.4k views</span>
+          <span class="stat">37 likes</span>
+          <span class="stat">15 saves</span>
+        </div>
+      </div>
+    </a>
+    <a href="https://x.com/michaelzsguo/status/2038252459018125764" target="_blank" class="post-card" data-tags="local llm ai tools" data-impressions="8342">
+      <div class="post-header">
+        <h3 class="post-title">What better way to demo its power than with fireworks? Yo...</h3>
+        <span class="post-date">2026-03-29</span>
+      </div>
+      <p class="post-summary">What better way to demo its power than with fireworks? You can even play with it at home using the app in the reply</p>
+      <div class="post-footer">
+        <div class="post-tags"><span class="tag">Local LLM</span> <span class="tag">AI Tools</span></div>
+        <div class="post-stats">
+          <span class="stat">8.3k views</span>
+          <span class="stat">1 likes</span>
+          <span class="stat">0 saves</span>
+        </div>
+      </div>
+    </a>
+    <a href="https://x.com/michaelzsguo/status/2050916045775368637" target="_blank" class="post-card" data-tags="local llm" data-impressions="8038">
+      <div class="post-header">
+        <h3 class="post-title">Mr. Booch, this seems like a clickbait post.
+
+A couple of su</h3>
+        <span class="post-date">2026-05-03</span>
+      </div>
+      <p class="post-summary">Booch, this seems like a clickbait post. A couple of suspicious points:</p>
+      <div class="post-footer">
+        <div class="post-tags"><span class="tag">Local LLM</span></div>
+        <div class="post-stats">
+          <span class="stat">8.0k views</span>
+          <span class="stat">55 likes</span>
+          <span class="stat">3 saves</span>
+        </div>
+      </div>
+    </a>
+    <a href="https://x.com/michaelzsguo/status/2047665936312787139" target="_blank" class="post-card" data-tags="local llm 中文 qwen google" data-impressions="7734">
+      <div class="post-header">
+        <h3 class="post-title">上个周末刚刚做了几个Gemma 4的实例，感觉蛮惊艳的</h3>
+        <span class="post-date">2026-04-24</span>
+      </div>
+      <p class="post-summary">上个周末刚刚做了几个Gemma 4的实例，感觉蛮惊艳的. 这个周末准备拿qwen 3</p>
+      <div class="post-footer">
+        <div class="post-tags"><span class="tag">Local LLM</span> <span class="tag">中文</span> <span class="tag">Qwen</span> <span class="tag">Google</span></div>
+        <div class="post-stats">
+          <span class="stat">7.7k views</span>
+          <span class="stat">5 likes</span>
+          <span class="stat">1 saves</span>
+        </div>
+      </div>
+    </a>
+    <a href="https://x.com/michaelzsguo/status/2040074257036636378" target="_blank" class="post-card" data-tags="local llm hardware google ai agents" data-impressions="7707">
+      <div class="post-header">
+        <h3 class="post-title">Actually got Gemma 4 E2B running inside Hermes Agent on m...</h3>
+        <span class="post-date">2026-04-03</span>
+      </div>
+      <p class="post-summary">Actually got Gemma 4 E2B running inside Hermes Agent on my Raspberry Pi 5. There’s a saying: constraints breed creativity</p>
+      <div class="post-footer">
+        <div class="post-tags"><span class="tag">Local LLM</span> <span class="tag">Hardware</span> <span class="tag">Google</span> <span class="tag">AI Agents</span></div>
+        <div class="post-stats">
+          <span class="stat">7.7k views</span>
+          <span class="stat">9 likes</span>
+          <span class="stat">11 saves</span>
+        </div>
+      </div>
+    </a>
+    <a href="https://x.com/michaelzsguo/status/2041618591838286293" target="_blank" class="post-card" data-tags="local llm 中文" data-impressions="7444">
+      <div class="post-header">
+        <h3 class="post-title">这些战略性思考与情境感知能力是不是表明Mythos已经有意识了？而且都是恶的一面</h3>
+        <span class="post-date">2026-04-07</span>
+      </div>
+      <p class="post-summary">这些战略性思考与情境感知能力是不是表明Mythos已经有意识了？而且都是恶的一面. - 识别自己正在被评测</p>
+      <div class="post-footer">
+        <div class="post-tags"><span class="tag">Local LLM</span> <span class="tag">中文</span></div>
+        <div class="post-stats">
+          <span class="stat">7.4k views</span>
+          <span class="stat">6 likes</span>
+          <span class="stat">5 saves</span>
+        </div>
+      </div>
+    </a>
+    <a href="https://x.com/michaelzsguo/status/2044872784904376755" target="_blank" class="post-card" data-tags="openai local llm" data-impressions="7413">
+      <div class="post-header">
+        <h3 class="post-title">OpenAI named the model GPT-Rosalind after Rosalind Frankl...</h3>
+        <span class="post-date">2026-04-16</span>
+      </div>
+      <p class="post-summary">OpenAI named the model GPT-Rosalind after Rosalind Franklin, the British chemist and X-ray crystallographer whose pioneering work was essential to understanding the molecular structure of DNA</p>
+      <div class="post-footer">
+        <div class="post-tags"><span class="tag">OpenAI</span> <span class="tag">Local LLM</span></div>
+        <div class="post-stats">
+          <span class="stat">7.4k views</span>
+          <span class="stat">90 likes</span>
+          <span class="stat">1 saves</span>
+        </div>
+      </div>
+    </a>
+    <a href="https://x.com/michaelzsguo/status/2051490518803042491" target="_blank" class="post-card" data-tags="local llm hardware" data-impressions="7402">
+      <div class="post-header">
+        <h3 class="post-title">I used to think my A100 40GB was too small</h3>
+        <span class="post-date">2026-05-05</span>
+      </div>
+      <p class="post-summary">I used to think my A100 40GB was too small. Then I noticed how many people are tinkering with 12GB 3090s, optimizing models and runtimes, and still getting impressive results</p>
+      <div class="post-footer">
+        <div class="post-tags"><span class="tag">Local LLM</span> <span class="tag">Hardware</span></div>
+        <div class="post-stats">
+          <span class="stat">7.4k views</span>
+          <span class="stat">60 likes</span>
+          <span class="stat">66 saves</span>
+        </div>
+      </div>
+    </a>
+    <a href="https://x.com/michaelzsguo/status/2055680018227871935" target="_blank" class="post-card" data-tags="local llm" data-impressions="7379">
+      <div class="post-header">
+        <h3 class="post-title">many of you asked how to get such a crazy price</h3>
+        <span class="post-date">2026-05-16</span>
+      </div>
+      <p class="post-summary">many of you asked how to get such a crazy price. I bought from their official site, nothing more needed</p>
+      <div class="post-footer">
+        <div class="post-tags"><span class="tag">Local LLM</span></div>
+        <div class="post-stats">
+          <span class="stat">7.4k views</span>
+          <span class="stat">32 likes</span>
+          <span class="stat">36 saves</span>
+        </div>
+      </div>
+    </a>
+    <a href="https://x.com/michaelzsguo/status/2043827134330777788" target="_blank" class="post-card" data-tags="google" data-impressions="7375">
+      <div class="post-header">
+        <h3 class="post-title">thanks for clarification</h3>
+        <span class="post-date">2026-04-13</span>
+      </div>
+      <p class="post-summary">thanks for clarification. looking forward to what come next at google cloud next next week</p>
+      <div class="post-footer">
+        <div class="post-tags"><span class="tag">Google</span></div>
+        <div class="post-stats">
+          <span class="stat">7.4k views</span>
+          <span class="stat">1 likes</span>
+          <span class="stat">0 saves</span>
+        </div>
+      </div>
+    </a>
+    <a href="https://x.com/michaelzsguo/status/2057117647607632081" target="_blank" class="post-card" data-tags="local llm remote dev llm internals" data-impressions="7294">
+      <div class="post-header">
+        <h3 class="post-title">Local LLM people know this feeling:</h3>
+        <span class="post-date">2026-05-20</span>
+      </div>
+      <p class="post-summary">Local LLM people know this feeling:. You finally get the model running fast</p>
+      <div class="post-footer">
+        <div class="post-tags"><span class="tag">Local LLM</span> <span class="tag">Remote Dev</span> <span class="tag">LLM Internals</span></div>
+        <div class="post-stats">
+          <span class="stat">7.3k views</span>
+          <span class="stat">109 likes</span>
+          <span class="stat">164 saves</span>
+        </div>
+      </div>
+    </a>
+    <a href="https://x.com/michaelzsguo/status/2040139852058886435" target="_blank" class="post-card" data-tags="local llm 中文 google ai agents" data-impressions="7167">
+      <div class="post-header">
+        <h3 class="post-title">在树莓派上把Gemma 4， llama</h3>
+        <span class="post-date">2026-04-03</span>
+      </div>
+      <p class="post-summary">在树莓派上把Gemma 4， llama. cpp，和爱马仕Hermes Agent整个链跑通了，当然用是指望不上，但也算本地化的实践 哈哈</p>
+      <div class="post-footer">
+        <div class="post-tags"><span class="tag">Local LLM</span> <span class="tag">中文</span> <span class="tag">Google</span> <span class="tag">AI Agents</span></div>
+        <div class="post-stats">
+          <span class="stat">7.2k views</span>
+          <span class="stat">2 likes</span>
+          <span class="stat">5 saves</span>
+        </div>
+      </div>
+    </a>
+    <a href="https://x.com/michaelzsguo/status/2036553330080502211" target="_blank" class="post-card" data-tags="中文" data-impressions="6712">
+      <div class="post-header">
+        <h3 class="post-title">是前年（2024）😀</h3>
+        <span class="post-date">2026-03-24</span>
+      </div>
+      <p class="post-summary"></p>
+      <div class="post-footer">
+        <div class="post-tags"><span class="tag">中文</span></div>
+        <div class="post-stats">
+          <span class="stat">6.7k views</span>
+          <span class="stat">19 likes</span>
+          <span class="stat">0 saves</span>
+        </div>
+      </div>
+    </a>
+    <a href="https://x.com/michaelzsguo/status/2040833690645746040" target="_blank" class="post-card" data-tags="local llm skills 中文" data-impressions="6649">
+      <div class="post-header">
+        <h3 class="post-title">你这个主意好玩。
+
+我也有个Meta-skill，把任何你喜欢的书变成Skills， 随时调用。书中自有黄金屋， 书中自</h3>
+        <span class="post-date">2026-04-05</span>
+      </div>
+      <p class="post-summary">我也有个Meta-skill，把任何你喜欢的书变成Skills， 随时调用. 书中自有黄金屋， 书中自有颜如玉， 这下你看过的书就不会忘了</p>
+      <div class="post-footer">
+        <div class="post-tags"><span class="tag">Local LLM</span> <span class="tag">Skills</span> <span class="tag">中文</span></div>
+        <div class="post-stats">
+          <span class="stat">6.6k views</span>
+          <span class="stat">21 likes</span>
+          <span class="stat">24 saves</span>
+        </div>
+      </div>
+    </a>
+    <a href="https://x.com/michaelzsguo/status/2048103060564791507" target="_blank" class="post-card" data-tags="local llm skills 中文" data-impressions="6448">
+      <div class="post-header">
+        <h3 class="post-title">至今还记得第一次看到他的grill-me skill，灵魂被吊起来拷问</h3>
+        <span class="post-date">2026-04-25</span>
+      </div>
+      <p class="post-summary">至今还记得第一次看到他的grill-me skill，灵魂被吊起来拷问. 56个单词，加一个嫌多，减一个嫌少</p>
+      <div class="post-footer">
+        <div class="post-tags"><span class="tag">Local LLM</span> <span class="tag">Skills</span> <span class="tag">中文</span></div>
+        <div class="post-stats">
+          <span class="stat">6.4k views</span>
+          <span class="stat">33 likes</span>
+          <span class="stat">38 saves</span>
+        </div>
+      </div>
+    </a>
+    <a href="https://x.com/michaelzsguo/status/2041619198196043790" target="_blank" class="post-card" data-tags="local llm 中文 claude" data-impressions="6394">
+      <div class="post-header">
+        <h3 class="post-title">估计Anthropic很害怕把这个“恶魔”放出笼子里来</h3>
+        <span class="post-date">2026-04-07</span>
+      </div>
+      <p class="post-summary">估计Anthropic很害怕把这个“恶魔”放出笼子里来. 突然想起电影Frankenstein</p>
+      <div class="post-footer">
+        <div class="post-tags"><span class="tag">Local LLM</span> <span class="tag">中文</span> <span class="tag">Claude</span></div>
+        <div class="post-stats">
+          <span class="stat">6.4k views</span>
+          <span class="stat">2 likes</span>
+          <span class="stat">2 saves</span>
+        </div>
+      </div>
+    </a>
+    <a href="https://x.com/michaelzsguo/status/2052151073586938041" target="_blank" class="post-card" data-tags="llm internals" data-impressions="6295">
+      <div class="post-header">
+        <h3 class="post-title">that's cool</h3>
+        <span class="post-date">2026-05-06</span>
+      </div>
+      <p class="post-summary">that's cool. but how many tokens they will get?</p>
+      <div class="post-footer">
+        <div class="post-tags"><span class="tag">LLM Internals</span></div>
+        <div class="post-stats">
+          <span class="stat">6.3k views</span>
+          <span class="stat">0 likes</span>
+          <span class="stat">0 saves</span>
+        </div>
+      </div>
+    </a>
+    <a href="https://x.com/michaelzsguo/status/2050418426712035706" target="_blank" class="post-card" data-tags="local llm" data-impressions="6222">
+      <div class="post-header">
+        <h3 class="post-title">Very true. I stated similarly before but your picture means </h3>
+        <span class="post-date">2026-05-02</span>
+      </div>
+      <p class="post-summary">I stated similarly before but your picture means more than 1000 words👍👍</p>
+      <div class="post-footer">
+        <div class="post-tags"><span class="tag">Local LLM</span></div>
+        <div class="post-stats">
+          <span class="stat">6.2k views</span>
+          <span class="stat">15 likes</span>
+          <span class="stat">7 saves</span>
+        </div>
+      </div>
+    </a>
+    <a href="https://x.com/michaelzsguo/status/2043063836119376368" target="_blank" class="post-card" data-tags="中文 llm internals ai agents" data-impressions="6088">
+      <div class="post-header">
+        <h3 class="post-title">不好意思班门弄斧了。但是可以考虑让Wanman做成一个非常Configurable的即插即用的系统。 垂直化的工具， c</h3>
+        <span class="post-date">2026-04-11</span>
+      </div>
+      <p class="post-summary">但是可以考虑让Wanman做成一个非常Configurable的即插即用的系统. 垂直化的工具， context， workflow都是专业化的人才能更好的定义， 给餐馆用的和给房地产公司用的应该很不一样， 让客户或者第三方使用你的Wanman去定义， 设置这些Harness</p>
+      <div class="post-footer">
+        <div class="post-tags"><span class="tag">中文</span> <span class="tag">LLM Internals</span> <span class="tag">AI Agents</span></div>
+        <div class="post-stats">
+          <span class="stat">6.1k views</span>
+          <span class="stat">6 likes</span>
+          <span class="stat">5 saves</span>
+        </div>
+      </div>
+    </a>
+    <a href="https://x.com/michaelzsguo/status/2055680461725188562" target="_blank" class="post-card" data-tags="local llm ai agents" data-impressions="5998">
+      <div class="post-header">
+        <h3 class="post-title">Did agent accomplish anything in that 13 hours?</h3>
+        <span class="post-date">2026-05-16</span>
+      </div>
+      <p class="post-summary">Did agent accomplish anything in that 13 hours?</p>
+      <div class="post-footer">
+        <div class="post-tags"><span class="tag">Local LLM</span> <span class="tag">AI Agents</span></div>
+        <div class="post-stats">
+          <span class="stat">6.0k views</span>
+          <span class="stat">4 likes</span>
+          <span class="stat">2 saves</span>
+        </div>
+      </div>
+    </a>
+    <a href="https://x.com/michaelzsguo/status/2057195857431179761" target="_blank" class="post-card" data-tags="local llm 中文" data-impressions="5916">
+      <div class="post-header">
+        <h3 class="post-title">美国人仇视AI仅次于伊朗和民主党😂</h3>
+        <span class="post-date">2026-05-20</span>
+      </div>
+      <p class="post-summary">美国人仇视AI仅次于伊朗和民主党😂</p>
+      <div class="post-footer">
+        <div class="post-tags"><span class="tag">Local LLM</span> <span class="tag">中文</span></div>
+        <div class="post-stats">
+          <span class="stat">5.9k views</span>
+          <span class="stat">52 likes</span>
+          <span class="stat">5 saves</span>
+        </div>
+      </div>
+    </a>
+    <a href="https://x.com/michaelzsguo/status/2044435796669645029" target="_blank" class="post-card" data-tags="local llm 中文" data-impressions="5839">
+      <div class="post-header">
+        <h3 class="post-title">哈哈哈， 太扎心了， 烙铁</h3>
+        <span class="post-date">2026-04-15</span>
+      </div>
+      <p class="post-summary">哈哈哈， 太扎心了， 烙铁. 和宝玉昨晚的推文有异曲同工之妙，Vibe Coding = 中年男人的钓鱼 = 磨刀</p>
+      <div class="post-footer">
+        <div class="post-tags"><span class="tag">Local LLM</span> <span class="tag">中文</span></div>
+        <div class="post-stats">
+          <span class="stat">5.8k views</span>
+          <span class="stat">21 likes</span>
+          <span class="stat">3 saves</span>
+        </div>
+      </div>
+    </a>
+    <a href="https://x.com/michaelzsguo/status/2045207282573541847" target="_blank" class="post-card" data-tags="local llm 中文 claude" data-impressions="5732">
+      <div class="post-header">
+        <h3 class="post-title">让我用 Claude Design 来试试看😂</h3>
+        <span class="post-date">2026-04-17</span>
+      </div>
+      <p class="post-summary">让我用 Claude Design 来试试看😂</p>
+      <div class="post-footer">
+        <div class="post-tags"><span class="tag">Local LLM</span> <span class="tag">中文</span> <span class="tag">Claude</span></div>
+        <div class="post-stats">
+          <span class="stat">5.7k views</span>
+          <span class="stat">9 likes</span>
+          <span class="stat">2 saves</span>
+        </div>
+      </div>
+    </a>
+    <a href="https://x.com/michaelzsguo/status/2043511120787374321" target="_blank" class="post-card" data-tags="local llm 中文 ai agents" data-impressions="5587">
+      <div class="post-header">
+        <h3 class="post-title">讲的非常好。Agent 的速度已经接近秒级了，写代码、跑简单任务都很快，但大多数 process 还停留在人类节奏：审批</h3>
+        <span class="post-date">2026-04-13</span>
+      </div>
+      <p class="post-summary">Agent 的速度已经接近秒级了，写代码、跑简单任务都很快，但大多数 process 还停留在人类节奏：审批、等反馈、层层 review、手动验证，这些正在成为真正的瓶颈. 这让我想到 DORA发明者Nicole Foresgren的新书《Frictionless》里反复强调的一点：AI</p>
+      <div class="post-footer">
+        <div class="post-tags"><span class="tag">Local LLM</span> <span class="tag">中文</span> <span class="tag">AI Agents</span></div>
+        <div class="post-stats">
+          <span class="stat">5.6k views</span>
+          <span class="stat">26 likes</span>
+          <span class="stat">22 saves</span>
+        </div>
+      </div>
+    </a>
+    <a href="https://x.com/michaelzsguo/status/2036615024743993849" target="_blank" class="post-card" data-tags="中文" data-impressions="5534">
+      <div class="post-header">
+        <h3 class="post-title">他们最新发布的两个功能， 一个telegram pairing卡顿；一个computer use慢的像头牛</h3>
+        <span class="post-date">2026-03-25</span>
+      </div>
+      <p class="post-summary">他们最新发布的两个功能， 一个telegram pairing卡顿；一个computer use慢的像头牛. wanman如果用户体验好， 可以完胜</p>
+      <div class="post-footer">
+        <div class="post-tags"><span class="tag">中文</span></div>
+        <div class="post-stats">
+          <span class="stat">5.5k views</span>
+          <span class="stat">3 likes</span>
+          <span class="stat">1 saves</span>
+        </div>
+      </div>
+    </a>
+    <a href="https://x.com/michaelzsguo/status/2056842405815447684" target="_blank" class="post-card" data-tags="local llm" data-impressions="5420">
+      <div class="post-header">
+        <h3 class="post-title"></h3>
+        <span class="post-date">2026-05-19</span>
+      </div>
+      <p class="post-summary"></p>
+      <div class="post-footer">
+        <div class="post-tags"><span class="tag">Local LLM</span></div>
+        <div class="post-stats">
+          <span class="stat">5.4k views</span>
+          <span class="stat">13 likes</span>
+          <span class="stat">46 saves</span>
+        </div>
+      </div>
+    </a>
+    <a href="https://x.com/michaelzsguo/status/2044806974538195162" target="_blank" class="post-card" data-tags="中文" data-impressions="5298">
+      <div class="post-header">
+        <h3 class="post-title">马上要去东京旅游几天， 看来单向街是必去了</h3>
+        <span class="post-date">2026-04-16</span>
+      </div>
+      <p class="post-summary">马上要去东京旅游几天， 看来单向街是必去了. 如果能偶遇仁兄， 那就更好了</p>
+      <div class="post-footer">
+        <div class="post-tags"><span class="tag">中文</span></div>
+        <div class="post-stats">
+          <span class="stat">5.3k views</span>
+          <span class="stat">0 likes</span>
+          <span class="stat">0 saves</span>
+        </div>
+      </div>
+    </a>
+    <a href="https://x.com/michaelzsguo/status/2057831204808745133" target="_blank" class="post-card" data-tags="local llm ai agents deepseek" data-impressions="5250">
+      <div class="post-header">
+        <h3 class="post-title">ds4-agent is so fast</h3>
+        <span class="post-date">2026-05-22</span>
+      </div>
+      <p class="post-summary">ds4-agent is so fast. I even asked it to write a script to benchmark itself</p>
+      <div class="post-footer">
+        <div class="post-tags"><span class="tag">Local LLM</span> <span class="tag">AI Agents</span> <span class="tag">DeepSeek</span></div>
+        <div class="post-stats">
+          <span class="stat">5.2k views</span>
+          <span class="stat">42 likes</span>
+          <span class="stat">10 saves</span>
+        </div>
+      </div>
+    </a>
+    <a href="https://x.com/michaelzsguo/status/2051100042711224572" target="_blank" class="post-card" data-tags="中文 codex deepseek ai agents" data-impressions="5231">
+      <div class="post-header">
+        <h3 class="post-title">DeepSeek 做事情很稳重</h3>
+        <span class="post-date">2026-05-04</span>
+      </div>
+      <p class="post-summary">DeepSeek 做事情很稳重. 我已经一个多月没有升级我的 OpenClaw 老龙虾🦞了</p>
+      <div class="post-footer">
+        <div class="post-tags"><span class="tag">中文</span> <span class="tag">Codex</span> <span class="tag">DeepSeek</span> <span class="tag">AI Agents</span></div>
+        <div class="post-stats">
+          <span class="stat">5.2k views</span>
+          <span class="stat">21 likes</span>
+          <span class="stat">6 saves</span>
+        </div>
+      </div>
+    </a>
+    <a href="https://x.com/michaelzsguo/status/2045340307001163938" target="_blank" class="post-card" data-tags="local llm 中文 hardware" data-impressions="5065">
+      <div class="post-header">
+        <h3 class="post-title">Built an AI stylist that runs 100% local on a single A100...</h3>
+        <span class="post-date">2026-04-18</span>
+      </div>
+      <p class="post-summary">Built an AI stylist that runs 100% local on a single A100 GPU. 在一张 A100 GPU 上构建了一个 100% 本地运行的 AI 造型师</p>
+      <div class="post-footer">
+        <div class="post-tags"><span class="tag">Local LLM</span> <span class="tag">中文</span> <span class="tag">Hardware</span></div>
+        <div class="post-stats">
+          <span class="stat">5.1k views</span>
+          <span class="stat">11 likes</span>
+          <span class="stat">6 saves</span>
+        </div>
+      </div>
+    </a>
+    <a href="https://x.com/michaelzsguo/status/2045527929501651230" target="_blank" class="post-card" data-tags="local llm claude" data-impressions="5059">
+      <div class="post-header">
+        <h3 class="post-title">While working on my AI stylist project, I also spent my f...</h3>
+        <span class="post-date">2026-04-18</span>
+      </div>
+      <p class="post-summary">While working on my AI stylist project, I also spent my first extended stretch coding with Opus 4. I found it surprisingly weak even on small things, like displaying a comment in the main panel</p>
+      <div class="post-footer">
+        <div class="post-tags"><span class="tag">Local LLM</span> <span class="tag">Claude</span></div>
+        <div class="post-stats">
+          <span class="stat">5.1k views</span>
+          <span class="stat">10 likes</span>
+          <span class="stat">2 saves</span>
+        </div>
+      </div>
+    </a>
+    <a href="https://x.com/michaelzsguo/status/2041932028455628955" target="_blank" class="post-card" data-tags="openai local llm llm internals" data-impressions="5018">
+      <div class="post-header">
+        <h3 class="post-title">I gave this famous photo to both Muse Spark and ChatGPT</h3>
+        <span class="post-date">2026-04-08</span>
+      </div>
+      <p class="post-summary">I gave this famous photo to both Muse Spark and ChatGPT. Muse Spark seemed better at reading the image, especially the subtle cues and implied meaning</p>
+      <div class="post-footer">
+        <div class="post-tags"><span class="tag">OpenAI</span> <span class="tag">Local LLM</span> <span class="tag">LLM Internals</span></div>
+        <div class="post-stats">
+          <span class="stat">5.0k views</span>
+          <span class="stat">2 likes</span>
+          <span class="stat">0 saves</span>
+        </div>
+      </div>
+    </a>
+    <a href="https://x.com/michaelzsguo/status/2058310755204858107" target="_blank" class="post-card" data-tags="local llm llm internals" data-impressions="4992">
+      <div class="post-header">
+        <h3 class="post-title">KV cache is the model’s working memory during generation</h3>
+        <span class="post-date">2026-05-23</span>
+      </div>
+      <p class="post-summary">KV cache is the model’s working memory during generation. As the context window gets longer, the model has to keep more key/value attention state for previous tokens</p>
+      <div class="post-footer">
+        <div class="post-tags"><span class="tag">Local LLM</span> <span class="tag">LLM Internals</span></div>
+        <div class="post-stats">
+          <span class="stat">5.0k views</span>
+          <span class="stat">79 likes</span>
+          <span class="stat">70 saves</span>
+        </div>
+      </div>
+    </a>
+    <a href="https://x.com/michaelzsguo/status/2057394665117114472" target="_blank" class="post-card" data-tags="local llm skills hardware 中文" data-impressions="4932">
+      <div class="post-header">
+        <h3 class="post-title">我也是经过一段时间的长考决定买的MacBook pro 128GB</h3>
+        <span class="post-date">2026-05-21</span>
+      </div>
+      <p class="post-summary">我也是经过一段时间的长考决定买的MacBook pro 128GB</p>
+      <div class="post-footer">
+        <div class="post-tags"><span class="tag">Local LLM</span> <span class="tag">Skills</span> <span class="tag">Hardware</span> <span class="tag">中文</span></div>
+        <div class="post-stats">
+          <span class="stat">4.9k views</span>
+          <span class="stat">3 likes</span>
+          <span class="stat">1 saves</span>
+        </div>
+      </div>
+    </a>
+    <a href="https://x.com/michaelzsguo/status/2034685579267293682" target="_blank" class="post-card" data-tags="中文" data-impressions="4839">
+      <div class="post-header">
+        <h3 class="post-title">多谢你的介绍。今天看到她出现在我的timeline但我不知道她的来历</h3>
+        <span class="post-date">2026-03-19</span>
+      </div>
+      <p class="post-summary">今天看到她出现在我的timeline但我不知道她的来历</p>
+      <div class="post-footer">
+        <div class="post-tags"><span class="tag">中文</span></div>
+        <div class="post-stats">
+          <span class="stat">4.8k views</span>
+          <span class="stat">1 likes</span>
+          <span class="stat">0 saves</span>
+        </div>
+      </div>
+    </a>
+    <a href="https://x.com/michaelzsguo/status/2044040276025463190" target="_blank" class="post-card" data-tags="local llm 中文" data-impressions="4695">
+      <div class="post-header">
+        <h3 class="post-title">我每次用这个网站也挺好使  </h3>
+        <span class="post-date">2026-04-14</span>
+      </div>
+      <p class="post-summary">我每次用这个网站也挺好使. 不过我纽约时报和华尔街日报都订了</p>
+      <div class="post-footer">
+        <div class="post-tags"><span class="tag">Local LLM</span> <span class="tag">中文</span></div>
+        <div class="post-stats">
+          <span class="stat">4.7k views</span>
+          <span class="stat">32 likes</span>
+          <span class="stat">56 saves</span>
+        </div>
+      </div>
+    </a>
+    <a href="https://x.com/michaelzsguo/status/2041864587700486342" target="_blank" class="post-card" data-tags="openai local llm" data-impressions="4681">
+      <div class="post-header">
+        <h3 class="post-title">If you’re about to pull out a calculator to do the math, ...</h3>
+        <span class="post-date">2026-04-08</span>
+      </div>
+      <p class="post-summary">If you’re about to pull out a calculator to do the math, just use ChatGPT to calculate the flight to the Moon. I didn’t know I’d end up becoming a rocket scientist myself one day</p>
+      <div class="post-footer">
+        <div class="post-tags"><span class="tag">OpenAI</span> <span class="tag">Local LLM</span></div>
+        <div class="post-stats">
+          <span class="stat">4.7k views</span>
+          <span class="stat">26 likes</span>
+          <span class="stat">7 saves</span>
+        </div>
+      </div>
+    </a>
+    <a href="https://x.com/michaelzsguo/status/2044881373090156686" target="_blank" class="post-card" data-tags="openai local llm codex" data-impressions="4672">
+      <div class="post-header">
+        <h3 class="post-title">The UI/UX of @OpenAI Codex looks very polished</h3>
+        <span class="post-date">2026-04-16</span>
+      </div>
+      <p class="post-summary">The UI/UX of @OpenAI Codex looks very polished. It felt incredibly smooth</p>
+      <div class="post-footer">
+        <div class="post-tags"><span class="tag">OpenAI</span> <span class="tag">Local LLM</span> <span class="tag">Codex</span></div>
+        <div class="post-stats">
+          <span class="stat">4.7k views</span>
+          <span class="stat">3 likes</span>
+          <span class="stat">0 saves</span>
+        </div>
+      </div>
+    </a>
+    <a href="https://x.com/michaelzsguo/status/2044882829545521651" target="_blank" class="post-card" data-tags="openai 中文 codex claude" data-impressions="4428">
+      <div class="post-header">
+        <h3 class="post-title">感觉这次OpenAI有点强者归来的感觉</h3>
+        <span class="post-date">2026-04-16</span>
+      </div>
+      <p class="post-summary">感觉这次OpenAI有点强者归来的感觉. Codex 在 UI/UX 上看起来很好打磨过，整个体验非常丝滑</p>
+      <div class="post-footer">
+        <div class="post-tags"><span class="tag">OpenAI</span> <span class="tag">中文</span> <span class="tag">Codex</span> <span class="tag">Claude</span></div>
+        <div class="post-stats">
+          <span class="stat">4.4k views</span>
+          <span class="stat">8 likes</span>
+          <span class="stat">2 saves</span>
+        </div>
+      </div>
+    </a>
+    <a href="https://x.com/michaelzsguo/status/2044343525785899165" target="_blank" class="post-card" data-tags="ai" data-impressions="4422">
+      <div class="post-header">
+        <h3 class="post-title">I’m concerned about the coming budget cycle as well</h3>
+        <span class="post-date">2026-04-15</span>
+      </div>
+      <p class="post-summary">I’m concerned about the coming budget cycle as well. Many companies are seeing AI tool spend triple, or more, and the productivity lift appears real</p>
+      <div class="post-footer">
+        <div class="post-tags"><span class="tag">AI</span></div>
+        <div class="post-stats">
+          <span class="stat">4.4k views</span>
+          <span class="stat">8 likes</span>
+          <span class="stat">2 saves</span>
+        </div>
+      </div>
+    </a>
+    <a href="https://x.com/michaelzsguo/status/2051415441679999133" target="_blank" class="post-card" data-tags="local llm" data-impressions="4420">
+      <div class="post-header">
+        <h3 class="post-title">thanks for sharing</h3>
+        <span class="post-date">2026-05-04</span>
+      </div>
+      <p class="post-summary">thanks for sharing. this looks very solid</p>
+      <div class="post-footer">
+        <div class="post-tags"><span class="tag">Local LLM</span></div>
+        <div class="post-stats">
+          <span class="stat">4.4k views</span>
+          <span class="stat">15 likes</span>
+          <span class="stat">12 saves</span>
+        </div>
+      </div>
+    </a>
+    <a href="https://x.com/michaelzsguo/status/2055469012461420914" target="_blank" class="post-card" data-tags="local llm" data-impressions="4371">
+      <div class="post-header">
+        <h3 class="post-title">I so need this reset as I'm deeply in debt</h3>
+        <span class="post-date">2026-05-16</span>
+      </div>
+      <p class="post-summary">I so need this reset as I'm deeply in debt</p>
+      <div class="post-footer">
+        <div class="post-tags"><span class="tag">Local LLM</span></div>
+        <div class="post-stats">
+          <span class="stat">4.4k views</span>
+          <span class="stat">12 likes</span>
+          <span class="stat">0 saves</span>
+        </div>
+      </div>
+    </a>
+    <a href="https://x.com/michaelzsguo/status/2040842859411312855" target="_blank" class="post-card" data-tags="claude llm internals ai agents" data-impressions="4313">
+      <div class="post-header">
+        <h3 class="post-title">A very nice write-up</h3>
+        <span class="post-date">2026-04-05</span>
+      </div>
+      <p class="post-summary">A very nice write-up. Fuli puts an optimistic spin on the AI ecosystem, even as Anthropic cuts third-party agents like OpenClaw off Claude subscriptions</p>
+      <div class="post-footer">
+        <div class="post-tags"><span class="tag">Claude</span> <span class="tag">LLM Internals</span> <span class="tag">AI Agents</span></div>
+        <div class="post-stats">
+          <span class="stat">4.3k views</span>
+          <span class="stat">9 likes</span>
+          <span class="stat">1 saves</span>
+        </div>
+      </div>
+    </a>
+    <a href="https://x.com/michaelzsguo/status/2041981627803324484" target="_blank" class="post-card" data-tags="local llm 中文" data-impressions="4284">
+      <div class="post-header">
+        <h3 class="post-title">他们沿着价值链一路向上，把我们要做的事情一点点给吃过去</h3>
+        <span class="post-date">2026-04-08</span>
+      </div>
+      <p class="post-summary">他们沿着价值链一路向上，把我们要做的事情一点点给吃过去</p>
+      <div class="post-footer">
+        <div class="post-tags"><span class="tag">Local LLM</span> <span class="tag">中文</span></div>
+        <div class="post-stats">
+          <span class="stat">4.3k views</span>
+          <span class="stat">0 likes</span>
+          <span class="stat">0 saves</span>
+        </div>
+      </div>
+    </a>
+    <a href="https://x.com/michaelzsguo/status/2053226471234081062" target="_blank" class="post-card" data-tags="local llm hardware llm internals" data-impressions="4167">
+      <div class="post-header">
+        <h3 class="post-title">A lot of people hear about local LLMs and feel the same m...</h3>
+        <span class="post-date">2026-05-09</span>
+      </div>
+      <p class="post-summary">A lot of people hear about local LLMs and feel the same mix of curiosity and anxiety:  where do I even start?  What machine should I buy?  Do I need a Mac Studio, an RTX 4090, more VRAM, or unified...</p>
+      <div class="post-footer">
+        <div class="post-tags"><span class="tag">Local LLM</span> <span class="tag">Hardware</span> <span class="tag">LLM Internals</span></div>
+        <div class="post-stats">
+          <span class="stat">4.2k views</span>
+          <span class="stat">2 likes</span>
+          <span class="stat">4 saves</span>
+        </div>
+      </div>
+    </a>
+    <a href="https://x.com/michaelzsguo/status/2048777111662444737" target="_blank" class="post-card" data-tags="qwen fine-tuning claude google" data-impressions="4141">
+      <div class="post-header">
+        <h3 class="post-title">how was the results? i love @googlegemma and have been pl...</h3>
+        <span class="post-date">2026-04-27</span>
+      </div>
+      <p class="post-summary">how was the results? i love @googlegemma and have been playing with it for the last several weeks (with vision chat, hermes integration, LoRA etc). and the past weekend, I even did a baking test am...</p>
+      <div class="post-footer">
+        <div class="post-tags"><span class="tag">Qwen</span> <span class="tag">Fine-tuning</span> <span class="tag">Claude</span> <span class="tag">Google</span></div>
+        <div class="post-stats">
+          <span class="stat">4.1k views</span>
+          <span class="stat">4 likes</span>
+          <span class="stat">4 saves</span>
+        </div>
+      </div>
+    </a>
+    <a href="https://x.com/michaelzsguo/status/2055641572113367291" target="_blank" class="post-card" data-tags="local llm skills codex" data-impressions="4139">
+      <div class="post-header">
+        <h3 class="post-title">Indeed. I created a skill goal-forge to make sure a tight go</h3>
+        <span class="post-date">2026-05-16</span>
+      </div>
+      <p class="post-summary">I created a skill goal-forge to make sure a tight goal</p>
+      <div class="post-footer">
+        <div class="post-tags"><span class="tag">Local LLM</span> <span class="tag">Skills</span> <span class="tag">Codex</span></div>
+        <div class="post-stats">
+          <span class="stat">4.1k views</span>
+          <span class="stat">19 likes</span>
+          <span class="stat">12 saves</span>
+        </div>
+      </div>
+    </a>
+    <a href="https://x.com/michaelzsguo/status/2047778871135908284" target="_blank" class="post-card" data-tags="local llm claude google" data-impressions="3983">
+      <div class="post-header">
+        <h3 class="post-title">People are wondering why Google would invest another $40B...</h3>
+        <span class="post-date">2026-04-24</span>
+      </div>
+      <p class="post-summary">People are wondering why Google would invest another $40B in Anthropic instead of its own Gemini. After attending Google Cloud Next this week, my view is simple: this is not Google giving up on Gemini</p>
+      <div class="post-footer">
+        <div class="post-tags"><span class="tag">Local LLM</span> <span class="tag">Claude</span> <span class="tag">Google</span></div>
+        <div class="post-stats">
+          <span class="stat">4.0k views</span>
+          <span class="stat">4 likes</span>
+          <span class="stat">3 saves</span>
+        </div>
+      </div>
+    </a>
+    <a href="https://x.com/michaelzsguo/status/2038446023513715113" target="_blank" class="post-card" data-tags="local llm 中文 hardware" data-impressions="3945">
+      <div class="post-header">
+        <h3 class="post-title">MacMini居然比我的树莓派还麻烦？ 树莓派可以提前预装SSH， 接入Home Network后， 用SSH登陆就好了</h3>
+        <span class="post-date">2026-03-30</span>
+      </div>
+      <p class="post-summary">MacMini居然比我的树莓派还麻烦？ 树莓派可以提前预装SSH， 接入Home Network后， 用SSH登陆就好了. 如果还是想要GUI， 用XQuartz就行了</p>
+      <div class="post-footer">
+        <div class="post-tags"><span class="tag">Local LLM</span> <span class="tag">中文</span> <span class="tag">Hardware</span></div>
+        <div class="post-stats">
+          <span class="stat">3.9k views</span>
+          <span class="stat">10 likes</span>
+          <span class="stat">6 saves</span>
+        </div>
+      </div>
+    </a>
+    <a href="https://x.com/michaelzsguo/status/2040252818045522328" target="_blank" class="post-card" data-tags="中文" data-impressions="3911">
+      <div class="post-header">
+        <h3 class="post-title">公司会不会来个anti-anti-distillation？</h3>
+        <span class="post-date">2026-04-04</span>
+      </div>
+      <p class="post-summary">公司会不会来个anti-anti-distillation？</p>
+      <div class="post-footer">
+        <div class="post-tags"><span class="tag">中文</span></div>
+        <div class="post-stats">
+          <span class="stat">3.9k views</span>
+          <span class="stat">9 likes</span>
+          <span class="stat">0 saves</span>
+        </div>
+      </div>
+    </a>
+    <a href="https://x.com/michaelzsguo/status/2052582038683722192" target="_blank" class="post-card" data-tags="local llm 中文 remote dev ai agents" data-impressions="3880">
+      <div class="post-header">
+        <h3 class="post-title">我的Openclaw装在家里的树莓派P5上， 有时候出故障， 我在外面， 全靠Tailscale远程通过手机登录，...</h3>
+        <span class="post-date">2026-05-08</span>
+      </div>
+      <p class="post-summary">我的Openclaw装在家里的树莓派P5上， 有时候出故障， 我在外面， 全靠Tailscale远程通过手机登录， 处理故障</p>
+      <div class="post-footer">
+        <div class="post-tags"><span class="tag">Local LLM</span> <span class="tag">中文</span> <span class="tag">Remote Dev</span> <span class="tag">AI Agents</span></div>
+        <div class="post-stats">
+          <span class="stat">3.9k views</span>
+          <span class="stat">0 likes</span>
+          <span class="stat">1 saves</span>
+        </div>
+      </div>
+    </a>
+    <a href="https://x.com/michaelzsguo/status/2038688416309682563" target="_blank" class="post-card" data-tags="skills 中文 codex claude" data-impressions="3875">
+      <div class="post-header">
+        <h3 class="post-title">这种软身段竞争还真是第一次见</h3>
+        <span class="post-date">2026-03-30</span>
+      </div>
+      <p class="post-summary">这种软身段竞争还真是第一次见. 不过在Claude Code如日中天， Codex在追赶的情况下， 这是一个很聪明的打法</p>
+      <div class="post-footer">
+        <div class="post-tags"><span class="tag">Skills</span> <span class="tag">中文</span> <span class="tag">Codex</span> <span class="tag">Claude</span></div>
+        <div class="post-stats">
+          <span class="stat">3.9k views</span>
+          <span class="stat">6 likes</span>
+          <span class="stat">4 saves</span>
+        </div>
+      </div>
+    </a>
+    <a href="https://x.com/michaelzsguo/status/2043015174777401804" target="_blank" class="post-card" data-tags="openai 中文 ai agents" data-impressions="3873">
+      <div class="post-header">
+        <h3 class="post-title">深有同感。Openclaw如果有同样水平的User Onboarding体验的话， 估计Agent的普及率更高了。相信O</h3>
+        <span class="post-date">2026-04-11</span>
+      </div>
+      <p class="post-summary">Openclaw如果有同样水平的User Onboarding体验的话， 估计Agent的普及率更高了. 相信OpenAI说他们在做的Super App， 应该是在这个方面发力， 借助Peter的Idea， OpenAI自己团队的产品能力</p>
+      <div class="post-footer">
+        <div class="post-tags"><span class="tag">OpenAI</span> <span class="tag">中文</span> <span class="tag">AI Agents</span></div>
+        <div class="post-stats">
+          <span class="stat">3.9k views</span>
+          <span class="stat">0 likes</span>
+          <span class="stat">0 saves</span>
+        </div>
+      </div>
+    </a>
+    <a href="https://x.com/michaelzsguo/status/2050868954428502509" target="_blank" class="post-card" data-tags="openai 中文" data-impressions="3858">
+      <div class="post-header">
+        <h3 class="post-title">应该加一个功能： 用gpt-5</h3>
+        <span class="post-date">2026-05-03</span>
+      </div>
+      <p class="post-summary">应该加一个功能： 用gpt-5</p>
+      <div class="post-footer">
+        <div class="post-tags"><span class="tag">OpenAI</span> <span class="tag">中文</span></div>
+        <div class="post-stats">
+          <span class="stat">3.9k views</span>
+          <span class="stat">0 likes</span>
+          <span class="stat">1 saves</span>
+        </div>
+      </div>
+    </a>
+    <a href="https://x.com/michaelzsguo/status/2035069537905688919" target="_blank" class="post-card" data-tags="local llm" data-impressions="3842">
+      <div class="post-header">
+        <h3 class="post-title">This one probably more accurate</h3>
+        <span class="post-date">2026-03-20</span>
+      </div>
+      <p class="post-summary">This one probably more accurate</p>
+      <div class="post-footer">
+        <div class="post-tags"><span class="tag">Local LLM</span></div>
+        <div class="post-stats">
+          <span class="stat">3.8k views</span>
+          <span class="stat">7 likes</span>
+          <span class="stat">1 saves</span>
+        </div>
+      </div>
+    </a>
+    <a href="https://x.com/michaelzsguo/status/2042646016877298063" target="_blank" class="post-card" data-tags="local llm" data-impressions="3717">
+      <div class="post-header">
+        <h3 class="post-title">This report from NYTimes concerns me</h3>
+        <span class="post-date">2026-04-10</span>
+      </div>
+      <p class="post-summary">This report from NYTimes concerns me</p>
+      <div class="post-footer">
+        <div class="post-tags"><span class="tag">Local LLM</span></div>
+        <div class="post-stats">
+          <span class="stat">3.7k views</span>
+          <span class="stat">1 likes</span>
+          <span class="stat">0 saves</span>
+        </div>
+      </div>
+    </a>
+    <a href="https://x.com/michaelzsguo/status/2053512735204257921" target="_blank" class="post-card" data-tags="openai codex" data-impressions="3616">
+      <div class="post-header">
+        <h3 class="post-title">That shouldn’t be</h3>
+        <span class="post-date">2026-05-10</span>
+      </div>
+      <p class="post-summary">That shouldn’t be. The quota between the two are separate</p>
+      <div class="post-footer">
+        <div class="post-tags"><span class="tag">OpenAI</span> <span class="tag">Codex</span></div>
+        <div class="post-stats">
+          <span class="stat">3.6k views</span>
+          <span class="stat">11 likes</span>
+          <span class="stat">0 saves</span>
+        </div>
+      </div>
+    </a>
+    <a href="https://x.com/michaelzsguo/status/2050929262614466737" target="_blank" class="post-card" data-tags="local llm" data-impressions="3572">
+      <div class="post-header">
+        <h3 class="post-title">For many local model beginners, Ollama is the right place...</h3>
+        <span class="post-date">2026-05-03</span>
+      </div>
+      <p class="post-summary">For many local model beginners, Ollama is the right place to start. It is convenient, fast to install, manages models for you, supports hot-swapping, and gives you an API without much setup</p>
+      <div class="post-footer">
+        <div class="post-tags"><span class="tag">Local LLM</span></div>
+        <div class="post-stats">
+          <span class="stat">3.6k views</span>
+          <span class="stat">54 likes</span>
+          <span class="stat">56 saves</span>
+        </div>
+      </div>
+    </a>
+    <a href="https://x.com/michaelzsguo/status/2048191106463187149" target="_blank" class="post-card" data-tags="local llm" data-impressions="3518">
+      <div class="post-header">
+        <h3 class="post-title">Out of stock 😢</h3>
+        <span class="post-date">2026-04-26</span>
+      </div>
+      <p class="post-summary">Out of stock 😢</p>
+      <div class="post-footer">
+        <div class="post-tags"><span class="tag">Local LLM</span></div>
+        <div class="post-stats">
+          <span class="stat">3.5k views</span>
+          <span class="stat">7 likes</span>
+          <span class="stat">1 saves</span>
+        </div>
+      </div>
+    </a>
+    <a href="https://x.com/michaelzsguo/status/2050255739373900162" target="_blank" class="post-card" data-tags="中文 deepseek claude ai agents" data-impressions="3446">
+      <div class="post-header">
+        <h3 class="post-title">好马配好鞍。好的大模型也要配个好的Harness agent。
+
+Deepseek V4又好又便宜。 放在Claude </h3>
+        <span class="post-date">2026-05-01</span>
+      </div>
+      <p class="post-summary">好的大模型也要配个好的Harness agent. Deepseek V4又好又便宜</p>
+      <div class="post-footer">
+        <div class="post-tags"><span class="tag">中文</span> <span class="tag">DeepSeek</span> <span class="tag">Claude</span> <span class="tag">AI Agents</span></div>
+        <div class="post-stats">
+          <span class="stat">3.4k views</span>
+          <span class="stat">12 likes</span>
+          <span class="stat">20 saves</span>
+        </div>
+      </div>
+    </a>
+    <a href="https://x.com/michaelzsguo/status/2045678326568661503" target="_blank" class="post-card" data-tags="中文" data-impressions="3418">
+      <div class="post-header">
+        <h3 class="post-title">哈哈。 谢赛宁深沉老练有见地， 把人生，科研， 艺术串起来讲。做科研也是做人， 不是寻求出人头地， 是帮助别人打开他们的</h3>
+        <span class="post-date">2026-04-19</span>
+      </div>
+      <p class="post-summary">谢赛宁深沉老练有见地， 把人生，科研， 艺术串起来讲. 做科研也是做人， 不是寻求出人头地， 是帮助别人打开他们的事业， 让他们也被理解</p>
+      <div class="post-footer">
+        <div class="post-tags"><span class="tag">中文</span></div>
+        <div class="post-stats">
+          <span class="stat">3.4k views</span>
+          <span class="stat">7 likes</span>
+          <span class="stat">2 saves</span>
+        </div>
+      </div>
+    </a>
+    <a href="https://x.com/michaelzsguo/status/2038178276032569407" target="_blank" class="post-card" data-tags="skills 中文 codex claude" data-impressions="3405">
+      <div class="post-header">
+        <h3 class="post-title">我在我的 Raspberry Pi 上也装上了爱马仕 Hermes 😂</h3>
+        <span class="post-date">2026-03-29</span>
+      </div>
+      <p class="post-summary">我在我的 Raspberry Pi 上也装上了爱马仕 Hermes 😂. 到目前为止我还挺喜欢它的：</p>
+      <div class="post-footer">
+        <div class="post-tags"><span class="tag">Skills</span> <span class="tag">中文</span> <span class="tag">Codex</span> <span class="tag">Claude</span></div>
+        <div class="post-stats">
+          <span class="stat">3.4k views</span>
+          <span class="stat">3 likes</span>
+          <span class="stat">3 saves</span>
+        </div>
+      </div>
+    </a>
+    <a href="https://x.com/michaelzsguo/status/2034595608170807339" target="_blank" class="post-card" data-tags="google 中文 claude" data-impressions="3399">
+      <div class="post-header">
+        <h3 class="post-title">你这么一说， 如果只是想用它的模型， 如果你也有Google Cloud的话，GCP Vertex Model G...</h3>
+        <span class="post-date">2026-03-19</span>
+      </div>
+      <p class="post-summary">你这么一说， 如果只是想用它的模型， 如果你也有Google Cloud的话，GCP Vertex Model Garden也提供Opus/Sonnet， 而且步骤很简单：. 在GCP Model Garden里找到Opus模型， Enable</p>
+      <div class="post-footer">
+        <div class="post-tags"><span class="tag">Google</span> <span class="tag">中文</span> <span class="tag">Claude</span></div>
+        <div class="post-stats">
+          <span class="stat">3.4k views</span>
+          <span class="stat">12 likes</span>
+          <span class="stat">27 saves</span>
+        </div>
+      </div>
+    </a>
+    <a href="https://x.com/michaelzsguo/status/2047107797339512931" target="_blank" class="post-card" data-tags="local llm google" data-impressions="3360">
+      <div class="post-header">
+        <h3 class="post-title">The @AcquiredFM session is, as always, packed with real s...</h3>
+        <span class="post-date">2026-04-23</span>
+      </div>
+      <p class="post-summary">The @AcquiredFM session is, as always, packed with real substance. @JeffDean and Amin Vahdat shared a number of great behind-the-scenes stories: how TPU began, how Google kept innovating through fa...</p>
+      <div class="post-footer">
+        <div class="post-tags"><span class="tag">Local LLM</span> <span class="tag">Google</span></div>
+        <div class="post-stats">
+          <span class="stat">3.4k views</span>
+          <span class="stat">6 likes</span>
+          <span class="stat">4 saves</span>
+        </div>
+      </div>
+    </a>
+    <a href="https://x.com/michaelzsguo/status/2039795654562623936" target="_blank" class="post-card" data-tags="local llm hardware google" data-impressions="3354">
+      <div class="post-header">
+        <h3 class="post-title">Gemma 4 E2B on my raspberry pi 5 (8GB RAM) passed the str...</h3>
+        <span class="post-date">2026-04-02</span>
+      </div>
+      <p class="post-summary">Gemma 4 E2B on my raspberry pi 5 (8GB RAM) passed the strawberry test. congratulations @GoogleAI  @OfficialLoganK</p>
+      <div class="post-footer">
+        <div class="post-tags"><span class="tag">Local LLM</span> <span class="tag">Hardware</span> <span class="tag">Google</span></div>
+        <div class="post-stats">
+          <span class="stat">3.4k views</span>
+          <span class="stat">4 likes</span>
+          <span class="stat">2 saves</span>
+        </div>
+      </div>
+    </a>
+    <a href="https://x.com/michaelzsguo/status/2040113752020808190" target="_blank" class="post-card" data-tags="google 中文" data-impressions="3263">
+      <div class="post-header">
+        <h3 class="post-title">未来的模型会在本地运行</h3>
+        <span class="post-date">2026-04-03</span>
+      </div>
+      <p class="post-summary">未来的模型会在本地运行. 即使它们没有很多闭源模型的能力，但很多日常用例，比如查询、文章总结、定时任务等，其实都用不着那么大的模型</p>
+      <div class="post-footer">
+        <div class="post-tags"><span class="tag">Google</span> <span class="tag">中文</span></div>
+        <div class="post-stats">
+          <span class="stat">3.3k views</span>
+          <span class="stat">9 likes</span>
+          <span class="stat">2 saves</span>
+        </div>
+      </div>
+    </a>
+    <a href="https://x.com/michaelzsguo/status/2045340862612226351" target="_blank" class="post-card" data-tags="local llm google" data-impressions="3217">
+      <div class="post-header">
+        <h3 class="post-title">Gemma 4 is so powerful, I built an AI stylist runs 100% l...</h3>
+        <span class="post-date">2026-04-18</span>
+      </div>
+      <p class="post-summary">Gemma 4 is so powerful, I built an AI stylist runs 100% locally with Gemma 4 26B</p>
+      <div class="post-footer">
+        <div class="post-tags"><span class="tag">Local LLM</span> <span class="tag">Google</span></div>
+        <div class="post-stats">
+          <span class="stat">3.2k views</span>
+          <span class="stat">9 likes</span>
+          <span class="stat">2 saves</span>
+        </div>
+      </div>
+    </a>
+    <a href="https://x.com/michaelzsguo/status/2035029272071434406" target="_blank" class="post-card" data-tags="中文" data-impressions="3216">
+      <div class="post-header">
+        <h3 class="post-title">30年后， 当已经控制人类的AI记述这段历史，口口口口（此处省略500字）</h3>
+        <span class="post-date">2026-03-20</span>
+      </div>
+      <p class="post-summary">30年后， 当已经控制人类的AI记述这段历史，口口口口（此处省略500字）</p>
+      <div class="post-footer">
+        <div class="post-tags"><span class="tag">中文</span></div>
+        <div class="post-stats">
+          <span class="stat">3.2k views</span>
+          <span class="stat">2 likes</span>
+          <span class="stat">0 saves</span>
+        </div>
+      </div>
+    </a>
+    <a href="https://x.com/michaelzsguo/status/2058592217258770512" target="_blank" class="post-card" data-tags="local llm remote dev ai agents" data-impressions="3205">
+      <div class="post-header">
+        <h3 class="post-title">Multiplayer Claude Code: Remote Collaboration Setup</h3>
+        <span class="post-date">2026-05-24</span>
+      </div>
+      <p class="post-summary">Imagine PMs and engineers all seeing the same session and collaborating with the same agent. Or imagine you have a coding agent running on a cloud VM, and you want to remote-control it from your phone</p>
+      <div class="post-footer">
+        <div class="post-tags"><span class="tag">Local LLM</span> <span class="tag">Remote Dev</span> <span class="tag">AI Agents</span></div>
+        <div class="post-stats">
+          <span class="stat">3.2k views</span>
+          <span class="stat">12 likes</span>
+          <span class="stat">20 saves</span>
+        </div>
+      </div>
+    </a>
+    <a href="https://x.com/michaelzsguo/status/2035417534959100322" target="_blank" class="post-card" data-tags="中文" data-impressions="3203">
+      <div class="post-header">
+        <h3 class="post-title">一两拨千金的小技巧</h3>
+        <span class="post-date">2026-03-21</span>
+      </div>
+      <p class="post-summary"></p>
+      <div class="post-footer">
+        <div class="post-tags"><span class="tag">中文</span></div>
+        <div class="post-stats">
+          <span class="stat">3.2k views</span>
+          <span class="stat">0 likes</span>
+          <span class="stat">0 saves</span>
+        </div>
+      </div>
+    </a>
+    <a href="https://x.com/michaelzsguo/status/2048966649982669053" target="_blank" class="post-card" data-tags="local llm 中文 codex" data-impressions="3198">
+      <div class="post-header">
+        <h3 class="post-title">照猫画虎， 我也做了一个</h3>
+        <span class="post-date">2026-04-28</span>
+      </div>
+      <p class="post-summary">照猫画虎， 我也做了一个. 还可以再优化， 但codex credit用没了</p>
+      <div class="post-footer">
+        <div class="post-tags"><span class="tag">Local LLM</span> <span class="tag">中文</span> <span class="tag">Codex</span></div>
+        <div class="post-stats">
+          <span class="stat">3.2k views</span>
+          <span class="stat">26 likes</span>
+          <span class="stat">24 saves</span>
+        </div>
+      </div>
+    </a>
+    <a href="https://x.com/michaelzsguo/status/2051274073708093446" target="_blank" class="post-card" data-tags="ai" data-impressions="3180">
+      <div class="post-header">
+        <h3 class="post-title">Long $amzn with Ai and robotics, Amazon will always be at...</h3>
+        <span class="post-date">2026-05-04</span>
+      </div>
+      <p class="post-summary">Long $amzn with Ai and robotics, Amazon will always be at its best to innovate and create values for their customers</p>
+      <div class="post-footer">
+        <div class="post-tags"><span class="tag">AI</span></div>
+        <div class="post-stats">
+          <span class="stat">3.2k views</span>
+          <span class="stat">5 likes</span>
+          <span class="stat">0 saves</span>
+        </div>
+      </div>
+    </a>
+    <a href="https://x.com/michaelzsguo/status/2044442737357754634" target="_blank" class="post-card" data-tags="中文" data-impressions="3166">
+      <div class="post-header">
+        <h3 class="post-title">你的这个总结很到位： AI的工程素养</h3>
+        <span class="post-date">2026-04-15</span>
+      </div>
+      <p class="post-summary">你的这个总结很到位： AI的工程素养. 到头来， 除了工具本身， 也反映了使用工具的人的素养， taste和judgement</p>
+      <div class="post-footer">
+        <div class="post-tags"><span class="tag">中文</span></div>
+        <div class="post-stats">
+          <span class="stat">3.2k views</span>
+          <span class="stat">4 likes</span>
+          <span class="stat">1 saves</span>
+        </div>
+      </div>
+    </a>
+    <a href="https://x.com/michaelzsguo/status/2045631013171192114" target="_blank" class="post-card" data-tags="local llm 中文" data-impressions="3139">
+      <div class="post-header">
+        <h3 class="post-title">刚刚被弹出这个。看样子我就不upgrade了？😂😂</h3>
+        <span class="post-date">2026-04-18</span>
+      </div>
+      <p class="post-summary">看样子我就不upgrade了？😂😂</p>
+      <div class="post-footer">
+        <div class="post-tags"><span class="tag">Local LLM</span> <span class="tag">中文</span></div>
+        <div class="post-stats">
+          <span class="stat">3.1k views</span>
+          <span class="stat">0 likes</span>
+          <span class="stat">0 saves</span>
+        </div>
+      </div>
+    </a>
+    <a href="https://x.com/michaelzsguo/status/2039150005886263581" target="_blank" class="post-card" data-tags="claude" data-impressions="3138">
+      <div class="post-header">
+        <h3 class="post-title">Anthropic's Claude Code source leaked this morning</h3>
+        <span class="post-date">2026-04-01</span>
+      </div>
+      <p class="post-summary">Anthropic's Claude Code source leaked this morning. The internet has been studying it all day</p>
+      <div class="post-footer">
+        <div class="post-tags"><span class="tag">Claude</span></div>
+        <div class="post-stats">
+          <span class="stat">3.1k views</span>
+          <span class="stat">11 likes</span>
+          <span class="stat">17 saves</span>
+        </div>
+      </div>
+    </a>
+    <a href="https://x.com/michaelzsguo/status/2044500138102509984" target="_blank" class="post-card" data-tags="local llm" data-impressions="3135">
+      <div class="post-header">
+        <h3 class="post-title">This is happening everywhere</h3>
+        <span class="post-date">2026-04-15</span>
+      </div>
+      <p class="post-summary">This is happening everywhere. The real question for this budget cycle is whether CTOs are ready to explain that gap clearly to their CEOs and CFOs, and to lay out a credible plan for when and how A...</p>
+      <div class="post-footer">
+        <div class="post-tags"><span class="tag">Local LLM</span></div>
+        <div class="post-stats">
+          <span class="stat">3.1k views</span>
+          <span class="stat">19 likes</span>
+          <span class="stat">1 saves</span>
+        </div>
+      </div>
+    </a>
+    <a href="https://x.com/michaelzsguo/status/2048163857383018757" target="_blank" class="post-card" data-tags="google" data-impressions="3101">
+      <div class="post-header">
+        <h3 class="post-title">At this week’s Google Cloud Next, I heard many people sha...</h3>
+        <span class="post-date">2026-04-25</span>
+      </div>
+      <p class="post-summary">At this week’s Google Cloud Next, I heard many people share the same view: this thing has to work. Otherwise, given the enormous amount of capital pulled into this cycle, the fallout will not be li...</p>
+      <div class="post-footer">
+        <div class="post-tags"><span class="tag">Google</span></div>
+        <div class="post-stats">
+          <span class="stat">3.1k views</span>
+          <span class="stat">10 likes</span>
+          <span class="stat">1 saves</span>
+        </div>
+      </div>
+    </a>
+    <a href="https://x.com/michaelzsguo/status/2037258599907438795" target="_blank" class="post-card" data-tags="local llm 中文" data-impressions="3076">
+      <div class="post-header">
+        <h3 class="post-title">美国人经常怀念那个时代：战后制造业发达， 房价（利率）低只有年收入的2-3倍（现在差不多7-8倍），学费低（只要几...</h3>
+        <span class="post-date">2026-03-26</span>
+      </div>
+      <p class="post-summary">美国人经常怀念那个时代：战后制造业发达， 房价（利率）低只有年收入的2-3倍（现在差不多7-8倍），学费低（只要几百美金），医疗保险也低，有庞大的中产阶级</p>
+      <div class="post-footer">
+        <div class="post-tags"><span class="tag">Local LLM</span> <span class="tag">中文</span></div>
+        <div class="post-stats">
+          <span class="stat">3.1k views</span>
+          <span class="stat">16 likes</span>
+          <span class="stat">1 saves</span>
+        </div>
+      </div>
+    </a>
+    <a href="https://x.com/michaelzsguo/status/2050508385552863427" target="_blank" class="post-card" data-tags="ai" data-impressions="3061">
+      <div class="post-header">
+        <h3 class="post-title">Great addition</h3>
+        <span class="post-date">2026-05-02</span>
+      </div>
+      <p class="post-summary">Great addition</p>
+      <div class="post-footer">
+        <div class="post-tags"><span class="tag">AI</span></div>
+        <div class="post-stats">
+          <span class="stat">3.1k views</span>
+          <span class="stat">4 likes</span>
+          <span class="stat">1 saves</span>
+        </div>
+      </div>
+    </a>
+    <a href="https://x.com/michaelzsguo/status/2037704701743964395" target="_blank" class="post-card" data-tags="skills 中文 claude ai agents" data-impressions="3040">
+      <div class="post-header">
+        <h3 class="post-title">我知道，你的 Claude Code 会写代码</h3>
+        <span class="post-date">2026-03-28</span>
+      </div>
+      <p class="post-summary">我知道，你的 Claude Code 会写代码. 我刚给我的 agent 装了一套鸡尾酒Skill包，所以它现在不但能帮我做 Old Fashioned，原则上还可以带我做一整套经典鸡尾酒</p>
+      <div class="post-footer">
+        <div class="post-tags"><span class="tag">Skills</span> <span class="tag">中文</span> <span class="tag">Claude</span> <span class="tag">AI Agents</span></div>
+        <div class="post-stats">
+          <span class="stat">3.0k views</span>
+          <span class="stat">1 likes</span>
+          <span class="stat">2 saves</span>
+        </div>
+      </div>
+    </a>
+    <a href="https://x.com/michaelzsguo/status/2052845590510252278" target="_blank" class="post-card" data-tags="中文" data-impressions="3003">
+      <div class="post-header">
+        <h3 class="post-title">其实CLI不是真的CLI， 就是在Terminal上chat 哈哈哈</h3>
+        <span class="post-date">2026-05-08</span>
+      </div>
+      <p class="post-summary">其实CLI不是真的CLI， 就是在Terminal上chat 哈哈哈</p>
+      <div class="post-footer">
+        <div class="post-tags"><span class="tag">中文</span></div>
+        <div class="post-stats">
+          <span class="stat">3.0k views</span>
+          <span class="stat">5 likes</span>
+          <span class="stat">1 saves</span>
+        </div>
+      </div>
+    </a>
+    <a href="https://x.com/michaelzsguo/status/2039841497093230706" target="_blank" class="post-card" data-tags="local llm 中文" data-impressions="2992">
+      <div class="post-header">
+        <h3 class="post-title">我给我的树莓派装上了他们今天发布的最小款 Gemmi E2B， 居然通过了草莓🍓里有几个R的测试</h3>
+        <span class="post-date">2026-04-02</span>
+      </div>
+      <p class="post-summary">我给我的树莓派装上了他们今天发布的最小款 Gemmi E2B， 居然通过了草莓🍓里有几个R的测试. 看它小心翼翼给R做标记的做法很好玩</p>
+      <div class="post-footer">
+        <div class="post-tags"><span class="tag">Local LLM</span> <span class="tag">中文</span></div>
+        <div class="post-stats">
+          <span class="stat">3.0k views</span>
+          <span class="stat">6 likes</span>
+          <span class="stat">0 saves</span>
+        </div>
+      </div>
+    </a>
+    <a href="https://x.com/michaelzsguo/status/2041332279214051818" target="_blank" class="post-card" data-tags="local llm" data-impressions="2987">
+      <div class="post-header">
+        <h3 class="post-title">It is actually mind blowing how NASA can calculate the tr...</h3>
+        <span class="post-date">2026-04-07</span>
+      </div>
+      <p class="post-summary">It is actually mind blowing how NASA can calculate the trajectory and solve this n-body equation of motion:</p>
+      <div class="post-footer">
+        <div class="post-tags"><span class="tag">Local LLM</span></div>
+        <div class="post-stats">
+          <span class="stat">3.0k views</span>
+          <span class="stat">34 likes</span>
+          <span class="stat">3 saves</span>
+        </div>
+      </div>
+    </a>
+    <a href="https://x.com/michaelzsguo/status/2035723417308045458" target="_blank" class="post-card" data-tags="local llm ai tools ai agents 中文" data-impressions="2951">
+      <div class="post-header">
+        <h3 class="post-title">国内被CC封号困扰的同学，可以尝试Pi + Kimi K2</h3>
+        <span class="post-date">2026-03-22</span>
+      </div>
+      <p class="post-summary">国内被CC封号困扰的同学，可以尝试Pi + Kimi K2. Pi Coding Agent是支持Openclaw小龙虾的基座，Agent感很丝滑</p>
+      <div class="post-footer">
+        <div class="post-tags"><span class="tag">Local LLM</span> <span class="tag">AI Tools</span> <span class="tag">AI Agents</span> <span class="tag">中文</span></div>
+        <div class="post-stats">
+          <span class="stat">3.0k views</span>
+          <span class="stat">1 likes</span>
+          <span class="stat">6 saves</span>
+        </div>
+      </div>
+    </a>
+    <a href="https://x.com/michaelzsguo/status/2036443037597851889" target="_blank" class="post-card" data-tags="local llm 中文" data-impressions="2946">
+      <div class="post-header">
+        <h3 class="post-title">和它聊天稍微有点困难😂对比同样教育目的的Kaparthy的nanochat</h3>
+        <span class="post-date">2026-03-24</span>
+      </div>
+      <p class="post-summary">和它聊天稍微有点困难😂对比同样教育目的的Kaparthy的nanochat</p>
+      <div class="post-footer">
+        <div class="post-tags"><span class="tag">Local LLM</span> <span class="tag">中文</span></div>
+        <div class="post-stats">
+          <span class="stat">2.9k views</span>
+          <span class="stat">10 likes</span>
+          <span class="stat">8 saves</span>
+        </div>
+      </div>
+    </a>
+    <a href="https://x.com/michaelzsguo/status/2040625612222591263" target="_blank" class="post-card" data-tags="中文" data-impressions="2944">
+      <div class="post-header">
+        <h3 class="post-title">关键是干正经事😀
+
+如果是不干正经事也算的话， Grok还是很不错的辅助学习工具，尤其是在X上用， 针对当前的Post和</h3>
+        <span class="post-date">2026-04-05</span>
+      </div>
+      <p class="post-summary">如果是不干正经事也算的话， Grok还是很不错的辅助学习工具，尤其是在X上用， 针对当前的Post和replies， 检索过往的</p>
+      <div class="post-footer">
+        <div class="post-tags"><span class="tag">中文</span></div>
+        <div class="post-stats">
+          <span class="stat">2.9k views</span>
+          <span class="stat">3 likes</span>
+          <span class="stat">0 saves</span>
+        </div>
+      </div>
+    </a>
+    <a href="https://x.com/michaelzsguo/status/2042753552976638305" target="_blank" class="post-card" data-tags="openai local llm 中文" data-impressions="2943">
+      <div class="post-header">
+        <h3 class="post-title">嫌犯已经被抓住了。 他后来又回到OpenAI总部继续闹事， 估计是豁出去了。</h3>
+        <span class="post-date">2026-04-10</span>
+      </div>
+      <p class="post-summary">他后来又回到OpenAI总部继续闹事， 估计是豁出去了</p>
+      <div class="post-footer">
+        <div class="post-tags"><span class="tag">OpenAI</span> <span class="tag">Local LLM</span> <span class="tag">中文</span></div>
+        <div class="post-stats">
+          <span class="stat">2.9k views</span>
+          <span class="stat">8 likes</span>
+          <span class="stat">0 saves</span>
+        </div>
+      </div>
+    </a>
+    <a href="https://x.com/michaelzsguo/status/2042766050979201426" target="_blank" class="post-card" data-tags="local llm" data-impressions="2938">
+      <div class="post-header">
+        <h3 class="post-title">1 hour 40 minutes in, and they still haven’t extracted th...</h3>
+        <span class="post-date">2026-04-11</span>
+      </div>
+      <p class="post-summary">1 hour 40 minutes in, and they still haven’t extracted the astronauts. @elonmusk why aren’t they using a SpaceX recovery vessel? I thought SpaceX was much faster at this</p>
+      <div class="post-footer">
+        <div class="post-tags"><span class="tag">Local LLM</span></div>
+        <div class="post-stats">
+          <span class="stat">2.9k views</span>
+          <span class="stat">2 likes</span>
+          <span class="stat">0 saves</span>
+        </div>
+      </div>
+    </a>
+    <a href="https://x.com/michaelzsguo/status/2058593279529083012" target="_blank" class="post-card" data-tags="local llm remote dev" data-impressions="2934">
+      <div class="post-header">
+        <h3 class="post-title">use tmux + ttyd + tailscale also gives you remote-control...</h3>
+        <span class="post-date">2026-05-24</span>
+      </div>
+      <p class="post-summary">use tmux + ttyd + tailscale also gives you remote-control and multiplayer system</p>
+      <div class="post-footer">
+        <div class="post-tags"><span class="tag">Local LLM</span> <span class="tag">Remote Dev</span></div>
+        <div class="post-stats">
+          <span class="stat">2.9k views</span>
+          <span class="stat">13 likes</span>
+          <span class="stat">40 saves</span>
+        </div>
+      </div>
+    </a>
+    <a href="https://x.com/michaelzsguo/status/2045210477345566754" target="_blank" class="post-card" data-tags="local llm 中文" data-impressions="2924">
+      <div class="post-header">
+        <h3 class="post-title">它把曾经爆火的Remotion也给替换了</h3>
+        <span class="post-date">2026-04-17</span>
+      </div>
+      <p class="post-summary">它把曾经爆火的Remotion也给替换了</p>
+      <div class="post-footer">
+        <div class="post-tags"><span class="tag">Local LLM</span> <span class="tag">中文</span></div>
+        <div class="post-stats">
+          <span class="stat">2.9k views</span>
+          <span class="stat">0 likes</span>
+          <span class="stat">2 saves</span>
+        </div>
+      </div>
+    </a>
+    <a href="https://x.com/michaelzsguo/status/2041614148165890357" target="_blank" class="post-card" data-tags="local llm 中文" data-impressions="2893">
+      <div class="post-header">
+        <h3 class="post-title">我也是前不久刚迁到爱马仕上</h3>
+        <span class="post-date">2026-04-07</span>
+      </div>
+      <p class="post-summary">我也是前不久刚迁到爱马仕上</p>
+      <div class="post-footer">
+        <div class="post-tags"><span class="tag">Local LLM</span> <span class="tag">中文</span></div>
+        <div class="post-stats">
+          <span class="stat">2.9k views</span>
+          <span class="stat">2 likes</span>
+          <span class="stat">4 saves</span>
+        </div>
+      </div>
+    </a>
+    <a href="https://x.com/michaelzsguo/status/2035144358719099242" target="_blank" class="post-card" data-tags="中文" data-impressions="2893">
+      <div class="post-header">
+        <h3 class="post-title">看你怎么算盈亏，他们三个月估值从43亿美金到今天的180亿美金，我看他们赢不少</h3>
+        <span class="post-date">2026-03-21</span>
+      </div>
+      <p class="post-summary">看你怎么算盈亏，他们三个月估值从43亿美金到今天的180亿美金，我看他们赢不少</p>
+      <div class="post-footer">
+        <div class="post-tags"><span class="tag">中文</span></div>
+        <div class="post-stats">
+          <span class="stat">2.9k views</span>
+          <span class="stat">16 likes</span>
+          <span class="stat">0 saves</span>
+        </div>
+      </div>
+    </a>
+    <a href="https://x.com/michaelzsguo/status/2051331076644024336" target="_blank" class="post-card" data-tags="codex ai agents" data-impressions="2880">
+      <div class="post-header">
+        <h3 class="post-title">Thanks for sharing</h3>
+        <span class="post-date">2026-05-04</span>
+      </div>
+      <p class="post-summary">Thanks for sharing. Indeed a hassle for codex and I had to submit a PR for tool call for vibearound</p>
+      <div class="post-footer">
+        <div class="post-tags"><span class="tag">Codex</span> <span class="tag">AI Agents</span></div>
+        <div class="post-stats">
+          <span class="stat">2.9k views</span>
+          <span class="stat">4 likes</span>
+          <span class="stat">2 saves</span>
+        </div>
+      </div>
+    </a>
+    <a href="https://x.com/michaelzsguo/status/2037585983995027830" target="_blank" class="post-card" data-tags="local llm" data-impressions="2854">
+      <div class="post-header">
+        <h3 class="post-title">wow this is a brilliant project, but how do you plan to k...</h3>
+        <span class="post-date">2026-03-27</span>
+      </div>
+      <p class="post-summary">wow this is a brilliant project, but how do you plan to keep with their release calendar like this?</p>
+      <div class="post-footer">
+        <div class="post-tags"><span class="tag">Local LLM</span></div>
+        <div class="post-stats">
+          <span class="stat">2.9k views</span>
+          <span class="stat">8 likes</span>
+          <span class="stat">1 saves</span>
+        </div>
+      </div>
+    </a>
+    <a href="https://x.com/michaelzsguo/status/2046374446512886029" target="_blank" class="post-card" data-tags="local llm 中文" data-impressions="2814">
+      <div class="post-header">
+        <h3 class="post-title">年轻还有魅力占了很大的优势😀</h3>
+        <span class="post-date">2026-04-20</span>
+      </div>
+      <p class="post-summary">年轻还有魅力占了很大的优势😀</p>
+      <div class="post-footer">
+        <div class="post-tags"><span class="tag">Local LLM</span> <span class="tag">中文</span></div>
+        <div class="post-stats">
+          <span class="stat">2.8k views</span>
+          <span class="stat">2 likes</span>
+          <span class="stat">1 saves</span>
+        </div>
+      </div>
+    </a>
+    <a href="https://x.com/michaelzsguo/status/2051083382948307400" target="_blank" class="post-card" data-tags="local llm 中文 hardware" data-impressions="2799">
+      <div class="post-header">
+        <h3 class="post-title">xAI 被报道的 GPU MFU (Model FLOPs Utilization) 只有 11%，乍一听很尴尬</h3>
+        <span class="post-date">2026-05-03</span>
+      </div>
+      <p class="post-summary">xAI 被报道的 GPU MFU (Model FLOPs Utilization) 只有 11%，乍一听很尴尬. 但更有意思的是，这个数字可能已经好过市场上很多 GPU 使用场景了</p>
+      <div class="post-footer">
+        <div class="post-tags"><span class="tag">Local LLM</span> <span class="tag">中文</span> <span class="tag">Hardware</span></div>
+        <div class="post-stats">
+          <span class="stat">2.8k views</span>
+          <span class="stat">9 likes</span>
+          <span class="stat">5 saves</span>
+        </div>
+      </div>
+    </a>
+    <a href="https://x.com/michaelzsguo/status/2055425401929834689" target="_blank" class="post-card" data-tags="skills codex deepseek claude" data-impressions="2776">
+      <div class="post-header">
+        <h3 class="post-title">for the deepseek that I used to pursue /goal, that would ...</h3>
+        <span class="post-date">2026-05-15</span>
+      </div>
+      <p class="post-summary">for the deepseek that I used to pursue /goal, that would be the deepseek v4 pro in the cloud. I can use it inside codex (or claude code)</p>
+      <div class="post-footer">
+        <div class="post-tags"><span class="tag">Skills</span> <span class="tag">Codex</span> <span class="tag">DeepSeek</span> <span class="tag">Claude</span></div>
+        <div class="post-stats">
+          <span class="stat">2.8k views</span>
+          <span class="stat">12 likes</span>
+          <span class="stat">35 saves</span>
+        </div>
+      </div>
+    </a>
+    <a href="https://x.com/michaelzsguo/status/2048516949030670453" target="_blank" class="post-card" data-tags="openai 中文 qwen claude" data-impressions="2776">
+      <div class="post-header">
+        <h3 class="post-title">用 @HiTw93 的 Kami + ChatGPT Image 2，我做了一张把 Gemma、Qwen 和 Op...</h3>
+        <span class="post-date">2026-04-26</span>
+      </div>
+      <p class="post-summary">用 @HiTw93 的 Kami + ChatGPT Image 2，我做了一张把 Gemma、Qwen 和 Opus 的 coding design 测试，映射成一场 50K UTMB 越野赛的图</p>
+      <div class="post-footer">
+        <div class="post-tags"><span class="tag">OpenAI</span> <span class="tag">中文</span> <span class="tag">Qwen</span> <span class="tag">Claude</span></div>
+        <div class="post-stats">
+          <span class="stat">2.8k views</span>
+          <span class="stat">5 likes</span>
+          <span class="stat">1 saves</span>
+        </div>
+      </div>
+    </a>
+    <a href="https://x.com/michaelzsguo/status/2035386265130914210" target="_blank" class="post-card" data-tags="中文" data-impressions="2775">
+      <div class="post-header">
+        <h3 class="post-title">我很喜欢这个哥们儿的一个测试：“鹈鹕测试”（Pelican Test），他每次遇到新大模型时都会用完全相同的提示词...</h3>
+        <span class="post-date">2026-03-21</span>
+      </div>
+      <p class="post-summary">我很喜欢这个哥们儿的一个测试：“鹈鹕测试”（Pelican Test），他每次遇到新大模型时都会用完全相同的提示词进行测试：“Generate an SVG of a pelican riding a bicycle”（生成一只骑自行车的鹈鹕的SVG图像）. 这个提示简单却极具挑战性</p>
+      <div class="post-footer">
+        <div class="post-tags"><span class="tag">中文</span></div>
+        <div class="post-stats">
+          <span class="stat">2.8k views</span>
+          <span class="stat">14 likes</span>
+          <span class="stat">18 saves</span>
+        </div>
+      </div>
+    </a>
+    <a href="https://x.com/michaelzsguo/status/2052461375062966582" target="_blank" class="post-card" data-tags="local llm" data-impressions="2757">
+      <div class="post-header">
+        <h3 class="post-title">hope this is not true</h3>
+        <span class="post-date">2026-05-07</span>
+      </div>
+      <p class="post-summary">hope this is not true</p>
+      <div class="post-footer">
+        <div class="post-tags"><span class="tag">Local LLM</span></div>
+        <div class="post-stats">
+          <span class="stat">2.8k views</span>
+          <span class="stat">7 likes</span>
+          <span class="stat">1 saves</span>
+        </div>
+      </div>
+    </a>
+    <a href="https://x.com/michaelzsguo/status/2052543653319446627" target="_blank" class="post-card" data-tags="local llm 中文 qwen" data-impressions="2735">
+      <div class="post-header">
+        <h3 class="post-title">Nathan Lambert 是美国开放模型阵营里比较重要的技术型公共写作者</h3>
+        <span class="post-date">2026-05-08</span>
+      </div>
+      <p class="post-summary">Nathan Lambert 是美国开放模型阵营里比较重要的技术型公共写作者. 他刚刚在中国访问了多家领先 AI Lab，包括 Moonshot、Zhipu / 、Meituan、Xiaomi、Qwen、Ant Ling、，也提到在北京短时间内走访了 Alibaba</p>
+      <div class="post-footer">
+        <div class="post-tags"><span class="tag">Local LLM</span> <span class="tag">中文</span> <span class="tag">Qwen</span></div>
+        <div class="post-stats">
+          <span class="stat">2.7k views</span>
+          <span class="stat">10 likes</span>
+          <span class="stat">5 saves</span>
+        </div>
+      </div>
+    </a>
+    <a href="https://x.com/michaelzsguo/status/2042314442486984955" target="_blank" class="post-card" data-tags="local llm claude" data-impressions="2716">
+      <div class="post-header">
+        <h3 class="post-title">so Claude code build who-wants-to-be-a-millionaire lifeline</h3>
+        <span class="post-date">2026-04-09</span>
+      </div>
+      <p class="post-summary">so Claude code build who-wants-to-be-a-millionaire lifeline</p>
+      <div class="post-footer">
+        <div class="post-tags"><span class="tag">Local LLM</span> <span class="tag">Claude</span></div>
+        <div class="post-stats">
+          <span class="stat">2.7k views</span>
+          <span class="stat">10 likes</span>
+          <span class="stat">0 saves</span>
+        </div>
+      </div>
+    </a>
+    <a href="https://x.com/michaelzsguo/status/2042426658196484484" target="_blank" class="post-card" data-tags="中文 claude" data-impressions="2711">
+      <div class="post-header">
+        <h3 class="post-title">然后Mythos是10T参数， 比Opus又多了一倍</h3>
+        <span class="post-date">2026-04-10</span>
+      </div>
+      <p class="post-summary">然后Mythos是10T参数， 比Opus又多了一倍. Scaling law仍在继续</p>
+      <div class="post-footer">
+        <div class="post-tags"><span class="tag">中文</span> <span class="tag">Claude</span></div>
+        <div class="post-stats">
+          <span class="stat">2.7k views</span>
+          <span class="stat">5 likes</span>
+          <span class="stat">0 saves</span>
+        </div>
+      </div>
+    </a>
+    <a href="https://x.com/michaelzsguo/status/2052670711118938309" target="_blank" class="post-card" data-tags="openai local llm" data-impressions="2707">
+      <div class="post-header">
+        <h3 class="post-title">OpenAI also released a realtime translation API today whi...</h3>
+        <span class="post-date">2026-05-08</span>
+      </div>
+      <p class="post-summary">OpenAI also released a realtime translation API today which may help with tuwa</p>
+      <div class="post-footer">
+        <div class="post-tags"><span class="tag">OpenAI</span> <span class="tag">Local LLM</span></div>
+        <div class="post-stats">
+          <span class="stat">2.7k views</span>
+          <span class="stat">5 likes</span>
+          <span class="stat">5 saves</span>
+        </div>
+      </div>
+    </a>
+    <a href="https://x.com/michaelzsguo/status/2035165274651959382" target="_blank" class="post-card" data-tags="中文" data-impressions="2699">
+      <div class="post-header">
+        <h3 class="post-title">的确是这样。</h3>
+        <span class="post-date">2026-03-21</span>
+      </div>
+      <p class="post-summary"></p>
+      <div class="post-footer">
+        <div class="post-tags"><span class="tag">中文</span></div>
+        <div class="post-stats">
+          <span class="stat">2.7k views</span>
+          <span class="stat">1 likes</span>
+          <span class="stat">0 saves</span>
+        </div>
+      </div>
+    </a>
+    <a href="https://x.com/michaelzsguo/status/2043808016022020318" target="_blank" class="post-card" data-tags="local llm hardware ai agents" data-impressions="2653">
+      <div class="post-header">
+        <h3 class="post-title">hermes: MacOS</h3>
+        <span class="post-date">2026-04-13</span>
+      </div>
+      <p class="post-summary">hermes: MacOS. openclaw: Windows</p>
+      <div class="post-footer">
+        <div class="post-tags"><span class="tag">Local LLM</span> <span class="tag">Hardware</span> <span class="tag">AI Agents</span></div>
+        <div class="post-stats">
+          <span class="stat">2.7k views</span>
+          <span class="stat">3 likes</span>
+          <span class="stat">0 saves</span>
+        </div>
+      </div>
+    </a>
+    <a href="https://x.com/michaelzsguo/status/2057113017213395326" target="_blank" class="post-card" data-tags="中文 deepseek claude remote dev" data-impressions="2649">
+      <div class="post-header">
+        <h3 class="post-title">昨天测试用本地模型跑 Helio，发现 Helio 和一般的 Agent 不太一样</h3>
+        <span class="post-date">2026-05-20</span>
+      </div>
+      <p class="post-summary">昨天测试用本地模型跑 Helio，发现 Helio 和一般的 Agent 不太一样. 它会把模型 API 和 API Token 都存储在自己的云端，所以我不得不用 Tailscale Funnel 提供一个公开 API，而不能直接用本地的 127</p>
+      <div class="post-footer">
+        <div class="post-tags"><span class="tag">中文</span> <span class="tag">DeepSeek</span> <span class="tag">Claude</span> <span class="tag">Remote Dev</span></div>
+        <div class="post-stats">
+          <span class="stat">2.6k views</span>
+          <span class="stat">10 likes</span>
+          <span class="stat">5 saves</span>
+        </div>
+      </div>
+    </a>
+    <a href="https://x.com/michaelzsguo/status/2055820186519789589" target="_blank" class="post-card" data-tags="中文 claude codex deepseek" data-impressions="2598">
+      <div class="post-header">
+        <h3 class="post-title">他当时我就想问：为什么不直接用codex或者Claude code，底下大模型可以用DeepSeek</h3>
+        <span class="post-date">2026-05-17</span>
+      </div>
+      <p class="post-summary">他当时我就想问：为什么不直接用codex或者Claude code，底下大模型可以用DeepSeek</p>
+      <div class="post-footer">
+        <div class="post-tags"><span class="tag">中文</span> <span class="tag">Claude</span> <span class="tag">Codex</span> <span class="tag">DeepSeek</span></div>
+        <div class="post-stats">
+          <span class="stat">2.6k views</span>
+          <span class="stat">7 likes</span>
+          <span class="stat">0 saves</span>
+        </div>
+      </div>
+    </a>
+    <a href="https://x.com/michaelzsguo/status/2055588840513929383" target="_blank" class="post-card" data-tags="ai" data-impressions="2560">
+      <div class="post-header">
+        <h3 class="post-title">I use vibearound</h3>
+        <span class="post-date">2026-05-16</span>
+      </div>
+      <p class="post-summary">I use vibearound. I actually submittedd a PR fixing the tool call issue</p>
+      <div class="post-footer">
+        <div class="post-tags"><span class="tag">AI</span></div>
+        <div class="post-stats">
+          <span class="stat">2.6k views</span>
+          <span class="stat">2 likes</span>
+          <span class="stat">2 saves</span>
+        </div>
+      </div>
+    </a>
+    <a href="https://x.com/michaelzsguo/status/2038229441898262778" target="_blank" class="post-card" data-tags="local llm 中文" data-impressions="2546">
+      <div class="post-header">
+        <h3 class="post-title">这个太酷了， 还有这个例子：</h3>
+        <span class="post-date">2026-03-29</span>
+      </div>
+      <p class="post-summary">这个太酷了， 还有这个例子：</p>
+      <div class="post-footer">
+        <div class="post-tags"><span class="tag">Local LLM</span> <span class="tag">中文</span></div>
+        <div class="post-stats">
+          <span class="stat">2.5k views</span>
+          <span class="stat">4 likes</span>
+          <span class="stat">1 saves</span>
+        </div>
+      </div>
+    </a>
+    <a href="https://x.com/michaelzsguo/status/2051845956912509243" target="_blank" class="post-card" data-tags="local llm hardware llm internals google" data-impressions="2544">
+      <div class="post-header">
+        <h3 class="post-title">My MIG (Multi-Instances GPU) setup came just in time for ...</h3>
+        <span class="post-date">2026-05-06</span>
+      </div>
+      <p class="post-summary">My MIG (Multi-Instances GPU) setup came just in time for testing Gemma 4 with MTP. The nice part of MIG is that I can run two isolated inference tenants on the same A100: one Gemma 4 baseline, one ...</p>
+      <div class="post-footer">
+        <div class="post-tags"><span class="tag">Local LLM</span> <span class="tag">Hardware</span> <span class="tag">LLM Internals</span> <span class="tag">Google</span></div>
+        <div class="post-stats">
+          <span class="stat">2.5k views</span>
+          <span class="stat">9 likes</span>
+          <span class="stat">4 saves</span>
+        </div>
+      </div>
+    </a>
+    <a href="https://x.com/michaelzsguo/status/2036601630456430904" target="_blank" class="post-card" data-tags="local llm claude ai agents" data-impressions="2484">
+      <div class="post-header">
+        <h3 class="post-title">Anthropic’s new harness engineering write-up looks striki...</h3>
+        <span class="post-date">2026-03-25</span>
+      </div>
+      <p class="post-summary">Anthropic’s new harness engineering write-up looks strikingly similar to Karpathy’s autoresearch loop, just generalized for messier, longer-running app-building work. The same core pattern is there:</p>
+      <div class="post-footer">
+        <div class="post-tags"><span class="tag">Local LLM</span> <span class="tag">Claude</span> <span class="tag">AI Agents</span></div>
+        <div class="post-stats">
+          <span class="stat">2.5k views</span>
+          <span class="stat">9 likes</span>
+          <span class="stat">15 saves</span>
+        </div>
+      </div>
+    </a>
+    <a href="https://x.com/michaelzsguo/status/2058128032578109492" target="_blank" class="post-card" data-tags="local llm 中文 hardware" data-impressions="2483">
+      <div class="post-header">
+        <h3 class="post-title">美国网友惊呼中国的GPU</h3>
+        <span class="post-date">2026-05-23</span>
+      </div>
+      <p class="post-summary">美国网友惊呼中国的GPU. 你们给他们指点迷津帮助他们一下吧</p>
+      <div class="post-footer">
+        <div class="post-tags"><span class="tag">Local LLM</span> <span class="tag">中文</span> <span class="tag">Hardware</span></div>
+        <div class="post-stats">
+          <span class="stat">2.5k views</span>
+          <span class="stat">7 likes</span>
+          <span class="stat">1 saves</span>
+        </div>
+      </div>
+    </a>
+    <a href="https://x.com/michaelzsguo/status/2045677463523455232" target="_blank" class="post-card" data-tags="中文" data-impressions="2438">
+      <div class="post-header">
+        <h3 class="post-title">杨丽坤其实谈到的是AI Diffusion问题</h3>
+        <span class="post-date">2026-04-19</span>
+      </div>
+      <p class="post-summary">杨丽坤其实谈到的是AI Diffusion问题. 一个组织要正在adopt AI，要经过transformation，需要很完整的change management</p>
+      <div class="post-footer">
+        <div class="post-tags"><span class="tag">中文</span></div>
+        <div class="post-stats">
+          <span class="stat">2.4k views</span>
+          <span class="stat">6 likes</span>
+          <span class="stat">1 saves</span>
+        </div>
+      </div>
+    </a>
+    <a href="https://x.com/michaelzsguo/status/2046672388960792581" target="_blank" class="post-card" data-tags="openai local llm" data-impressions="2431">
+      <div class="post-header">
+        <h3 class="post-title">Today’s @WSJ on this launch </h3>
+        <span class="post-date">2026-04-21</span>
+      </div>
+      <p class="post-summary">Today’s @WSJ on this launch. We are so over</p>
+      <div class="post-footer">
+        <div class="post-tags"><span class="tag">OpenAI</span> <span class="tag">Local LLM</span></div>
+        <div class="post-stats">
+          <span class="stat">2.4k views</span>
+          <span class="stat">3 likes</span>
+          <span class="stat">3 saves</span>
+        </div>
+      </div>
+    </a>
+    <a href="https://x.com/michaelzsguo/status/2058399843207241795" target="_blank" class="post-card" data-tags="local llm codex" data-impressions="2411">
+      <div class="post-header">
+        <h3 class="post-title">Interesting</h3>
+        <span class="post-date">2026-05-24</span>
+      </div>
+      <p class="post-summary">Interesting. Codex can continue pursuing /goal even though it has used up my 5-hour session limit? @dotey FYI</p>
+      <div class="post-footer">
+        <div class="post-tags"><span class="tag">Local LLM</span> <span class="tag">Codex</span></div>
+        <div class="post-stats">
+          <span class="stat">2.4k views</span>
+          <span class="stat">4 likes</span>
+          <span class="stat">1 saves</span>
+        </div>
+      </div>
+    </a>
+    <a href="https://x.com/michaelzsguo/status/2056880974420406602" target="_blank" class="post-card" data-tags="中文 claude llm internals codex" data-impressions="2411">
+      <div class="post-header">
+        <h3 class="post-title">我的好像不是 最近codex好像在犯Claude code前不久犯的错误 网上怨声载道 很多人和我一样的经历 to...</h3>
+        <span class="post-date">2026-05-19</span>
+      </div>
+      <p class="post-summary">我的好像不是 最近codex好像在犯Claude code前不久犯的错误 网上怨声载道 很多人和我一样的经历 token limit几分钟就用完了 我的刚刚更离谱，周limit说还有7个小时 5-小时limit用了43%. 结果周limit一下子就没了 5-小时的limit还有20%</p>
+      <div class="post-footer">
+        <div class="post-tags"><span class="tag">中文</span> <span class="tag">Claude</span> <span class="tag">LLM Internals</span> <span class="tag">Codex</span></div>
+        <div class="post-stats">
+          <span class="stat">2.4k views</span>
+          <span class="stat">1 likes</span>
+          <span class="stat">0 saves</span>
+        </div>
+      </div>
+    </a>
+    <a href="https://x.com/michaelzsguo/status/2041481869397557499" target="_blank" class="post-card" data-tags="claude" data-impressions="2404">
+      <div class="post-header">
+        <h3 class="post-title">I'm really impressed that she talks about Claude Code CLI...</h3>
+        <span class="post-date">2026-04-07</span>
+      </div>
+      <p class="post-summary">I'm really impressed that she talks about Claude Code CLI, which made her feels in the driver's seat and considers herself an architect</p>
+      <div class="post-footer">
+        <div class="post-tags"><span class="tag">Claude</span></div>
+        <div class="post-stats">
+          <span class="stat">2.4k views</span>
+          <span class="stat">2 likes</span>
+          <span class="stat">0 saves</span>
+        </div>
+      </div>
+    </a>
+    <a href="https://x.com/michaelzsguo/status/2043757319901618685" target="_blank" class="post-card" data-tags="local llm ai agents" data-impressions="2394">
+      <div class="post-header">
+        <h3 class="post-title">Yes. Agent speed is real.
+
+For most companies, the challenge</h3>
+        <span class="post-date">2026-04-13</span>
+      </div>
+      <p class="post-summary">Agent speed is real. For most companies, the challenge is not whether agents can move fast</p>
+      <div class="post-footer">
+        <div class="post-tags"><span class="tag">Local LLM</span> <span class="tag">AI Agents</span></div>
+        <div class="post-stats">
+          <span class="stat">2.4k views</span>
+          <span class="stat">0 likes</span>
+          <span class="stat">2 saves</span>
+        </div>
+      </div>
+    </a>
+    <a href="https://x.com/michaelzsguo/status/2050363813258494352" target="_blank" class="post-card" data-tags="local llm skills codex" data-impressions="2351">
+      <div class="post-header">
+        <h3 class="post-title">How to turn a rough product idea into a long running code...</h3>
+        <span class="post-date">2026-05-01</span>
+      </div>
+      <p class="post-summary">How to turn a rough product idea into a long running codex goal. we now turn @ynkzlk methodology into a Codex skill: goal-forge</p>
+      <div class="post-footer">
+        <div class="post-tags"><span class="tag">Local LLM</span> <span class="tag">Skills</span> <span class="tag">Codex</span></div>
+        <div class="post-stats">
+          <span class="stat">2.4k views</span>
+          <span class="stat">6 likes</span>
+          <span class="stat">9 saves</span>
+        </div>
+      </div>
+    </a>
+    <a href="https://x.com/michaelzsguo/status/2041966095926534232" target="_blank" class="post-card" data-tags="local llm 中文 claude ai agents" data-impressions="2350">
+      <div class="post-header">
+        <h3 class="post-title">这个主意是很不错。做一个 Agent 产品，本来要操心的事情很多。现在 Anthropic 直接把最难、最麻烦的那一块拿</h3>
+        <span class="post-date">2026-04-08</span>
+      </div>
+      <p class="post-summary">做一个 Agent 产品，本来要操心的事情很多. 现在 Anthropic 直接把最难、最麻烦的那一块拿走了：编排协调、沙箱隔离、runtime、session management，这些过去最考验工程能力的部分，正在被它一步步托管掉</p>
+      <div class="post-footer">
+        <div class="post-tags"><span class="tag">Local LLM</span> <span class="tag">中文</span> <span class="tag">Claude</span> <span class="tag">AI Agents</span></div>
+        <div class="post-stats">
+          <span class="stat">2.4k views</span>
+          <span class="stat">7 likes</span>
+          <span class="stat">6 saves</span>
+        </div>
+      </div>
+    </a>
+    <a href="https://x.com/michaelzsguo/status/2046596525321593331" target="_blank" class="post-card" data-tags="ai" data-impressions="2332">
+      <div class="post-header">
+        <h3 class="post-title">Are you using WeChat hongbao or Alipay?</h3>
+        <span class="post-date">2026-04-21</span>
+      </div>
+      <p class="post-summary">Are you using WeChat hongbao or Alipay?</p>
+      <div class="post-footer">
+        <div class="post-tags"><span class="tag">AI</span></div>
+        <div class="post-stats">
+          <span class="stat">2.3k views</span>
+          <span class="stat">3 likes</span>
+          <span class="stat">0 saves</span>
+        </div>
+      </div>
+    </a>
+    <a href="https://x.com/michaelzsguo/status/2044935430743695655" target="_blank" class="post-card" data-tags="openai local llm claude 中文" data-impressions="2331">
+      <div class="post-header">
+        <h3 class="post-title">OpenAI这次推出来的computer use， 比不久前Claude Code的看着丝滑多了</h3>
+        <span class="post-date">2026-04-17</span>
+      </div>
+      <p class="post-summary">OpenAI这次推出来的computer use， 比不久前Claude Code的看着丝滑多了. 背后的团队实力和技术/艺术积累也不一般</p>
+      <div class="post-footer">
+        <div class="post-tags"><span class="tag">OpenAI</span> <span class="tag">Local LLM</span> <span class="tag">Claude</span> <span class="tag">中文</span></div>
+        <div class="post-stats">
+          <span class="stat">2.3k views</span>
+          <span class="stat">5 likes</span>
+          <span class="stat">0 saves</span>
+        </div>
+      </div>
+    </a>
+    <a href="https://x.com/michaelzsguo/status/2055615529075761593" target="_blank" class="post-card" data-tags="local llm" data-impressions="2324">
+      <div class="post-header">
+        <h3 class="post-title">It was in my previous post but here it is:</h3>
+        <span class="post-date">2026-05-16</span>
+      </div>
+      <p class="post-summary">It was in my previous post but here it is:</p>
+      <div class="post-footer">
+        <div class="post-tags"><span class="tag">Local LLM</span></div>
+        <div class="post-stats">
+          <span class="stat">2.3k views</span>
+          <span class="stat">2 likes</span>
+          <span class="stat">8 saves</span>
+        </div>
+      </div>
+    </a>
+    <a href="https://x.com/michaelzsguo/status/2047808149571195123" target="_blank" class="post-card" data-tags="local llm google" data-impressions="2320">
+      <div class="post-header">
+        <h3 class="post-title">Google made that very clear in their first keynote here a...</h3>
+        <span class="post-date">2026-04-24</span>
+      </div>
+      <p class="post-summary">Google made that very clear in their first keynote here at #googlecloudnext</p>
+      <div class="post-footer">
+        <div class="post-tags"><span class="tag">Local LLM</span> <span class="tag">Google</span></div>
+        <div class="post-stats">
+          <span class="stat">2.3k views</span>
+          <span class="stat">3 likes</span>
+          <span class="stat">2 saves</span>
+        </div>
+      </div>
+    </a>
+    <a href="https://x.com/michaelzsguo/status/2052504239679627664" target="_blank" class="post-card" data-tags="local llm 中文" data-impressions="2306">
+      <div class="post-header">
+        <h3 class="post-title">这个功能太棒了。看看同样一个问题， 用了@chrome 插件和不用的区别。
+用了插件才用了4分钟， 不用插件用了7分钟
+</h3>
+        <span class="post-date">2026-05-07</span>
+      </div>
+      <p class="post-summary">看看同样一个问题， 用了@chrome 插件和不用的区别. 用了插件才用了4分钟， 不用插件用了7分钟</p>
+      <div class="post-footer">
+        <div class="post-tags"><span class="tag">Local LLM</span> <span class="tag">中文</span></div>
+        <div class="post-stats">
+          <span class="stat">2.3k views</span>
+          <span class="stat">5 likes</span>
+          <span class="stat">3 saves</span>
+        </div>
+      </div>
+    </a>
+    <a href="https://x.com/michaelzsguo/status/2034224876555243747" target="_blank" class="post-card" data-tags="openai skills 中文 codex" data-impressions="2301">
+      <div class="post-header">
+        <h3 class="post-title">Claude code在规划与架构比codex好，能更好理解模糊需求、写清晰文档、给出产品级架构和UI/UX建议，...</h3>
+        <span class="post-date">2026-03-18</span>
+      </div>
+      <p class="post-summary">Claude code在规划与架构比codex好，能更好理解模糊需求、写清晰文档、给出产品级架构和UI/UX建议，适合前期脑暴尤其和superpower skills这样的工具结合和非程序员. 他们自己现在也有plan然后design，implement的流程了</p>
+      <div class="post-footer">
+        <div class="post-tags"><span class="tag">OpenAI</span> <span class="tag">Skills</span> <span class="tag">中文</span> <span class="tag">Codex</span></div>
+        <div class="post-stats">
+          <span class="stat">2.3k views</span>
+          <span class="stat">6 likes</span>
+          <span class="stat">3 saves</span>
+        </div>
+      </div>
+    </a>
+    <a href="https://x.com/michaelzsguo/status/2035756663513252312" target="_blank" class="post-card" data-tags="中文" data-impressions="2279">
+      <div class="post-header">
+        <h3 class="post-title">现在开源的也不差啊 譬如pi</h3>
+        <span class="post-date">2026-03-22</span>
+      </div>
+      <p class="post-summary">现在开源的也不差啊 譬如pi</p>
+      <div class="post-footer">
+        <div class="post-tags"><span class="tag">中文</span></div>
+        <div class="post-stats">
+          <span class="stat">2.3k views</span>
+          <span class="stat">1 likes</span>
+          <span class="stat">0 saves</span>
+        </div>
+      </div>
+    </a>
+    <a href="https://x.com/michaelzsguo/status/2054930049652986055" target="_blank" class="post-card" data-tags="local llm 中文" data-impressions="2275">
+      <div class="post-header">
+        <h3 class="post-title">小扎16年前就开始了</h3>
+        <span class="post-date">2026-05-14</span>
+      </div>
+      <p class="post-summary"></p>
+      <div class="post-footer">
+        <div class="post-tags"><span class="tag">Local LLM</span> <span class="tag">中文</span></div>
+        <div class="post-stats">
+          <span class="stat">2.3k views</span>
+          <span class="stat">0 likes</span>
+          <span class="stat">0 saves</span>
+        </div>
+      </div>
+    </a>
+    <a href="https://x.com/michaelzsguo/status/2045141311611650228" target="_blank" class="post-card" data-tags="local llm 中文 codex" data-impressions="2275">
+      <div class="post-header">
+        <h3 class="post-title">AI lowers the floor, taste raise the ceiling</h3>
+        <span class="post-date">2026-04-17</span>
+      </div>
+      <p class="post-summary">AI lowers the floor, taste raise the ceiling. 翻成中文意思是： AI 降低了下限，品味抬高了上限</p>
+      <div class="post-footer">
+        <div class="post-tags"><span class="tag">Local LLM</span> <span class="tag">中文</span> <span class="tag">Codex</span></div>
+        <div class="post-stats">
+          <span class="stat">2.3k views</span>
+          <span class="stat">1 likes</span>
+          <span class="stat">1 saves</span>
+        </div>
+      </div>
+    </a>
+    <a href="https://x.com/michaelzsguo/status/2051800805414457729" target="_blank" class="post-card" data-tags="ai" data-impressions="2271">
+      <div class="post-header">
+        <h3 class="post-title">not when they check the RSU value nearly tripled</h3>
+        <span class="post-date">2026-05-05</span>
+      </div>
+      <p class="post-summary">not when they check the RSU value nearly tripled</p>
+      <div class="post-footer">
+        <div class="post-tags"><span class="tag">AI</span></div>
+        <div class="post-stats">
+          <span class="stat">2.3k views</span>
+          <span class="stat">4 likes</span>
+          <span class="stat">0 saves</span>
+        </div>
+      </div>
+    </a>
+    <a href="https://x.com/michaelzsguo/status/2058027815425958163" target="_blank" class="post-card" data-tags="ai" data-impressions="2268">
+      <div class="post-header">
+        <h3 class="post-title">thank you @huggingface</h3>
+        <span class="post-date">2026-05-23</span>
+      </div>
+      <p class="post-summary">thank you @huggingface</p>
+      <div class="post-footer">
+        <div class="post-tags"><span class="tag">AI</span></div>
+        <div class="post-stats">
+          <span class="stat">2.3k views</span>
+          <span class="stat">2 likes</span>
+          <span class="stat">0 saves</span>
+        </div>
+      </div>
+    </a>
+    <a href="https://x.com/michaelzsguo/status/2054553743056625989" target="_blank" class="post-card" data-tags="local llm hardware llm internals" data-impressions="2265">
+      <div class="post-header">
+        <h3 class="post-title">NVIDIA GPUs have become a hot topic for anyone playing wi...</h3>
+        <span class="post-date">2026-05-13</span>
+      </div>
+      <p class="post-summary">NVIDIA GPUs have become a hot topic for anyone playing with local LLMs because the GPU is often the real constraint. Model size, quantization, context length, inference speed, and whether you can r...</p>
+      <div class="post-footer">
+        <div class="post-tags"><span class="tag">Local LLM</span> <span class="tag">Hardware</span> <span class="tag">LLM Internals</span></div>
+        <div class="post-stats">
+          <span class="stat">2.3k views</span>
+          <span class="stat">34 likes</span>
+          <span class="stat">25 saves</span>
+        </div>
+      </div>
+    </a>
+    <a href="https://x.com/michaelzsguo/status/2052884287439990887" target="_blank" class="post-card" data-tags="中文 security claude ai agents" data-impressions="2245">
+      <div class="post-header">
+        <h3 class="post-title">Mozilla 参与了 Claude Mythos Preview 的早期测试，并写了一篇报告 Firefox 安...</h3>
+        <span class="post-date">2026-05-08</span>
+      </div>
+      <p class="post-summary">Mozilla 参与了 Claude Mythos Preview 的早期测试，并写了一篇报告 Firefox 安全实践的复盘. 但这篇报道最有意思的是他们构建的security harness</p>
+      <div class="post-footer">
+        <div class="post-tags"><span class="tag">中文</span> <span class="tag">Security</span> <span class="tag">Claude</span> <span class="tag">AI Agents</span></div>
+        <div class="post-stats">
+          <span class="stat">2.2k views</span>
+          <span class="stat">13 likes</span>
+          <span class="stat">10 saves</span>
+        </div>
+      </div>
+    </a>
+    <a href="https://x.com/michaelzsguo/status/2047551916016841169" target="_blank" class="post-card" data-tags="local llm" data-impressions="2226">
+      <div class="post-header">
+        <h3 class="post-title">Can’t agree more</h3>
+        <span class="post-date">2026-04-24</span>
+      </div>
+      <p class="post-summary">Can’t agree more. You only need to watch this @AcquiredFM on Jeff and Amin to appreciate it</p>
+      <div class="post-footer">
+        <div class="post-tags"><span class="tag">Local LLM</span></div>
+        <div class="post-stats">
+          <span class="stat">2.2k views</span>
+          <span class="stat">2 likes</span>
+          <span class="stat">3 saves</span>
+        </div>
+      </div>
+    </a>
+    <a href="https://x.com/michaelzsguo/status/2050510216693747997" target="_blank" class="post-card" data-tags="hardware" data-impressions="2224">
+      <div class="post-header">
+        <h3 class="post-title">Good suggestion on this one: --n-gpu-layers 99 </h3>
+        <span class="post-date">2026-05-02</span>
+      </div>
+      <p class="post-summary">Good suggestion on this one: --n-gpu-layers 99. Thanks for the additional</p>
+      <div class="post-footer">
+        <div class="post-tags"><span class="tag">Hardware</span></div>
+        <div class="post-stats">
+          <span class="stat">2.2k views</span>
+          <span class="stat">5 likes</span>
+          <span class="stat">5 saves</span>
+        </div>
+      </div>
+    </a>
+    <a href="https://x.com/michaelzsguo/status/2042417541432119775" target="_blank" class="post-card" data-tags="local llm" data-impressions="2223">
+      <div class="post-header">
+        <h3 class="post-title">yes</h3>
+        <span class="post-date">2026-04-10</span>
+      </div>
+      <p class="post-summary"></p>
+      <div class="post-footer">
+        <div class="post-tags"><span class="tag">Local LLM</span></div>
+        <div class="post-stats">
+          <span class="stat">2.2k views</span>
+          <span class="stat">6 likes</span>
+          <span class="stat">0 saves</span>
+        </div>
+      </div>
+    </a>
+    <a href="https://x.com/michaelzsguo/status/2038253427097010430" target="_blank" class="post-card" data-tags="local llm 中文" data-impressions="2222">
+      <div class="post-header">
+        <h3 class="post-title">我自己也做了一个，还把我以前做的一个小项目“手动烟花”融了进去</h3>
+        <span class="post-date">2026-03-29</span>
+      </div>
+      <p class="post-summary">我自己也做了一个，还把我以前做的一个小项目“手动烟花”融了进去. 连这么快节奏的烟花，Cheng Lou 的新算法也都稳稳扛住了</p>
+      <div class="post-footer">
+        <div class="post-tags"><span class="tag">Local LLM</span> <span class="tag">中文</span></div>
+        <div class="post-stats">
+          <span class="stat">2.2k views</span>
+          <span class="stat">2 likes</span>
+          <span class="stat">1 saves</span>
+        </div>
+      </div>
+    </a>
+    <a href="https://x.com/michaelzsguo/status/2049599974099280144" target="_blank" class="post-card" data-tags="local llm" data-impressions="2215">
+      <div class="post-header">
+        <h3 class="post-title">I looked at the performance metrics, and Tencent’s AngelS...</h3>
+        <span class="post-date">2026-04-29</span>
+      </div>
+      <p class="post-summary">I looked at the performance metrics, and Tencent’s AngelSlim, the Hy-MT1. 5 series translation model, delivers translation quality comparable to models several times larger, and in some cases up to...</p>
+      <div class="post-footer">
+        <div class="post-tags"><span class="tag">Local LLM</span></div>
+        <div class="post-stats">
+          <span class="stat">2.2k views</span>
+          <span class="stat">5 likes</span>
+          <span class="stat">1 saves</span>
+        </div>
+      </div>
+    </a>
+    <a href="https://x.com/michaelzsguo/status/2054209501956313533" target="_blank" class="post-card" data-tags="local llm 中文" data-impressions="2196">
+      <div class="post-header">
+        <h3 class="post-title">和我预计的差不多 所以我心动不如行动，抢在涨价之前下手买😜</h3>
+        <span class="post-date">2026-05-12</span>
+      </div>
+      <p class="post-summary">和我预计的差不多 所以我心动不如行动，抢在涨价之前下手买😜</p>
+      <div class="post-footer">
+        <div class="post-tags"><span class="tag">Local LLM</span> <span class="tag">中文</span></div>
+        <div class="post-stats">
+          <span class="stat">2.2k views</span>
+          <span class="stat">2 likes</span>
+          <span class="stat">0 saves</span>
+        </div>
+      </div>
+    </a>
+    <a href="https://x.com/michaelzsguo/status/2054581847791677573" target="_blank" class="post-card" data-tags="中文" data-impressions="2194">
+      <div class="post-header">
+        <h3 class="post-title">难道不是@xicilion</h3>
+        <span class="post-date">2026-05-13</span>
+      </div>
+      <p class="post-summary">难道不是@xicilion</p>
+      <div class="post-footer">
+        <div class="post-tags"><span class="tag">中文</span></div>
+        <div class="post-stats">
+          <span class="stat">2.2k views</span>
+          <span class="stat">0 likes</span>
+          <span class="stat">0 saves</span>
+        </div>
+      </div>
+    </a>
+    <a href="https://x.com/michaelzsguo/status/2039348048636039423" target="_blank" class="post-card" data-tags="openai claude llm internals" data-impressions="2164">
+      <div class="post-header">
+        <h3 class="post-title">Wow, that's very impressive</h3>
+        <span class="post-date">2026-04-01</span>
+      </div>
+      <p class="post-summary">Wow, that's very impressive. Hold on a second though</p>
+      <div class="post-footer">
+        <div class="post-tags"><span class="tag">OpenAI</span> <span class="tag">Claude</span> <span class="tag">LLM Internals</span></div>
+        <div class="post-stats">
+          <span class="stat">2.2k views</span>
+          <span class="stat">1 likes</span>
+          <span class="stat">0 saves</span>
+        </div>
+      </div>
+    </a>
+    <a href="https://x.com/michaelzsguo/status/2053072521889538298" target="_blank" class="post-card" data-tags="local llm deepseek" data-impressions="2155">
+      <div class="post-header">
+        <h3 class="post-title">Antirez’s new project, ds4</h3>
+        <span class="post-date">2026-05-09</span>
+      </div>
+      <p class="post-summary">Antirez’s new project, ds4. c, adds another data point to this debate</p>
+      <div class="post-footer">
+        <div class="post-tags"><span class="tag">Local LLM</span> <span class="tag">DeepSeek</span></div>
+        <div class="post-stats">
+          <span class="stat">2.2k views</span>
+          <span class="stat">5 likes</span>
+          <span class="stat">4 saves</span>
+        </div>
+      </div>
+    </a>
+    <a href="https://x.com/michaelzsguo/status/2056708718553702585" target="_blank" class="post-card" data-tags="local llm ai agents deepseek" data-impressions="2133">
+      <div class="post-header">
+        <h3 class="post-title">To help understand @antirez’s new invention around a loca...</h3>
+        <span class="post-date">2026-05-19</span>
+      </div>
+      <p class="post-summary">To help understand @antirez’s new invention around a local DeepSeek model and agent, here is an illustration of how it works. Again, this shows that the harness, the agent layer, is just as importa...</p>
+      <div class="post-footer">
+        <div class="post-tags"><span class="tag">Local LLM</span> <span class="tag">AI Agents</span> <span class="tag">DeepSeek</span></div>
+        <div class="post-stats">
+          <span class="stat">2.1k views</span>
+          <span class="stat">30 likes</span>
+          <span class="stat">21 saves</span>
+        </div>
+      </div>
+    </a>
+    <a href="https://x.com/michaelzsguo/status/2057175063292453307" target="_blank" class="post-card" data-tags="local llm 中文 hardware" data-impressions="2114">
+      <div class="post-header">
+        <h3 class="post-title">那我这是赚大发了， 一个Mac好几个跑车😅</h3>
+        <span class="post-date">2026-05-20</span>
+      </div>
+      <p class="post-summary">那我这是赚大发了， 一个Mac好几个跑车😅</p>
+      <div class="post-footer">
+        <div class="post-tags"><span class="tag">Local LLM</span> <span class="tag">中文</span> <span class="tag">Hardware</span></div>
+        <div class="post-stats">
+          <span class="stat">2.1k views</span>
+          <span class="stat">0 likes</span>
+          <span class="stat">2 saves</span>
+        </div>
+      </div>
+    </a>
+    <a href="https://x.com/michaelzsguo/status/2043021311803343195" target="_blank" class="post-card" data-tags="ai" data-impressions="2106">
+      <div class="post-header">
+        <h3 class="post-title">her smile is so contagious</h3>
+        <span class="post-date">2026-04-11</span>
+      </div>
+      <p class="post-summary">her smile is so contagious</p>
+      <div class="post-footer">
+        <div class="post-tags"><span class="tag">AI</span></div>
+        <div class="post-stats">
+          <span class="stat">2.1k views</span>
+          <span class="stat">1 likes</span>
+          <span class="stat">0 saves</span>
+        </div>
+      </div>
+    </a>
+    <a href="https://x.com/michaelzsguo/status/2049290651943207161" target="_blank" class="post-card" data-tags="local llm 中文" data-impressions="2082">
+      <div class="post-header">
+        <h3 class="post-title">Thousands of RobotEra L7 (星动纪元）humanoids are set to enter...</h3>
+        <span class="post-date">2026-04-29</span>
+      </div>
+      <p class="post-summary">Thousands of RobotEra L7 (星动纪元）humanoids are set to enter service across 10+ logistics centers for parcel sorting. RobotEra just raised a $200M+ round led by SF Express, with HongShan, IDG, CICC &a...</p>
+      <div class="post-footer">
+        <div class="post-tags"><span class="tag">Local LLM</span> <span class="tag">中文</span></div>
+        <div class="post-stats">
+          <span class="stat">2.1k views</span>
+          <span class="stat">12 likes</span>
+          <span class="stat">9 saves</span>
+        </div>
+      </div>
+    </a>
+    <a href="https://x.com/michaelzsguo/status/2043062702818390086" target="_blank" class="post-card" data-tags="openai 中文 llm internals ai agents" data-impressions="2069">
+      <div class="post-header">
+        <h3 class="post-title">另外一个原因就是每个人用这个词的时候都用不同的意思</h3>
+        <span class="post-date">2026-04-11</span>
+      </div>
+      <p class="post-summary">另外一个原因就是每个人用这个词的时候都用不同的意思. 譬如OpenAI在讲harness的时候，基本上只谈到Agent要用到的Context （agent MD文件，项目knowledge文档）</p>
+      <div class="post-footer">
+        <div class="post-tags"><span class="tag">OpenAI</span> <span class="tag">中文</span> <span class="tag">LLM Internals</span> <span class="tag">AI Agents</span></div>
+        <div class="post-stats">
+          <span class="stat">2.1k views</span>
+          <span class="stat">5 likes</span>
+          <span class="stat">1 saves</span>
+        </div>
+      </div>
+    </a>
+    <a href="https://x.com/michaelzsguo/status/2041620146096099730" target="_blank" class="post-card" data-tags="local llm fine-tuning" data-impressions="2056">
+      <div class="post-header">
+        <h3 class="post-title">What they described as Mythos’s behavior during pre-train...</h3>
+        <span class="post-date">2026-04-07</span>
+      </div>
+      <p class="post-summary">What they described as Mythos’s behavior during pre-training all leans toward the darker side. It has a real Frankenstein feel to it</p>
+      <div class="post-footer">
+        <div class="post-tags"><span class="tag">Local LLM</span> <span class="tag">Fine-tuning</span></div>
+        <div class="post-stats">
+          <span class="stat">2.1k views</span>
+          <span class="stat">3 likes</span>
+          <span class="stat">0 saves</span>
+        </div>
+      </div>
+    </a>
+    <a href="https://x.com/michaelzsguo/status/2055674421436637695" target="_blank" class="post-card" data-tags="openai claude codex deepseek" data-impressions="2029">
+      <div class="post-header">
+        <h3 class="post-title">hey capability does matter too</h3>
+        <span class="post-date">2026-05-16</span>
+      </div>
+      <p class="post-summary">hey capability does matter too. :-) that's why I chose Deepseek v4 pro</p>
+      <div class="post-footer">
+        <div class="post-tags"><span class="tag">OpenAI</span> <span class="tag">Claude</span> <span class="tag">Codex</span> <span class="tag">DeepSeek</span></div>
+        <div class="post-stats">
+          <span class="stat">2.0k views</span>
+          <span class="stat">2 likes</span>
+          <span class="stat">1 saves</span>
+        </div>
+      </div>
+    </a>
+    <a href="https://x.com/michaelzsguo/status/2055696123478610031" target="_blank" class="post-card" data-tags="local llm llm internals ai agents" data-impressions="2005">
+      <div class="post-header">
+        <h3 class="post-title">1d 13h 20m, 3,596,831 tokens</h3>
+        <span class="post-date">2026-05-16</span>
+      </div>
+      <p class="post-summary">1d 13h 20m, 3,596,831 tokens. Goal achieved? Not quite</p>
+      <div class="post-footer">
+        <div class="post-tags"><span class="tag">Local LLM</span> <span class="tag">LLM Internals</span> <span class="tag">AI Agents</span></div>
+        <div class="post-stats">
+          <span class="stat">2.0k views</span>
+          <span class="stat">7 likes</span>
+          <span class="stat">3 saves</span>
+        </div>
+      </div>
+    </a>
+
+        </div>
+        <div class="no-results" id="no-results" style="display:none">
+            No posts match your search.
+        </div>
+    </div>
+    <script>
+        const searchInput = document.getElementById('search');
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const posts = Array.from(document.querySelectorAll('.post-card'));
+        const resultsCount = document.getElementById('results-count');
+        const noResults = document.getElementById('no-results');
+
+        let activeFilter = 'all';
+
+        const postSearchData = posts.map(post => ({
+            el: post,
+            text: (post.textContent + ' ' + (post.dataset.tags || '')).replace(/\s+/g, ' ').toLowerCase(),
+            tags: post.dataset.tags || ''
+        }));
+
+        function filterPosts() {
+            const query = searchInput.value.toLowerCase().trim();
+            let visible = 0;
+
+            postSearchData.forEach(({ el, text, tags }) => {
+                const matchesSearch = !query || text.includes(query);
+                const matchesFilter = activeFilter === 'all' || tags.includes(activeFilter);
+
+                if (matchesSearch && matchesFilter) {
+                    el.style.display = 'block';
+                    visible++;
+                } else {
+                    el.style.display = 'none';
+                }
+            });
+
+            resultsCount.textContent = visible + ' post' + (visible !== 1 ? 's' : '');
+            noResults.style.display = visible === 0 ? 'block' : 'none';
+        }
+
+        searchInput.addEventListener('input', filterPosts);
+        searchInput.addEventListener('keyup', filterPosts);
+
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                filterBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                activeFilter = btn.dataset.filter;
+                filterPosts();
+            });
+        });
+    </script>
+</body>
+</html>
