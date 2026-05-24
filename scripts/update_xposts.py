@@ -28,14 +28,26 @@ if not TOKEN:
     print("Error: X_BEARER_TOKEN env var not set")
     sys.exit(1)
 
-SEARCH_URL = "https://api.twitter.com/2/tweets/search/recent"
+SEARCH_RECENT_URL = "https://api.twitter.com/2/tweets/search/recent"
+SEARCH_ALL_URL = "https://api.twitter.com/2/tweets/search/all"
 USERNAME = "michaelzsguo"
 MIN_IMPRESSIONS = 2000
 
 
-def fetch_recent_posts():
+def fetch_posts(backfill_days=None):
+    """Fetch posts. If backfill_days is set, uses /search/all with a date range.
+    Otherwise uses /search/recent (last 7 days)."""
     all_tweets = []
     next_token = None
+
+    if backfill_days:
+        base_url = SEARCH_ALL_URL
+        start_time = (datetime.now(timezone.utc) - timedelta(days=backfill_days)).strftime("%Y-%m-%dT%H:%M:%SZ")
+        end_time = (datetime.now(timezone.utc) - timedelta(seconds=30)).strftime("%Y-%m-%dT%H:%M:%SZ")
+    else:
+        base_url = SEARCH_RECENT_URL
+        start_time = None
+        end_time = None
 
     while True:
         params = {
@@ -43,10 +55,14 @@ def fetch_recent_posts():
             "max_results": "100",
             "tweet.fields": "public_metrics,created_at,entities",
         }
+        if start_time:
+            params["start_time"] = start_time
+        if end_time:
+            params["end_time"] = end_time
         if next_token:
             params["next_token"] = next_token
 
-        url = SEARCH_URL + "?" + urllib.parse.urlencode(params)
+        url = base_url + "?" + urllib.parse.urlencode(params)
         req = urllib.request.Request(url, headers={"Authorization": f"Bearer {TOKEN}"})
 
         try:
@@ -60,6 +76,10 @@ def fetch_recent_posts():
             for tweet in data["data"]:
                 if tweet["public_metrics"]["impression_count"] >= MIN_IMPRESSIONS:
                     all_tweets.append(tweet)
+
+        page = len(all_tweets)
+        if backfill_days:
+            print(f"  ...{page} qualifying posts so far")
 
         if "meta" in data and "next_token" in data["meta"]:
             next_token = data["meta"]["next_token"]
@@ -359,6 +379,12 @@ def build_html(posts):
 
 
 def main():
+    import argparse
+    parser = argparse.ArgumentParser(description="Update X posts page")
+    parser.add_argument("--backfill", type=int, metavar="DAYS",
+                        help="Initial backfill: fetch posts from the last N days (uses /search/all, requires Academic/Pro tier)")
+    args = parser.parse_args()
+
     # Load existing data
     if DATA_FILE.exists():
         with open(DATA_FILE) as f:
@@ -368,10 +394,15 @@ def main():
 
     print(f"Existing posts: {len(existing)}")
 
-    # Fetch new posts from last 7 days
-    print("Fetching recent posts...")
-    raw_tweets = fetch_recent_posts()
-    print(f"Found {len(raw_tweets)} posts with {MIN_IMPRESSIONS}+ impressions in last 7 days")
+    # Fetch posts
+    if args.backfill:
+        print(f"Backfilling last {args.backfill} days (using /search/all)...")
+        raw_tweets = fetch_posts(backfill_days=args.backfill)
+        print(f"Found {len(raw_tweets)} posts with {MIN_IMPRESSIONS}+ impressions")
+    else:
+        print("Fetching recent posts (last 7 days)...")
+        raw_tweets = fetch_posts()
+        print(f"Found {len(raw_tweets)} posts with {MIN_IMPRESSIONS}+ impressions in last 7 days")
 
     # Process and merge
     new_posts = [process_tweet(t) for t in raw_tweets]

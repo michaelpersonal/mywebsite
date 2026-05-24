@@ -27,8 +27,15 @@ Fetches your top-performing X (Twitter) posts and publishes them as a searchable
 
 ```bash
 export X_BEARER_TOKEN="your-bearer-token"
+
+# Weekly update (last 7 days, default)
 python3 scripts/update_xposts.py
+
+# Initial backfill (e.g. last 90 days — requires /search/all access)
+python3 scripts/update_xposts.py --backfill 90
 ```
+
+The `--backfill` flag uses the full-archive search endpoint to fetch historical posts. Use this on first setup to populate your page. After that, the default weekly mode keeps it current.
 
 ### Automate with GitHub Actions
 
