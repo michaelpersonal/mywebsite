@@ -58,7 +58,7 @@ def fetch_posts(backfill_days=None):
 
     while True:
         params = {
-            "query": f"from:{USERNAME} -is:retweet",
+            "query": f"from:{USERNAME} -is:retweet -is:reply",
             "max_results": "100",
             "tweet.fields": "public_metrics,created_at,entities",
         }
