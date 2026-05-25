@@ -17,6 +17,22 @@
     "url": "https://x.com/michaelzsguo/status/2055317248923848713"
   },
   {
+    "id": "2025004900292149348",
+    "title": "Claude Code Hackathon Winners",
+    "summary": "Winners include a personal injury attorney, cardiologist, musician, infrastructure worker, and one software engineer, showing domain experts can use AI coding tools.",
+    "tags": [
+      "AI Agents",
+      "Claude",
+      "Skills"
+    ],
+    "impressions": 192431,
+    "likes": 1784,
+    "retweets": 109,
+    "bookmarks": 307,
+    "date": "2026-02-21",
+    "url": "https://x.com/michaelzsguo/status/2025004900292149348"
+  },
+  {
     "id": "2050380832007721213",
     "title": "Qwen 3.6 Running on 12GB VRAM",
     "summary": "People are posting Qwen 3. 6 configs that deliver fast TPS on as little as 12GB VRAM",
@@ -218,6 +234,21 @@
     "bookmarks": 108,
     "date": "2026-03-25",
     "url": "https://x.com/michaelzsguo/status/2036796140813697327"
+  },
+  {
+    "id": "2024672010199085146",
+    "title": "Google Labs Website Creation",
+    "summary": "Google Labs created a personal website, showcasing its AI-powered design capabilities.",
+    "tags": [
+      "Google",
+      "AI Tools"
+    ],
+    "impressions": 24809,
+    "likes": 29,
+    "retweets": 0,
+    "bookmarks": 11,
+    "date": "2026-02-20",
+    "url": "https://x.com/michaelzsguo/status/2024672010199085146"
   },
   {
     "id": "2044423748619542609",
@@ -510,6 +541,22 @@
     "url": "https://x.com/michaelzsguo/status/2041956656024522784"
   },
   {
+    "id": "2024828678979637261",
+    "title": "Claude Code and Vue Author",
+    "summary": "Wondering how Claude Code would react if told it's the Vue author, asking not to be fooled.",
+    "tags": [
+      "Claude",
+      "AI Agents",
+      "中文"
+    ],
+    "impressions": 16289,
+    "likes": 19,
+    "retweets": 0,
+    "bookmarks": 0,
+    "date": "2026-02-20",
+    "url": "https://x.com/michaelzsguo/status/2024828678979637261"
+  },
+  {
     "id": "2036545487281725655",
     "title": "根据事故详细报告：攻击者并没有通过正常的 GitHub 工作流提交恶意版本，所以 LiteLLM 的维护者没能及时...",
     "summary": "根据事故详细报告：攻击者并没有通过正常的 GitHub 工作流提交恶意版本，所以 LiteLLM 的维护者没能及时发现 1. 相反，攻击者使用了一个被窃取的 PyPI 发布令牌，直接把被投毒的包上传到了 PyPI，完全绕过了代码审查",
@@ -523,6 +570,38 @@
     "bookmarks": 22,
     "date": "2026-03-24",
     "url": "https://x.com/michaelzsguo/status/2036545487281725655"
+  },
+  {
+    "id": "2025015167444996146",
+    "title": "Domain Experts Unlock AI Coding",
+    "summary": "Domain experts using Claude Code are the real unlock, no longer waiting on engineers to understand problems.",
+    "tags": [
+      "AI Agents",
+      "Claude",
+      "Skills"
+    ],
+    "impressions": 15463,
+    "likes": 103,
+    "retweets": 3,
+    "bookmarks": 7,
+    "date": "2026-02-21",
+    "url": "https://x.com/michaelzsguo/status/2025015167444996146"
+  },
+  {
+    "id": "2014102708668555470",
+    "title": "Sprints in Age of AI Agents",
+    "summary": "Questioning if sprint agile development is still needed when coding is no longer the bottleneck and agents deliver progress in hours.",
+    "tags": [
+      "AI Agents",
+      "Remote Dev",
+      "Skills"
+    ],
+    "impressions": 14728,
+    "likes": 2,
+    "retweets": 0,
+    "bookmarks": 1,
+    "date": "2026-01-21",
+    "url": "https://x.com/michaelzsguo/status/2014102708668555470"
   },
   {
     "id": "2051063189693956134",
@@ -557,6 +636,23 @@
     "bookmarks": 15,
     "date": "2026-04-26",
     "url": "https://x.com/michaelzsguo/status/2048495521225195947"
+  },
+  {
+    "id": "2015301288481931431",
+    "title": "Claude Code Mobile Power",
+    "summary": "After initial struggles with interface and integrations, Claude Code on mobile is incredibly powerful, allowing task delegation and independent completion.",
+    "tags": [
+      "Claude",
+      "AI Agents",
+      "Skills",
+      "中文"
+    ],
+    "impressions": 13561,
+    "likes": 15,
+    "retweets": 0,
+    "bookmarks": 8,
+    "date": "2026-01-25",
+    "url": "https://x.com/michaelzsguo/status/2015301288481931431"
   },
   {
     "id": "2041953666077266113",
