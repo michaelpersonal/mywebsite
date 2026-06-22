@@ -1,5 +1,21 @@
 [
   {
+    "id": "2067795772439982591",
+    "title": "Renting MacBook Pro for Inference",
+    "summary": "Renting a MacBook Pro for inference could earn ~$423/month, paying for itself in a year. Questions about Darkbloom provider's real demand and payouts.",
+    "tags": [
+      "Local LLM",
+      "Hardware",
+      "AI"
+    ],
+    "impressions": 766852,
+    "likes": 1921,
+    "retweets": 72,
+    "bookmarks": 3112,
+    "date": "2026-06-19",
+    "url": "https://x.com/michaelzsguo/status/2067795772439982591"
+  },
+  {
     "id": "2055317248923848713",
     "title": "DeepSeek V4 Pro: 100M Tokens for $1.85",
     "summary": "My Deepseek V4 Pro agent (inside codex) has been pursuing goal for more than 13 hours, burning ~100M tokens, and has only costed me $1. Yes you saw it right",
@@ -720,6 +736,22 @@
     "url": "https://x.com/michaelzsguo/status/2046621472945308152"
   },
   {
+    "id": "2067717740161359973",
+    "title": "ggerganov's Local Model Setup",
+    "summary": "ggerganov shared his local setup: Qwen3.6-27B, llama.cpp, Pi agent, RTX 5090/M2 Ultra, used daily for llama.cpp maintenance.",
+    "tags": [
+      "Local LLM",
+      "Qwen",
+      "Hardware"
+    ],
+    "impressions": 10982,
+    "likes": 20,
+    "retweets": 1,
+    "bookmarks": 34,
+    "date": "2026-06-18",
+    "url": "https://x.com/michaelzsguo/status/2067717740161359973"
+  },
+  {
     "id": "2055311882118922365",
     "title": "FDE在AI时代流行，是因为企业不再只需要会写代码的人，而是需要能把客户问题、产品判断和软件实现连在一起的人",
     "summary": "FDE在AI时代流行，是因为企业不再只需要会写代码的人，而是需要能把客户问题、产品判断和软件实现连在一起的人. AI降低了写代码的门槛，但也放大了真实场景、业务理解、系统集成和落地判断的重要性",
@@ -792,6 +824,37 @@
     "bookmarks": 130,
     "date": "2026-05-09",
     "url": "https://x.com/michaelzsguo/status/2053217839729791221"
+  },
+  {
+    "id": "2068461590995931613",
+    "title": "MacBook Inference Earning Potential",
+    "summary": "A viral question about earning $423/month from MacBook inference led to real payout reports, founder context, and privacy concerns.",
+    "tags": [
+      "Local LLM",
+      "Hardware",
+      "AI"
+    ],
+    "impressions": 9104,
+    "likes": 28,
+    "retweets": 2,
+    "bookmarks": 20,
+    "date": "2026-06-20",
+    "url": "https://x.com/michaelzsguo/status/2068461590995931613"
+  },
+  {
+    "id": "2067008306481172593",
+    "title": "GLM-5.2 Beats GPT-5.5",
+    "summary": "GLM-5.2 surpasses GPT-5.5, closing gap with Anthropic/OpenAI, trailing only Fable 5 and Opus 4.8.",
+    "tags": [
+      "AI",
+      "LLM Internals"
+    ],
+    "impressions": 9100,
+    "likes": 15,
+    "retweets": 1,
+    "bookmarks": 0,
+    "date": "2026-06-16",
+    "url": "https://x.com/michaelzsguo/status/2067008306481172593"
   },
   {
     "id": "2043760317516132718",
@@ -1900,6 +1963,20 @@
     "url": "https://x.com/michaelzsguo/status/2040113752020808190"
   },
   {
+    "id": "2067531429219565596",
+    "title": "Apple Raising Mac Prices Due to Chips",
+    "summary": "Apple is raising Mac prices to offset surging memory and storage chip costs, benefiting early buyers.",
+    "tags": [
+      "Hardware"
+    ],
+    "impressions": 3260,
+    "likes": 5,
+    "retweets": 0,
+    "bookmarks": 0,
+    "date": "2026-06-18",
+    "url": "https://x.com/michaelzsguo/status/2067531429219565596"
+  },
+  {
     "id": "2045340862612226351",
     "title": "Gemma 4 is so powerful, I built an AI stylist runs 100% l...",
     "summary": "Gemma 4 is so powerful, I built an AI stylist runs 100% locally with Gemma 4 26B",
@@ -2575,6 +2652,22 @@
     "bookmarks": 4,
     "date": "2026-05-06",
     "url": "https://x.com/michaelzsguo/status/2051845956912509243"
+  },
+  {
+    "id": "2067771974148108443",
+    "title": "中国大模型技术路线族谱图",
+    "summary": "中国大模型如GLM、DeepSeek、Qwen、Kimi快速缩小与美国差距，其技术源头早于ChatGPT，产业爆发有深厚积累。",
+    "tags": [
+      "DeepSeek",
+      "Qwen",
+      "中文"
+    ],
+    "impressions": 2506,
+    "likes": 13,
+    "retweets": 0,
+    "bookmarks": 8,
+    "date": "2026-06-19",
+    "url": "https://x.com/michaelzsguo/status/2067771974148108443"
   },
   {
     "id": "2036601630456430904",
