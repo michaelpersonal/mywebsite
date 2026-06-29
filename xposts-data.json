@@ -49,6 +49,21 @@
     "url": "https://x.com/michaelzsguo/status/2025004900292149348"
   },
   {
+    "id": "2069169011309383855",
+    "title": "Alisa Liu的AI求职背景",
+    "summary": "华盛顿大学NLP博士生Alisa Liu分享求职经历，其背景包括Google和NVIDIA实习，导师为Yejin Choi和Noah Smith。",
+    "tags": [
+      "AI",
+      "Skills"
+    ],
+    "impressions": 134017,
+    "likes": 708,
+    "retweets": 85,
+    "bookmarks": 701,
+    "date": "2026-06-22",
+    "url": "https://x.com/michaelzsguo/status/2069169011309383855"
+  },
+  {
     "id": "2050380832007721213",
     "title": "Qwen 3.6 Running on 12GB VRAM",
     "summary": "People are posting Qwen 3. 6 configs that deliver fast TPS on as little as 12GB VRAM",
@@ -142,6 +157,38 @@
     "bookmarks": 250,
     "date": "2026-03-21",
     "url": "https://x.com/michaelzsguo/status/2035382508624159100"
+  },
+  {
+    "id": "2070150177357226459",
+    "title": "年轻才俊分享OpenAI面试经验",
+    "summary": "Yong Zhengxin 补充了自己的OpenAI面试经验，与Alisa Liu的文章互补，对AI入门者和面试者都有参考价值。",
+    "tags": [
+      "OpenAI",
+      "Skills",
+      "中文"
+    ],
+    "impressions": 40173,
+    "likes": 260,
+    "retweets": 23,
+    "bookmarks": 308,
+    "date": "2026-06-25",
+    "url": "https://x.com/michaelzsguo/status/2070150177357226459"
+  },
+  {
+    "id": "2069538545455501470",
+    "title": "Alisa Liu的OpenAI面试资源清单",
+    "summary": "Alisa Liu分享的OpenAI面试准备资源，涵盖LeetCode 75、NeetCode等，对应AI research/MTS岗位考察范围。",
+    "tags": [
+      "OpenAI",
+      "Skills",
+      "中文"
+    ],
+    "impressions": 36819,
+    "likes": 354,
+    "retweets": 81,
+    "bookmarks": 469,
+    "date": "2026-06-23",
+    "url": "https://x.com/michaelzsguo/status/2069538545455501470"
   },
   {
     "id": "2053229425555050734",
@@ -441,6 +488,22 @@
     "bookmarks": 291,
     "date": "2026-04-27",
     "url": "https://x.com/michaelzsguo/status/2048911983156568371"
+  },
+  {
+    "id": "2070477475298103433",
+    "title": "斯坦福CS336：从零学语言模型",
+    "summary": "斯坦福课程CS336 'Language Modeling from Scratch' 是系统学习LLM和准备AI research/MTS面试的优质资源。",
+    "tags": [
+      "LLM Internals",
+      "Skills",
+      "OpenAI"
+    ],
+    "impressions": 20684,
+    "likes": 265,
+    "retweets": 46,
+    "bookmarks": 314,
+    "date": "2026-06-26",
+    "url": "https://x.com/michaelzsguo/status/2070477475298103433"
   },
   {
     "id": "2056493133580337603",
@@ -889,6 +952,21 @@
     "url": "https://x.com/michaelzsguo/status/2044934560304013663"
   },
   {
+    "id": "2069222836695073205",
+    "title": "买Mac跑本地模型的价值",
+    "summary": "买Mac跑本地模型不能仅按API token的ROI计算，其价值在于本地运行和开发体验，而非单纯节省成本。",
+    "tags": [
+      "Local LLM",
+      "Hardware"
+    ],
+    "impressions": 8766,
+    "likes": 39,
+    "retweets": 7,
+    "bookmarks": 26,
+    "date": "2026-06-23",
+    "url": "https://x.com/michaelzsguo/status/2069222836695073205"
+  },
+  {
     "id": "2041144929070596305",
     "title": "seriously though",
     "summary": "seriously though. 昨天听了一个播客， 里面的嘉宾提到：在这个AI铺天盖地的时代， 有三种不同反应的人：感到焦虑， 感到兴奋， 满不在乎",
@@ -977,6 +1055,22 @@
     "bookmarks": 3,
     "date": "2026-05-03",
     "url": "https://x.com/michaelzsguo/status/2050916045775368637"
+  },
+  {
+    "id": "2071037920077623588",
+    "title": "Revive Old PC for Local LLM",
+    "summary": "Turn your 13-year-old Dell XPS 8700 into an always-on local LLM host using llama.cpp and Qwen3.5-4B.",
+    "tags": [
+      "Local LLM",
+      "Hardware",
+      "Qwen"
+    ],
+    "impressions": 7886,
+    "likes": 78,
+    "retweets": 7,
+    "bookmarks": 75,
+    "date": "2026-06-28",
+    "url": "https://x.com/michaelzsguo/status/2071037920077623588"
   },
   {
     "id": "2047665936312787139",
@@ -1286,6 +1380,21 @@
     "url": "https://x.com/michaelzsguo/status/2045207282573541847"
   },
   {
+    "id": "2069390845048947034",
+    "title": "本地模型的上下文限制真相",
+    "summary": "本地开源模型有上下文限制，但由模型架构、训练长度、推理引擎等多因素决定，而非云厂商的简单开关。",
+    "tags": [
+      "Local LLM",
+      "LLM Internals"
+    ],
+    "impressions": 5711,
+    "likes": 18,
+    "retweets": 0,
+    "bookmarks": 12,
+    "date": "2026-06-23",
+    "url": "https://x.com/michaelzsguo/status/2069390845048947034"
+  },
+  {
     "id": "2043511120787374321",
     "title": "讲的非常好。Agent 的速度已经接近秒级了，写代码、跑简单任务都很快，但大多数 process 还停留在人类节奏：审批",
     "summary": "Agent 的速度已经接近秒级了，写代码、跑简单任务都很快，但大多数 process 还停留在人类节奏：审批、等反馈、层层 review、手动验证，这些正在成为真正的瓶颈. 这让我想到 DORA发明者Nicole Foresgren的新书《Frictionless》里反复强调的一点：AI",
@@ -1375,6 +1484,22 @@
     "bookmarks": 6,
     "date": "2026-05-04",
     "url": "https://x.com/michaelzsguo/status/2051100042711224572"
+  },
+  {
+    "id": "2069969035484114968",
+    "title": "Baseten GLM 5.2 Speed Test",
+    "summary": "Baseten's GLM 5.2 API is extremely fast, outpacing Zhipu's version without any initial pause.",
+    "tags": [
+      "AI Agents",
+      "Google",
+      "Hardware"
+    ],
+    "impressions": 5082,
+    "likes": 12,
+    "retweets": 0,
+    "bookmarks": 2,
+    "date": "2026-06-25",
+    "url": "https://x.com/michaelzsguo/status/2069969035484114968"
   },
   {
     "id": "2045340307001163938",
@@ -1468,6 +1593,37 @@
     "bookmarks": 0,
     "date": "2026-03-19",
     "url": "https://x.com/michaelzsguo/status/2034685579267293682"
+  },
+  {
+    "id": "2069967201558282657",
+    "title": "Baseten GLM 5.2 API 8-12x Faster",
+    "summary": "Baseten's GLM 5.2 API is 8-12x faster than Zhipu's version, with $6 free credit to try.",
+    "tags": [
+      "AI Agents",
+      "Google"
+    ],
+    "impressions": 4757,
+    "likes": 9,
+    "retweets": 0,
+    "bookmarks": 5,
+    "date": "2026-06-25",
+    "url": "https://x.com/michaelzsguo/status/2069967201558282657"
+  },
+  {
+    "id": "2070619359798771850",
+    "title": "系统学习LLM的推荐讲座",
+    "summary": "推荐一个全面理解LLM的讲座视频，是系统学习前不可错过的资源，适合准备AI面试的学习者。",
+    "tags": [
+      "LLM Internals",
+      "Skills",
+      "中文"
+    ],
+    "impressions": 4699,
+    "likes": 42,
+    "retweets": 13,
+    "bookmarks": 47,
+    "date": "2026-06-26",
+    "url": "https://x.com/michaelzsguo/status/2070619359798771850"
   },
   {
     "id": "2044040276025463190",
@@ -1589,6 +1745,22 @@
     "bookmarks": 1,
     "date": "2026-04-05",
     "url": "https://x.com/michaelzsguo/status/2040842859411312855"
+  },
+  {
+    "id": "2071298825705095423",
+    "title": "DeepSeek DSpark Innovation Explained",
+    "summary": "DSpark uses a main model to brainstorm sentences, a tiny editor for coherence, then a verifier. A great read on DeepSeek's latest innovation.",
+    "tags": [
+      "DeepSeek",
+      "AI Agents",
+      "LLM Internals"
+    ],
+    "impressions": 4299,
+    "likes": 23,
+    "retweets": 1,
+    "bookmarks": 29,
+    "date": "2026-06-28",
+    "url": "https://x.com/michaelzsguo/status/2071298825705095423"
   },
   {
     "id": "2041981627803324484",
@@ -2226,6 +2398,22 @@
     "url": "https://x.com/michaelzsguo/status/2041332279214051818"
   },
   {
+    "id": "2071058168906469565",
+    "title": "Run Qwen3.5 on Old GPU",
+    "summary": "Use a GeForce GTX 645 with 1GB VRAM to serve Qwen3.5-0.8B entirely from GPU using llama.cpp.",
+    "tags": [
+      "Local LLM",
+      "Hardware",
+      "Qwen"
+    ],
+    "impressions": 2974,
+    "likes": 18,
+    "retweets": 4,
+    "bookmarks": 7,
+    "date": "2026-06-28",
+    "url": "https://x.com/michaelzsguo/status/2071058168906469565"
+  },
+  {
     "id": "2035723417308045458",
     "title": "国内被CC封号困扰的同学，可以尝试Pi + Kimi K2",
     "summary": "国内被CC封号困扰的同学，可以尝试Pi + Kimi K2. Pi Coding Agent是支持Openclaw小龙虾的基座，Agent感很丝滑",
@@ -2652,6 +2840,37 @@
     "bookmarks": 4,
     "date": "2026-05-06",
     "url": "https://x.com/michaelzsguo/status/2051845956912509243"
+  },
+  {
+    "id": "2071280232665960641",
+    "title": "Turn Old Computer Into Local LLM",
+    "summary": "Repurpose your old computer with a GPU to run local LLMs like Qwen3.5-0.8B using llama.cpp.",
+    "tags": [
+      "Local LLM",
+      "Hardware",
+      "Qwen"
+    ],
+    "impressions": 2517,
+    "likes": 12,
+    "retweets": 2,
+    "bookmarks": 13,
+    "date": "2026-06-28",
+    "url": "https://x.com/michaelzsguo/status/2071280232665960641"
+  },
+  {
+    "id": "2069177905473806812",
+    "title": "AI求职建议：学习CS336课程",
+    "summary": "Alisa Liu建议求职者观看斯坦福CS336课程，该课程涵盖从零构建语言模型的广泛主题，有助于AI求职。",
+    "tags": [
+      "AI",
+      "Skills"
+    ],
+    "impressions": 2512,
+    "likes": 16,
+    "retweets": 1,
+    "bookmarks": 13,
+    "date": "2026-06-22",
+    "url": "https://x.com/michaelzsguo/status/2069177905473806812"
   },
   {
     "id": "2067771974148108443",
