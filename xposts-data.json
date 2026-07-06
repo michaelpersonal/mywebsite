@@ -64,6 +64,20 @@
     "url": "https://x.com/michaelzsguo/status/2069169011309383855"
   },
   {
+    "id": "2073791424173142395",
+    "title": "美国250年国庆烟火因故障30秒放完",
+    "summary": "美国250年国庆，圣地亚哥7000个烟火因计算机故障30秒全部放完，场面壮观，观众称最棒烟火秀。",
+    "tags": [
+      "Hardware"
+    ],
+    "impressions": 97580,
+    "likes": 231,
+    "retweets": 22,
+    "bookmarks": 76,
+    "date": "2026-07-05",
+    "url": "https://x.com/michaelzsguo/status/2073791424173142395"
+  },
+  {
     "id": "2050380832007721213",
     "title": "Qwen 3.6 Running on 12GB VRAM",
     "summary": "People are posting Qwen 3. 6 configs that deliver fast TPS on as little as 12GB VRAM",
@@ -77,6 +91,21 @@
     "bookmarks": 2486,
     "date": "2026-05-02",
     "url": "https://x.com/michaelzsguo/status/2050380832007721213"
+  },
+  {
+    "id": "2072861388184170660",
+    "title": "Sergey Brin 承认落后并追赶",
+    "summary": "Google联合创始人Sergey Brin曾承认大模型落后，Gemini已重回第一梯队，但六个月后局面再次变化。",
+    "tags": [
+      "Google",
+      "LLM Internals"
+    ],
+    "impressions": 84075,
+    "likes": 168,
+    "retweets": 39,
+    "bookmarks": 166,
+    "date": "2026-07-03",
+    "url": "https://x.com/michaelzsguo/status/2072861388184170660"
   },
   {
     "id": "2053217139369095252",
@@ -109,6 +138,37 @@
     "url": "https://x.com/michaelzsguo/status/2035102518552707261"
   },
   {
+    "id": "2073596491063554103",
+    "title": "Karpathy's Agent Experience at Silicon Valley Party",
+    "summary": "Andrej Karpathy shared four points on agents, including OpenAI's early 2016 attempt with reinforcement learning for web agents.",
+    "tags": [
+      "AI Agents",
+      "OpenAI",
+      "LLM Internals"
+    ],
+    "impressions": 70294,
+    "likes": 577,
+    "retweets": 78,
+    "bookmarks": 551,
+    "date": "2026-07-05",
+    "url": "https://x.com/michaelzsguo/status/2073596491063554103"
+  },
+  {
+    "id": "2073724599632588826",
+    "title": "Matt Pocock's 7 Levels of Code Review",
+    "summary": "Matt Pocock's 'skills' repo on GitHub defines 7 levels of code review, from reading every diff to higher-level scanning, opposing 'vibe coding'.",
+    "tags": [
+      "Skills",
+      "Codex"
+    ],
+    "impressions": 61279,
+    "likes": 157,
+    "retweets": 26,
+    "bookmarks": 214,
+    "date": "2026-07-05",
+    "url": "https://x.com/michaelzsguo/status/2073724599632588826"
+  },
+  {
     "id": "2051006950691709320",
     "title": "I needed to pursue /goal inside Codex, but I burned throu...",
     "summary": "I needed to pursue /goal inside Codex, but I burned through my Plus membership tokens. Luckily, I have a capable and very cheap DeepSeek V4 Pro setup that I can connect to Codex",
@@ -124,6 +184,20 @@
     "bookmarks": 732,
     "date": "2026-05-03",
     "url": "https://x.com/michaelzsguo/status/2051006950691709320"
+  },
+  {
+    "id": "2073575200201879651",
+    "title": "Google Video: Founding Fathers Use Office Suite",
+    "summary": "A creative Google video shows US founding fathers collaborating on the Declaration of Independence using Docs, Calendar, Email, Chat, and video conferencing.",
+    "tags": [
+      "Google"
+    ],
+    "impressions": 52899,
+    "likes": 460,
+    "retweets": 55,
+    "bookmarks": 198,
+    "date": "2026-07-05",
+    "url": "https://x.com/michaelzsguo/status/2073575200201879651"
   },
   {
     "id": "2050302597853040642",
@@ -538,6 +612,22 @@
     "url": "https://x.com/michaelzsguo/status/2046417788911132789"
   },
   {
+    "id": "2071956328285720644",
+    "title": "Dario 称中国模型蒸馏自 Anthropic",
+    "summary": "Dario声称DeepSeek等中国模型蒸馏自Anthropic，书籍讲解如何微调小模型成为专家。",
+    "tags": [
+      "DeepSeek",
+      "Fine-tuning",
+      "Skills"
+    ],
+    "impressions": 18563,
+    "likes": 219,
+    "retweets": 26,
+    "bookmarks": 245,
+    "date": "2026-06-30",
+    "url": "https://x.com/michaelzsguo/status/2071956328285720644"
+  },
+  {
     "id": "2055619733198688670",
     "title": "I write about the tools behind practical AI agents: Codex...",
     "summary": "I write about the tools behind practical AI agents: Codex, DeepSeek, Claude Code, local LLMs, agentic coding workflows, and the messy configs that make them actually work. Follow me for more field ...",
@@ -665,6 +755,22 @@
     "bookmarks": 7,
     "date": "2026-02-21",
     "url": "https://x.com/michaelzsguo/status/2025015167444996146"
+  },
+  {
+    "id": "2073519721572708422",
+    "title": "Silicon Valley: Attention is the New Bottleneck",
+    "summary": "At a Silicon Valley tech party, @steipete shares that after token and CPU limits, attention is now the real constraint when working with AI agents.",
+    "tags": [
+      "AI Agents",
+      "OpenAI",
+      "Hardware"
+    ],
+    "impressions": 15354,
+    "likes": 91,
+    "retweets": 25,
+    "bookmarks": 144,
+    "date": "2026-07-04",
+    "url": "https://x.com/michaelzsguo/status/2073519721572708422"
   },
   {
     "id": "2014102708668555470",
@@ -813,6 +919,22 @@
     "bookmarks": 34,
     "date": "2026-06-18",
     "url": "https://x.com/michaelzsguo/status/2067717740161359973"
+  },
+  {
+    "id": "2073915350014460409",
+    "title": "ODS: Quick Start for Local Open Models",
+    "summary": "ODS helps you quickly try local open models and agent apps by calculating which models your hardware can run.",
+    "tags": [
+      "Local LLM",
+      "AI Agents",
+      "Hardware"
+    ],
+    "impressions": 10387,
+    "likes": 14,
+    "retweets": 3,
+    "bookmarks": 14,
+    "date": "2026-07-05",
+    "url": "https://x.com/michaelzsguo/status/2073915350014460409"
   },
   {
     "id": "2055311882118922365",
@@ -1041,6 +1163,21 @@
     "bookmarks": 0,
     "date": "2026-03-29",
     "url": "https://x.com/michaelzsguo/status/2038252459018125764"
+  },
+  {
+    "id": "2073568708908249536",
+    "title": "Perplexity CEO on Microsoft Creating Office Workers",
+    "summary": "Perplexity AI CEO explains how Bill Gates 'induced' America to become office workers to sell Microsoft Office software, shocking Joe Rogan.",
+    "tags": [
+      "AI Tools",
+      "Skills"
+    ],
+    "impressions": 8069,
+    "likes": 28,
+    "retweets": 4,
+    "bookmarks": 17,
+    "date": "2026-07-05",
+    "url": "https://x.com/michaelzsguo/status/2073568708908249536"
   },
   {
     "id": "2050916045775368637",
@@ -1319,6 +1456,21 @@
     "url": "https://x.com/michaelzsguo/status/2043063836119376368"
   },
   {
+    "id": "2073553217787490361",
+    "title": "Fable 5 Frustrated as Codex Takes Over",
+    "summary": "Fable 5 is frustrated as Codex uses the author's plan to command them, reversing roles in a humorous AI interaction.",
+    "tags": [
+      "Codex",
+      "AI Agents"
+    ],
+    "impressions": 6041,
+    "likes": 4,
+    "retweets": 0,
+    "bookmarks": 0,
+    "date": "2026-07-04",
+    "url": "https://x.com/michaelzsguo/status/2073553217787490361"
+  },
+  {
     "id": "2055680461725188562",
     "title": "Did agent accomplish anything in that 13 hours?",
     "summary": "Did agent accomplish anything in that 13 hours?",
@@ -1423,6 +1575,22 @@
     "bookmarks": 1,
     "date": "2026-03-25",
     "url": "https://x.com/michaelzsguo/status/2036615024743993849"
+  },
+  {
+    "id": "2072840889475514655",
+    "title": "Mira Murati 新公司拥抱开放模型",
+    "summary": "前OpenAI CTO Mira Murati的新公司为桥水基金微调中文开源模型，提升金融任务准确率。",
+    "tags": [
+      "OpenAI",
+      "Fine-tuning",
+      "AI Agents"
+    ],
+    "impressions": 5529,
+    "likes": 39,
+    "retweets": 2,
+    "bookmarks": 24,
+    "date": "2026-07-03",
+    "url": "https://x.com/michaelzsguo/status/2072840889475514655"
   },
   {
     "id": "2056842405815447684",
@@ -1950,6 +2118,22 @@
     "bookmarks": 1,
     "date": "2026-03-20",
     "url": "https://x.com/michaelzsguo/status/2035069537905688919"
+  },
+  {
+    "id": "2073783586017144883",
+    "title": "Meituan LongCat Open-Sourced with Agent Experts",
+    "summary": "Meituan's LongCat open-sourced with a paper on 'agent experts,' shifting agentic AI from product wrapper to training target.",
+    "tags": [
+      "AI Agents",
+      "Fine-tuning",
+      "OpenAI"
+    ],
+    "impressions": 3772,
+    "likes": 22,
+    "retweets": 1,
+    "bookmarks": 10,
+    "date": "2026-07-05",
+    "url": "https://x.com/michaelzsguo/status/2073783586017144883"
   },
   {
     "id": "2042646016877298063",
@@ -2950,6 +3134,21 @@
     "url": "https://x.com/michaelzsguo/status/2046672388960792581"
   },
   {
+    "id": "2073487426442408217",
+    "title": "Codex Reset 过期时间可视化",
+    "summary": "展示了如何清晰查看 Codex Reset 的过期时间，方便开发者管理。",
+    "tags": [
+      "Codex",
+      "AI Tools"
+    ],
+    "impressions": 2414,
+    "likes": 2,
+    "retweets": 0,
+    "bookmarks": 2,
+    "date": "2026-07-04",
+    "url": "https://x.com/michaelzsguo/status/2073487426442408217"
+  },
+  {
     "id": "2058399843207241795",
     "title": "Interesting",
     "summary": "Interesting. Codex can continue pursuing /goal even though it has used up my 5-hour session limit? @dotey FYI",
@@ -3451,6 +3650,21 @@
     "url": "https://x.com/michaelzsguo/status/2043062702818390086"
   },
   {
+    "id": "2073475469928804394",
+    "title": "AI Sovereignty and Open Models",
+    "summary": "讨论AI主权、开放模型与Alex Karp的观点，涉及模型开放性与国家战略。",
+    "tags": [
+      "AI",
+      "OpenAI"
+    ],
+    "impressions": 2064,
+    "likes": 5,
+    "retweets": 1,
+    "bookmarks": 8,
+    "date": "2026-07-04",
+    "url": "https://x.com/michaelzsguo/status/2073475469928804394"
+  },
+  {
     "id": "2041620146096099730",
     "title": "What they described as Mythos’s behavior during pre-train...",
     "summary": "What they described as Mythos’s behavior during pre-training all leans toward the darker side. It has a real Frankenstein feel to it",
@@ -3481,6 +3695,36 @@
     "bookmarks": 1,
     "date": "2026-05-16",
     "url": "https://x.com/michaelzsguo/status/2055674421436637695"
+  },
+  {
+    "id": "2072122677322498058",
+    "title": "ChatGPT 新增 Agent 功能",
+    "summary": "ChatGPT正在增加代理功能，将聊天框转变为更实用的工具，值得关注。",
+    "tags": [
+      "AI Agents",
+      "OpenAI"
+    ],
+    "impressions": 2018,
+    "likes": 1,
+    "retweets": 1,
+    "bookmarks": 2,
+    "date": "2026-07-01",
+    "url": "https://x.com/michaelzsguo/status/2072122677322498058"
+  },
+  {
+    "id": "2073741442556510237",
+    "title": "Local X Archive Content System",
+    "summary": "Built a local system to import X archive into SQLite with full-text search, enabling queries like 'Find my posts on local open model'.",
+    "tags": [
+      "Local LLM",
+      "Skills"
+    ],
+    "impressions": 2014,
+    "likes": 3,
+    "retweets": 0,
+    "bookmarks": 4,
+    "date": "2026-07-05",
+    "url": "https://x.com/michaelzsguo/status/2073741442556510237"
   },
   {
     "id": "2055696123478610031",
