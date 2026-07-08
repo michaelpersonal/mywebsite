@@ -1,55 +1,54 @@
-# X Posts Update Script
+# X Posts Render Script
 
-Fetches your top-performing X (Twitter) posts and publishes them as a searchable, filterable static page.
+Renders `xposts.html` from `xposts-data.json`.
+
+The source of truth for X ingestion now lives in:
+
+```text
+/Users/zhisongguo/code/x-content-os
+```
+
+That system imports Michael's official X archive into SQLite, incrementally syncs new authored posts, exports a curated public subset to this repo, and then calls this renderer.
 
 ## What it does
 
-1. Fetches posts from the last 7 days using the X API (`/search/recent`)
-2. Filters for posts with 2,000+ impressions
-3. Auto-generates titles, summaries, and topic tags
-4. Merges new posts into `xposts-data.json` (deduplicates by tweet ID)
-5. Regenerates `xposts.html` — a static page with search and tag filtering
+1. Reads `xposts-data.json`
+2. Regenerates `xposts.html`
+3. Produces a searchable, filterable static page with tags and engagement metadata
+
+Legacy X API fetch mode still exists in `scripts/update_xposts.py`, but it should not be used as the scheduled ingestion path.
 
 ## Setup
 
 ### Prerequisites
 
 - Python 3.10+
-- An X API Bearer Token (Basic tier or higher — needs access to `impression_count` in `public_metrics`)
-- (Optional) A DeepSeek API key — for LLM-powered title/summary/tag generation. Without it, falls back to keyword matching.
-
-### Get your X API token
-
-1. Go to https://developer.x.com/en/portal/dashboard
-2. Create a project/app if you don't have one
-3. Generate a Bearer Token (app-only authentication)
+- `xposts-data.json`, exported by `x-content-os`
 
 ### Run locally
 
 ```bash
-export X_BEARER_TOKEN="your-bearer-token"
-export DEEPSEEK_API_KEY="your-deepseek-key"  # optional, for better tagging
-
-# Weekly update (last 7 days, default)
-python3 scripts/update_xposts.py
-
-# Initial backfill (e.g. last 90 days — requires /search/all access)
-python3 scripts/update_xposts.py --backfill 90
+python3 scripts/update_xposts.py --render-only
 ```
 
-The `--backfill` flag uses the full-archive search endpoint to fetch historical posts. Use this on first setup to populate your page. After that, the default weekly mode keeps it current.
+From `x-content-os`, run the full local publishing path:
 
-### Automate with GitHub Actions
+```bash
+cd /Users/zhisongguo/code/x-content-os
+python3 scripts/x_posts.py publish-website --website-root /Users/zhisongguo/code/mywebsite
+```
 
-The included workflow (`.github/workflows/update-xposts.yml`) runs every Monday at 9am UTC.
+Or run the scheduled wrapper:
 
-To set it up:
+```bash
+cd /Users/zhisongguo/code/x-content-os
+scripts/publish_xposts_website.sh
+```
 
-1. Go to your repo → Settings → Secrets and variables → Actions
-2. Add a secret named `X_BEARER_TOKEN` with your bearer token
-3. (Optional) Add a secret named `DEEPSEEK_API_KEY` for LLM-powered metadata generation
+### GitHub Actions
 
-You can also trigger it manually from the Actions tab → "Update X Posts" → "Run workflow".
+The included workflow is manual-only and renders the page from committed `xposts-data.json`.
+It does not fetch from X.
 
 ## Configuration
 
@@ -72,44 +71,23 @@ Without the API key, it falls back to keyword matching. You can add new keyword 
 ## How it works
 
 ```
-X API (/search/recent, 7-day window)
-  → filter by impressions >= 2000
-  → generate title/summary/tags
-  → deduplicate against xposts-data.json
-  → merge and sort by impressions (descending)
+x-content-os SQLite archive/sync store
+  → export curated public posts to xposts-data.json
   → regenerate xposts.html
-  → commit & push (in GitHub Actions)
+  → commit & push static artifacts
 ```
 
 ## Files
 
 | File | Purpose |
 |------|---------|
-| `scripts/update_xposts.py` | The update script |
+| `scripts/update_xposts.py` | Static page renderer; legacy fetch mode remains for manual fallback |
 | `xposts-data.json` | Source of truth for all posts |
 | `xposts.html` | Generated static page |
-| `.github/workflows/update-xposts.yml` | Weekly automation |
-
-## Adapting for your own use
-
-1. Fork this repo
-2. Change `USERNAME` in the script to your X handle
-3. Update `SITE_TITLE`, `BACK_LINK_URL`, and `BACK_LINK_TEXT` for your site
-4. Adjust `MIN_IMPRESSIONS` to your threshold
-5. Delete `xposts-data.json` (that's my data, you want a fresh start)
-6. Run the initial backfill to generate your page:
-   ```bash
-   export X_BEARER_TOKEN="your-bearer-token"
-   export DEEPSEEK_API_KEY="your-deepseek-key"  # optional
-   python3 scripts/update_xposts.py --backfill 90
-   ```
-   This fetches your posts from the last 90 days (adjust as needed), generates titles/summaries/tags, and creates both `xposts-data.json` and `xposts.html`.
-7. Add `X_BEARER_TOKEN` (and optionally `DEEPSEEK_API_KEY`) as GitHub repo secrets
-8. Push — the action will start running weekly to pick up new posts
+| `.github/workflows/update-xposts.yml` | Manual render workflow |
 
 ## Limitations
 
-- `/search/recent` only covers the last 7 days. If two consecutive runs fail, posts from the gap period are lost.
-- X API credits can deplete. The Basic tier has monthly limits.
-- Article-only posts (no text body) get their title from the API's `article.title` field. Image/video-only posts without articles fall back to "Media Post".
-- Tag generation is keyword-based and may not cover new topics. Update `generate_tags()` as needed.
+- `xposts.html` is generated. Edit `scripts/update_xposts.py` or `xposts-data.json`, not the generated card markup by hand.
+- Public metrics are only as complete as the upstream archive/API data and preserved `xposts-data.json` history.
+- Tag generation is keyword-based for newly exported archive posts unless curated metadata already exists.

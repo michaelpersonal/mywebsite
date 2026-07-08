@@ -1,18 +1,21 @@
 #!/usr/bin/env python3
 """
-Fetches recent X posts (last 7 days) with 2000+ impressions,
-merges them into xposts-data.json, and regenerates xposts.html.
+Regenerates xposts.html from xposts-data.json.
+
+Legacy mode can still fetch recent X posts, but the preferred pipeline is now:
+  x-content-os SQLite archive/sync -> export xposts-data.json -> render this page
 
 Usage:
-  python3 scripts/update_xposts.py
+  python3 scripts/update_xposts.py --render-only
 
-Requires X_BEARER_TOKEN env var.
+Legacy fetch mode requires X_BEARER_TOKEN env var.
 """
 
 import os
 import sys
 import json
 import re
+import html as html_lib
 import urllib.request
 import urllib.parse
 import time
@@ -24,10 +27,6 @@ DATA_FILE = ROOT / "xposts-data.json"
 HTML_FILE = ROOT / "xposts.html"
 
 TOKEN = os.environ.get("X_BEARER_TOKEN")
-if not TOKEN:
-    print("Error: X_BEARER_TOKEN env var not set")
-    sys.exit(1)
-
 DEEPSEEK_API_KEY = os.environ.get("DEEPSEEK_API_KEY")
 
 SEARCH_RECENT_URL = "https://api.twitter.com/2/tweets/search/recent"
@@ -44,6 +43,10 @@ BACK_LINK_TEXT = "back to terminal"
 def fetch_posts(backfill_days=None):
     """Fetch posts. If backfill_days is set, uses /search/all with a date range.
     Otherwise uses /search/recent (last 7 days)."""
+    if not TOKEN:
+        print("Error: X_BEARER_TOKEN env var not set")
+        sys.exit(1)
+
     all_tweets = []
     next_token = None
 
@@ -304,6 +307,7 @@ def merge_posts(existing, new_posts):
 
 
 def fmt_num(n):
+    n = int(n or 0)
     if n >= 1000:
         return f"{n/1000:.1f}k"
     return str(n)
@@ -314,20 +318,28 @@ def build_html(posts):
 
     cards_html = ""
     for p in posts:
-        tags_html = " ".join(f'<span class="tag">{t}</span>' for t in p["tags"])
-        data_tags = " ".join(p["tags"]).lower()
-        cards_html += f'''    <a href="{p['url']}" target="_blank" class="post-card" data-tags="{data_tags}" data-impressions="{p['impressions']}">
+        tags = p.get("tags", [])
+        tags_html = " ".join(f'<span class="tag">{html_lib.escape(str(t))}</span>' for t in tags)
+        data_tags = html_lib.escape(" ".join(str(t) for t in tags).lower(), quote=True)
+        url = html_lib.escape(str(p.get("url", "")), quote=True)
+        title = html_lib.escape(str(p.get("title", "")))
+        date = html_lib.escape(str(p.get("date", "")))
+        summary = html_lib.escape(str(p.get("summary", "")))
+        impressions = int(p.get("impressions") or 0)
+        likes = int(p.get("likes") or 0)
+        bookmarks = int(p.get("bookmarks") or 0)
+        cards_html += f'''    <a href="{url}" target="_blank" class="post-card" data-tags="{data_tags}" data-impressions="{impressions}">
       <div class="post-header">
-        <h3 class="post-title">{p['title']}</h3>
-        <span class="post-date">{p['date']}</span>
+        <h3 class="post-title">{title}</h3>
+        <span class="post-date">{date}</span>
       </div>
-      <p class="post-summary">{p['summary']}</p>
+      <p class="post-summary">{summary}</p>
       <div class="post-footer">
         <div class="post-tags">{tags_html}</div>
         <div class="post-stats">
-          <span class="stat">{fmt_num(p['impressions'])} views</span>
-          <span class="stat">{fmt_num(p['likes'])} likes</span>
-          <span class="stat">{fmt_num(p['bookmarks'])} saves</span>
+          <span class="stat">{fmt_num(impressions)} views</span>
+          <span class="stat">{fmt_num(likes)} likes</span>
+          <span class="stat">{fmt_num(bookmarks)} saves</span>
         </div>
       </div>
     </a>
@@ -335,7 +347,7 @@ def build_html(posts):
 
     filter_buttons = '<button class="filter-btn active" data-filter="all">All</button>\n'
     for tag in all_tags:
-        filter_buttons += f'      <button class="filter-btn" data-filter="{tag.lower()}">{tag}</button>\n'
+        filter_buttons += f'      <button class="filter-btn" data-filter="{html_lib.escape(str(tag).lower(), quote=True)}">{html_lib.escape(str(tag))}</button>\n'
 
     html = f'''<!DOCTYPE html>
 <html lang="en">
@@ -421,7 +433,7 @@ def build_html(posts):
         <a href="{BACK_LINK_URL}" class="back-link">&larr; {BACK_LINK_TEXT}</a>
         <header>
             <h1>{SITE_TITLE}</h1>
-            <p class="subtitle">Top posts by <a href="https://x.com/{USERNAME}" target="_blank">@{USERNAME}</a> &mdash; {len(posts)} posts with {MIN_IMPRESSIONS:,}+ impressions</p>
+            <p class="subtitle">Curated archive-backed posts by <a href="https://x.com/{USERNAME}" target="_blank">@{USERNAME}</a> &mdash; {len(posts)} searchable posts</p>
         </header>
         <div class="controls">
             <input type="text" class="search-box" placeholder="Search posts... (e.g. DeepSeek, local LLM, harness)" id="search">
@@ -492,6 +504,8 @@ def build_html(posts):
 def main():
     import argparse
     parser = argparse.ArgumentParser(description="Update X posts page")
+    parser.add_argument("--render-only", action="store_true",
+                        help="Only regenerate xposts.html from xposts-data.json. Does not call X.")
     parser.add_argument("--backfill", type=int, metavar="DAYS",
                         help="Initial backfill: fetch posts from the last N days (uses /search/all, requires Academic/Pro tier)")
     args = parser.parse_args()
@@ -504,6 +518,13 @@ def main():
         existing = []
 
     print(f"Existing posts: {len(existing)}")
+
+    if args.render_only:
+        html_out = build_html(existing)
+        with open(HTML_FILE, "w") as f:
+            f.write(html_out)
+        print(f"Regenerated {HTML_FILE.name}")
+        return
 
     # Fetch posts
     if args.backfill:
