@@ -1,5 +1,21 @@
 [
   {
+    "id": "2067795772439982591",
+    "title": "Renting MacBook Pro for Inference",
+    "summary": "Renting a MacBook Pro for inference could earn ~$423/month, paying for itself in a year. Questions about Darkbloom provider's real demand and payouts.",
+    "tags": [
+      "Local LLM",
+      "Hardware",
+      "AI"
+    ],
+    "impressions": 766852,
+    "likes": 1921,
+    "retweets": 72,
+    "bookmarks": 3112,
+    "date": "2026-06-19",
+    "url": "https://x.com/michaelzsguo/status/2067795772439982591"
+  },
+  {
     "id": "2078154407611416935",
     "title": "Moonshot AI, the company behind Kimi, has four core founders",
     "summary": "Moonshot AI, the company behind Kimi, has four core founders. Their backgrounds are unusually strong: - Founder and CEO Yang Zhilin studied computer science at Tsinghua before earning his PhD from...",
@@ -122,6 +138,21 @@
     "url": "https://x.com/Michaelzsguo/status/2078225230066053266"
   },
   {
+    "id": "2069169011309383855",
+    "title": "Alisa Liu的AI求职背景",
+    "summary": "华盛顿大学NLP博士生Alisa Liu分享求职经历，其背景包括Google和NVIDIA实习，导师为Yejin Choi和Noah Smith。",
+    "tags": [
+      "AI",
+      "Skills"
+    ],
+    "impressions": 134017,
+    "likes": 708,
+    "retweets": 85,
+    "bookmarks": 701,
+    "date": "2026-06-22",
+    "url": "https://x.com/michaelzsguo/status/2069169011309383855"
+  },
+  {
     "id": "2073791424173142395",
     "title": "美国250年国庆烟火因故障30秒放完",
     "summary": "美国250年国庆，圣地亚哥7000个烟火因计算机故障30秒全部放完，场面壮观，观众称最棒烟火秀。",
@@ -149,6 +180,21 @@
     "bookmarks": 2486,
     "date": "2026-05-02",
     "url": "https://x.com/michaelzsguo/status/2050380832007721213"
+  },
+  {
+    "id": "2072861388184170660",
+    "title": "Sergey Brin 承认落后并追赶",
+    "summary": "Google联合创始人Sergey Brin曾承认大模型落后，Gemini已重回第一梯队，但六个月后局面再次变化。",
+    "tags": [
+      "Google",
+      "LLM Internals"
+    ],
+    "impressions": 84075,
+    "likes": 168,
+    "retweets": 39,
+    "bookmarks": 166,
+    "date": "2026-07-03",
+    "url": "https://x.com/michaelzsguo/status/2072861388184170660"
   },
   {
     "id": "2053217139369095252",
@@ -195,6 +241,22 @@
     "bookmarks": 68,
     "date": "2026-03-20",
     "url": "https://x.com/michaelzsguo/status/2035102518552707261"
+  },
+  {
+    "id": "2073596491063554103",
+    "title": "Karpathy's Agent Experience at Silicon Valley Party",
+    "summary": "Andrej Karpathy shared four points on agents, including OpenAI's early 2016 attempt with reinforcement learning for web agents.",
+    "tags": [
+      "AI Agents",
+      "OpenAI",
+      "LLM Internals"
+    ],
+    "impressions": 70294,
+    "likes": 577,
+    "retweets": 78,
+    "bookmarks": 551,
+    "date": "2026-07-05",
+    "url": "https://x.com/michaelzsguo/status/2073596491063554103"
   },
   {
     "id": "2077764075866468444",
@@ -255,6 +317,20 @@
     "bookmarks": 732,
     "date": "2026-05-03",
     "url": "https://x.com/michaelzsguo/status/2051006950691709320"
+  },
+  {
+    "id": "2073575200201879651",
+    "title": "Google Video: Founding Fathers Use Office Suite",
+    "summary": "A creative Google video shows US founding fathers collaborating on the Declaration of Independence using Docs, Calendar, Email, Chat, and video conferencing.",
+    "tags": [
+      "Google"
+    ],
+    "impressions": 52899,
+    "likes": 460,
+    "retweets": 55,
+    "bookmarks": 198,
+    "date": "2026-07-05",
+    "url": "https://x.com/michaelzsguo/status/2073575200201879651"
   },
   {
     "id": "2050302597853040642",
@@ -332,6 +408,38 @@
     "bookmarks": 14,
     "date": "2026-07-16",
     "url": "https://x.com/Michaelzsguo/status/2077850211704025584"
+  },
+  {
+    "id": "2070150177357226459",
+    "title": "年轻才俊分享OpenAI面试经验",
+    "summary": "Yong Zhengxin 补充了自己的OpenAI面试经验，与Alisa Liu的文章互补，对AI入门者和面试者都有参考价值。",
+    "tags": [
+      "OpenAI",
+      "Skills",
+      "中文"
+    ],
+    "impressions": 40173,
+    "likes": 260,
+    "retweets": 23,
+    "bookmarks": 308,
+    "date": "2026-06-25",
+    "url": "https://x.com/michaelzsguo/status/2070150177357226459"
+  },
+  {
+    "id": "2069538545455501470",
+    "title": "Alisa Liu的OpenAI面试资源清单",
+    "summary": "Alisa Liu分享的OpenAI面试准备资源，涵盖LeetCode 75、NeetCode等，对应AI research/MTS岗位考察范围。",
+    "tags": [
+      "OpenAI",
+      "Skills",
+      "中文"
+    ],
+    "impressions": 36819,
+    "likes": 354,
+    "retweets": 81,
+    "bookmarks": 469,
+    "date": "2026-06-23",
+    "url": "https://x.com/michaelzsguo/status/2069538545455501470"
   },
   {
     "id": "2078542072684921121",
@@ -769,6 +877,22 @@
     "url": "https://x.com/Michaelzsguo/status/2078106604088541633"
   },
   {
+    "id": "2070477475298103433",
+    "title": "斯坦福CS336：从零学语言模型",
+    "summary": "斯坦福课程CS336 'Language Modeling from Scratch' 是系统学习LLM和准备AI research/MTS面试的优质资源。",
+    "tags": [
+      "LLM Internals",
+      "Skills",
+      "OpenAI"
+    ],
+    "impressions": 20684,
+    "likes": 265,
+    "retweets": 46,
+    "bookmarks": 314,
+    "date": "2026-06-26",
+    "url": "https://x.com/michaelzsguo/status/2070477475298103433"
+  },
+  {
     "id": "2056493133580337603",
     "title": "I’ve tried driving Qwen 3",
     "summary": "I’ve tried driving Qwen 3. 6 on my MacBook Pro with a few different agent harnesses:",
@@ -799,6 +923,22 @@
     "bookmarks": 48,
     "date": "2026-04-21",
     "url": "https://x.com/michaelzsguo/status/2046417788911132789"
+  },
+  {
+    "id": "2071956328285720644",
+    "title": "Dario 称中国模型蒸馏自 Anthropic",
+    "summary": "Dario声称DeepSeek等中国模型蒸馏自Anthropic，书籍讲解如何微调小模型成为专家。",
+    "tags": [
+      "DeepSeek",
+      "Fine-tuning",
+      "Skills"
+    ],
+    "impressions": 18563,
+    "likes": 219,
+    "retweets": 26,
+    "bookmarks": 245,
+    "date": "2026-06-30",
+    "url": "https://x.com/michaelzsguo/status/2071956328285720644"
   },
   {
     "id": "2055619733198688670",
@@ -975,6 +1115,22 @@
     "bookmarks": 7,
     "date": "2026-02-21",
     "url": "https://x.com/michaelzsguo/status/2025015167444996146"
+  },
+  {
+    "id": "2073519721572708422",
+    "title": "Silicon Valley: Attention is the New Bottleneck",
+    "summary": "At a Silicon Valley tech party, @steipete shares that after token and CPU limits, attention is now the real constraint when working with AI agents.",
+    "tags": [
+      "AI Agents",
+      "OpenAI",
+      "Hardware"
+    ],
+    "impressions": 15354,
+    "likes": 91,
+    "retweets": 25,
+    "bookmarks": 144,
+    "date": "2026-07-04",
+    "url": "https://x.com/michaelzsguo/status/2073519721572708422"
   },
   {
     "id": "2014102708668555470",
@@ -1155,6 +1311,22 @@
     "url": "https://x.com/michaelzsguo/status/2046621472945308152"
   },
   {
+    "id": "2067717740161359973",
+    "title": "ggerganov's Local Model Setup",
+    "summary": "ggerganov shared his local setup: Qwen3.6-27B, llama.cpp, Pi agent, RTX 5090/M2 Ultra, used daily for llama.cpp maintenance.",
+    "tags": [
+      "Local LLM",
+      "Qwen",
+      "Hardware"
+    ],
+    "impressions": 10982,
+    "likes": 21,
+    "retweets": 1,
+    "bookmarks": 34,
+    "date": "2026-06-18",
+    "url": "https://x.com/michaelzsguo/status/2067717740161359973"
+  },
+  {
     "id": "2080439902970249313",
     "title": "A French president calling a Chinese mathematician teachi...",
     "summary": "A French president calling a Chinese mathematician teaching at New York University who just won the Fields Medal. The world really is just a global village",
@@ -1292,6 +1464,37 @@
     "url": "https://x.com/Michaelzsguo/status/2080852637990175228"
   },
   {
+    "id": "2068461590995931613",
+    "title": "MacBook Inference Earning Potential",
+    "summary": "A viral question about earning $423/month from MacBook inference led to real payout reports, founder context, and privacy concerns.",
+    "tags": [
+      "Local LLM",
+      "Hardware",
+      "AI"
+    ],
+    "impressions": 9104,
+    "likes": 29,
+    "retweets": 3,
+    "bookmarks": 20,
+    "date": "2026-06-20",
+    "url": "https://x.com/michaelzsguo/status/2068461590995931613"
+  },
+  {
+    "id": "2067008306481172593",
+    "title": "GLM-5.2 Beats GPT-5.5",
+    "summary": "GLM-5.2 surpasses GPT-5.5, closing gap with Anthropic/OpenAI, trailing only Fable 5 and Opus 4.8.",
+    "tags": [
+      "AI",
+      "LLM Internals"
+    ],
+    "impressions": 9100,
+    "likes": 15,
+    "retweets": 1,
+    "bookmarks": 0,
+    "date": "2026-06-16",
+    "url": "https://x.com/michaelzsguo/status/2067008306481172593"
+  },
+  {
     "id": "2043760317516132718",
     "title": "Google needs to hire this engineer",
     "summary": "Google needs to hire this engineer",
@@ -1322,6 +1525,21 @@
     "bookmarks": 14,
     "date": "2026-04-17",
     "url": "https://x.com/michaelzsguo/status/2044934560304013663"
+  },
+  {
+    "id": "2069222836695073205",
+    "title": "买Mac跑本地模型的价值",
+    "summary": "买Mac跑本地模型不能仅按API token的ROI计算，其价值在于本地运行和开发体验，而非单纯节省成本。",
+    "tags": [
+      "Local LLM",
+      "Hardware"
+    ],
+    "impressions": 8766,
+    "likes": 39,
+    "retweets": 7,
+    "bookmarks": 26,
+    "date": "2026-06-23",
+    "url": "https://x.com/michaelzsguo/status/2069222836695073205"
   },
   {
     "id": "2041144929070596305",
@@ -1488,6 +1706,22 @@
     "bookmarks": 2,
     "date": "2026-07-26",
     "url": "https://x.com/Michaelzsguo/status/2081186587128324268"
+  },
+  {
+    "id": "2071037920077623588",
+    "title": "Revive Old PC for Local LLM",
+    "summary": "Turn your 13-year-old Dell XPS 8700 into an always-on local LLM host using llama.cpp and Qwen3.5-4B.",
+    "tags": [
+      "Local LLM",
+      "Hardware",
+      "Qwen"
+    ],
+    "impressions": 7886,
+    "likes": 81,
+    "retweets": 7,
+    "bookmarks": 75,
+    "date": "2026-06-28",
+    "url": "https://x.com/michaelzsguo/status/2071037920077623588"
   },
   {
     "id": "2047665936312787139",
@@ -1869,6 +2103,21 @@
     "url": "https://x.com/michaelzsguo/status/2045207282573541847"
   },
   {
+    "id": "2069390845048947034",
+    "title": "本地模型的上下文限制真相",
+    "summary": "本地开源模型有上下文限制，但由模型架构、训练长度、推理引擎等多因素决定，而非云厂商的简单开关。",
+    "tags": [
+      "Local LLM",
+      "LLM Internals"
+    ],
+    "impressions": 5711,
+    "likes": 18,
+    "retweets": 0,
+    "bookmarks": 12,
+    "date": "2026-06-23",
+    "url": "https://x.com/michaelzsguo/status/2069390845048947034"
+  },
+  {
     "id": "2043511120787374321",
     "title": "讲的非常好。Agent 的速度已经接近秒级了，写代码、跑简单任务都很快，但大多数 process 还停留在人类节奏：审批",
     "summary": "Agent 的速度已经接近秒级了，写代码、跑简单任务都很快，但大多数 process 还停留在人类节奏：审批、等反馈、层层 review、手动验证，这些正在成为真正的瓶颈. 这让我想到 DORA发明者Nicole Foresgren的新书《Frictionless》里反复强调的一点：AI",
@@ -1897,6 +2146,22 @@
     "bookmarks": 1,
     "date": "2026-03-25",
     "url": "https://x.com/michaelzsguo/status/2036615024743993849"
+  },
+  {
+    "id": "2072840889475514655",
+    "title": "Mira Murati 新公司拥抱开放模型",
+    "summary": "前OpenAI CTO Mira Murati的新公司为桥水基金微调中文开源模型，提升金融任务准确率。",
+    "tags": [
+      "OpenAI",
+      "Fine-tuning",
+      "AI Agents"
+    ],
+    "impressions": 5529,
+    "likes": 39,
+    "retweets": 2,
+    "bookmarks": 24,
+    "date": "2026-07-03",
+    "url": "https://x.com/michaelzsguo/status/2072840889475514655"
   },
   {
     "id": "2056842405815447684",
@@ -1973,6 +2238,22 @@
     "bookmarks": 43,
     "date": "2026-07-08",
     "url": "https://x.com/Michaelzsguo/status/2074685498765787414"
+  },
+  {
+    "id": "2069969035484114968",
+    "title": "Baseten GLM 5.2 Speed Test",
+    "summary": "Baseten's GLM 5.2 API is extremely fast, outpacing Zhipu's version without any initial pause.",
+    "tags": [
+      "AI Agents",
+      "Google",
+      "Hardware"
+    ],
+    "impressions": 5082,
+    "likes": 13,
+    "retweets": 0,
+    "bookmarks": 2,
+    "date": "2026-06-25",
+    "url": "https://x.com/michaelzsguo/status/2069969035484114968"
   },
   {
     "id": "2045340307001163938",
@@ -2113,6 +2394,22 @@
     "bookmarks": 5,
     "date": "2026-06-25",
     "url": "https://x.com/michaelzsguo/status/2069967201558282657"
+  },
+  {
+    "id": "2070619359798771850",
+    "title": "系统学习LLM的推荐讲座",
+    "summary": "推荐一个全面理解LLM的讲座视频，是系统学习前不可错过的资源，适合准备AI面试的学习者。",
+    "tags": [
+      "LLM Internals",
+      "Skills",
+      "中文"
+    ],
+    "impressions": 4699,
+    "likes": 42,
+    "retweets": 13,
+    "bookmarks": 47,
+    "date": "2026-06-26",
+    "url": "https://x.com/michaelzsguo/status/2070619359798771850"
   },
   {
     "id": "2044040276025463190",
@@ -2263,6 +2560,22 @@
     "bookmarks": 1,
     "date": "2026-04-05",
     "url": "https://x.com/michaelzsguo/status/2040842859411312855"
+  },
+  {
+    "id": "2071298825705095423",
+    "title": "DeepSeek DSpark Innovation Explained",
+    "summary": "DSpark uses a main model to brainstorm sentences, a tiny editor for coherence, then a verifier. A great read on DeepSeek's latest innovation.",
+    "tags": [
+      "DeepSeek",
+      "AI Agents",
+      "LLM Internals"
+    ],
+    "impressions": 4299,
+    "likes": 29,
+    "retweets": 1,
+    "bookmarks": 29,
+    "date": "2026-06-28",
+    "url": "https://x.com/michaelzsguo/status/2071298825705095423"
   },
   {
     "id": "2041981627803324484",
@@ -2989,6 +3302,22 @@
     "url": "https://x.com/Michaelzsguo/status/2080634958968652106"
   },
   {
+    "id": "2071058168906469565",
+    "title": "Run Qwen3.5 on Old GPU",
+    "summary": "Use a GeForce GTX 645 with 1GB VRAM to serve Qwen3.5-0.8B entirely from GPU using llama.cpp.",
+    "tags": [
+      "Local LLM",
+      "Hardware",
+      "Qwen"
+    ],
+    "impressions": 2974,
+    "likes": 18,
+    "retweets": 4,
+    "bookmarks": 7,
+    "date": "2026-06-28",
+    "url": "https://x.com/michaelzsguo/status/2071058168906469565"
+  },
+  {
     "id": "2078807768400548254",
     "title": "Created a new one with Qoder using Qwen 3",
     "summary": "Created a new one with Qoder using Qwen 3. 8-max preview",
@@ -3519,6 +3848,53 @@
     "bookmarks": 4,
     "date": "2026-05-06",
     "url": "https://x.com/michaelzsguo/status/2051845956912509243"
+  },
+  {
+    "id": "2071280232665960641",
+    "title": "Turn Old Computer Into Local LLM",
+    "summary": "Repurpose your old computer with a GPU to run local LLMs like Qwen3.5-0.8B using llama.cpp.",
+    "tags": [
+      "Local LLM",
+      "Hardware",
+      "Qwen"
+    ],
+    "impressions": 2517,
+    "likes": 15,
+    "retweets": 2,
+    "bookmarks": 13,
+    "date": "2026-06-28",
+    "url": "https://x.com/michaelzsguo/status/2071280232665960641"
+  },
+  {
+    "id": "2069177905473806812",
+    "title": "AI求职建议：学习CS336课程",
+    "summary": "Alisa Liu建议求职者观看斯坦福CS336课程，该课程涵盖从零构建语言模型的广泛主题，有助于AI求职。",
+    "tags": [
+      "AI",
+      "Skills"
+    ],
+    "impressions": 2512,
+    "likes": 16,
+    "retweets": 1,
+    "bookmarks": 13,
+    "date": "2026-06-22",
+    "url": "https://x.com/michaelzsguo/status/2069177905473806812"
+  },
+  {
+    "id": "2067771974148108443",
+    "title": "中国大模型技术路线族谱图",
+    "summary": "中国大模型如GLM、DeepSeek、Qwen、Kimi快速缩小与美国差距，其技术源头早于ChatGPT，产业爆发有深厚积累。",
+    "tags": [
+      "DeepSeek",
+      "Qwen",
+      "中文"
+    ],
+    "impressions": 2506,
+    "likes": 13,
+    "retweets": 0,
+    "bookmarks": 8,
+    "date": "2026-06-19",
+    "url": "https://x.com/michaelzsguo/status/2067771974148108443"
   },
   {
     "id": "2036601630456430904",
@@ -4281,120 +4657,6 @@
     "url": "https://x.com/Michaelzsguo/status/2078444049023844524"
   },
   {
-    "id": "2067795772439982591",
-    "title": "Apparently I can rent out my MacBook Pro for inference an...",
-    "summary": "Apparently I can rent out my MacBook Pro for inference and make ~$423/month. That means the machine could pay for itself in roughly a year",
-    "tags": [
-      "Local LLM",
-      "Hardware",
-      "Skills"
-    ],
-    "impressions": 0,
-    "likes": 1921,
-    "retweets": 72,
-    "bookmarks": 0,
-    "date": "2026-06-19",
-    "url": "https://x.com/Michaelzsguo/status/2067795772439982591"
-  },
-  {
-    "id": "2069169011309383855",
-    "title": "最近，一个名叫 Alisa Liu 的女孩(不是那位著名花滑冠军)，分享了她博士毕业后找工作的经历",
-    "summary": "最近，一个名叫 Alisa Liu 的女孩(不是那位著名花滑冠军)，分享了她博士毕业后找工作的经历. 她是 University of Washington 的 NLP 博士生，导师包括 Yejin Choi 和 Noah Smith",
-    "tags": [
-      "Local LLM",
-      "Google",
-      "中文"
-    ],
-    "impressions": 0,
-    "likes": 706,
-    "retweets": 85,
-    "bookmarks": 0,
-    "date": "2026-06-22",
-    "url": "https://x.com/Michaelzsguo/status/2069169011309383855"
-  },
-  {
-    "id": "2069538545455501470",
-    "title": "Alisa Liu 拿到了OpenAI AI 的offer，很大程度上当然是因为她本身背景非常强，但也离不开她为面...",
-    "summary": "Alisa Liu 拿到了OpenAI AI 的offer，很大程度上当然是因为她本身背景非常强，但也离不开她为面试准备时用到的这些资源. 在她博客的最后，她列出了自己用来准备面试的资源",
-    "tags": [
-      "OpenAI",
-      "Local LLM",
-      "中文"
-    ],
-    "impressions": 0,
-    "likes": 354,
-    "retweets": 80,
-    "bookmarks": 0,
-    "date": "2026-06-23",
-    "url": "https://x.com/Michaelzsguo/status/2069538545455501470"
-  },
-  {
-    "id": "2070477475298103433",
-    "title": "Alisa Liu 在准备 OpenAI 面试时，提到过 斯坦福课程 CS336: Language Modeli...",
-    "summary": "Alisa Liu 在准备 OpenAI 面试时，提到过 斯坦福课程 CS336: Language Modeling from Scratch. 如果你现在想系统学 LLM，或者以后想找 AI research / MTS / ML engineer 相关的工作，这门课很值得放进学习计划里",
-    "tags": [
-      "OpenAI",
-      "Local LLM",
-      "中文"
-    ],
-    "impressions": 0,
-    "likes": 265,
-    "retweets": 46,
-    "bookmarks": 0,
-    "date": "2026-06-26",
-    "url": "https://x.com/Michaelzsguo/status/2070477475298103433"
-  },
-  {
-    "id": "2070150177357226459",
-    "title": "又一个年轻才俊@yong_zhengxin 也拿到了 OpenAI 的 offer",
-    "summary": "又一个年轻才俊@yong_zhengxin 也拿到了 OpenAI 的 offer. 他看了 Alisa 那篇 job search 文章之后，补了一篇自己的经验",
-    "tags": [
-      "OpenAI",
-      "Local LLM",
-      "中文"
-    ],
-    "impressions": 0,
-    "likes": 260,
-    "retweets": 23,
-    "bookmarks": 0,
-    "date": "2026-06-25",
-    "url": "https://x.com/Michaelzsguo/status/2070150177357226459"
-  },
-  {
-    "id": "2073596491063554103",
-    "title": "硅谷的Party真不少",
-    "summary": "硅谷的Party真不少. 不是吃喝玩乐的party， 是技术碰撞分享的聚会",
-    "tags": [
-      "OpenAI",
-      "Local LLM",
-      "AI Agents",
-      "中文"
-    ],
-    "impressions": 0,
-    "likes": 223,
-    "retweets": 30,
-    "bookmarks": 0,
-    "date": "2026-07-05",
-    "url": "https://x.com/Michaelzsguo/status/2073596491063554103"
-  },
-  {
-    "id": "2071956328285720644",
-    "title": "A timely book",
-    "summary": "A timely book. Dario claims Chinese models like DeepSeek and GLM distilled from Anthropic models, and that is why they are so good",
-    "tags": [
-      "DeepSeek",
-      "Claude",
-      "Local LLM",
-      "Fine-tuning"
-    ],
-    "impressions": 0,
-    "likes": 219,
-    "retweets": 26,
-    "bookmarks": 0,
-    "date": "2026-06-30",
-    "url": "https://x.com/Michaelzsguo/status/2071956328285720644"
-  },
-  {
     "id": "2061557147453038750",
     "title": "When the creator of Redis starts thinking about KV cache,...",
     "summary": "When the creator of Redis starts thinking about KV cache, pay attention. antirez is Salvatore Sanfilippo, the Sicilian programmer best known for creating Redis",
@@ -4411,53 +4673,6 @@
     "url": "https://x.com/Michaelzsguo/status/2061557147453038750"
   },
   {
-    "id": "2072861388184170660",
-    "title": "两年多前，Google 联合创始人 Sergey Brin 也曾站在 AGI House，承认 Google 在大...",
-    "summary": "两年多前，Google 联合创始人 Sergey Brin 也曾站在 AGI House，承认 Google 在大模型上落后了，并说要追赶回来. 后来的结果大家都看到了：Gemini 一路追上来，半年前 Gemini 3 发布时，Google 至少在很多维度重新回到了第一梯队",
-    "tags": [
-      "Local LLM",
-      "Google",
-      "中文"
-    ],
-    "impressions": 0,
-    "likes": 168,
-    "retweets": 37,
-    "bookmarks": 0,
-    "date": "2026-07-03",
-    "url": "https://x.com/Michaelzsguo/status/2072861388184170660"
-  },
-  {
-    "id": "2071037920077623588",
-    "title": "Go find that old computer you threw away in the garage, p...",
-    "summary": "Go find that old computer you threw away in the garage, power it up, and turn it into an always-on host for your local LLM. I did this with my 13-year-old Dell XPS 8700: 16GB RAM, Nvidia GeForce GT...",
-    "tags": [
-      "Local LLM",
-      "Qwen"
-    ],
-    "impressions": 0,
-    "likes": 81,
-    "retweets": 7,
-    "bookmarks": 0,
-    "date": "2026-06-28",
-    "url": "https://x.com/Michaelzsguo/status/2071037920077623588"
-  },
-  {
-    "id": "2073575200201879651",
-    "title": "谷歌这个视频创意满满",
-    "summary": "让美国国父们用 Google 的 Office 全家桶，包括 Docs、Calendar、Email、Chat 和视频会议，协作完成《独立宣言》",
-    "tags": [
-      "Local LLM",
-      "Google",
-      "中文"
-    ],
-    "impressions": 0,
-    "likes": 72,
-    "retweets": 4,
-    "bookmarks": 0,
-    "date": "2026-07-05",
-    "url": "https://x.com/Michaelzsguo/status/2073575200201879651"
-  },
-  {
     "id": "1685315158921371648",
     "title": "#RyanGosling dancing when he was 12",
     "summary": "#RyanGosling dancing when he was 12. He was surrounded by #BARBIE all along",
@@ -4470,38 +4685,6 @@
     "bookmarks": 0,
     "date": "2023-07-29",
     "url": "https://x.com/Michaelzsguo/status/1685315158921371648"
-  },
-  {
-    "id": "2073519721572708422",
-    "title": "在硅谷科技圈社交的觥筹交错之中，小龙虾之父🦞 @steipete 打开自己的电脑，分享了他和 Agent 一起工作...",
-    "summary": "在硅谷科技圈社交的觥筹交错之中，小龙虾之父🦞 @steipete 打开自己的电脑，分享了他和 Agent 一起工作的几个流程. 开篇他就提到： 去年，我受限于 token",
-    "tags": [
-      "OpenAI",
-      "Local LLM",
-      "AI Agents",
-      "LLM Internals"
-    ],
-    "impressions": 0,
-    "likes": 68,
-    "retweets": 16,
-    "bookmarks": 0,
-    "date": "2026-07-04",
-    "url": "https://x.com/Michaelzsguo/status/2073519721572708422"
-  },
-  {
-    "id": "2070619359798771850",
-    "title": "如果你最近一直在关注我在 X 上发的关于如何学习 AI 和准备 AI 面试的系列帖子，你可能已经收集了一些关键学习...",
-    "summary": "如果你最近一直在关注我在 X 上发的关于如何学习 AI 和准备 AI 面试的系列帖子，你可能已经收集了一些关键学习资料，也在准备自己的学习计划. 推荐你先看这个讲座视频",
-    "tags": [
-      "Local LLM",
-      "中文"
-    ],
-    "impressions": 0,
-    "likes": 42,
-    "retweets": 12,
-    "bookmarks": 0,
-    "date": "2026-06-26",
-    "url": "https://x.com/Michaelzsguo/status/2070619359798771850"
   },
   {
     "id": "2060180872616165816",
@@ -4517,40 +4700,6 @@
     "bookmarks": 0,
     "date": "2026-05-29",
     "url": "https://x.com/Michaelzsguo/status/2060180872616165816"
-  },
-  {
-    "id": "2069222836695073205",
-    "title": "我是支持买 Mac 跑本地模型的",
-    "summary": "我是支持买 Mac 跑本地模型的. 这类买 Mac 跑大模型不划算的计算，最大的问题是把本地模型当成 API token 的平替来算 ROI",
-    "tags": [
-      "Local LLM",
-      "Hardware",
-      "Skills",
-      "LLM Internals"
-    ],
-    "impressions": 0,
-    "likes": 39,
-    "retweets": 7,
-    "bookmarks": 0,
-    "date": "2026-06-23",
-    "url": "https://x.com/Michaelzsguo/status/2069222836695073205"
-  },
-  {
-    "id": "2072840889475514655",
-    "title": "Former OpenAI CTO Mira Murati and her new company are als...",
-    "summary": "Former OpenAI CTO Mira Murati and her new company are also embracing open models, building a custom expert model for Bridgewater桥水基金, which manages $150B funds. @miramurati’s Thinking Machines fine...",
-    "tags": [
-      "OpenAI",
-      "Local LLM",
-      "Hardware",
-      "Fine-tuning"
-    ],
-    "impressions": 0,
-    "likes": 39,
-    "retweets": 2,
-    "bookmarks": 0,
-    "date": "2026-07-03",
-    "url": "https://x.com/Michaelzsguo/status/2072840889475514655"
   },
   {
     "id": "1760501020050739349",
@@ -4627,38 +4776,6 @@
     "url": "https://x.com/Michaelzsguo/status/2059382819751883049"
   },
   {
-    "id": "2068461590995931613",
-    "title": "I didn’t expect my simple question, “Can my MacBook earn...",
-    "summary": "I didn’t expect my simple question, “Can my MacBook earn $423/mo doing inference?” to go viral and gather millions of views. But the replies turned it into something much more useful: real payout r...",
-    "tags": [
-      "Local LLM",
-      "Hardware",
-      "Skills",
-      "LLM Internals"
-    ],
-    "impressions": 0,
-    "likes": 29,
-    "retweets": 3,
-    "bookmarks": 0,
-    "date": "2026-06-20",
-    "url": "https://x.com/Michaelzsguo/status/2068461590995931613"
-  },
-  {
-    "id": "2071298825705095423",
-    "title": "This is the best read on DeepSeek’s recent innovation, DS...",
-    "summary": "This is the best read on DeepSeek’s recent innovation, DSpark: Think of DSpark as: The main model rapidly brainstorms the whole sentence. A tiny “editor” then quickly fixes coherence before handing...",
-    "tags": [
-      "DeepSeek",
-      "Local LLM"
-    ],
-    "impressions": 0,
-    "likes": 29,
-    "retweets": 1,
-    "bookmarks": 0,
-    "date": "2026-06-28",
-    "url": "https://x.com/Michaelzsguo/status/2071298825705095423"
-  },
-  {
     "id": "2029730331738116373",
     "title": "A thread 🧵 My OpenClaw rover can now move around my house...",
     "summary": "A thread 🧵 My OpenClaw rover can now move around my house based on commands I send from Telegram. Previously I described the hardware",
@@ -4719,23 +4836,6 @@
     "url": "https://x.com/Michaelzsguo/status/1685400012866359297"
   },
   {
-    "id": "2067717740161359973",
-    "title": "There were some recent discussions on Hacker News about l...",
-    "summary": "There were some recent discussions on Hacker News about local models. @ggerganov chimed in and shared his local model setup: Qwen3",
-    "tags": [
-      "Local LLM",
-      "Qwen",
-      "AI Agents",
-      "Security"
-    ],
-    "impressions": 0,
-    "likes": 21,
-    "retweets": 1,
-    "bookmarks": 0,
-    "date": "2026-06-18",
-    "url": "https://x.com/Michaelzsguo/status/2067717740161359973"
-  },
-  {
     "id": "2022867124964782302",
     "title": "Zeroclaw is a ruthlessly optimized re-architecture of Ope...",
     "summary": "Zeroclaw is a ruthlessly optimized re-architecture of OpenClaw that proves agent infrastructure does not have to be heavy to be powerful. 4MB binary versus 28MB, 0",
@@ -4766,22 +4866,6 @@
     "url": "https://x.com/Michaelzsguo/status/2068672084557938765"
   },
   {
-    "id": "2071058168906469565",
-    "title": "The previous model runs entirely on CPU",
-    "summary": "The previous model runs entirely on CPU. But what about that GeForce GTX 645 with 1GB VRAM? It is small, but we still should not waste it",
-    "tags": [
-      "Local LLM",
-      "Qwen",
-      "Hardware"
-    ],
-    "impressions": 0,
-    "likes": 18,
-    "retweets": 4,
-    "bookmarks": 0,
-    "date": "2026-06-28",
-    "url": "https://x.com/Michaelzsguo/status/2071058168906469565"
-  },
-  {
     "id": "2073153558304772397",
     "title": "FDE is becoming one of the hottest AI roles",
     "summary": "FDE is becoming one of the hottest AI roles. Microsoft create a $2",
@@ -4794,22 +4878,6 @@
     "bookmarks": 0,
     "date": "2026-07-03",
     "url": "https://x.com/Michaelzsguo/status/2073153558304772397"
-  },
-  {
-    "id": "2069390845048947034",
-    "title": "“本地模型没有 1M context” 这个说法不准确",
-    "summary": "“本地模型没有 1M context” 这个说法不准确. 本地开源模型当然有上下文限制，但这个限制不是云厂商给你的一个产品开关，而是由模型架构、训练长度、推理引擎、RoPE / YaRN 配置、KV cache、内存/显存，甚至 SSD 策略共同决定的",
-    "tags": [
-      "Local LLM",
-      "LLM Internals",
-      "中文"
-    ],
-    "impressions": 0,
-    "likes": 18,
-    "retweets": 0,
-    "bookmarks": 0,
-    "date": "2026-06-23",
-    "url": "https://x.com/Michaelzsguo/status/2069390845048947034"
   },
   {
     "id": "2058750084058165653",
@@ -4870,20 +4938,6 @@
     "url": "https://x.com/Michaelzsguo/status/1498483609396822017"
   },
   {
-    "id": "2069177905473806812",
-    "title": "If you are also looking for your next AI job, do what Ali...",
-    "summary": "If you are also looking for your next AI job, do what Alisa Liu did: watch Stanford’s CS336: Language Modeling from Scratch lecture recordings on YouTube from start to finish. According to Alisa, t...",
-    "tags": [
-      "Local LLM"
-    ],
-    "impressions": 0,
-    "likes": 16,
-    "retweets": 1,
-    "bookmarks": 0,
-    "date": "2026-06-22",
-    "url": "https://x.com/Michaelzsguo/status/2069177905473806812"
-  },
-  {
     "id": "2071325566666461434",
     "title": "Top 10 X local AI accounts Local AI will win and become t...",
     "summary": "Top 10 X local AI accounts Local AI will win and become the default. Not because cloud APIs are bad, but because the economics, the privacy math, and the model efficiency curve all point in the sam...",
@@ -4896,36 +4950,6 @@
     "bookmarks": 0,
     "date": "2026-06-28",
     "url": "https://x.com/Michaelzsguo/status/2071325566666461434"
-  },
-  {
-    "id": "2071280232665960641",
-    "title": "Media Post",
-    "summary": "",
-    "tags": [
-      "Local LLM"
-    ],
-    "impressions": 0,
-    "likes": 15,
-    "retweets": 2,
-    "bookmarks": 0,
-    "date": "2026-06-28",
-    "url": "https://x.com/Michaelzsguo/status/2071280232665960641"
-  },
-  {
-    "id": "2067008306481172593",
-    "title": "What?",
-    "summary": "2 beats GPT-5. 5 and has closed the gap with Anthropic/OpenAI? It now only trails Fable 5 and Opus 4",
-    "tags": [
-      "Claude",
-      "OpenAI",
-      "Local LLM"
-    ],
-    "impressions": 0,
-    "likes": 15,
-    "retweets": 1,
-    "bookmarks": 0,
-    "date": "2026-06-16",
-    "url": "https://x.com/Michaelzsguo/status/2067008306481172593"
   },
   {
     "id": "2058681279655125439",
@@ -5002,38 +5026,6 @@
     "bookmarks": 0,
     "date": "2023-08-04",
     "url": "https://x.com/Michaelzsguo/status/1687277720416223233"
-  },
-  {
-    "id": "2069969035484114968",
-    "title": "Now to see it running for real",
-    "summary": "Now to see it running for real. The top is GLM 5",
-    "tags": [
-      "Local LLM",
-      "AI Agents"
-    ],
-    "impressions": 0,
-    "likes": 13,
-    "retweets": 0,
-    "bookmarks": 0,
-    "date": "2026-06-25",
-    "url": "https://x.com/Michaelzsguo/status/2069969035484114968"
-  },
-  {
-    "id": "2067771974148108443",
-    "title": "中国大模型技术路线族谱图",
-    "summary": "中国大模型技术路线族谱图. GLM、DeepSeek、Qwen、Kimi……这些中国大模型最近受到越来越多关注，也在快速缩小与美国头部模型的差距",
-    "tags": [
-      "DeepSeek",
-      "OpenAI",
-      "Local LLM",
-      "Qwen"
-    ],
-    "impressions": 0,
-    "likes": 13,
-    "retweets": 0,
-    "bookmarks": 0,
-    "date": "2026-06-19",
-    "url": "https://x.com/Michaelzsguo/status/2067771974148108443"
   },
   {
     "id": "2057853270282928453",
