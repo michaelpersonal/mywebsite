@@ -199,6 +199,22 @@
     "url": "https://x.com/michaelzsguo/status/2069169011309383855"
   },
   {
+    "id": "2085524462326215131",
+    "title": "Jeff Dean 离开了 Google",
+    "summary": "Jeff Dean 离开了 Google. 他的传奇，一部分写在 Google File System、MapReduce、Bigtable、Spanner 这些系统里",
+    "tags": [
+      "Local LLM",
+      "Google",
+      "中文"
+    ],
+    "impressions": 113461,
+    "likes": 143,
+    "retweets": 21,
+    "bookmarks": 73,
+    "date": "2026-08-07",
+    "url": "https://x.com/Michaelzsguo/status/2085524462326215131"
+  },
+  {
     "id": "2073791424173142395",
     "title": "美国250年国庆烟火因故障30秒放完",
     "summary": "美国250年国庆，圣地亚哥7000个烟火因计算机故障30秒全部放完，场面壮观，观众称最棒烟火秀。",
@@ -211,6 +227,40 @@
     "bookmarks": 79,
     "date": "2026-07-05",
     "url": "https://x.com/michaelzsguo/status/2073791424173142395"
+  },
+  {
+    "id": "2082798619162189904",
+    "title": "刚刚离开 OpenAI 的研究员 Andrew Ho，对 OpenAI 和 Anthropic 的极高估值给出了一...",
+    "summary": "刚刚离开 OpenAI 的研究员 Andrew Ho，对 OpenAI 和 Anthropic 的极高估值给出了一套相当悲观、但值得认真对待的解释. 前沿实验室被迫投入越来越多的钱训练下一代模型，这当然能帮助它们保持领先，却也把领先变成了一台不能停下的跑步机：收入越高，下一代模型的训练成本可能也越高",
+    "tags": [
+      "Claude",
+      "OpenAI",
+      "Local LLM",
+      "中文"
+    ],
+    "impressions": 103739,
+    "likes": 335,
+    "retweets": 60,
+    "bookmarks": 276,
+    "date": "2026-07-30",
+    "url": "https://x.com/Michaelzsguo/status/2082798619162189904"
+  },
+  {
+    "id": "2085538642672398617",
+    "title": "英国《金融时报》早先报道：Google 正在重新分配 AI 时代的最高权力，Sergey Brin 在幕后重新掌握...",
+    "summary": "英国《金融时报》早先报道：Google 正在重新分配 AI 时代的最高权力，Sergey Brin 在幕后重新掌握实际影响力. 现在回过头看，John Jumper 今年 6 月离开 Google DeepMind 加入 Anthropic，其实已经是这轮权力重组最早露出的苗头",
+    "tags": [
+      "Claude",
+      "Local LLM",
+      "Google",
+      "中文"
+    ],
+    "impressions": 94804,
+    "likes": 81,
+    "retweets": 10,
+    "bookmarks": 52,
+    "date": "2026-08-07",
+    "url": "https://x.com/Michaelzsguo/status/2085538642672398617"
   },
   {
     "id": "2050380832007721213",
@@ -243,6 +293,21 @@
     "url": "https://x.com/michaelzsguo/status/2072861388184170660"
   },
   {
+    "id": "2086499944223969606",
+    "title": "宇树科技的招股说明书里，专门用了几页解释行业专业术语，简直就是一份“具身智能入门索引”",
+    "summary": "宇树科技的招股说明书里，专门用了几页解释行业专业术语，简直就是一份“具身智能入门索引”. 从最上层的概念：高性能通用机器人、人工智能、具身智能、AGI、世界模型、多模态、强化学习",
+    "tags": [
+      "Local LLM",
+      "中文"
+    ],
+    "impressions": 80203,
+    "likes": 81,
+    "retweets": 24,
+    "bookmarks": 89,
+    "date": "2026-08-09",
+    "url": "https://x.com/Michaelzsguo/status/2086499944223969606"
+  },
+  {
     "id": "2083592211191468308",
     "title": "去年3月，一篇介绍蔡崇信和吴明华的文章，把他们称为华裔商界的\"顶配夫妻\"",
     "summary": "去年3月，一篇介绍蔡崇信和吴明华的文章，把他们称为华裔商界的\"顶配夫妻\". 文章结尾写道，无论蔡崇信未来面对什么挑战，他身边都会有一个人\"一如既往地支持他\"",
@@ -256,6 +321,22 @@
     "bookmarks": 68,
     "date": "2026-08-01",
     "url": "https://x.com/Michaelzsguo/status/2083592211191468308"
+  },
+  {
+    "id": "2081848350501167159",
+    "title": "Lilian Weng shared today that she is leaving Thinking Mac...",
+    "summary": "Lilian Weng shared today that she is leaving Thinking Machines Lab to focus on her health. I went back to this 2019 talk at OpenAI",
+    "tags": [
+      "OpenAI",
+      "Local LLM",
+      "Hardware"
+    ],
+    "impressions": 77321,
+    "likes": 386,
+    "retweets": 22,
+    "bookmarks": 361,
+    "date": "2026-07-27",
+    "url": "https://x.com/Michaelzsguo/status/2081848350501167159"
   },
   {
     "id": "2053217139369095252",
@@ -320,6 +401,22 @@
     "url": "https://x.com/michaelzsguo/status/2073596491063554103"
   },
   {
+    "id": "2085919586868736147",
+    "title": "Sergey Brin说谷歌很幸运能够招到Jeff Dean",
+    "summary": "Sergey Brin说谷歌很幸运能够招到Jeff Dean. 他强调，你必须信任真正懂技术的人",
+    "tags": [
+      "Local LLM",
+      "Google",
+      "中文"
+    ],
+    "impressions": 65198,
+    "likes": 141,
+    "retweets": 10,
+    "bookmarks": 52,
+    "date": "2026-08-08",
+    "url": "https://x.com/Michaelzsguo/status/2085919586868736147"
+  },
+  {
     "id": "2077764075866468444",
     "title": "Holy shit",
     "summary": "Kimi 3 now lets you code directly from its web chat interface",
@@ -346,6 +443,21 @@
     "bookmarks": 69,
     "date": "2026-07-18",
     "url": "https://x.com/Michaelzsguo/status/2078441872809202079"
+  },
+  {
+    "id": "2086504120387518560",
+    "title": "宇树Unitree将以 610 亿元人民币、约 90 亿美元的估值上市",
+    "summary": "宇树Unitree将以 610 亿元人民币、约 90 亿美元的估值上市. 而这一切的起点，是创始人王兴兴在研究生时代“手搓”出来的一只机器狗 XDog",
+    "tags": [
+      "Local LLM",
+      "中文"
+    ],
+    "impressions": 62461,
+    "likes": 81,
+    "retweets": 7,
+    "bookmarks": 48,
+    "date": "2026-08-09",
+    "url": "https://x.com/Michaelzsguo/status/2086504120387518560"
   },
   {
     "id": "2073724599632588826",
@@ -486,6 +598,37 @@
     "url": "https://x.com/Michaelzsguo/status/2077850211704025584"
   },
   {
+    "id": "2086247719127978280",
+    "title": "一直有一个很有趣的现象：引领 AI 发展的研究者中，有相当多是中国人",
+    "summary": "一直有一个很有趣的现象：引领 AI 发展的研究者中，有相当多是中国人. 看上去甚至有点像是，在中国的中国人 VS 在美国的中国人",
+    "tags": [
+      "Local LLM",
+      "中文"
+    ],
+    "impressions": 45408,
+    "likes": 45,
+    "retweets": 6,
+    "bookmarks": 25,
+    "date": "2026-08-09",
+    "url": "https://x.com/Michaelzsguo/status/2086247719127978280"
+  },
+  {
+    "id": "2085914435772645732",
+    "title": "你敢相信，如今身家千亿的 Google 创始人，当年在斯坦福读博时，居然是个爬脚手架、配万能钥匙的调皮学生？ 在斯...",
+    "summary": "你敢相信，如今身家千亿的 Google 创始人，当年在斯坦福读博时，居然是个爬脚手架、配万能钥匙的调皮学生？ 在斯坦福工程学院百年庆典闭幕式上，Google 联合创始人 Sergey Brin 重回母校，与斯坦福校长进行了一场妙趣横生的炉边对谈. 这场分享几乎没有什么官方腔调",
+    "tags": [
+      "Local LLM",
+      "Google",
+      "中文"
+    ],
+    "impressions": 42398,
+    "likes": 116,
+    "retweets": 26,
+    "bookmarks": 94,
+    "date": "2026-08-08",
+    "url": "https://x.com/Michaelzsguo/status/2085914435772645732"
+  },
+  {
     "id": "2070150177357226459",
     "title": "年轻才俊分享OpenAI面试经验",
     "summary": "Yong Zhengxin 补充了自己的OpenAI面试经验，与Alisa Liu的文章互补，对AI入门者和面试者都有参考价值。",
@@ -563,6 +706,21 @@
     "url": "https://x.com/michaelzsguo/status/2053229425555050734"
   },
   {
+    "id": "2081847758219014566",
+    "title": "英雄也有落难时",
+    "summary": "王虹当年差点因为没人给她写推荐信去不了法国：",
+    "tags": [
+      "Local LLM",
+      "中文"
+    ],
+    "impressions": 33701,
+    "likes": 192,
+    "retweets": 17,
+    "bookmarks": 66,
+    "date": "2026-07-27",
+    "url": "https://x.com/Michaelzsguo/status/2081847758219014566"
+  },
+  {
     "id": "2055615235508093056",
     "title": "Many of you asked the setup Deepseek inside codex",
     "summary": "Many of you asked the setup Deepseek inside codex. I wish x provided better way to see my previous posts but here it is for your easy reference",
@@ -577,6 +735,23 @@
     "bookmarks": 387,
     "date": "2026-05-16",
     "url": "https://x.com/michaelzsguo/status/2055615235508093056"
+  },
+  {
+    "id": "2085163487605424411",
+    "title": "This is crazy",
+    "summary": "This is crazy. I needed to update DwarfStar on my MacBook Pro, so I gave Meta’s Muse Code, which just came out today, a try",
+    "tags": [
+      "Local LLM",
+      "Hardware",
+      "Skills",
+      "LLM Internals"
+    ],
+    "impressions": 32653,
+    "likes": 15,
+    "retweets": 0,
+    "bookmarks": 2,
+    "date": "2026-08-06",
+    "url": "https://x.com/Michaelzsguo/status/2085163487605424411"
   },
   {
     "id": "2077570409180844078",
@@ -1080,6 +1255,39 @@
     "url": "https://x.com/michaelzsguo/status/2055619733198688670"
   },
   {
+    "id": "2086189108804854080",
+    "title": "Jeff Dean 离职后的第一次公开露面，是在 AASF 2026 亚洲学者论坛",
+    "summary": "Jeff Dean 离职后的第一次公开露面，是在 AASF 2026 亚洲学者论坛. 结束 27 年的 Google 生涯仅 12",
+    "tags": [
+      "Local LLM",
+      "Google",
+      "AI Agents",
+      "中文"
+    ],
+    "impressions": 18301,
+    "likes": 67,
+    "retweets": 20,
+    "bookmarks": 43,
+    "date": "2026-08-08",
+    "url": "https://x.com/Michaelzsguo/status/2086189108804854080"
+  },
+  {
+    "id": "2085474478574772613",
+    "title": "Anthropic要招聘的这个新的职位很恐怖",
+    "summary": "Anthropic要招聘的这个新的职位很恐怖. 看着很像东厂或者克格勃机构设置",
+    "tags": [
+      "Claude",
+      "Local LLM",
+      "中文"
+    ],
+    "impressions": 17855,
+    "likes": 62,
+    "retweets": 4,
+    "bookmarks": 20,
+    "date": "2026-08-06",
+    "url": "https://x.com/Michaelzsguo/status/2085474478574772613"
+  },
+  {
     "id": "2055650628601307543",
     "title": "You also need a tight goal in order for codex to run that...",
     "summary": "You also need a tight goal in order for codex to run that long. Here is a skill goal-forge that turns your rough ideas to codex/claude goals",
@@ -1112,6 +1320,21 @@
     "bookmarks": 4,
     "date": "2026-07-15",
     "url": "https://x.com/Michaelzsguo/status/2077468904247742611"
+  },
+  {
+    "id": "2085506346179285195",
+    "title": "Leopold 刚经历了一场爆仓式去杠杆，被迫出售大部分公开股票组合",
+    "summary": "Leopold 刚经历了一场爆仓式去杠杆，被迫出售大部分公开股票组合. 但据报道，Situational Awareness 周二又向一家未披露的私营公司投入了 4 亿美元",
+    "tags": [
+      "Local LLM",
+      "中文"
+    ],
+    "impressions": 17508,
+    "likes": 2,
+    "retweets": 0,
+    "bookmarks": 3,
+    "date": "2026-08-06",
+    "url": "https://x.com/Michaelzsguo/status/2085506346179285195"
   },
   {
     "id": "2053818528130617353",
@@ -1176,6 +1399,23 @@
     "bookmarks": 0,
     "date": "2026-02-20",
     "url": "https://x.com/michaelzsguo/status/2024828678979637261"
+  },
+  {
+    "id": "2085195801882460289",
+    "title": "Deepseek选择这时候涨价，这不是自裁吗？美国同等能力模型muse spark和GPT Luna都在DeepS...",
+    "summary": "Deepseek选择这时候涨价，这不是自裁吗？美国同等能力模型muse spark和GPT Luna都在DeepSeek价位，甚至更便宜",
+    "tags": [
+      "DeepSeek",
+      "OpenAI",
+      "Local LLM",
+      "中文"
+    ],
+    "impressions": 16150,
+    "likes": 7,
+    "retweets": 2,
+    "bookmarks": 2,
+    "date": "2026-08-06",
+    "url": "https://x.com/Michaelzsguo/status/2085195801882460289"
   },
   {
     "id": "2083713934305948139",
@@ -1568,6 +1808,22 @@
     "url": "https://x.com/michaelzsguo/status/2046624387370020899"
   },
   {
+    "id": "2085837133357695104",
+    "title": "尽管 Demis Hassabis 如今在 Google 内部似乎已被边缘化，这部纪录片依然值得回看",
+    "summary": "尽管 Demis Hassabis 如今在 Google 内部似乎已被边缘化，这部纪录片依然值得回看. 它记录了他从创业、创办 DeepMind，到领导 AlphaGo 击败李世石，再到凭借 AlphaFold 摘得诺贝尔化学奖的完整历程",
+    "tags": [
+      "Local LLM",
+      "Google",
+      "中文"
+    ],
+    "impressions": 10286,
+    "likes": 28,
+    "retweets": 6,
+    "bookmarks": 34,
+    "date": "2026-08-07",
+    "url": "https://x.com/Michaelzsguo/status/2085837133357695104"
+  },
+  {
     "id": "2055459871567536365",
     "title": "Totally fair",
     "summary": "Totally fair. The 13 hours wasn’t “one prompt thinking really hard,” it was an autonomous loop doing the unglamorous work:",
@@ -1597,6 +1853,20 @@
     "bookmarks": 94,
     "date": "2026-05-09",
     "url": "https://x.com/michaelzsguo/status/2053071974847353016"
+  },
+  {
+    "id": "2086496725481467969",
+    "title": "Unitree’s valuation curve is insane",
+    "summary": "Unitree’s valuation curve is insane. 2021: RMB 380M 2022: RMB 1",
+    "tags": [
+      "Local LLM"
+    ],
+    "impressions": 9673,
+    "likes": 4,
+    "retweets": 1,
+    "bookmarks": 3,
+    "date": "2026-08-09",
+    "url": "https://x.com/Michaelzsguo/status/2086496725481467969"
   },
   {
     "id": "2053217839729791221",
@@ -1812,6 +2082,21 @@
     "bookmarks": 0,
     "date": "2026-03-29",
     "url": "https://x.com/michaelzsguo/status/2038252459018125764"
+  },
+  {
+    "id": "2085893388696539261",
+    "title": "原来疯传的 Leopold 新投资，投向的是 Source Foundry",
+    "summary": "原来疯传的 Leopold 新投资，投向的是 Source Foundry. 这是一家仍处于隐身状态的初创公司，目标是打造速度更快、成本更低的半导体制造和光刻设备",
+    "tags": [
+      "Local LLM",
+      "中文"
+    ],
+    "impressions": 8283,
+    "likes": 22,
+    "retweets": 6,
+    "bookmarks": 13,
+    "date": "2026-08-08",
+    "url": "https://x.com/Michaelzsguo/status/2085893388696539261"
   },
   {
     "id": "2073568708908249536",
@@ -2238,6 +2523,21 @@
     "url": "https://x.com/Michaelzsguo/status/2080807992794988717"
   },
   {
+    "id": "2085511173118521728",
+    "title": "创立 Fluidstack 并担任 CEO 的，是今年才 28 岁的 Gary Wu",
+    "summary": "创立 Fluidstack 并担任 CEO 的，是今年才 28 岁的 Gary Wu. 他还在牛津大学读书时，就和几位合伙人创立了这家公司",
+    "tags": [
+      "Local LLM",
+      "中文"
+    ],
+    "impressions": 5920,
+    "likes": 17,
+    "retweets": 1,
+    "bookmarks": 18,
+    "date": "2026-08-06",
+    "url": "https://x.com/Michaelzsguo/status/2085511173118521728"
+  },
+  {
     "id": "2057195857431179761",
     "title": "美国人仇视AI仅次于伊朗和民主党😂",
     "summary": "美国人仇视AI仅次于伊朗和民主党😂",
@@ -2297,6 +2597,23 @@
     "bookmarks": 12,
     "date": "2026-06-23",
     "url": "https://x.com/michaelzsguo/status/2069390845048947034"
+  },
+  {
+    "id": "2086150261962047566",
+    "title": "Many people here ridicule Google for its lackluster Gemin...",
+    "summary": "Many people here ridicule Google for its lackluster Gemini models and messy agentic coding products compared with Anthropic and OpenAI. But the economic reality is different: Google can win AI with...",
+    "tags": [
+      "Claude",
+      "OpenAI",
+      "Local LLM",
+      "Google"
+    ],
+    "impressions": 5690,
+    "likes": 2,
+    "retweets": 0,
+    "bookmarks": 1,
+    "date": "2026-08-08",
+    "url": "https://x.com/Michaelzsguo/status/2086150261962047566"
   },
   {
     "id": "2043511120787374321",
@@ -2668,6 +2985,20 @@
     "url": "https://x.com/Michaelzsguo/status/2077465650583236915"
   },
   {
+    "id": "2081751734657982964",
+    "title": "This is a big deal",
+    "summary": "This is a big deal. China has assembled most of the pieces of a domestic semiconductor ecosystem, but lithography equipment, especially DUV systems, remains one of its biggest weak links",
+    "tags": [
+      "Local LLM"
+    ],
+    "impressions": 4621,
+    "likes": 4,
+    "retweets": 0,
+    "bookmarks": 4,
+    "date": "2026-07-27",
+    "url": "https://x.com/Michaelzsguo/status/2081751734657982964"
+  },
+  {
     "id": "2076308219194994879",
     "title": "Finally，Waiting for Godot",
     "summary": "Finally，Waiting for Godot",
@@ -2727,6 +3058,21 @@
     "url": "https://x.com/michaelzsguo/status/2051415441679999133"
   },
   {
+    "id": "2085333043766550919",
+    "title": "DeepSeek announced that a significant API price hike is c...",
+    "summary": "DeepSeek announced that a significant API price hike is coming, and a lot of people are panicking. But look at the chart",
+    "tags": [
+      "DeepSeek",
+      "Local LLM"
+    ],
+    "impressions": 4406,
+    "likes": 3,
+    "retweets": 0,
+    "bookmarks": 3,
+    "date": "2026-08-06",
+    "url": "https://x.com/Michaelzsguo/status/2085333043766550919"
+  },
+  {
     "id": "2055469012461420914",
     "title": "I so need this reset as I'm deeply in debt",
     "summary": "I so need this reset as I'm deeply in debt",
@@ -2771,6 +3117,21 @@
     "bookmarks": 29,
     "date": "2026-06-28",
     "url": "https://x.com/michaelzsguo/status/2071298825705095423"
+  },
+  {
+    "id": "2081902228600705229",
+    "title": "Europe, Japan, Korea, India",
+    "summary": "Europe, Japan, Korea, India. where are you? Don’t you use open-weight models? Kimi K3’s weights dropped today",
+    "tags": [
+      "Local LLM",
+      "AI Tools"
+    ],
+    "impressions": 4298,
+    "likes": 6,
+    "retweets": 0,
+    "bookmarks": 3,
+    "date": "2026-07-28",
+    "url": "https://x.com/Michaelzsguo/status/2081902228600705229"
   },
   {
     "id": "2041981627803324484",
@@ -3066,6 +3427,20 @@
     "bookmarks": 0,
     "date": "2026-07-17",
     "url": "https://x.com/Michaelzsguo/status/2078199182381171132"
+  },
+  {
+    "id": "2082292698476658901",
+    "title": "China’s artificial sun: >> 582-tonne superconducting magn...",
+    "summary": "China’s artificial sun: >> 582-tonne superconducting magnet >> world’s largest built for fusion >> 21 meters tall, 12 meters wide >> carries 95,600 amps >> one of 16 magnets in the full reactor des...",
+    "tags": [
+      "Local LLM"
+    ],
+    "impressions": 3638,
+    "likes": 6,
+    "retweets": 1,
+    "bookmarks": 3,
+    "date": "2026-07-29",
+    "url": "https://x.com/Michaelzsguo/status/2082292698476658901"
   },
   {
     "id": "2053512735204257921",
@@ -3425,6 +3800,23 @@
     "url": "https://x.com/michaelzsguo/status/2044500138102509984"
   },
   {
+    "id": "2086214144374514084",
+    "title": "这个挺有意思：苹果开始允许中国大陆的 Mac 用户，在 Siri 和写作工具里调用阿里的 Qwen",
+    "summary": "这个挺有意思：苹果开始允许中国大陆的 Mac 用户，在 Siri 和写作工具里调用阿里的 Qwen. 美国版 Apple Intelligence 其实早已接入 ChatGPT",
+    "tags": [
+      "OpenAI",
+      "Local LLM",
+      "Qwen",
+      "Hardware"
+    ],
+    "impressions": 3133,
+    "likes": 4,
+    "retweets": 0,
+    "bookmarks": 1,
+    "date": "2026-08-08",
+    "url": "https://x.com/Michaelzsguo/status/2086214144374514084"
+  },
+  {
     "id": "2048163857383018757",
     "title": "At this week’s Google Cloud Next, I heard many people sha...",
     "summary": "At this week’s Google Cloud Next, I heard many people share the same view: this thing has to work. Otherwise, given the enormous amount of capital pulled into this cycle, the fallout will not be li...",
@@ -3770,6 +4162,21 @@
     "url": "https://x.com/michaelzsguo/status/2041614148165890357"
   },
   {
+    "id": "2081768374313406538",
+    "title": "Kimi K3’s open weights are the headline today",
+    "summary": "Kimi K3’s open weights are the headline today. And it delivered more than what @JensenHuang and many others called for in their recent open letter on open models",
+    "tags": [
+      "Local LLM",
+      "Hardware"
+    ],
+    "impressions": 2885,
+    "likes": 8,
+    "retweets": 2,
+    "bookmarks": 2,
+    "date": "2026-07-27",
+    "url": "https://x.com/Michaelzsguo/status/2081768374313406538"
+  },
+  {
     "id": "2080256199484694584",
     "title": "Alibaba also made its frontier model Qwen 3",
     "summary": "Alibaba also made its frontier model Qwen 3. 8 run on its own chips and infrastructure",
@@ -3800,6 +4207,21 @@
     "url": "https://x.com/michaelzsguo/status/2051331076644024336"
   },
   {
+    "id": "2082271049945583785",
+    "title": "很多人夸王虹长得好看，她的字也同样清秀，真是字如其人",
+    "summary": "很多人夸王虹长得好看，她的字也同样清秀，真是字如其人. 获得菲尔兹奖后，她在 ICM 做了一场数学报告，所有 PPT 都由她亲手绘制",
+    "tags": [
+      "Local LLM",
+      "中文"
+    ],
+    "impressions": 2872,
+    "likes": 2,
+    "retweets": 2,
+    "bookmarks": 0,
+    "date": "2026-07-29",
+    "url": "https://x.com/Michaelzsguo/status/2082271049945583785"
+  },
+  {
     "id": "2037585983995027830",
     "title": "wow this is a brilliant project, but how do you plan to k...",
     "summary": "wow this is a brilliant project, but how do you plan to keep with their release calendar like this?",
@@ -3826,6 +4248,21 @@
     "bookmarks": 1,
     "date": "2026-07-30",
     "url": "https://x.com/Michaelzsguo/status/2082812578263142818"
+  },
+  {
+    "id": "2085553756863668578",
+    "title": "台积电美国亚利桑那州工厂的生产场面",
+    "summary": "台积电美国亚利桑那州工厂的生产场面. 台积电在美国的第一座晶圆厂于2024年底正式进入4纳米量产，目前良率已经追平台积电在台湾的同类工厂",
+    "tags": [
+      "Local LLM",
+      "中文"
+    ],
+    "impressions": 2849,
+    "likes": 10,
+    "retweets": 1,
+    "bookmarks": 1,
+    "date": "2026-08-07",
+    "url": "https://x.com/Michaelzsguo/status/2085553756863668578"
   },
   {
     "id": "2078802687114531141",
@@ -4008,6 +4445,22 @@
     "bookmarks": 0,
     "date": "2026-03-21",
     "url": "https://x.com/michaelzsguo/status/2035165274651959382"
+  },
+  {
+    "id": "2086153125694472588",
+    "title": "外媒 Pathfounders 报道，据其消息人士称，Demis Hassabis 原本也想和 Jeff Dean...",
+    "summary": "外媒 Pathfounders 报道，据其消息人士称，Demis Hassabis 原本也想和 Jeff Dean 一起离开 Google，只是 Google 担心两位 AI 灵魂人物同时出走对公司造成太大冲击，最终说服 Demis 暂时留下，转任 DeepMind 董事长和 Alphabet Chief Scientist. 正如我们此前讨论的一个判断：Google",
+    "tags": [
+      "Local LLM",
+      "Google",
+      "中文"
+    ],
+    "impressions": 2688,
+    "likes": 7,
+    "retweets": 2,
+    "bookmarks": 4,
+    "date": "2026-08-08",
+    "url": "https://x.com/Michaelzsguo/status/2086153125694472588"
   },
   {
     "id": "2078328394652016705",
@@ -4243,6 +4696,22 @@
     "bookmarks": 3,
     "date": "2026-07-16",
     "url": "https://x.com/Michaelzsguo/status/2077736038739358206"
+  },
+  {
+    "id": "2085917827576348739",
+    "title": "Sergey Brin 说自己过早退休是个非常错误的决定",
+    "summary": "Sergey Brin 说自己过早退休是个非常错误的决定. 他在新冠疫情爆发前一个月选择退休，本来想坐在咖啡馆里安安静静研究物理，结果疫情封锁后整天无所事事，甚至感觉精神状态明显下滑，思维也开始迟钝",
+    "tags": [
+      "Local LLM",
+      "Google",
+      "中文"
+    ],
+    "impressions": 2442,
+    "likes": 3,
+    "retweets": 0,
+    "bookmarks": 2,
+    "date": "2026-08-08",
+    "url": "https://x.com/Michaelzsguo/status/2085917827576348739"
   },
   {
     "id": "2045677463523455232",
