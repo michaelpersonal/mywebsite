@@ -341,6 +341,39 @@
     "url": "https://x.com/Michaelzsguo/status/2082798619162189904"
   },
   {
+    "id": "2097469744370663483",
+    "title": "如果你正在使用 Herdr，应该立即升级到最新版本",
+    "summary": "如果你正在使用 Herdr，应该立即升级到最新版本. 前段时间我分享过，如何利用 Herdr 分布式管理 4 台机器上的多个 Agent",
+    "tags": [
+      "Local LLM",
+      "Hardware",
+      "AI Agents",
+      "Remote Dev"
+    ],
+    "impressions": 99783,
+    "likes": 669,
+    "retweets": 55,
+    "bookmarks": 755,
+    "date": "2026-09-08",
+    "url": "https://x.com/Michaelzsguo/status/2097469744370663483"
+  },
+  {
+    "id": "2098164667939971529",
+    "title": "这个太逗了",
+    "summary": "自从抱抱脸Huggingface被Agent攻击了以后， 他们现在在自己的网站挂了个“免战牌”： 不过聪明如Astra， 这招管用吗？",
+    "tags": [
+      "Local LLM",
+      "AI Agents",
+      "中文"
+    ],
+    "impressions": 94889,
+    "likes": 518,
+    "retweets": 12,
+    "bookmarks": 83,
+    "date": "2026-09-10",
+    "url": "https://x.com/Michaelzsguo/status/2098164667939971529"
+  },
+  {
     "id": "2085538642672398617",
     "title": "英国《金融时报》早先报道：Google 正在重新分配 AI 时代的最高权力，Sergey Brin 在幕后重新掌握...",
     "summary": "英国《金融时报》早先报道：Google 正在重新分配 AI 时代的最高权力，Sergey Brin 在幕后重新掌握实际影响力. 现在回过头看，John Jumper 今年 6 月离开 Google DeepMind 加入 Anthropic，其实已经是这轮权力重组最早露出的苗头",
@@ -811,6 +844,23 @@
     "url": "https://x.com/Michaelzsguo/status/2088373848639152539"
   },
   {
+    "id": "2098876142971207778",
+    "title": "This is insane",
+    "summary": "This is insane. As @finkd mentioned earlier, @Muse gives you up to 100M tokens per week for free",
+    "tags": [
+      "Codex",
+      "OpenAI",
+      "Local LLM",
+      "LLM Internals"
+    ],
+    "impressions": 47802,
+    "likes": 13,
+    "retweets": 0,
+    "bookmarks": 9,
+    "date": "2026-09-12",
+    "url": "https://x.com/Michaelzsguo/status/2098876142971207778"
+  },
+  {
     "id": "2081042325782815216",
     "title": "When Hong Wang won the Fields Medal, everyone talked abou...",
     "summary": "When Hong Wang won the Fields Medal, everyone talked about the honor: her age, her journey, the history she had made. But the most interesting question was barely discussed: What did she actually s...",
@@ -1015,6 +1065,23 @@
     "url": "https://x.com/michaelzsguo/status/2070150177357226459"
   },
   {
+    "id": "2097679362376007952",
+    "title": "昨天我介绍了最新的 Herdr：它可以把分散在不同机器上的 Agent 集中到一个界面里控制",
+    "summary": "昨天我介绍了最新的 Herdr：它可以把分散在不同机器上的 Agent 集中到一个界面里控制. 很多人都对它背后的工作方式很感兴趣",
+    "tags": [
+      "Local LLM",
+      "AI Agents",
+      "Skills",
+      "中文"
+    ],
+    "impressions": 39210,
+    "likes": 185,
+    "retweets": 8,
+    "bookmarks": 308,
+    "date": "2026-09-09",
+    "url": "https://x.com/Michaelzsguo/status/2097679362376007952"
+  },
+  {
     "id": "2095305116425269495",
     "title": "很多人知道，孙正义的软银曾持有英伟达 4",
     "summary": "很多人知道，孙正义的软银曾持有英伟达 4. 9% 的股份，是当时的第四大股东",
@@ -1028,6 +1095,22 @@
     "bookmarks": 22,
     "date": "2026-09-03",
     "url": "https://x.com/Michaelzsguo/status/2095305116425269495"
+  },
+  {
+    "id": "2098890461985268014",
+    "title": "马克·扎克伯格解释了，为什么 Muse 要让绝大多数人免费使用",
+    "summary": "马克·扎克伯格解释了，为什么 Muse 要让绝大多数人免费使用. 按他的设想，每个人都应该拥有一个能替自己行动、帮助自己实现目标的 Personal AI",
+    "tags": [
+      "Local LLM",
+      "LLM Internals",
+      "中文"
+    ],
+    "impressions": 38131,
+    "likes": 109,
+    "retweets": 8,
+    "bookmarks": 74,
+    "date": "2026-09-12",
+    "url": "https://x.com/Michaelzsguo/status/2098890461985268014"
   },
   {
     "id": "2093808408528855533",
@@ -1121,6 +1204,22 @@
     "bookmarks": 386,
     "date": "2026-05-09",
     "url": "https://x.com/michaelzsguo/status/2053229425555050734"
+  },
+  {
+    "id": "2094628798067048557",
+    "title": "今天，DHH 宣布 Omacom Foundation 新增两位创始赞助人：Coinbase CEO Brian...",
+    "summary": "今天，DHH 宣布 Omacom Foundation 新增两位创始赞助人：Coinbase CEO Brian Armstrong，以及中国创业者戴云杰. 两人各捐 100 万美元，基金会资金达到 1200 万美元",
+    "tags": [
+      "Local LLM",
+      "Hardware",
+      "中文"
+    ],
+    "impressions": 34442,
+    "likes": 109,
+    "retweets": 11,
+    "bookmarks": 53,
+    "date": "2026-09-01",
+    "url": "https://x.com/Michaelzsguo/status/2094628798067048557"
   },
   {
     "id": "2091281434161942635",
@@ -1519,6 +1618,23 @@
     "bookmarks": 1,
     "date": "2026-07-08",
     "url": "https://x.com/Michaelzsguo/status/2074976844013588808"
+  },
+  {
+    "id": "2098354475253596384",
+    "title": "中国 AI 用户腹背受敌： 1",
+    "summary": "中国 AI 用户腹背受敌： 1. 一些用户老老实实用国内大模型 Kimi / DeepSeek，以为这样就很安全了，结果数据还是被转手送到了 Anthropic",
+    "tags": [
+      "DeepSeek",
+      "Claude",
+      "Local LLM",
+      "中文"
+    ],
+    "impressions": 25704,
+    "likes": 42,
+    "retweets": 4,
+    "bookmarks": 24,
+    "date": "2026-09-11",
+    "url": "https://x.com/Michaelzsguo/status/2098354475253596384"
   },
   {
     "id": "2081189009284305197",
@@ -1932,6 +2048,22 @@
     "url": "https://x.com/Michaelzsguo/status/2092917073387176009"
   },
   {
+    "id": "2097800557943570563",
+    "title": "马上就要出差了",
+    "summary": "人不在机器旁边，家里跑着的 Agent 团队也不能丢下不管. 以前我一般用 Termius 或 Moshi，SSH 回主机的 Terminal，再运行 Herdr 命令",
+    "tags": [
+      "Local LLM",
+      "AI Agents",
+      "中文"
+    ],
+    "impressions": 19657,
+    "likes": 91,
+    "retweets": 6,
+    "bookmarks": 152,
+    "date": "2026-09-09",
+    "url": "https://x.com/Michaelzsguo/status/2097800557943570563"
+  },
+  {
     "id": "2071956328285720644",
     "title": "Dario 称中国模型蒸馏自 Anthropic",
     "summary": "Dario声称DeepSeek等中国模型蒸馏自Anthropic，书籍讲解如何微调小模型成为专家。",
@@ -2154,6 +2286,37 @@
     "bookmarks": 1,
     "date": "2026-09-07",
     "url": "https://x.com/Michaelzsguo/status/2096777675071263080"
+  },
+  {
+    "id": "2094554292405334427",
+    "title": "这个也太cute了",
+    "summary": "用的是M5Stack StopWatch 是一款基于 ESP32-S3 主控、搭载 1. 75 英寸 AMOLED 圆形触控屏的便携交互开发板",
+    "tags": [
+      "Local LLM",
+      "Hardware",
+      "中文"
+    ],
+    "impressions": 16662,
+    "likes": 78,
+    "retweets": 6,
+    "bookmarks": 75,
+    "date": "2026-08-31",
+    "url": "https://x.com/Michaelzsguo/status/2094554292405334427"
+  },
+  {
+    "id": "2097793417019318465",
+    "title": "DHH 正在以惊人的速度，为 Omarchy 拼出一支国际化的核心团队",
+    "summary": "DHH 正在以惊人的速度，为 Omarchy 拼出一支国际化的核心团队. 8 月 19 日，Omarchy Core 正式成立",
+    "tags": [
+      "Local LLM",
+      "中文"
+    ],
+    "impressions": 16547,
+    "likes": 123,
+    "retweets": 12,
+    "bookmarks": 40,
+    "date": "2026-09-09",
+    "url": "https://x.com/Michaelzsguo/status/2097793417019318465"
   },
   {
     "id": "2041956656024522784",
@@ -2487,6 +2650,22 @@
     "url": "https://x.com/Michaelzsguo/status/2089721201392275549"
   },
   {
+    "id": "2098943983820898586",
+    "title": "就像 OpenClaw，@Muse 也有几乎一样的 5 个 Markdown 文件",
+    "summary": "就像 OpenClaw，@Muse 也有几乎一样的 5 个 Markdown 文件. 小扎没能买下 OpenClaw，但显然很好地延续了“小龙虾”的精髓，而且把上手门槛降了不少",
+    "tags": [
+      "Local LLM",
+      "AI Agents",
+      "中文"
+    ],
+    "impressions": 13039,
+    "likes": 9,
+    "retweets": 0,
+    "bookmarks": 24,
+    "date": "2026-09-13",
+    "url": "https://x.com/Michaelzsguo/status/2098943983820898586"
+  },
+  {
     "id": "2089674406691746176",
     "title": "最近，一段杨植麟 2015 年玩乐队时写的歌又被翻了出来",
     "summary": "最近，一段杨植麟 2015 年玩乐队时写的歌又被翻了出来. 歌名很直白，叫《暴富白日梦之歌》",
@@ -2547,6 +2726,23 @@
     "bookmarks": 12,
     "date": "2026-07-10",
     "url": "https://x.com/Michaelzsguo/status/2075724679088595098"
+  },
+  {
+    "id": "2098081291551854789",
+    "title": "我很久以前就说过，美国 AI 公司很喜欢拿 Kimi 模型做 post-training / fine-tuning",
+    "summary": "我很久以前就说过，美国 AI 公司很喜欢拿 Kimi 模型做 post-training / fine-tuning. 这里的技术路径其实很清楚：Kimi 先提供一个能力已经很强的 base model，美国公司再把它当作训练基座，用自己的数据、任务和方法继续做后训练，把一个通用模型“改造成”更适合自己产品的专用模型",
+    "tags": [
+      "Local LLM",
+      "Fine-tuning",
+      "AI Tools",
+      "中文"
+    ],
+    "impressions": 12429,
+    "likes": 33,
+    "retweets": 5,
+    "bookmarks": 18,
+    "date": "2026-09-10",
+    "url": "https://x.com/Michaelzsguo/status/2098081291551854789"
   },
   {
     "id": "2050625358001496219",
@@ -2611,6 +2807,22 @@
     "bookmarks": 5,
     "date": "2026-04-21",
     "url": "https://x.com/michaelzsguo/status/2046621472945308152"
+  },
+  {
+    "id": "2094590580110074006",
+    "title": "郭台铭夫妇给Tim Cook送行",
+    "summary": "郭台铭夫妇给Tim Cook送行. 苹果成就了鸿海，鸿海也成就了苹果",
+    "tags": [
+      "Local LLM",
+      "Hardware",
+      "中文"
+    ],
+    "impressions": 11553,
+    "likes": 23,
+    "retweets": 2,
+    "bookmarks": 13,
+    "date": "2026-09-01",
+    "url": "https://x.com/Michaelzsguo/status/2094590580110074006"
   },
   {
     "id": "2067717740161359973",
@@ -2935,6 +3147,23 @@
     "bookmarks": 27,
     "date": "2026-08-04",
     "url": "https://x.com/Michaelzsguo/status/2084748711909834822"
+  },
+  {
+    "id": "2098017520020066486",
+    "title": "DeepSeek继续带动大模型创新",
+    "summary": "DeepSeek继续带动大模型创新. DeepSeek V4",
+    "tags": [
+      "DeepSeek",
+      "Local LLM",
+      "LLM Internals",
+      "中文"
+    ],
+    "impressions": 9151,
+    "likes": 6,
+    "retweets": 1,
+    "bookmarks": 2,
+    "date": "2026-09-10",
+    "url": "https://x.com/Michaelzsguo/status/2098017520020066486"
   },
   {
     "id": "2068461590995931613",
@@ -3350,6 +3579,22 @@
     "bookmarks": 11,
     "date": "2026-04-03",
     "url": "https://x.com/michaelzsguo/status/2040074257036636378"
+  },
+  {
+    "id": "2097359561984201009",
+    "title": "解读一下： 就在差不多一个星期前，OpenAI 资深研究科学家 Noam Brown 发推说，他们已经用 AI 解...",
+    "summary": "解读一下： 就在差不多一个星期前，OpenAI 资深研究科学家 Noam Brown 发推说，他们已经用 AI 解决了十几个非常复杂的数学问题. 于是有人问：你们有没有尝试过千禧年难题？其中就包括现在处在质疑和争议中心的 Navier–Stokes 存在性与光滑性问题",
+    "tags": [
+      "OpenAI",
+      "Local LLM",
+      "中文"
+    ],
+    "impressions": 7648,
+    "likes": 11,
+    "retweets": 0,
+    "bookmarks": 8,
+    "date": "2026-09-08",
+    "url": "https://x.com/Michaelzsguo/status/2097359561984201009"
   },
   {
     "id": "2092404419019121119",
@@ -3869,6 +4114,23 @@
     "url": "https://x.com/michaelzsguo/status/2043511120787374321"
   },
   {
+    "id": "2098021103792734493",
+    "title": "DeepSeek V4",
+    "summary": "DeepSeek V4. 1 Flash 能把模型做到极致，离不开这项关键技术：Engram",
+    "tags": [
+      "DeepSeek",
+      "Local LLM",
+      "LLM Internals",
+      "中文"
+    ],
+    "impressions": 5545,
+    "likes": 43,
+    "retweets": 11,
+    "bookmarks": 39,
+    "date": "2026-09-10",
+    "url": "https://x.com/Michaelzsguo/status/2098021103792734493"
+  },
+  {
     "id": "2036615024743993849",
     "title": "他们最新发布的两个功能， 一个telegram pairing卡顿；一个computer use慢的像头牛",
     "summary": "他们最新发布的两个功能， 一个telegram pairing卡顿；一个computer use慢的像头牛. wanman如果用户体验好， 可以完胜",
@@ -3912,6 +4174,22 @@
     "bookmarks": 33,
     "date": "2026-08-22",
     "url": "https://x.com/Michaelzsguo/status/2091000694979334644"
+  },
+  {
+    "id": "2097356600486883719",
+    "title": "Anthropic律师： 法官大人， 我方现向法庭展示涉案物证原物， 请法庭调阅",
+    "summary": "Anthropic律师： 法官大人， 我方现向法庭展示涉案物证原物， 请法庭调阅",
+    "tags": [
+      "Claude",
+      "Local LLM",
+      "中文"
+    ],
+    "impressions": 5464,
+    "likes": 0,
+    "retweets": 0,
+    "bookmarks": 1,
+    "date": "2026-09-08",
+    "url": "https://x.com/Michaelzsguo/status/2097356600486883719"
   },
   {
     "id": "2056842405815447684",
@@ -4446,6 +4724,23 @@
     "url": "https://x.com/michaelzsguo/status/2055469012461420914"
   },
   {
+    "id": "2098216718392832036",
+    "title": "算力就是 token，token 就是黄金",
+    "summary": "算力就是 token，token 就是黄金. 这个年代，家里只要还有一点闲置算力，就得想办法把它榨出来",
+    "tags": [
+      "DeepSeek",
+      "Local LLM",
+      "AI Agents",
+      "LLM Internals"
+    ],
+    "impressions": 4317,
+    "likes": 2,
+    "retweets": 0,
+    "bookmarks": 6,
+    "date": "2026-09-11",
+    "url": "https://x.com/Michaelzsguo/status/2098216718392832036"
+  },
+  {
     "id": "2040842859411312855",
     "title": "A very nice write-up",
     "summary": "A very nice write-up. Fuli puts an optimistic spin on the AI ecosystem, even as Anthropic cuts third-party agents like OpenClaw off Claude subscriptions",
@@ -4650,6 +4945,21 @@
     "bookmarks": 3,
     "date": "2026-04-24",
     "url": "https://x.com/michaelzsguo/status/2047778871135908284"
+  },
+  {
+    "id": "2098988318792827011",
+    "title": "Kimi 将以 500 亿美元估值在香港上市",
+    "summary": "Kimi 将以 500 亿美元估值在香港上市. 但这篇《华尔街日报》的人物稿，重点并不在上市本身，而是讲杨植麟的成长经历，以及他如何把中美两种文化揉进一家中国 AI 公司",
+    "tags": [
+      "Local LLM",
+      "中文"
+    ],
+    "impressions": 3948,
+    "likes": 9,
+    "retweets": 0,
+    "bookmarks": 8,
+    "date": "2026-09-13",
+    "url": "https://x.com/Michaelzsguo/status/2098988318792827011"
   },
   {
     "id": "2038446023513715113",
@@ -4970,6 +5280,20 @@
     "url": "https://x.com/Michaelzsguo/status/2075992773191229764"
   },
   {
+    "id": "2098610805008683365",
+    "title": "Media Post",
+    "summary": "",
+    "tags": [
+      "Local LLM"
+    ],
+    "impressions": 3541,
+    "likes": 12,
+    "retweets": 3,
+    "bookmarks": 12,
+    "date": "2026-09-12",
+    "url": "https://x.com/Michaelzsguo/status/2098610805008683365"
+  },
+  {
     "id": "2087873221060071522",
     "title": "DeepSeek V4 API pricing is now official",
     "summary": "DeepSeek V4 API pricing is now official. As expected, most prices are increasing by roughly 2–4x, with one major exception: cache-hit pricing for V4 Pro during peak hours is jumping 12x",
@@ -5182,6 +5506,22 @@
     "bookmarks": 0,
     "date": "2026-06-18",
     "url": "https://x.com/michaelzsguo/status/2067531429219565596"
+  },
+  {
+    "id": "2098818761524461848",
+    "title": "OpenAI CEO Sam Altman 回帖支持达里奥",
+    "summary": "OpenAI CEO Sam Altman 回帖支持达里奥. 两家最重要的前沿 AI 公司在这件事上算是达成一致了，Embedded Evaluators 这事儿大概率真要成",
+    "tags": [
+      "OpenAI",
+      "Local LLM",
+      "中文"
+    ],
+    "impressions": 3231,
+    "likes": 0,
+    "retweets": 0,
+    "bookmarks": 1,
+    "date": "2026-09-12",
+    "url": "https://x.com/Michaelzsguo/status/2098818761524461848"
   },
   {
     "id": "2084421702713278547",
@@ -5469,6 +5809,23 @@
     "url": "https://x.com/michaelzsguo/status/2037258599907438795"
   },
   {
+    "id": "2099164373088440701",
+    "title": "记得上次我让 @muse 唱歌，它推辞说自己不会",
+    "summary": "记得上次我让 @muse 唱歌，它推辞说自己不会. 这时候 Muse 什么都能干的优良作风就体现出来了",
+    "tags": [
+      "Local LLM",
+      "Hardware",
+      "Skills",
+      "Remote Dev"
+    ],
+    "impressions": 3073,
+    "likes": 0,
+    "retweets": 0,
+    "bookmarks": 0,
+    "date": "2026-09-13",
+    "url": "https://x.com/Michaelzsguo/status/2099164373088440701"
+  },
+  {
     "id": "2050508385552863427",
     "title": "Great addition",
     "summary": "Great addition",
@@ -5618,6 +5975,22 @@
     "bookmarks": 7,
     "date": "2026-06-28",
     "url": "https://x.com/michaelzsguo/status/2071058168906469565"
+  },
+  {
+    "id": "2094532680645824614",
+    "title": "过去几天，我写了好几条关于 Lauren Tan @poteto 和她的 pstack skills",
+    "summary": "过去几天，我写了好几条关于 Lauren Tan @poteto 和她的 pstack skills. 今天她亲自下厨房，开始完整拆解这套能让她每个月提交2000个PR的系统，手把手演示怎么使用、怎么为自己的项目创建 skills",
+    "tags": [
+      "Local LLM",
+      "Skills",
+      "中文"
+    ],
+    "impressions": 2974,
+    "likes": 7,
+    "retweets": 1,
+    "bookmarks": 8,
+    "date": "2026-08-31",
+    "url": "https://x.com/Michaelzsguo/status/2094532680645824614"
   },
   {
     "id": "2078807768400548254",
@@ -5844,6 +6217,22 @@
     "bookmarks": 2,
     "date": "2026-07-27",
     "url": "https://x.com/Michaelzsguo/status/2081768374313406538"
+  },
+  {
+    "id": "2094533183924777023",
+    "title": "DeepSeek 居然知道在做一个项目之前，先做一下可行性验证，主动去 GitHub 搜索有没有相关项目已经存在",
+    "summary": "DeepSeek 居然知道在做一个项目之前，先做一下可行性验证，主动去 GitHub 搜索有没有相关项目已经存在. 我以前见过有人在 prompt 里明确提示模型先去 GitHub 搜，但我这里完全没有做任何提示",
+    "tags": [
+      "DeepSeek",
+      "Local LLM",
+      "中文"
+    ],
+    "impressions": 2882,
+    "likes": 5,
+    "retweets": 0,
+    "bookmarks": 2,
+    "date": "2026-08-31",
+    "url": "https://x.com/Michaelzsguo/status/2094533183924777023"
   },
   {
     "id": "2080256199484694584",
@@ -6723,6 +7112,22 @@
     "url": "https://x.com/michaelzsguo/status/2046596525321593331"
   },
   {
+    "id": "2098738395472150644",
+    "title": "如今用 AI App，你还顺手还得一台 VPS",
+    "summary": "如今用 AI App，你还顺手还得一台 VPS. Muse App 的 VM（2 核）算力比 ChatGPT（4 核）稍弱一点，但用的是更新一代的 AMD EPYC",
+    "tags": [
+      "OpenAI",
+      "Local LLM",
+      "中文"
+    ],
+    "impressions": 2332,
+    "likes": 2,
+    "retweets": 0,
+    "bookmarks": 0,
+    "date": "2026-09-12",
+    "url": "https://x.com/Michaelzsguo/status/2098738395472150644"
+  },
+  {
     "id": "2044935430743695655",
     "title": "OpenAI这次推出来的computer use， 比不久前Claude Code的看着丝滑多了",
     "summary": "OpenAI这次推出来的computer use， 比不久前Claude Code的看着丝滑多了. 背后的团队实力和技术/艺术积累也不一般",
@@ -7114,6 +7519,21 @@
     "url": "https://x.com/Michaelzsguo/status/2091594892250120435"
   },
   {
+    "id": "2097336111550849216",
+    "title": "What if, just what if, Tristan Buckmaster’s Navier-Stokes...",
+    "summary": "What if, just what if, Tristan Buckmaster’s Navier-Stokes work was never passed to OpenAI? What if OpenAI got the idea from user logs it already had access to? Tristan was also using GPT Sol and As...",
+    "tags": [
+      "OpenAI",
+      "Local LLM"
+    ],
+    "impressions": 2168,
+    "likes": 9,
+    "retweets": 1,
+    "bookmarks": 5,
+    "date": "2026-09-08",
+    "url": "https://x.com/Michaelzsguo/status/2097336111550849216"
+  },
+  {
     "id": "2039348048636039423",
     "title": "Wow, that's very impressive",
     "summary": "Wow, that's very impressive. Hold on a second though",
@@ -7312,399 +7732,5 @@
     "bookmarks": 1,
     "date": "2026-04-11",
     "url": "https://x.com/michaelzsguo/status/2043062702818390086"
-  },
-  {
-    "id": "2073475469928804394",
-    "title": "AI Sovereignty and Open Models",
-    "summary": "讨论AI主权、开放模型与Alex Karp的观点，涉及模型开放性与国家战略。",
-    "tags": [
-      "AI",
-      "OpenAI"
-    ],
-    "impressions": 2064,
-    "likes": 5,
-    "retweets": 1,
-    "bookmarks": 8,
-    "date": "2026-07-04",
-    "url": "https://x.com/michaelzsguo/status/2073475469928804394"
-  },
-  {
-    "id": "2041620146096099730",
-    "title": "What they described as Mythos’s behavior during pre-train...",
-    "summary": "What they described as Mythos’s behavior during pre-training all leans toward the darker side. It has a real Frankenstein feel to it",
-    "tags": [
-      "Local LLM",
-      "Fine-tuning"
-    ],
-    "impressions": 2056,
-    "likes": 3,
-    "retweets": 0,
-    "bookmarks": 0,
-    "date": "2026-04-07",
-    "url": "https://x.com/michaelzsguo/status/2041620146096099730"
-  },
-  {
-    "id": "2087663321268846619",
-    "title": "Jeff Dean 也做过一场关于 AI 的 TED Talk",
-    "summary": "Jeff Dean 也做过一场关于 AI 的 TED Talk. ChatGPT 还要再过一年才面世，生成式 AI 也还不是大众话题",
-    "tags": [
-      "OpenAI",
-      "Local LLM",
-      "中文"
-    ],
-    "impressions": 2055,
-    "likes": 7,
-    "retweets": 3,
-    "bookmarks": 4,
-    "date": "2026-08-12",
-    "url": "https://x.com/Michaelzsguo/status/2087663321268846619"
-  },
-  {
-    "id": "2095542004256010727",
-    "title": "So much intelligence to choose from",
-    "summary": "So much intelligence to choose from. Here’s something to help you choose from a price/cost perspective",
-    "tags": [
-      "Local LLM"
-    ],
-    "impressions": 2039,
-    "likes": 1,
-    "retweets": 0,
-    "bookmarks": 2,
-    "date": "2026-09-03",
-    "url": "https://x.com/Michaelzsguo/status/2095542004256010727"
-  },
-  {
-    "id": "2055674421436637695",
-    "title": "hey capability does matter too",
-    "summary": "hey capability does matter too. :-) that's why I chose Deepseek v4 pro",
-    "tags": [
-      "OpenAI",
-      "Claude",
-      "Codex",
-      "DeepSeek"
-    ],
-    "impressions": 2029,
-    "likes": 2,
-    "retweets": 0,
-    "bookmarks": 1,
-    "date": "2026-05-16",
-    "url": "https://x.com/michaelzsguo/status/2055674421436637695"
-  },
-  {
-    "id": "2072122677322498058",
-    "title": "ChatGPT 新增 Agent 功能",
-    "summary": "ChatGPT正在增加代理功能，将聊天框转变为更实用的工具，值得关注。",
-    "tags": [
-      "AI Agents",
-      "OpenAI"
-    ],
-    "impressions": 2018,
-    "likes": 1,
-    "retweets": 1,
-    "bookmarks": 2,
-    "date": "2026-07-01",
-    "url": "https://x.com/michaelzsguo/status/2072122677322498058"
-  },
-  {
-    "id": "2092052619556421710",
-    "title": "Thomson Reuters 刚刚做了一件我认为以后会在大企业里越来越常见的事：基于开源模型，训练自己的专用模型",
-    "summary": "Thomson Reuters 刚刚做了一件我认为以后会在大企业里越来越常见的事：基于开源模型，训练自己的专用模型. 它发布的 Thomson-1 并不是从零开始训练",
-    "tags": [
-      "Claude",
-      "Local LLM",
-      "Qwen",
-      "中文"
-    ],
-    "impressions": 2015,
-    "likes": 9,
-    "retweets": 0,
-    "bookmarks": 12,
-    "date": "2026-08-25",
-    "url": "https://x.com/Michaelzsguo/status/2092052619556421710"
-  },
-  {
-    "id": "2073741442556510237",
-    "title": "Local X Archive Content System",
-    "summary": "Built a local system to import X archive into SQLite with full-text search, enabling queries like 'Find my posts on local open model'.",
-    "tags": [
-      "Local LLM",
-      "Skills"
-    ],
-    "impressions": 2014,
-    "likes": 3,
-    "retweets": 0,
-    "bookmarks": 4,
-    "date": "2026-07-05",
-    "url": "https://x.com/michaelzsguo/status/2073741442556510237"
-  },
-  {
-    "id": "2055696123478610031",
-    "title": "1d 13h 20m, 3,596,831 tokens",
-    "summary": "1d 13h 20m, 3,596,831 tokens. Goal achieved? Not quite",
-    "tags": [
-      "Local LLM",
-      "LLM Internals",
-      "AI Agents"
-    ],
-    "impressions": 2005,
-    "likes": 8,
-    "retweets": 1,
-    "bookmarks": 3,
-    "date": "2026-05-16",
-    "url": "https://x.com/michaelzsguo/status/2055696123478610031"
-  },
-  {
-    "id": "2084766426150339036",
-    "title": "Matt 提到的这个办法，这个视频正好做了详细讲解",
-    "summary": "Matt 提到的这个办法，这个视频正好做了详细讲解. 它提供了一个很简单的去除 AI Slop 的方法：不要再逐个禁用破折号、delve 之类带有“AI 味”的词汇，而是给模型一套能够自我检查的写作系统",
-    "tags": [
-      "Local LLM",
-      "中文"
-    ],
-    "impressions": 1991,
-    "likes": 15,
-    "retweets": 2,
-    "bookmarks": 15,
-    "date": "2026-08-04",
-    "url": "https://x.com/Michaelzsguo/status/2084766426150339036"
-  },
-  {
-    "id": "2096032209333276817",
-    "title": "Media Post",
-    "summary": "谷歌今天推出的Music大模型Lyria 3. 看看我让他写的一只肖邦钢琴曲， 柔美如歌，也太像了",
-    "tags": [
-      "Local LLM",
-      "中文"
-    ],
-    "impressions": 1884,
-    "likes": 10,
-    "retweets": 0,
-    "bookmarks": 8,
-    "date": "2026-09-05",
-    "url": "https://x.com/Michaelzsguo/status/2096032209333276817"
-  },
-  {
-    "id": "2096417090844475482",
-    "title": "看得出是个感情很丰富的人",
-    "summary": "看得出是个感情很丰富的人. 一个 Unix/Linux 老用户用了 Omarchy 后，惊讶地发现它居然没有 vi",
-    "tags": [
-      "Local LLM",
-      "中文"
-    ],
-    "impressions": 1697,
-    "likes": 11,
-    "retweets": 1,
-    "bookmarks": 3,
-    "date": "2026-09-06",
-    "url": "https://x.com/Michaelzsguo/status/2096417090844475482"
-  },
-  {
-    "id": "2080774156711231980",
-    "title": "Hong Wang, 2026 Fields Medalist, didn’t have the best gra...",
-    "summary": "Hong Wang, 2026 Fields Medalist, didn’t have the best grades in college. So when École Polytechnique sent professors to Beijing to hold written and oral entrance exams, she saw something rare: a se...",
-    "tags": [
-      "Local LLM"
-    ],
-    "impressions": 1592,
-    "likes": 12,
-    "retweets": 3,
-    "bookmarks": 8,
-    "date": "2026-07-24",
-    "url": "https://x.com/Michaelzsguo/status/2080774156711231980"
-  },
-  {
-    "id": "2091006130973520102",
-    "title": "This is nuts",
-    "summary": "This is nuts. Median decode speed increased from 26 tok/s to 87",
-    "tags": [
-      "Local LLM",
-      "Hardware"
-    ],
-    "impressions": 1576,
-    "likes": 10,
-    "retweets": 1,
-    "bookmarks": 1,
-    "date": "2026-08-22",
-    "url": "https://x.com/Michaelzsguo/status/2091006130973520102"
-  },
-  {
-    "id": "2088721045435863393",
-    "title": "Kimi Work 被发现存在一个相当严重的隐私问题",
-    "summary": "Kimi Work 被发现存在一个相当严重的隐私问题. @Kimi_Moonshot 根据对最新桌面客户端Kimi Work的逆向分析，当用户向 Kimi 提交一个 feedback 时，Kimi 会在用户不知情的情况下，自动附带上传最近 5 个 Agent Session 的原始记录",
-    "tags": [
-      "Local LLM",
-      "AI Agents",
-      "中文"
-    ],
-    "impressions": 1501,
-    "likes": 11,
-    "retweets": 2,
-    "bookmarks": 5,
-    "date": "2026-08-15",
-    "url": "https://x.com/Michaelzsguo/status/2088721045435863393"
-  },
-  {
-    "id": "2078444049023844524",
-    "title": "In an early interview, Moonshot/Kimi CEO Yang Zhilin said...",
-    "summary": "In an early interview, Moonshot/Kimi CEO Yang Zhilin said he learned the most during his time at Google. Now the student has surpassed the teacher",
-    "tags": [
-      "Local LLM",
-      "Google"
-    ],
-    "impressions": 1464,
-    "likes": 14,
-    "retweets": 1,
-    "bookmarks": 5,
-    "date": "2026-07-18",
-    "url": "https://x.com/Michaelzsguo/status/2078444049023844524"
-  },
-  {
-    "id": "2061557147453038750",
-    "title": "When the creator of Redis starts thinking about KV cache,...",
-    "summary": "When the creator of Redis starts thinking about KV cache, pay attention. antirez is Salvatore Sanfilippo, the Sicilian programmer best known for creating Redis",
-    "tags": [
-      "Local LLM",
-      "LLM Internals",
-      "Security"
-    ],
-    "impressions": 0,
-    "likes": 210,
-    "retweets": 25,
-    "bookmarks": 0,
-    "date": "2026-06-01",
-    "url": "https://x.com/Michaelzsguo/status/2061557147453038750"
-  },
-  {
-    "id": "1685315158921371648",
-    "title": "#RyanGosling dancing when he was 12",
-    "summary": "#RyanGosling dancing when he was 12. He was surrounded by #BARBIE all along",
-    "tags": [
-      "Local LLM"
-    ],
-    "impressions": 0,
-    "likes": 72,
-    "retweets": 0,
-    "bookmarks": 0,
-    "date": "2023-07-29",
-    "url": "https://x.com/Michaelzsguo/status/1685315158921371648"
-  },
-  {
-    "id": "2060180872616165816",
-    "title": "The future of LLMs is local and distributed",
-    "summary": "The future of LLMs is local and distributed. They will probably be OEM’ed into every PC and Mac shipped, and a lot of that future traces back to llama",
-    "tags": [
-      "Local LLM",
-      "Hardware"
-    ],
-    "impressions": 0,
-    "likes": 40,
-    "retweets": 8,
-    "bookmarks": 0,
-    "date": "2026-05-29",
-    "url": "https://x.com/Michaelzsguo/status/2060180872616165816"
-  },
-  {
-    "id": "1760501020050739349",
-    "title": "The biggest takeaway watching the making of we are the wo...",
-    "summary": "The biggest takeaway watching the making of we are the world is how awkward bob dylan was among these stars. Yet it was so funny to watch him",
-    "tags": [
-      "Local LLM"
-    ],
-    "impressions": 0,
-    "likes": 37,
-    "retweets": 5,
-    "bookmarks": 0,
-    "date": "2024-02-22",
-    "url": "https://x.com/Michaelzsguo/status/1760501020050739349"
-  },
-  {
-    "id": "2059329999144989132",
-    "title": "A great youtube video tutorial on fine tuning qwen3",
-    "summary": "A great youtube video tutorial on fine tuning qwen3. And, If you want to fine-tune your own model but don’t have enough hardware, is a very practical solution Even better, if you have spare GPUs si...",
-    "tags": [
-      "Local LLM",
-      "Qwen",
-      "Hardware",
-      "Fine-tuning"
-    ],
-    "impressions": 0,
-    "likes": 37,
-    "retweets": 1,
-    "bookmarks": 0,
-    "date": "2026-05-26",
-    "url": "https://x.com/Michaelzsguo/status/2059329999144989132"
-  },
-  {
-    "id": "1711027823089975386",
-    "title": "Men’s marathon record was broken today at #ChicagoMarathon 2",
-    "summary": "Men’s marathon record was broken today at #ChicagoMarathon 2",
-    "tags": [
-      "Local LLM"
-    ],
-    "impressions": 0,
-    "likes": 34,
-    "retweets": 7,
-    "bookmarks": 0,
-    "date": "2023-10-08",
-    "url": "https://x.com/Michaelzsguo/status/1711027823089975386"
-  },
-  {
-    "id": "2058295655618007429",
-    "title": "The future of LLMs is distributed, local, and expert",
-    "summary": "The future of LLMs is distributed, local, and expert. Small models that can run on your own devices will matter more than most people expect",
-    "tags": [
-      "Local LLM",
-      "Fine-tuning"
-    ],
-    "impressions": 0,
-    "likes": 34,
-    "retweets": 4,
-    "bookmarks": 0,
-    "date": "2026-05-23",
-    "url": "https://x.com/Michaelzsguo/status/2058295655618007429"
-  },
-  {
-    "id": "2059382819751883049",
-    "title": "If you build with local models, you probably know Unsloth",
-    "summary": "If you build with local models, you probably know Unsloth. But the story behind Unsloth is also worth telling",
-    "tags": [
-      "Local LLM"
-    ],
-    "impressions": 0,
-    "likes": 31,
-    "retweets": 2,
-    "bookmarks": 0,
-    "date": "2026-05-26",
-    "url": "https://x.com/Michaelzsguo/status/2059382819751883049"
-  },
-  {
-    "id": "2029730331738116373",
-    "title": "A thread 🧵 My OpenClaw rover can now move around my house...",
-    "summary": "A thread 🧵 My OpenClaw rover can now move around my house based on commands I send from Telegram. Previously I described the hardware",
-    "tags": [
-      "Local LLM",
-      "Hardware",
-      "AI Agents"
-    ],
-    "impressions": 0,
-    "likes": 28,
-    "retweets": 5,
-    "bookmarks": 0,
-    "date": "2026-03-06",
-    "url": "https://x.com/Michaelzsguo/status/2029730331738116373"
-  },
-  {
-    "id": "1652143723424149505",
-    "title": "The ending of The Diplomat season 1 leaves us all on a cl...",
-    "summary": "The ending of The Diplomat season 1 leaves us all on a cliffhanger. Can’t wait for season 2",
-    "tags": [
-      "Local LLM"
-    ],
-    "impressions": 0,
-    "likes": 28,
-    "retweets": 3,
-    "bookmarks": 0,
-    "date": "2023-04-29",
-    "url": "https://x.com/Michaelzsguo/status/1652143723424149505"
   }
 ]
