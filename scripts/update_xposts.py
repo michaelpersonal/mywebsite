@@ -328,7 +328,7 @@ def build_html(posts):
         impressions = int(p.get("impressions") or 0)
         likes = int(p.get("likes") or 0)
         bookmarks = int(p.get("bookmarks") or 0)
-        cards_html += f'''    <a href="{url}" target="_blank" class="post-card" data-tags="{data_tags}" data-impressions="{impressions}">
+        cards_html += f'''    <a href="{url}" target="_blank" class="post-card" data-id="{html_lib.escape(str(p['id']), quote=True)}" data-tags="{data_tags}" data-tag-list="{html_lib.escape(json.dumps([str(t).lower() for t in tags]), quote=True)}" data-impressions="{impressions}">
       <div class="post-header">
         <h3 class="post-title">{title}</h3>
         <span class="post-date">{date}</span>
@@ -436,7 +436,9 @@ def build_html(posts):
             <p class="subtitle">Curated archive-backed posts by <a href="https://x.com/{USERNAME}" target="_blank">@{USERNAME}</a> &mdash; {len(posts)} searchable posts</p>
         </header>
         <div class="controls">
-            <input type="text" class="search-box" placeholder="Search posts... (e.g. DeepSeek, local LLM, harness)" id="search">
+            <input type="text" class="search-box" placeholder="Search by meaning... (e.g. running AI on a laptop)" maxlength="500" id="search">
+            <label>Search <select id="search-mode"><option value="semantic">By meaning</option><option value="keyword">By keyword</option></select></label>
+            <p id="search-status" role="status" aria-live="polite"></p>
             <div class="filters">
                 {filter_buttons}
             </div>
@@ -449,53 +451,7 @@ def build_html(posts):
             No posts match your search.
         </div>
     </div>
-    <script>
-        const searchInput = document.getElementById('search');
-        const filterBtns = document.querySelectorAll('.filter-btn');
-        const posts = Array.from(document.querySelectorAll('.post-card'));
-        const resultsCount = document.getElementById('results-count');
-        const noResults = document.getElementById('no-results');
-
-        let activeFilter = 'all';
-
-        const postSearchData = posts.map(post => ({{
-            el: post,
-            text: (post.textContent + ' ' + (post.dataset.tags || '')).replace(/\\s+/g, ' ').toLowerCase(),
-            tags: post.dataset.tags || ''
-        }}));
-
-        function filterPosts() {{
-            const query = searchInput.value.toLowerCase().trim();
-            let visible = 0;
-
-            postSearchData.forEach(({{ el, text, tags }}) => {{
-                const matchesSearch = !query || text.includes(query);
-                const matchesFilter = activeFilter === 'all' || tags.includes(activeFilter);
-
-                if (matchesSearch && matchesFilter) {{
-                    el.style.display = 'block';
-                    visible++;
-                }} else {{
-                    el.style.display = 'none';
-                }}
-            }});
-
-            resultsCount.textContent = visible + ' post' + (visible !== 1 ? 's' : '');
-            noResults.style.display = visible === 0 ? 'block' : 'none';
-        }}
-
-        searchInput.addEventListener('input', filterPosts);
-        searchInput.addEventListener('keyup', filterPosts);
-
-        filterBtns.forEach(btn => {{
-            btn.addEventListener('click', () => {{
-                filterBtns.forEach(b => b.classList.remove('active'));
-                btn.classList.add('active');
-                activeFilter = btn.dataset.filter;
-                filterPosts();
-            }});
-        }});
-    </script>
+    <script src="xposts-search.js"></script>
 </body>
 </html>'''
     return html

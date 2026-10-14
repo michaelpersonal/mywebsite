@@ -1,0 +1,8 @@
+{
+  "functions": {
+    "api/xposts-search.js": {
+      "includeFiles": "xposts-embeddings.json",
+      "maxDuration": 30
+    }
+  }
+}

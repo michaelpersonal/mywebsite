@@ -134,3 +134,20 @@ Inspired by [bentossell.com](https://www.bentossell.com/)
 ---
 
 *There's no place like 127.0.0.1* 🏠
+
+## Public top-post semantic search
+
+The Vercel function `api/xposts-search.js` embeds queries on the server and ranks
+the curated `xposts-embeddings.json` index. Configure these Vercel environment
+variables before deploying:
+
+- `EMBED_TOKEN`: bearer token for the embedding endpoint (server only).
+- `X_EMBEDDING_BASE_URL`: optional; defaults to
+  `https://michael-macbook-pro.tailf96f46.ts.net:8443/v1`.
+
+The endpoint must be reachable from Vercel, such as through Tailscale Funnel.
+Tailscale Serve alone permits only tailnet clients. The function uses the same
+EmbeddingGemma 2 model, 768 dimensions and query prefix as the archive index.
+Deploy the API, `vercel.json`, search script, page, and regenerated vector index
+together. If the service is unavailable, the page labels the failure and switches
+to keyword search. Tokens never go into browser JavaScript or static exports.
