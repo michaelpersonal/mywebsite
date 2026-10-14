@@ -26,7 +26,7 @@ function render() {
         grid?.appendChild(card);
     }
     count.textContent = `${visible} post${visible === 1 ? '' : 's'}`;
-    empty.style.display = !visible && !status.textContent ? 'block' : 'none';
+    empty.style.display = !visible && (hits !== null || !status.textContent) ? 'block' : 'none';
 }
 
 async function search(version) {
@@ -47,7 +47,7 @@ async function search(version) {
         if (version !== revision) return;
         hits = data.results;
         completedQuery = query;
-        status.textContent = 'Related posts, sorted by relevance';
+        status.textContent = !hits.length ? 'No relevant posts found.' : data.matchType === 'literal' ? 'Posts mentioning your search term' : 'Related posts, sorted by relevance';
         render();
     } catch (error) {
         if (version !== revision || error.name === 'AbortError') return;
