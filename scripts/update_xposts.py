@@ -315,11 +315,12 @@ def fmt_num(n):
 
 def build_html(posts):
     all_tags = sorted(set(t for p in posts for t in p["tags"]))
+    all_topics = sorted(set(t for p in posts for t in p.get("topics", [])))
 
     cards_html = ""
     for p in posts:
         tags = p.get("tags", [])
-        tags_html = " ".join(f'<span class="tag">{html_lib.escape(str(t))}</span>' for t in tags)
+        tags_html = " ".join(f'<span class="tag">{html_lib.escape(str(t))}</span>' for t in [*p.get('topics', []), *tags])
         data_tags = html_lib.escape(" ".join(str(t) for t in tags).lower(), quote=True)
         url = html_lib.escape(str(p.get("url", "")), quote=True)
         title = html_lib.escape(str(p.get("title", "")))
@@ -328,7 +329,7 @@ def build_html(posts):
         impressions = int(p.get("impressions") or 0)
         likes = int(p.get("likes") or 0)
         bookmarks = int(p.get("bookmarks") or 0)
-        cards_html += f'''    <a href="{url}" target="_blank" class="post-card" data-id="{html_lib.escape(str(p['id']), quote=True)}" data-tags="{data_tags}" data-tag-list="{html_lib.escape(json.dumps([str(t).lower() for t in tags]), quote=True)}" data-impressions="{impressions}">
+        cards_html += f'''    <a href="{url}" target="_blank" class="post-card" data-id="{html_lib.escape(str(p['id']), quote=True)}" data-tags="{data_tags}" data-tag-list="{html_lib.escape(json.dumps([str(t).lower() for t in tags]), quote=True)}" data-topics="{html_lib.escape(json.dumps(p.get('topics', [])), quote=True)}" data-languages="{html_lib.escape(json.dumps(p.get('languages', [])), quote=True)}" data-search-text="{html_lib.escape(' '.join(p.get('text', p.get('summary','')).split()), quote=True)}" data-impressions="{impressions}">
       <div class="post-header">
         <h3 class="post-title">{title}</h3>
         <span class="post-date">{date}</span>
@@ -345,9 +346,13 @@ def build_html(posts):
     </a>
 '''
 
-    filter_buttons = '<button class="filter-btn active" data-filter="all">All</button>\n'
+    filter_buttons = '<button class="filter-btn active" data-filter="all">All tags</button>\n'
     for tag in all_tags:
         filter_buttons += f'      <button class="filter-btn" data-filter="{html_lib.escape(str(tag).lower(), quote=True)}">{html_lib.escape(str(tag))}</button>\n'
+
+    topic_buttons = '<button class="topic-btn filter-btn active" data-topic="all">All topics</button>'
+    for topic in all_topics:
+        topic_buttons += f'<button class="topic-btn filter-btn" data-topic="{html_lib.escape(topic, quote=True)}">{html_lib.escape(topic)}</button>'
 
     html = f'''<!DOCTYPE html>
 <html lang="en">
@@ -438,7 +443,11 @@ def build_html(posts):
         <div class="controls">
             <input type="text" class="search-box" placeholder="Search by meaning... (e.g. running AI on a laptop)" maxlength="500" id="search">
             <label>Search <select id="search-mode"><option value="semantic">By meaning</option><option value="keyword">By keyword</option></select></label>
+            <label>Language <select id="language-filter"><option value="all">All languages</option><option value="Chinese">Chinese</option><option value="English">English</option><option value="Other">Other</option></select></label>
             <p id="search-status" role="status" aria-live="polite"></p>
+            <p>Topics</p>
+            <div class="filters">{topic_buttons}</div>
+            <p>Tags</p>
             <div class="filters">
                 {filter_buttons}
             </div>
@@ -482,31 +491,11 @@ def main():
         print(f"Regenerated {HTML_FILE.name}")
         return
 
-    # Fetch posts
     if args.backfill:
-        print(f"Backfilling last {args.backfill} days (using /search/all)...")
-        raw_tweets = fetch_posts(backfill_days=args.backfill)
-        print(f"Found {len(raw_tweets)} posts with {MIN_IMPRESSIONS}+ impressions")
-    else:
-        print("Fetching recent posts (last 7 days)...")
-        raw_tweets = fetch_posts()
-        print(f"Found {len(raw_tweets)} posts with {MIN_IMPRESSIONS}+ impressions in last 7 days")
-
-    # Process and merge
-    new_posts = process_tweets(raw_tweets)
-    merged, added = merge_posts(existing, new_posts)
-    print(f"Added {added} new posts (total: {len(merged)})")
-
-    # Save data
-    with open(DATA_FILE, "w") as f:
-        json.dump(merged, f, indent=2, ensure_ascii=False)
-
-    # Rebuild HTML
-    html = build_html(merged)
-    with open(HTML_FILE, "w") as f:
-        f.write(html)
-
-    print(f"Regenerated {HTML_FILE.name}")
+        parser.error('Use the canonical archive import/sync workflow for backfills; this script only renders the website.')
+    import subprocess
+    publisher = Path(os.environ.get('X_CONTENT_OS_ROOT', '/Users/zhisongguo/code/x-content-os')) / 'scripts' / 'x_posts.py'
+    subprocess.run([sys.executable, str(publisher), 'publish-website', '--sync', '--website-root', str(ROOT)], check=True)
 
 
 if __name__ == "__main__":

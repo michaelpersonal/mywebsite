@@ -6,6 +6,8 @@ const grid = cards[0]?.parentElement;
 const count = document.getElementById('results-count');
 const empty = document.getElementById('no-results');
 let tag = 'all';
+let topic = 'all';
+const languageFilter = document.getElementById('language-filter');
 let timer;
 let controller;
 let revision = 0;
@@ -19,8 +21,12 @@ function render() {
     const ordered = scores ? [...cards].sort((a,b) => (scores.get(b.dataset.id) ?? -Infinity) - (scores.get(a.dataset.id) ?? -Infinity)) : cards;
     for (const card of ordered) {
         const tags = JSON.parse(card.dataset.tagList || '[]');
-        const match = !query || (mode.value === 'semantic' ? completedQuery === searchInput.value.trim() && scores?.has(card.dataset.id) : card.textContent.toLowerCase().includes(query));
-        const show = match && (tag === 'all' || tags.includes(tag));
+        const match = !query || (mode.value === 'semantic' ? completedQuery === searchInput.value.trim() && scores?.has(card.dataset.id) : (card.dataset.searchText || card.textContent).toLowerCase().includes(query));
+        const topics = JSON.parse(card.dataset.topics || '[]');
+        const languages = JSON.parse(card.dataset.languages || '[]');
+        const show = match && (tag === 'all' || tags.includes(tag.toLowerCase()))
+            && (topic === 'all' || topics.includes(topic))
+            && (languageFilter.value === 'all' || languages.includes(languageFilter.value));
         card.style.display = show ? 'block' : 'none';
         if (show) visible++;
         grid?.appendChild(card);
@@ -41,7 +47,7 @@ async function search(version) {
     status.textContent = 'Searching by meaning…';
     render();
     try {
-        const response = await fetch(`/api/xposts-search?q=${encodeURIComponent(query)}`, {signal:controller.signal});
+        const response = await fetch(`/api/xposts-search?${new URLSearchParams({q:query,topic,tag,language:languageFilter.value})}`, {signal:controller.signal});
         if (!response.ok) throw new Error('Search unavailable');
         const data = await response.json();
         if (version !== revision) return;
@@ -74,10 +80,17 @@ function schedule() {
 }
 searchInput.addEventListener('input', schedule);
 mode.addEventListener('change', schedule);
-document.querySelectorAll('.filter-btn').forEach(button => button.addEventListener('click', () => {
-    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+document.querySelectorAll('[data-filter]').forEach(button => button.addEventListener('click', () => {
+    document.querySelectorAll('[data-filter]').forEach(b => b.classList.remove('active'));
     button.classList.add('active');
     tag = button.dataset.filter;
-    render();
+    schedule();
 }));
+document.querySelectorAll('[data-topic]').forEach(button => button.addEventListener('click', () => {
+    document.querySelectorAll('[data-topic]').forEach(b => b.classList.remove('active'));
+    button.classList.add('active');
+    topic = button.dataset.topic;
+    schedule();
+}));
+languageFilter.addEventListener('change', schedule);
 render();

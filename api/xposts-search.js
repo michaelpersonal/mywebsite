@@ -1,6 +1,6 @@
 const fs = require('node:fs');
 const path = require('node:path');
-const {literalMatches, relevantHits} = require('../lib/xposts-ranking');
+const {literalMatches, relevantHits, filterPosts} = require('../lib/xposts-ranking');
 let index;
 const MODEL = 'embeddinggemma-2';
 const DIMENSIONS = 768;
@@ -23,10 +23,13 @@ module.exports = async function handler(req, res) {
                 throw new Error('Incompatible index');
             }
         }
+        const scope = Object.fromEntries(['topic','tag','language'].map(key => [key,typeof req.query[key] === 'string' ? req.query[key] : 'all']));
+        const candidates = filterPosts(index.posts,scope);
         const direct = literalMatches(query, index.posts);
         if (direct !== null) {
-            return res.status(200).json({results:direct.slice(0,50).map(p => ({id:p.id,score:1})),matchType:'literal'});
+            return res.status(200).json({results:filterPosts(direct,scope).map(p => ({id:p.id,score:1})),matchType:'literal'});
         }
+        if (!candidates.length) return res.status(200).json({results:[],matchType:'semantic'});
         const token = process.env.EMBED_TOKEN;
         if (!token) return res.status(503).json({error: 'Semantic search is not configured.'});
         const base = (process.env.X_EMBEDDING_BASE_URL || 'https://michael-macbook-pro.tailf96f46.ts.net:8443/v1').replace(/\/$/, '');
@@ -44,7 +47,7 @@ module.exports = async function handler(req, res) {
         }
         const norm = Math.hypot(...vector);
         if (!norm) throw new Error('Zero query embedding');
-        const results = index.posts.map(post => ({
+        const results = candidates.map(post => ({
             id: post.id,
             score: post.vector.reduce((sum, value, i) => sum + value * vector[i] / norm, 0),
         })).sort((a, b) => b.score - a.score).slice(0, 50);
