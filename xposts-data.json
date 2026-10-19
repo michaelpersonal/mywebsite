@@ -134,6 +134,33 @@
     }
   },
   {
+    "id": "2109756809993163051",
+    "title": "三个超级大脑坐进一家酒吧，聊了两个多小时",
+    "summary": "三个超级大脑坐进一家酒吧，聊了两个多小时. 这可能是今年最值得看的一场 AI 访谈",
+    "tags": [
+      "Model Research"
+    ],
+    "impressions": 433866,
+    "likes": 2629,
+    "retweets": 708,
+    "bookmarks": 2999,
+    "date": "2026-10-12",
+    "url": "https://x.com/Michaelzsguo/status/2109756809993163051",
+    "text": "三个超级大脑坐进一家酒吧，聊了两个多小时。这可能是今年最值得看的一场 AI 访谈。\n\n借着 Meta 发布新一代模型 Muse Wonder，小扎和亚历山大·王难得同框。采访者同样大有来头：Stripe 联合创始人 John Collison。Stripe 一直是我心目中美国最有创造力的公司之一。\n\n三个人从 AI https://t.co/TleuzAzBmm https://t.co/bWwMt3sYxc",
+    "topics": [
+      "AI",
+      "People & Stories"
+    ],
+    "languages": [
+      "Chinese"
+    ],
+    "classification": {
+      "version": "1:eabfece8065c",
+      "source": "llm",
+      "manual": false
+    }
+  },
+  {
     "id": "2089694941404442888",
     "title": "bilibili这集北航 90 后副教授何静讲的人工智能第一课，确实够直白",
     "summary": "bilibili这集北航 90 后副教授何静讲的人工智能第一课，确实够直白. “3 岁小孩都能听懂”，还真不是夸张",
@@ -531,6 +558,31 @@
     }
   },
   {
+    "id": "2109782088031559845",
+    "title": "被自己的老板当面这么夸，亚历山大·王的脸都红到脖子根了",
+    "summary": "被自己的老板当面这么夸，亚历山大·王的脸都红到脖子根了. 小扎说，这些年和 Alex 聊过很多次，一直很欣赏他的战略眼光",
+    "tags": [],
+    "impressions": 153118,
+    "likes": 643,
+    "retweets": 93,
+    "bookmarks": 448,
+    "date": "2026-10-12",
+    "url": "https://x.com/Michaelzsguo/status/2109782088031559845",
+    "text": "被自己的老板当面这么夸，亚历山大·王的脸都红到脖子根了。\n\n小扎说，这些年和 Alex 聊过很多次，一直很欣赏他的战略眼光。在他见过的同代创业者里，Alex 是头脑最敏锐的那个。\n\n当初外界还在怀疑：一个做社交媒体的，和一个做数据的，真能一起建起前沿 AI 实验室吗？\n\n小扎却认定了：\n“He is the guy. https://t.co/L0VQVj2jiD https://t.co/foAvv65TAe",
+    "topics": [
+      "AI",
+      "People & Stories"
+    ],
+    "languages": [
+      "Chinese"
+    ],
+    "classification": {
+      "version": "1:eabfece8065c",
+      "source": "llm",
+      "manual": false
+    }
+  },
+  {
     "id": "2101098125096067395",
     "title": "如今显富，不是看你家里有没有酒窖，而是看你是不是在用酒柜给 GPU 制冷",
     "summary": "如今显富，不是看你家里有没有酒窖，而是看你是不是在用酒柜给 GPU 制冷. 亿万富翁、Shopify CEO Tobi Lütke 把多伦多家里的玻璃酒窖改成了机房：三排机架，恒温恒湿，里面至少有 Dell Pro Max with GB300、RTX PRO 2000、16TB NVMe，以及 dual 400GbE",
@@ -613,6 +665,33 @@
     }
   },
   {
+    "id": "2111908769034543149",
+    "title": "Cloudflare 被我们中国网友称为“赛博菩萨”，因为它给的免费服务实在太多，让很多个人开发者和小网站省下了不...",
+    "summary": "Cloudflare 被我们中国网友称为“赛博菩萨”，因为它给的免费服务实在太多，让很多个人开发者和小网站省下了不少起步成本. 外国网友也在 X 上感叹：“Cloudflare 太好用、太便宜了，好到我都害怕哪天突然变卦",
+    "tags": [
+      "Software"
+    ],
+    "impressions": 132526,
+    "likes": 1340,
+    "retweets": 113,
+    "bookmarks": 543,
+    "date": "2026-10-18",
+    "url": "https://x.com/Michaelzsguo/status/2111908769034543149",
+    "text": "Cloudflare 被我们中国网友称为“赛博菩萨”，因为它给的免费服务实在太多，让很多个人开发者和小网站省下了不少起步成本。\n\n外国网友也在 X 上感叹：“Cloudflare 太好用、太便宜了，好到我都害怕哪天突然变卦。”\n\n于是有人翻出了 CEO Matthew Prince 十年前的一篇旧回答：2016 年，他在 Stack Exchange https://t.co/ZYjsD9ZPOX https://t.co/XqDjCxqkI3",
+    "topics": [
+      "Technology",
+      "Business & Finance"
+    ],
+    "languages": [
+      "Chinese"
+    ],
+    "classification": {
+      "version": "1:eabfece8065c",
+      "source": "llm",
+      "manual": false
+    }
+  },
+  {
     "id": "2109113444322431296",
     "title": "谷歌居然悄悄发布了一款 Mac AI 应用：Foresight，免费，不用订阅，完全在本地离线运行",
     "summary": "谷歌居然悄悄发布了一款 Mac AI 应用：Foresight，免费，不用订阅，完全在本地离线运行. 据说NotebookLM 是谷歌这几年最出彩的 AI 产品",
@@ -658,6 +737,33 @@
     "topics": [
       "People & Stories",
       "AI"
+    ],
+    "languages": [
+      "Chinese"
+    ],
+    "classification": {
+      "version": "1:eabfece8065c",
+      "source": "llm",
+      "manual": false
+    }
+  },
+  {
+    "id": "2111820354461028728",
+    "title": "DHH 这趟中国行，一边被中国汽车震撼，一边嫌中国软件太丑",
+    "summary": "DHH 这趟中国行，一边被中国汽车震撼，一边嫌中国软件太丑. 在他眼里，中国汽车的豪华程度已经能超越奔驰 S 级，但微信、支付宝、华为鸿蒙这些中国科技的代表，软件设计却依然粗糙，远不如硅谷",
+    "tags": [
+      "Software"
+    ],
+    "impressions": 116808,
+    "likes": 478,
+    "retweets": 31,
+    "bookmarks": 190,
+    "date": "2026-10-18",
+    "url": "https://x.com/Michaelzsguo/status/2111820354461028728",
+    "text": "DHH 这趟中国行，一边被中国汽车震撼，一边嫌中国软件太丑。\n\n在他眼里，中国汽车的豪华程度已经能超越奔驰 S 级，但微信、支付宝、华为鸿蒙这些中国科技的代表，软件设计却依然粗糙，远不如硅谷。\n\n中国硬件都快卷上天了，软件审美怎么还没跟上？ https://t.co/hcTJOHIkAY https://t.co/WdXA9Wj98U",
+    "topics": [
+      "Technology",
+      "Life & Culture"
     ],
     "languages": [
       "Chinese"
@@ -740,6 +846,33 @@
     "topics": [
       "AI",
       "Technology"
+    ],
+    "languages": [
+      "Chinese"
+    ],
+    "classification": {
+      "version": "1:eabfece8065c",
+      "source": "llm",
+      "manual": false
+    }
+  },
+  {
+    "id": "2108309213386543122",
+    "title": "特朗普今天给六位科技公司的 CEO／创始人颁发了美国最高级别的科学与技术荣誉，名单几乎就是一排大家熟悉的科技巨头",
+    "summary": "特朗普今天给六位科技公司的 CEO／创始人颁发了美国最高级别的科学与技术荣誉，名单几乎就是一排大家熟悉的科技巨头. 获得「国家科学奖章」的四位是：Google 联合创始人谢尔盖·布林、英伟达创始人兼 CEO 黄仁勋、SpaceX 和特斯拉 CEO 埃隆·马斯克，以及 AMD 董事长兼 CEO 苏姿丰",
+    "tags": [
+      "Google"
+    ],
+    "impressions": 112084,
+    "likes": 97,
+    "retweets": 21,
+    "bookmarks": 34,
+    "date": "2026-10-08",
+    "url": "https://x.com/Michaelzsguo/status/2108309213386543122",
+    "text": "特朗普今天给六位科技公司的 CEO／创始人颁发了美国最高级别的科学与技术荣誉，名单几乎就是一排大家熟悉的科技巨头。\n\n获得「国家科学奖章」的四位是：Google 联合创始人谢尔盖·布林、英伟达创始人兼 CEO 黄仁勋、SpaceX 和特斯拉 CEO 埃隆·马斯克，以及 AMD 董事长兼 CEO 苏姿丰。 https://t.co/KiCL5TSEtx",
+    "topics": [
+      "Politics & Society",
+      "Business & Finance"
     ],
     "languages": [
       "Chinese"
@@ -1215,6 +1348,34 @@
     }
   },
   {
+    "id": "2107612171244916926",
+    "title": "好莱坞著名影星本·阿弗莱克（Ben Affleck）讲起 AI 来，居然头头是道，各种专业名词随手拈来",
+    "summary": "好莱坞著名影星本·阿弗莱克（Ben Affleck）讲起 AI 来，居然头头是道，各种专业名词随手拈来. 在 GQ 这段访谈里，他从卷积神经网络、Transformer、张量，一路聊到反向传播、注意力层、感知机、推理，以及随机性计算和确定性计算的区别",
+    "tags": [
+      "Model Research",
+      "LLM Internals"
+    ],
+    "impressions": 73999,
+    "likes": 455,
+    "retweets": 73,
+    "bookmarks": 383,
+    "date": "2026-10-06",
+    "url": "https://x.com/Michaelzsguo/status/2107612171244916926",
+    "text": "好莱坞著名影星本·阿弗莱克（Ben Affleck）讲起 AI 来，居然头头是道，各种专业名词随手拈来。\n\n在 GQ 这段访谈里，他从卷积神经网络、Transformer、张量，一路聊到反向传播、注意力层、感知机、推理，以及随机性计算和确定性计算的区别。中间还穿插着 https://t.co/Jm9PmuBrYx https://t.co/tVhk953a4u",
+    "topics": [
+      "AI",
+      "People & Stories"
+    ],
+    "languages": [
+      "Chinese"
+    ],
+    "classification": {
+      "version": "1:eabfece8065c",
+      "source": "llm",
+      "manual": false
+    }
+  },
+  {
     "id": "2096390396372812216",
     "title": "X 真是学习 AI 最好的地方",
     "summary": "X 真是学习 AI 最好的地方. 包括怎么用 AI 拍电影，你永远不知道，下一个手把手教你的会是哪一个行业的专家",
@@ -1658,6 +1819,33 @@
     }
   },
   {
+    "id": "2107873459216728118",
+    "title": "This is the craziest phone call I’ve ever seen",
+    "summary": "This is the craziest phone call I’ve ever seen. I was curious how the call between Mikey and the pharmacist actually went, so I asked him for the transcript",
+    "tags": [
+      "AI Tools"
+    ],
+    "impressions": 57481,
+    "likes": 46,
+    "retweets": 1,
+    "bookmarks": 20,
+    "date": "2026-10-07",
+    "url": "https://x.com/Michaelzsguo/status/2107873459216728118",
+    "text": "This is the craziest phone call I’ve ever seen!\n\nI was curious how the call between Mikey and the pharmacist actually went, so I asked him for the transcript. And here it is.\n\nApparently, Mikey first talked to a robot on the other end, then got connected to a real person.\n\nAnd https://t.co/e0bOkzKutg https://t.co/zocBuVODP9",
+    "topics": [
+      "AI",
+      "Life & Culture"
+    ],
+    "languages": [
+      "English"
+    ],
+    "classification": {
+      "version": "1:eabfece8065c",
+      "source": "llm",
+      "manual": false
+    }
+  },
+  {
     "id": "2090966088079003848",
     "title": "尽管很多公司依然用 LeetCode 招人，但另一套面试方法正在出现",
     "summary": "尽管很多公司依然用 LeetCode 招人，但另一套面试方法正在出现. Ryan Carson 分享了 Untangle 招工程师的新流程： 第一轮，候选人提交一段 45 分钟、不剪辑、不加速的完整录屏，在自己的真实项目里，和 Agent 协作完成一个新功能",
@@ -1754,6 +1942,34 @@
     "topics": [
       "Technology",
       "Life & Culture"
+    ],
+    "languages": [
+      "Chinese"
+    ],
+    "classification": {
+      "version": "1:eabfece8065c",
+      "source": "llm",
+      "manual": false
+    }
+  },
+  {
+    "id": "2111873846848434280",
+    "title": "Linus 对 Linux 社区里把反 AI 上升到意识形态的倾向，再次回应",
+    "summary": "Linus 对 Linux 社区里把反 AI 上升到意识形态的倾向，再次回应. 措辞斩钉截铁，一点都不含糊：Linux 不是反 AI 项目，有意见可以 fork，也可以离开",
+    "tags": [
+      "Software"
+    ],
+    "impressions": 50464,
+    "likes": 227,
+    "retweets": 19,
+    "bookmarks": 67,
+    "date": "2026-10-18",
+    "url": "https://x.com/Michaelzsguo/status/2111873846848434280",
+    "text": "Linus 对 Linux 社区里把反 AI 上升到意识形态的倾向，再次回应！措辞斩钉截铁，一点都不含糊：Linux 不是反 AI 项目，有意见可以 fork，也可以离开。 他还说：没人强迫你用 AI，但你也不能因为自己反感，就阻止别人使用。\n\nLinus 甚至直接说：“Linux https://t.co/7du5el7Pgl https://t.co/6w1h932gcK",
+    "topics": [
+      "AI",
+      "Technology",
+      "Politics & Society"
     ],
     "languages": [
       "Chinese"
@@ -2144,6 +2360,30 @@
     }
   },
   {
+    "id": "2111852057657508082",
+    "title": "英国金融时报对亚洲人似乎有某种偏见",
+    "summary": "英国金融时报对亚洲人似乎有某种偏见",
+    "tags": [],
+    "impressions": 44429,
+    "likes": 104,
+    "retweets": 2,
+    "bookmarks": 21,
+    "date": "2026-10-18",
+    "url": "https://x.com/Michaelzsguo/status/2111852057657508082",
+    "text": "英国金融时报对亚洲人似乎有某种偏见。 https://t.co/Lki45yrKL6 https://t.co/v7I66fCrvX",
+    "topics": [
+      "Politics & Society"
+    ],
+    "languages": [
+      "Chinese"
+    ],
+    "classification": {
+      "version": "1:eabfece8065c",
+      "source": "llm",
+      "manual": false
+    }
+  },
+  {
     "id": "2101521690630979705",
     "title": "这是我目前见过，在 Mac 上跑 Qwen3",
     "summary": "这是我目前见过，在 Mac 上跑 Qwen3. 8-27B 最快的方案：Inco Splash",
@@ -2519,6 +2759,31 @@
       "AI",
       "People & Stories",
       "Business & Finance"
+    ],
+    "languages": [
+      "Chinese"
+    ],
+    "classification": {
+      "version": "1:eabfece8065c",
+      "source": "llm",
+      "manual": false
+    }
+  },
+  {
+    "id": "2110114604244418802",
+    "title": "昨天，小扎和亚历山大·王与 Stripe 联合创始人、爱尔兰人 John Collison 一起借酒畅谈",
+    "summary": "昨天，小扎和亚历山大·王与 Stripe 联合创始人、爱尔兰人 John Collison 一起借酒畅谈. 小扎喝爱尔兰的 Guinness（健力士）黑啤，简直像喝药一样不习惯，聊到最后，一杯酒也没喝下去几口",
+    "tags": [],
+    "impressions": 36273,
+    "likes": 57,
+    "retweets": 5,
+    "bookmarks": 39,
+    "date": "2026-10-13",
+    "url": "https://x.com/Michaelzsguo/status/2110114604244418802",
+    "text": "昨天，小扎和亚历山大·王与 Stripe 联合创始人、爱尔兰人 John Collison 一起借酒畅谈。\n\n小扎喝爱尔兰的 Guinness（健力士）黑啤，简直像喝药一样不习惯，聊到最后，一杯酒也没喝下去几口。\n\n不过，小扎倒是很 Nice，特地从爱尔兰买来一大罐 Guinness 送给 https://t.co/foAvv65TAe",
+    "topics": [
+      "People & Stories",
+      "Life & Culture"
     ],
     "languages": [
       "Chinese"
@@ -3665,6 +3930,30 @@
     ],
     "languages": [
       "English"
+    ],
+    "classification": {
+      "version": "1:eabfece8065c",
+      "source": "llm",
+      "manual": false
+    }
+  },
+  {
+    "id": "2110118378660856295",
+    "title": "白宫新发言人今天首次亮相，表现不尽如人意",
+    "summary": "白宫新发言人今天首次亮相，表现不尽如人意. 曾任动视暴雪首席传播官的传播专家 Lulu 对一个细节的分析太精辟了，字字珠玑： “说完‘早上好",
+    "tags": [],
+    "impressions": 24783,
+    "likes": 14,
+    "retweets": 4,
+    "bookmarks": 22,
+    "date": "2026-10-13",
+    "url": "https://x.com/Michaelzsguo/status/2110118378660856295",
+    "text": "白宫新发言人今天首次亮相，表现不尽如人意。曾任动视暴雪首席传播官的传播专家 Lulu 对一个细节的分析太精辟了，字字珠玑：\n\n“说完‘早上好！’之后，应该直接进入正文，不要停那一拍。就在那一拍的停顿里，气势散了。她不得不重新‘冷启动’，开场头几秒积攒起来的势头也全丢了。” https://t.co/nO7TOKwLiH",
+    "topics": [
+      "Politics & Society"
+    ],
+    "languages": [
+      "Chinese"
     ],
     "classification": {
       "version": "1:eabfece8065c",
@@ -5745,6 +6034,34 @@
     }
   },
   {
+    "id": "2111648759297794420",
+    "title": "刷算法题有 LeetCode，刷 AI / ML 题有 TrenTorch",
+    "summary": "刷算法题有 LeetCode，刷 AI / ML 题有 TrenTorch. 学了那么多机器学习理论，真让你从零写一个 Softmax、反向传播，甚至 Transformer，你能写出来吗？ 免费提供 1600 多道题，从线性回归、神经网络，到强化学习、模型推理和底层 Kernel",
+    "tags": [
+      "Model Research",
+      "Software"
+    ],
+    "impressions": 13632,
+    "likes": 335,
+    "retweets": 61,
+    "bookmarks": 368,
+    "date": "2026-10-18",
+    "url": "https://x.com/Michaelzsguo/status/2111648759297794420",
+    "text": "刷算法题有 LeetCode，刷 AI / ML 题有 TrenTorch！\n\n学了那么多机器学习理论，真让你从零写一个 Softmax、反向传播，甚至 Transformer，你能写出来吗？\n\nhttps://t.co/l83YkCcc9k 免费提供 1600 多道题，从线性回归、神经网络，到强化学习、模型推理和底层 Kernel。\n\n玩法和 LeetCode https://t.co/BdBiDlSO56",
+    "topics": [
+      "AI",
+      "Technology"
+    ],
+    "languages": [
+      "Chinese"
+    ],
+    "classification": {
+      "version": "1:eabfece8065c",
+      "source": "llm",
+      "manual": false
+    }
+  },
+  {
     "id": "2015301288481931431",
     "title": "Claude Code Mobile Power",
     "summary": "After initial struggles with interface and integrations, Claude Code on mobile is incredibly powerful, allowing task delegation and independent completion.",
@@ -6127,6 +6444,33 @@
     }
   },
   {
+    "id": "2109767223363432668",
+    "title": "砸下天文数字的资金，挖来全球顶尖 AI 人才，扎克伯格终于等到了可以扬眉吐气的这一天",
+    "summary": "砸下天文数字的资金，挖来全球顶尖 AI 人才，扎克伯格终于等到了可以扬眉吐气的这一天. Muse Wonder 的表现如此惊艳，连小扎都忍不住亲自向《金融时报》宣布：Meta 已经站上了 AI 第一梯队（frontier）",
+    "tags": [
+      "Model Research"
+    ],
+    "impressions": 12317,
+    "likes": 19,
+    "retweets": 2,
+    "bookmarks": 7,
+    "date": "2026-10-12",
+    "url": "https://x.com/Michaelzsguo/status/2109767223363432668",
+    "text": "砸下天文数字的资金，挖来全球顶尖 AI 人才，扎克伯格终于等到了可以扬眉吐气的这一天。\n\nMuse Wonder 的表现如此惊艳，连小扎都忍不住亲自向《金融时报》宣布：Meta 已经站上了 AI 第一梯队（frontier）。\n\n这恐怕是 Meta 过去几年最想看到的新闻标题。\n\n从追赶 OpenAI、Anthropic 和 https://t.co/kZYkLOiGcP https://t.co/foAvv65lKG",
+    "topics": [
+      "AI",
+      "Business & Finance"
+    ],
+    "languages": [
+      "Chinese"
+    ],
+    "classification": {
+      "version": "1:eabfece8065c",
+      "source": "llm",
+      "manual": false
+    }
+  },
+  {
     "id": "2101044302440710149",
     "title": "这太不可思议了",
     "summary": "去年 9 月，荷兰制作人 Eline Van der Velden 在苏黎世电影节把 AI 演员 Tilly Norwood 推到台前，目标非常直接：做下一个斯嘉丽·约翰逊. 美国演员工会 SAG-AFTRA 发声明说，她不是演员，而是由计算机程序生成的角色",
@@ -6369,6 +6713,59 @@
     }
   },
   {
+    "id": "2107215501160218625",
+    "title": "在 Lenny’s Podcast 的这期访谈里，Tibo Sottiaux 被问到给职场新人的建议时，提到了他们...",
+    "summary": "在 Lenny’s Podcast 的这期访谈里，Tibo Sottiaux 被问到给职场新人的建议时，提到了他们团队里的一个年轻工程师Ahmed Ibrahim. Ahmed 一年前加入 OpenAI 时还是应届毕业生",
+    "tags": [
+      "OpenAI",
+      "Codex"
+    ],
+    "impressions": 11462,
+    "likes": 43,
+    "retweets": 2,
+    "bookmarks": 58,
+    "date": "2026-10-05",
+    "url": "https://x.com/Michaelzsguo/status/2107215501160218625",
+    "text": "在 Lenny’s Podcast 的这期访谈里，Tibo Sottiaux 被问到给职场新人的建议时，提到了他们团队里的一个年轻工程师Ahmed Ibrahim。\n\nAhmed 一年前加入 OpenAI 时还是应届毕业生。按 Tibo 的描述，他现在已经负责应用业务的算力集群，也参与搭建了大量 Codex 的运行框架，很快就承担起了相当重的责任。 https://t.co/74LnWFWr6j",
+    "topics": [
+      "AI",
+      "Business & Finance"
+    ],
+    "languages": [
+      "Chinese"
+    ],
+    "classification": {
+      "version": "1:eabfece8065c",
+      "source": "llm",
+      "manual": false
+    }
+  },
+  {
+    "id": "2109772423142752355",
+    "title": "感恩的人是有福的",
+    "summary": "今年刚刚获得诺贝尔经济学奖的斯坦福大学教授 Robert E. Hall，已经年过八旬",
+    "tags": [],
+    "impressions": 11063,
+    "likes": 81,
+    "retweets": 10,
+    "bookmarks": 13,
+    "date": "2026-10-12",
+    "url": "https://x.com/Michaelzsguo/status/2109772423142752355",
+    "text": "感恩的人是有福的。\n\n今年刚刚获得诺贝尔经济学奖的斯坦福大学教授 Robert E. Hall，已经年过八旬。获奖后，他写下的两段话，实在太暖心了：\n\n“加州的纳税人通过公立学校和加州大学伯克利分校，为我提供了优质的教育；联邦政府则支付了我在 MIT 接受研究生教育的费用。 https://t.co/cagEn5ak0A https://t.co/9GnyJqs2WE",
+    "topics": [
+      "People & Stories",
+      "Science"
+    ],
+    "languages": [
+      "Chinese"
+    ],
+    "classification": {
+      "version": "1:eabfece8065c",
+      "source": "llm",
+      "manual": false
+    }
+  },
+  {
     "id": "2108665052685320484",
     "title": "马克·扎克伯格在夏威夷Kuai岛建了一座私人庄园，地下还规划了一个约 465 平方米的防空洞",
     "summary": "马克·扎克伯格在夏威夷Kuai岛建了一座私人庄园，地下还规划了一个约 465 平方米的防空洞. 据报道，这座私人庄园土地购置加上建设费用，预计超过 2",
@@ -6530,6 +6927,34 @@
     }
   },
   {
+    "id": "2111814567214956676",
+    "title": "OpenCode 还在持续遭到攻击",
+    "summary": "OpenCode 还在持续遭到攻击. 听起来挺恐怖的：黑客用 Agent 发起攻击，OpenCode 用 Agent 防守，双方打起了 Agent 对 Agent 的攻防战",
+    "tags": [
+      "AI Agents",
+      "Security"
+    ],
+    "impressions": 10421,
+    "likes": 24,
+    "retweets": 0,
+    "bookmarks": 11,
+    "date": "2026-10-18",
+    "url": "https://x.com/Michaelzsguo/status/2111814567214956676",
+    "text": "OpenCode 还在持续遭到攻击。听起来挺恐怖的：黑客用 Agent 发起攻击，OpenCode 用 Agent 防守，双方打起了 Agent 对 Agent 的攻防战。\n\n很好奇 OpenCode 用的是哪家的 Agent。这时候不正该是 Fable 大展身手的时候吗？\n\n难道 Fable 就这点本事，只能躲在家里被动挨打？既然黑客敢派 Agent https://t.co/5Hmgt9GEOu",
+    "topics": [
+      "AI",
+      "Technology"
+    ],
+    "languages": [
+      "Chinese"
+    ],
+    "classification": {
+      "version": "1:eabfece8065c",
+      "source": "llm",
+      "manual": false
+    }
+  },
+  {
     "id": "2055311882118922365",
     "title": "FDE在AI时代流行，是因为企业不再只需要会写代码的人，而是需要能把客户问题、产品判断和软件实现连在一起的人",
     "summary": "FDE在AI时代流行，是因为企业不再只需要会写代码的人，而是需要能把客户问题、产品判断和软件实现连在一起的人. AI降低了写代码的门槛，但也放大了真实场景、业务理解、系统集成和落地判断的重要性",
@@ -6621,6 +7046,33 @@
     "topics": [
       "AI",
       "Business & Finance"
+    ],
+    "languages": [
+      "Chinese"
+    ],
+    "classification": {
+      "version": "1:eabfece8065c",
+      "source": "llm",
+      "manual": false
+    }
+  },
+  {
+    "id": "2111859213291159850",
+    "title": "我让 @Muse 按照金融时报的风格画一个",
+    "summary": "我让 @Muse 按照金融时报的风格画一个",
+    "tags": [
+      "AI Tools"
+    ],
+    "impressions": 9917,
+    "likes": 11,
+    "retweets": 0,
+    "bookmarks": 1,
+    "date": "2026-10-18",
+    "url": "https://x.com/Michaelzsguo/status/2111859213291159850",
+    "text": "我让 @Muse 按照金融时报的风格画一个 https://t.co/00jmCnQKli https://t.co/zW0myjJ31K",
+    "topics": [
+      "AI",
+      "Life & Culture"
     ],
     "languages": [
       "Chinese"
@@ -7161,6 +7613,35 @@
     }
   },
   {
+    "id": "2110115877047656880",
+    "title": "OpenAI 一名沙特籍员工 Abdulrahman Alfozan，被指控在公司高管会议室安装隐藏录音设备",
+    "summary": "OpenAI 一名沙特籍员工 Abdulrahman Alfozan，被指控在公司高管会议室安装隐藏录音设备. 他于 2025 年 7 月加入产品团队，已被公司解雇，并于 10 月 9 日被 FBI 逮捕",
+    "tags": [
+      "OpenAI",
+      "Security"
+    ],
+    "impressions": 9013,
+    "likes": 9,
+    "retweets": 3,
+    "bookmarks": 6,
+    "date": "2026-10-13",
+    "url": "https://x.com/Michaelzsguo/status/2110115877047656880",
+    "text": "OpenAI 一名沙特籍员工 Abdulrahman Alfozan，被指控在公司高管会议室安装隐藏录音设备。他于 2025 年 7 月加入产品团队，已被公司解雇，并于 10 月 9 日被 FBI 逮捕。\n\n据 TechCrunch 报道，设备插在旧金山办公室一台电视背面的 USB 接口上。发现后，OpenAI https://t.co/rW2uKYQmEL https://t.co/HZB1CYNcOq",
+    "topics": [
+      "AI",
+      "Business & Finance",
+      "Technology"
+    ],
+    "languages": [
+      "Chinese"
+    ],
+    "classification": {
+      "version": "1:eabfece8065c",
+      "source": "llm",
+      "manual": false
+    }
+  },
+  {
     "id": "2043760317516132718",
     "title": "Google needs to hire this engineer",
     "summary": "Google needs to hire this engineer",
@@ -7529,6 +8010,30 @@
     "topics": [
       "Business & Finance",
       "Technology"
+    ],
+    "languages": [
+      "Chinese"
+    ],
+    "classification": {
+      "version": "1:eabfece8065c",
+      "source": "llm",
+      "manual": false
+    }
+  },
+  {
+    "id": "2112198303051891095",
+    "title": "Media Post",
+    "summary": "中国人喜欢用最好的东西迎接贵宾. 这家特意派了辆梅赛德斯奔驰去机场接 DHH，以彰显尊贵",
+    "tags": [],
+    "impressions": 8198,
+    "likes": 23,
+    "retweets": 1,
+    "bookmarks": 2,
+    "date": "2026-10-19",
+    "url": "https://x.com/Michaelzsguo/status/2112198303051891095",
+    "text": "哈哈哈！中国人喜欢用最好的东西迎接贵宾。这家特意派了辆梅赛德斯奔驰去机场接 DHH，以彰显尊贵。结果没想到，DHH 早已迷上了中国的豪华电动车，反过来把奔驰吐槽得一钱不值。\n\nDHH 这趟中国行真是左右拧巴，一边惊叹中国的先进，一边又各种不适应。中国的发展把他搞得都有点水土不服了！ https://t.co/r0ZwdPPdz0",
+    "topics": [
+      "Life & Culture"
     ],
     "languages": [
       "Chinese"
@@ -8272,6 +8777,34 @@
     }
   },
   {
+    "id": "2109760242745827573",
+    "title": "个人 AI 助理的竞争，正在出现两条不同的路线：一条是挑选最好的模型来完成任务，另一条是为了做出最好的助理，专门训练模型",
+    "summary": "个人 AI 助理的竞争，正在出现两条不同的路线：一条是挑选最好的模型来完成任务，另一条是为了做出最好的助理，专门训练模型. 日前， 马斯克说，Grok Bot 可以挑选最适合的模型，包括 Anthropic 的模型",
+    "tags": [
+      "AI Agents",
+      "Grok",
+      "Google"
+    ],
+    "impressions": 6991,
+    "likes": 15,
+    "retweets": 2,
+    "bookmarks": 15,
+    "date": "2026-10-12",
+    "url": "https://x.com/Michaelzsguo/status/2109760242745827573",
+    "text": "个人 AI 助理的竞争，正在出现两条不同的路线：一条是挑选最好的模型来完成任务，另一条是为了做出最好的助理，专门训练模型。\n\n日前， 马斯克说，Grok Bot 可以挑选最适合的模型，包括 Anthropic 的模型。谷歌的 Gemini agent 也在走这条路，根据任务调用 Gemini 或 https://t.co/foAvv65TAe",
+    "topics": [
+      "AI"
+    ],
+    "languages": [
+      "Chinese"
+    ],
+    "classification": {
+      "version": "1:eabfece8065c",
+      "source": "llm",
+      "manual": false
+    }
+  },
+  {
     "id": "2105132062139101278",
     "title": "这谁那么粗心大意，把川大总统签名底下的美利坚合众国的united写成了unites",
     "summary": "这谁那么粗心大意，把川大总统签名底下的美利坚合众国的united写成了unites",
@@ -8552,6 +9085,31 @@
     }
   },
   {
+    "id": "2110881188525068742",
+    "title": "陶哲轩：“数学的浪漫时代，正在走向终结",
+    "summary": "陶哲轩：“数学的浪漫时代，正在走向终结",
+    "tags": [],
+    "impressions": 6325,
+    "likes": 6,
+    "retweets": 2,
+    "bookmarks": 3,
+    "date": "2026-10-15",
+    "url": "https://x.com/Michaelzsguo/status/2110881188525068742",
+    "text": "陶哲轩：“数学的浪漫时代，正在走向终结。” https://t.co/i7MkxIn6cJ",
+    "topics": [
+      "Science",
+      "AI"
+    ],
+    "languages": [
+      "Chinese"
+    ],
+    "classification": {
+      "version": "1:eabfece8065c",
+      "source": "llm",
+      "manual": false
+    }
+  },
+  {
     "id": "2075634418308313283",
     "title": "Polymarket currently gives Anthropic a 37% chance of exte...",
     "summary": "Polymarket currently gives Anthropic a 37% chance of extending Claude Fable 5 beyond July 12. I actually think the odds are higher",
@@ -8591,6 +9149,33 @@
     "url": "https://x.com/michaelzsguo/status/2052151073586938041",
     "text": "@gabegreenberg that's cool. but how many tokens they will get?",
     "topics": [],
+    "languages": [
+      "English"
+    ],
+    "classification": {
+      "version": "1:eabfece8065c",
+      "source": "llm",
+      "manual": false
+    }
+  },
+  {
+    "id": "2107867376687485406",
+    "title": "Mikey did it",
+    "summary": "Mikey did it. He got the call through and finished the task",
+    "tags": [
+      "AI Tools"
+    ],
+    "impressions": 6278,
+    "likes": 5,
+    "retweets": 0,
+    "bookmarks": 1,
+    "date": "2026-10-07",
+    "url": "https://x.com/Michaelzsguo/status/2107867376687485406",
+    "text": "Mikey did it! He got the call through and finished the task.\n\nI can’t help wondering what my pharmacist was thinking while she was talking to Mikey in @muse or if she even knew she was talking to an AI. :-) \n\nWhat a world we are living in! https://t.co/FCQ54oRgio https://t.co/G2vZwk5KAp",
+    "topics": [
+      "AI",
+      "Life & Culture"
+    ],
     "languages": [
       "English"
     ],
@@ -8698,6 +9283,34 @@
     "topics": [
       "AI",
       "Technology"
+    ],
+    "languages": [
+      "Chinese"
+    ],
+    "classification": {
+      "version": "1:eabfece8065c",
+      "source": "llm",
+      "manual": false
+    }
+  },
+  {
+    "id": "2111617347349877024",
+    "title": "AI 正在横扫数学界，陶哲轩感叹数学的“浪漫英雄时代”即将终结，3Blue1Brown 却说：现在是年轻人投身数学...",
+    "summary": "AI 正在横扫数学界，陶哲轩感叹数学的“浪漫英雄时代”即将终结，3Blue1Brown 却说：现在是年轻人投身数学研究的最好时机. 同样面对 AI 的冲击，两位数学界的顶流人物，一个忧心忡忡，一个兴奋不已",
+    "tags": [
+      "Model Research",
+      "OpenAI"
+    ],
+    "impressions": 6200,
+    "likes": 49,
+    "retweets": 6,
+    "bookmarks": 33,
+    "date": "2026-10-18",
+    "url": "https://x.com/Michaelzsguo/status/2111617347349877024",
+    "text": "AI 正在横扫数学界，陶哲轩感叹数学的“浪漫英雄时代”即将终结，3Blue1Brown 却说：现在是年轻人投身数学研究的最好时机。\n\n同样面对 AI 的冲击，两位数学界的顶流人物，一个忧心忡忡，一个兴奋不已。他们看到的，仿佛是数学完全不同的两种未来。\n\nOpenAI https://t.co/Qo6tdMgI5p https://t.co/SJuaFN1ii4",
+    "topics": [
+      "AI",
+      "Science"
     ],
     "languages": [
       "Chinese"
@@ -9127,6 +9740,33 @@
     ],
     "languages": [
       "Chinese"
+    ],
+    "classification": {
+      "version": "1:eabfece8065c",
+      "source": "llm",
+      "manual": false
+    }
+  },
+  {
+    "id": "2109760655855436263",
+    "title": "The competition in personal AI assistants is taking two d...",
+    "summary": "The competition in personal AI assistants is taking two different paths: one is to pick the best model for each task; the other is to train models specifically to build the best assistant. Elon Mus...",
+    "tags": [
+      "AI Agents",
+      "Grok"
+    ],
+    "impressions": 5713,
+    "likes": 3,
+    "retweets": 0,
+    "bookmarks": 5,
+    "date": "2026-10-12",
+    "url": "https://x.com/Michaelzsguo/status/2109760655855436263",
+    "text": "The competition in personal AI assistants is taking two different paths: one is to pick the best model for each task; the other is to train models specifically to build the best assistant.\n\nElon Musk recently said Grok Bot can select the most suitable model for a task, including https://t.co/TxIwGqpgve",
+    "topics": [
+      "AI"
+    ],
+    "languages": [
+      "English"
     ],
     "classification": {
       "version": "1:eabfece8065c",
@@ -9931,6 +10571,30 @@
     }
   },
   {
+    "id": "2109652056026042866",
+    "title": "这里暗指亚历山大王是Gay? 看着不像啊",
+    "summary": "这里暗指亚历山大王是Gay? 看着不像啊",
+    "tags": [],
+    "impressions": 4902,
+    "likes": 1,
+    "retweets": 0,
+    "bookmarks": 1,
+    "date": "2026-10-12",
+    "url": "https://x.com/Michaelzsguo/status/2109652056026042866",
+    "text": "这里暗指亚历山大王是Gay? 看着不像啊。 https://t.co/xmAwFR3nLA",
+    "topics": [
+      "People & Stories"
+    ],
+    "languages": [
+      "Chinese"
+    ],
+    "classification": {
+      "version": "1:eabfece8065c",
+      "source": "llm",
+      "manual": false
+    }
+  },
+  {
     "id": "2104992015310279098",
     "title": "OpenAI 速度够快， 推出了自己的Jev",
     "summary": "OpenAI 速度够快， 推出了自己的Jev",
@@ -10049,6 +10713,35 @@
     "date": "2026-09-17",
     "url": "https://x.com/Michaelzsguo/status/2100591223358595160",
     "text": "我擦！这也太惊艳了。\n\n看来 Google 没被抄送那封达里奥「Pace the Frontier」的邮件。😂\n\n一个 Prompt，直接生成可交互的 3D 产品展示：模型可以旋转、拆解，材质和颜色还能实时切换。已经不是“生成一个网页”，而是在现场完成产品设计、3D 建模和前端开发。据说背后是 Arena 上正在匿名测试的 Gemini https://t.co/MLRcwBJ73H",
+    "topics": [
+      "AI",
+      "Technology"
+    ],
+    "languages": [
+      "Chinese"
+    ],
+    "classification": {
+      "version": "1:eabfece8065c",
+      "source": "llm",
+      "manual": false
+    }
+  },
+  {
+    "id": "2108006930954207599",
+    "title": "Lauren Tan 和她的 /poteto-mode，如今已经成为软件开发 Agent Skill 圈里的大热门",
+    "summary": "Lauren Tan 和她的 /poteto-mode，如今已经成为软件开发 Agent Skill 圈里的大热门. 凭借这套开发模式，她每个月能完成 2000 多个 PR，一度轰动整个开发者社区",
+    "tags": [
+      "AI Agents",
+      "Skills",
+      "Software"
+    ],
+    "impressions": 4708,
+    "likes": 9,
+    "retweets": 2,
+    "bookmarks": 24,
+    "date": "2026-10-08",
+    "url": "https://x.com/Michaelzsguo/status/2108006930954207599",
+    "text": "Lauren Tan 和她的 /poteto-mode，如今已经成为软件开发 Agent Skill 圈里的大热门。凭借这套开发模式，她每个月能完成 2000 多个 PR，一度轰动整个开发者社区。\n\n不过，她的这套玩法，一般人恐怕根本玩不起。\n\npoteto 的 Cursor 使用记录是公开的。过去 30 天，她竟然消耗了 1.5 万亿（1.5T）Token！ https://t.co/UEtXgcrfgo https://t.co/mN83N1z9Bm",
     "topics": [
       "AI",
       "Technology"
@@ -11257,6 +11950,32 @@
     }
   },
   {
+    "id": "2110051689348964371",
+    "title": "Why does this HomeView sound so awkward to me?",
+    "summary": "Why does this HomeView sound so awkward to me?",
+    "tags": [
+      "Software"
+    ],
+    "impressions": 3880,
+    "likes": 0,
+    "retweets": 1,
+    "bookmarks": 0,
+    "date": "2026-10-13",
+    "url": "https://x.com/Michaelzsguo/status/2110051689348964371",
+    "text": "Why does this HomeView sound so awkward to me? \n\nhttps://t.co/uti9bNzyMC https://t.co/oLLrAJuIuw",
+    "topics": [
+      "Technology"
+    ],
+    "languages": [
+      "English"
+    ],
+    "classification": {
+      "version": "1:eabfece8065c",
+      "source": "llm",
+      "manual": false
+    }
+  },
+  {
     "id": "2052582038683722192",
     "title": "我的Openclaw装在家里的树莓派P5上， 有时候出故障， 我在外面， 全靠Tailscale远程通过手机登录，...",
     "summary": "我的Openclaw装在家里的树莓派P5上， 有时候出故障， 我在外面， 全靠Tailscale远程通过手机登录， 处理故障",
@@ -11303,6 +12022,34 @@
     "topics": [
       "AI",
       "Business & Finance"
+    ],
+    "languages": [
+      "Chinese"
+    ],
+    "classification": {
+      "version": "1:eabfece8065c",
+      "source": "llm",
+      "manual": false
+    }
+  },
+  {
+    "id": "2108136248476869106",
+    "title": "一个用 AI 攻击韩国金融机构的人，连自己服务器的目录列表都没关",
+    "summary": "一个用 AI 攻击韩国金融机构的人，连自己服务器的目录列表都没关. 研究人员顺着公开文件，直接读到了他的 Claude Code 会话记录",
+    "tags": [
+      "Claude",
+      "Security"
+    ],
+    "impressions": 3873,
+    "likes": 8,
+    "retweets": 4,
+    "bookmarks": 8,
+    "date": "2026-10-08",
+    "url": "https://x.com/Michaelzsguo/status/2108136248476869106",
+    "text": "一个用 AI 攻击韩国金融机构的人，连自己服务器的目录列表都没关。研究人员顺着公开文件，直接读到了他的 Claude Code 会话记录。\n\nCrowdStrike 的报告里，AI 的能力和操作者的业余程度，几乎摆在了同一页。 https://t.co/dRbD73ywkX",
+    "topics": [
+      "AI",
+      "Technology"
     ],
     "languages": [
       "Chinese"
@@ -11729,6 +12476,34 @@
     ],
     "languages": [
       "English"
+    ],
+    "classification": {
+      "version": "1:eabfece8065c",
+      "source": "llm",
+      "manual": false
+    }
+  },
+  {
+    "id": "2111213840788529442",
+    "title": "Claude 用不到半小时，找到了密码学界追查二十多年的一组“神秘数字”的来源",
+    "summary": "Claude 用不到半小时，找到了密码学界追查二十多年的一组“神秘数字”的来源. 最逗的是，Agent 成功发现后的那段“内心追问”： 「太惊人了，解开了这个 25 年的谜题……等等，我是不是在某种模拟／测试环境里？」 核对数值，确认匹配，刚感叹完“这真的是一次发现”，又开始怀疑：",
+    "tags": [
+      "Claude",
+      "AI Agents"
+    ],
+    "impressions": 3606,
+    "likes": 10,
+    "retweets": 0,
+    "bookmarks": 8,
+    "date": "2026-10-16",
+    "url": "https://x.com/Michaelzsguo/status/2111213840788529442",
+    "text": "Claude 用不到半小时，找到了密码学界追查二十多年的一组“神秘数字”的来源。\n\n最逗的是，Agent 成功发现后的那段“内心追问”：\n\n「太惊人了，解开了这个 25 年的谜题……等等，我是不是在某种模拟／测试环境里？」\n\n核对数值，确认匹配，刚感叹完“这真的是一次发现”，又开始怀疑： https://t.co/nU5VDsRHMA https://t.co/UwWfdqCWhR",
+    "topics": [
+      "AI",
+      "Science"
+    ],
+    "languages": [
+      "Chinese"
     ],
     "classification": {
       "version": "1:eabfece8065c",
@@ -12758,783 +13533,6 @@
     "text": "Here’s why we should be nice to each other on this platform. https://t.co/2gbNoeWsnW https://t.co/FNobX2fgmB",
     "topics": [
       "Life & Culture"
-    ],
-    "languages": [
-      "English"
-    ],
-    "classification": {
-      "version": "1:eabfece8065c",
-      "source": "llm",
-      "manual": false
-    }
-  },
-  {
-    "id": "2100538375815991529",
-    "title": "Media Post",
-    "summary": "",
-    "tags": [],
-    "impressions": 3154,
-    "likes": 0,
-    "retweets": 0,
-    "bookmarks": 2,
-    "date": "2026-09-17",
-    "url": "https://x.com/Michaelzsguo/status/2100538375815991529",
-    "text": "https://t.co/fEMvqCVT39",
-    "topics": [],
-    "languages": [
-      "Other"
-    ],
-    "classification": {
-      "version": "1:eabfece8065c",
-      "source": "llm",
-      "manual": false
-    }
-  },
-  {
-    "id": "2045631013171192114",
-    "title": "刚刚被弹出这个。看样子我就不upgrade了？😂😂",
-    "summary": "看样子我就不upgrade了？😂😂",
-    "tags": [],
-    "impressions": 3139,
-    "likes": 0,
-    "retweets": 0,
-    "bookmarks": 0,
-    "date": "2026-04-18",
-    "url": "https://x.com/michaelzsguo/status/2045631013171192114",
-    "text": "@dongxi_nlp 刚刚被弹出这个。看样子我就不upgrade了？😂😂 https://t.co/RGUyVIYjHy",
-    "topics": [],
-    "languages": [
-      "Chinese"
-    ],
-    "classification": {
-      "version": "1:eabfece8065c",
-      "source": "llm",
-      "manual": false
-    }
-  },
-  {
-    "id": "2039150005886263581",
-    "title": "Anthropic's Claude Code source leaked this morning",
-    "summary": "Anthropic's Claude Code source leaked this morning. The internet has been studying it all day",
-    "tags": [
-      "Claude",
-      "AI Agents",
-      "Software"
-    ],
-    "impressions": 3138,
-    "likes": 11,
-    "retweets": 1,
-    "bookmarks": 17,
-    "date": "2026-04-01",
-    "url": "https://x.com/michaelzsguo/status/2039150005886263581",
-    "text": "Anthropic's Claude Code source leaked this morning. The internet has been studying it all day.\nAs @Yuchenj_UW put it: every model lab, AI coding startup, and open-source AI lab will study this and close the gap fast. \nSF already has Claude Code source walkthrough meetups…",
-    "topics": [
-      "AI",
-      "Business & Finance"
-    ],
-    "languages": [
-      "English"
-    ],
-    "classification": {
-      "version": "1:eabfece8065c",
-      "source": "llm",
-      "manual": false
-    }
-  },
-  {
-    "id": "2044500138102509984",
-    "title": "This is happening everywhere",
-    "summary": "This is happening everywhere. The real question for this budget cycle is whether CTOs are ready to explain that gap clearly to their CEOs and CFOs, and to lay out a credible plan for when and how A...",
-    "tags": [
-      "AI Tools"
-    ],
-    "impressions": 3135,
-    "likes": 19,
-    "retweets": 0,
-    "bookmarks": 1,
-    "date": "2026-04-15",
-    "url": "https://x.com/michaelzsguo/status/2044500138102509984",
-    "text": "@econcallum This is happening everywhere. The real question for this budget cycle is whether CTOs are ready to explain that gap clearly to their CEOs and CFOs, and to lay out a credible plan for when and how AI spend turns into measurable business results.\n\nhttps://t.co/BQQbS5i4su",
-    "topics": [
-      "AI",
-      "Business & Finance"
-    ],
-    "languages": [
-      "English"
-    ],
-    "classification": {
-      "version": "1:eabfece8065c",
-      "source": "llm",
-      "manual": false
-    }
-  },
-  {
-    "id": "2086214144374514084",
-    "title": "这个挺有意思：苹果开始允许中国大陆的 Mac 用户，在 Siri 和写作工具里调用阿里的 Qwen",
-    "summary": "这个挺有意思：苹果开始允许中国大陆的 Mac 用户，在 Siri 和写作工具里调用阿里的 Qwen. 美国版 Apple Intelligence 其实早已接入 ChatGPT",
-    "tags": [
-      "Qwen",
-      "AI Tools",
-      "Google"
-    ],
-    "impressions": 3133,
-    "likes": 4,
-    "retweets": 0,
-    "bookmarks": 1,
-    "date": "2026-08-08",
-    "url": "https://x.com/Michaelzsguo/status/2086214144374514084",
-    "text": "这个挺有意思：苹果开始允许中国大陆的 Mac 用户，在 Siri 和写作工具里调用阿里的 Qwen。\n\n美国版 Apple Intelligence 其实早已接入 ChatGPT。现在看来，苹果正在形成一种新的模式：Apple Intelligence 负责系统入口，再根据不同市场接入当地可用的外部模型。 https://t.co/gePuuTTaES https://t.co/IePEuVrdgT",
-    "topics": [
-      "AI",
-      "Technology",
-      "Business & Finance"
-    ],
-    "languages": [
-      "Chinese"
-    ],
-    "classification": {
-      "version": "1:eabfece8065c",
-      "source": "llm",
-      "manual": false
-    }
-  },
-  {
-    "id": "2103684450483634611",
-    "title": "Follow 我的朋友可能知道，我一直在用 @herdrdev 集中管理我这支“庞大”的计算机群： - MacBo...",
-    "summary": "Follow 我的朋友可能知道，我一直在用 @herdrdev 集中管理我这支“庞大”的计算机群： - MacBook Pro 是司令部 Command Center - Raspberry Pi 上的 guopi - Omarchy 上的三个 Agent - 免费 Oracle VM 上的 Agent - 今天又新加了一台免费 Railway VM 上的 Agent 现在更爽了. 我可以直...",
-    "tags": [
-      "AI Agents",
-      "Remote Dev",
-      "Hardware"
-    ],
-    "impressions": 3133,
-    "likes": 2,
-    "retweets": 1,
-    "bookmarks": 2,
-    "date": "2026-09-26",
-    "url": "https://x.com/Michaelzsguo/status/2103684450483634611",
-    "text": "Follow 我的朋友可能知道，我一直在用 @herdrdev 集中管理我这支“庞大”的计算机群：\n\n- MacBook Pro 是司令部 Command Center\n- Raspberry Pi 上的 guopi\n- Omarchy 上的三个 Agent\n- 免费 Oracle VM 上的 Agent\n- 今天又新加了一台免费 Railway VM 上的 Agent\n\n现在更爽了。我可以直接通过 @Muse https://t.co/3mRMtxjeVu https://t.co/PhIB93fesk",
-    "topics": [
-      "Technology",
-      "AI"
-    ],
-    "languages": [
-      "Chinese"
-    ],
-    "classification": {
-      "version": "1:eabfece8065c",
-      "source": "llm",
-      "manual": false
-    }
-  },
-  {
-    "id": "2099638195205873961",
-    "title": "这太不可思议了",
-    "summary": "特朗普居然直接把电话打到了 All-In Summit 现场，黄仁勋当场开了免提…… 电话里，他说：AI 比互联网还大，谁赢得 AI，谁就赢. 特朗普今天上午刚在 Truth Social 发文，称“AI 接管世界、毁灭人类”是一场骗局，并表示 AI",
-    "tags": [],
-    "impressions": 3121,
-    "likes": 1,
-    "retweets": 0,
-    "bookmarks": 1,
-    "date": "2026-09-14",
-    "url": "https://x.com/Michaelzsguo/status/2099638195205873961",
-    "text": "这太不可思议了。特朗普居然直接把电话打到了 All-In Summit 现场，黄仁勋当场开了免提……\n\n电话里，他说：AI 比互联网还大，谁赢得 AI，谁就赢。\n\n特朗普今天上午刚在 Truth Social 发文，称“AI 接管世界、毁灭人类”是一场骗局，并表示 AI https://t.co/Zn9gSJW3hU",
-    "topics": [
-      "AI",
-      "Politics & Society"
-    ],
-    "languages": [
-      "Chinese"
-    ],
-    "classification": {
-      "version": "1:eabfece8065c",
-      "source": "llm",
-      "manual": false
-    }
-  },
-  {
-    "id": "2048163857383018757",
-    "title": "At this week’s Google Cloud Next, I heard many people sha...",
-    "summary": "At this week’s Google Cloud Next, I heard many people share the same view: this thing has to work. Otherwise, given the enormous amount of capital pulled into this cycle, the fallout will not be li...",
-    "tags": [
-      "Google"
-    ],
-    "impressions": 3101,
-    "likes": 10,
-    "retweets": 1,
-    "bookmarks": 1,
-    "date": "2026-04-25",
-    "url": "https://x.com/michaelzsguo/status/2048163857383018757",
-    "text": "@edzitron At this week’s Google Cloud Next, I heard many people share the same view: this thing has to work.\n\nOtherwise, given the enormous amount of capital pulled into this cycle, the fallout will not be limited to the tech industry. It could spill into the broader economy.\n\nThe good…",
-    "topics": [
-      "Business & Finance",
-      "Politics & Society"
-    ],
-    "languages": [
-      "English"
-    ],
-    "classification": {
-      "version": "1:eabfece8065c",
-      "source": "llm",
-      "manual": false
-    }
-  },
-  {
-    "id": "2082862594499428634",
-    "title": "Talking about reincarnation",
-    "summary": "Talking about reincarnation. Leopold once worked at SBF’s FTX Future Fund",
-    "tags": [],
-    "impressions": 3096,
-    "likes": 1,
-    "retweets": 3,
-    "bookmarks": 0,
-    "date": "2026-07-30",
-    "url": "https://x.com/Michaelzsguo/status/2082862594499428634",
-    "text": "Talking about reincarnation.\n\nLeopold once worked at SBF’s FTX Future Fund.\n\nFTX collapsed, and its bankruptcy estate eventually sold some of its best investments, including Anthropic and Cursor.\n\nLeopold then built his own highly leveraged AI fund. When the AI trade turned https://t.co/tdZAwHR9WP https://t.co/aYgp3cGmRR",
-    "topics": [
-      "Business & Finance",
-      "AI"
-    ],
-    "languages": [
-      "English"
-    ],
-    "classification": {
-      "version": "1:eabfece8065c",
-      "source": "llm",
-      "manual": false
-    }
-  },
-  {
-    "id": "2037258599907438795",
-    "title": "美国人经常怀念那个时代：战后制造业发达， 房价（利率）低只有年收入的2-3倍（现在差不多7-8倍），学费低（只要几...",
-    "summary": "美国人经常怀念那个时代：战后制造业发达， 房价（利率）低只有年收入的2-3倍（现在差不多7-8倍），学费低（只要几百美金），医疗保险也低，有庞大的中产阶级",
-    "tags": [],
-    "impressions": 3076,
-    "likes": 16,
-    "retweets": 1,
-    "bookmarks": 1,
-    "date": "2026-03-26",
-    "url": "https://x.com/michaelzsguo/status/2037258599907438795",
-    "text": "@mtrainier2020 美国人经常怀念那个时代：战后制造业发达， 房价（利率）低只有年收入的2-3倍（现在差不多7-8倍），学费低（只要几百美金），医疗保险也低，有庞大的中产阶级。 https://t.co/ZVh9aFIJrr",
-    "topics": [
-      "Politics & Society",
-      "Business & Finance"
-    ],
-    "languages": [
-      "Chinese"
-    ],
-    "classification": {
-      "version": "1:eabfece8065c",
-      "source": "llm",
-      "manual": false
-    }
-  },
-  {
-    "id": "2099164373088440701",
-    "title": "记得上次我让 @muse 唱歌，它推辞说自己不会",
-    "summary": "记得上次我让 @muse 唱歌，它推辞说自己不会. 这时候 Muse 什么都能干的优良作风就体现出来了",
-    "tags": [
-      "AI Agents",
-      "Remote Dev",
-      "AI Tools"
-    ],
-    "impressions": 3073,
-    "likes": 0,
-    "retweets": 0,
-    "bookmarks": 0,
-    "date": "2026-09-13",
-    "url": "https://x.com/Michaelzsguo/status/2099164373088440701",
-    "text": "记得上次我让 @muse 唱歌，它推辞说自己不会。\n\n不会？那就想个办法呗。\n\n这时候 Muse 什么都能干的优良作风就体现出来了。我给它装上 Tailscale，这样它就能连到我的 MacBook Pro，然后调用上面的 MiniMax Music，自己生成了一段歌曲。\n\nVoilà，这下 Muse 名副其实，真的会唱歌了。 https://t.co/2Aji83mziC https://t.co/ZCf4DVRnsJ",
-    "topics": [
-      "AI",
-      "Technology"
-    ],
-    "languages": [
-      "Chinese"
-    ],
-    "classification": {
-      "version": "1:eabfece8065c",
-      "source": "llm",
-      "manual": false
-    }
-  },
-  {
-    "id": "2050508385552863427",
-    "title": "Great addition",
-    "summary": "Great addition",
-    "tags": [],
-    "impressions": 3061,
-    "likes": 4,
-    "retweets": 0,
-    "bookmarks": 1,
-    "date": "2026-05-02",
-    "url": "https://x.com/michaelzsguo/status/2050508385552863427",
-    "text": "@slap__tjips Great addition",
-    "topics": [],
-    "languages": [
-      "English"
-    ],
-    "classification": {
-      "version": "1:eabfece8065c",
-      "source": "llm",
-      "manual": false
-    }
-  },
-  {
-    "id": "2037704701743964395",
-    "title": "我知道，你的 Claude Code 会写代码",
-    "summary": "我知道，你的 Claude Code 会写代码. 我刚给我的 agent 装了一套鸡尾酒Skill包，所以它现在不但能帮我做 Old Fashioned，原则上还可以带我做一整套经典鸡尾酒",
-    "tags": [
-      "AI Agents",
-      "Claude",
-      "Skills"
-    ],
-    "impressions": 3040,
-    "likes": 1,
-    "retweets": 0,
-    "bookmarks": 2,
-    "date": "2026-03-28",
-    "url": "https://x.com/michaelzsguo/status/2037704701743964395",
-    "text": "我知道，你的 Claude Code 会写代码。\n但它会调鸡尾酒吗？\n\n我的会。\n\n我刚给我的 agent 装了一套鸡尾酒Skill包，所以它现在不但能帮我做 Old Fashioned，原则上还可以带我做一整套经典鸡尾酒。\n\n比如很多中国人也比较熟悉、接受度很高的这些：\nMojito 莫吉托，清爽好喝\nMargarita 玛格丽特，酸咸开胃… https://t.co/LVHSFzahMN https://t.co/2nCJN3zoHa",
-    "topics": [
-      "AI",
-      "Life & Culture"
-    ],
-    "languages": [
-      "Chinese"
-    ],
-    "classification": {
-      "version": "1:eabfece8065c",
-      "source": "llm",
-      "manual": false
-    }
-  },
-  {
-    "id": "2096185320484278540",
-    "title": "我前不久刚刚写过，OpenAI 和 Anthropic 的闭源模型很像苹果手机，Kimi、DeepSeek 这样的...",
-    "summary": "我前不久刚刚写过，OpenAI 和 Anthropic 的闭源模型很像苹果手机，Kimi、DeepSeek 这样的中国开源模型则更像 Android. 苹果手机的市场份额并不是最高，却拿走了手机行业的大部分利润；Android 覆盖更广，但价值被分散到了芯片、云服务和应用等不同环节",
-    "tags": [
-      "OpenAI",
-      "Claude",
-      "Kimi",
-      "DeepSeek"
-    ],
-    "impressions": 3026,
-    "likes": 10,
-    "retweets": 1,
-    "bookmarks": 4,
-    "date": "2026-09-05",
-    "url": "https://x.com/Michaelzsguo/status/2096185320484278540",
-    "text": "我前不久刚刚写过，OpenAI 和 Anthropic 的闭源模型很像苹果手机，Kimi、DeepSeek 这样的中国开源模型则更像 Android。\n\n苹果手机的市场份额并不是最高，却拿走了手机行业的大部分利润；Android 覆盖更广，但价值被分散到了芯片、云服务和应用等不同环节。开源模型可能也会走上类似的路径。 https://t.co/AKdLEM5Wk7 https://t.co/dyIe4etz2u",
-    "topics": [
-      "AI",
-      "Business & Finance"
-    ],
-    "languages": [
-      "Chinese"
-    ],
-    "classification": {
-      "version": "1:eabfece8065c",
-      "source": "llm",
-      "manual": false
-    }
-  },
-  {
-    "id": "2089914190379049170",
-    "title": "随着朱雀三号、长征十号乙相继回收成功，中国可重复使用火箭已经正式进入一个新阶段",
-    "summary": "随着朱雀三号、长征十号乙相继回收成功，中国可重复使用火箭已经正式进入一个新阶段. 长征十号乙率先完成轨道发射后的一级海上网系回收；朱雀三号随后完成入轨后的陆地着陆腿垂直回收",
-    "tags": [],
-    "impressions": 3014,
-    "likes": 5,
-    "retweets": 2,
-    "bookmarks": 0,
-    "date": "2026-08-19",
-    "url": "https://x.com/Michaelzsguo/status/2089914190379049170",
-    "text": "随着朱雀三号、长征十号乙相继回收成功，中国可重复使用火箭已经正式进入一个新阶段。\n\n长征十号乙率先完成轨道发射后的一级海上网系回收；朱雀三号随后完成入轨后的陆地着陆腿垂直回收。前者代表国家队路线已经跑通，后者则是目前最接近 SpaceX Falcon 9 的中国商业火箭。 https://t.co/WVTGD93Tpc https://t.co/Q6uhgH2pU5",
-    "topics": [
-      "Science",
-      "Technology"
-    ],
-    "languages": [
-      "Chinese"
-    ],
-    "classification": {
-      "version": "1:eabfece8065c",
-      "source": "llm",
-      "manual": false
-    }
-  },
-  {
-    "id": "2052845590510252278",
-    "title": "其实CLI不是真的CLI， 就是在Terminal上chat 哈哈哈",
-    "summary": "其实CLI不是真的CLI， 就是在Terminal上chat 哈哈哈",
-    "tags": [
-      "Software"
-    ],
-    "impressions": 3003,
-    "likes": 5,
-    "retweets": 0,
-    "bookmarks": 1,
-    "date": "2026-05-08",
-    "url": "https://x.com/michaelzsguo/status/2052845590510252278",
-    "text": "@XianyuLi 其实CLI不是真的CLI， 就是在Terminal上chat 哈哈哈",
-    "topics": [
-      "Technology"
-    ],
-    "languages": [
-      "Chinese"
-    ],
-    "classification": {
-      "version": "1:eabfece8065c",
-      "source": "llm",
-      "manual": false
-    }
-  },
-  {
-    "id": "2039841497093230706",
-    "title": "我给我的树莓派装上了他们今天发布的最小款 Gemmi E2B， 居然通过了草莓🍓里有几个R的测试",
-    "summary": "我给我的树莓派装上了他们今天发布的最小款 Gemmi E2B， 居然通过了草莓🍓里有几个R的测试. 看它小心翼翼给R做标记的做法很好玩",
-    "tags": [
-      "Local LLM",
-      "Hardware",
-      "Google"
-    ],
-    "impressions": 2992,
-    "likes": 6,
-    "retweets": 0,
-    "bookmarks": 0,
-    "date": "2026-04-02",
-    "url": "https://x.com/michaelzsguo/status/2039841497093230706",
-    "text": "@dotey 我给我的树莓派装上了他们今天发布的最小款 Gemmi E2B， 居然通过了草莓🍓里有几个R的测试。 看它小心翼翼给R做标记的做法很好玩\n\nhttps://t.co/O8LlWPjcLU",
-    "topics": [
-      "AI",
-      "Technology"
-    ],
-    "languages": [
-      "Chinese"
-    ],
-    "classification": {
-      "version": "1:eabfece8065c",
-      "source": "llm",
-      "manual": false
-    }
-  },
-  {
-    "id": "2041332279214051818",
-    "title": "It is actually mind blowing how NASA can calculate the tr...",
-    "summary": "It is actually mind blowing how NASA can calculate the trajectory and solve this n-body equation of motion:",
-    "tags": [],
-    "impressions": 2987,
-    "likes": 34,
-    "retweets": 1,
-    "bookmarks": 3,
-    "date": "2026-04-07",
-    "url": "https://x.com/michaelzsguo/status/2041332279214051818",
-    "text": "@Toshiya_A It is actually mind blowing how NASA can calculate the trajectory and solve this n-body equation of motion: https://t.co/KMwcK1kv2U",
-    "topics": [
-      "Science"
-    ],
-    "languages": [
-      "English"
-    ],
-    "classification": {
-      "version": "1:eabfece8065c",
-      "source": "llm",
-      "manual": false
-    }
-  },
-  {
-    "id": "2091350578370650377",
-    "title": "太喜欢Omarchy的屏幕截图功能了，这还没包括Tobi新加的功能呢",
-    "summary": "太喜欢Omarchy的屏幕截图功能了，这还没包括Tobi新加的功能呢",
-    "tags": [
-      "Software"
-    ],
-    "impressions": 2976,
-    "likes": 10,
-    "retweets": 1,
-    "bookmarks": 1,
-    "date": "2026-08-23",
-    "url": "https://x.com/Michaelzsguo/status/2091350578370650377",
-    "text": "太喜欢Omarchy的屏幕截图功能了，这还没包括Tobi新加的功能呢。 https://t.co/PBQXcBRLG3 https://t.co/KDypjTWkqO",
-    "topics": [
-      "Technology"
-    ],
-    "languages": [
-      "Chinese"
-    ],
-    "classification": {
-      "version": "1:eabfece8065c",
-      "source": "llm",
-      "manual": false
-    }
-  },
-  {
-    "id": "2080634958968652106",
-    "title": "I saw someone ask in the comments: Why do we share storie...",
-    "summary": "I saw someone ask in the comments: Why do we share stories like this on X? People like Wang Hong or Kimi founder Yang Zhilin may seem impossibly successful. Most of us will never replicate their pa...",
-    "tags": [
-      "Kimi"
-    ],
-    "impressions": 2975,
-    "likes": 4,
-    "retweets": 1,
-    "bookmarks": 1,
-    "date": "2026-07-24",
-    "url": "https://x.com/Michaelzsguo/status/2080634958968652106",
-    "text": "I saw someone ask in the comments: Why do we share stories like this on X?\n\nPeople like Wang Hong or Kimi founder Yang Zhilin may seem impossibly successful. Most of us will never replicate their paths or achievements.\n\nBut that is not the point.\n\nWhat inspires us is everything https://t.co/yyPo75rTkh",
-    "topics": [
-      "AI",
-      "People & Stories",
-      "Life & Culture"
-    ],
-    "languages": [
-      "English"
-    ],
-    "classification": {
-      "version": "1:eabfece8065c",
-      "source": "llm",
-      "manual": false
-    }
-  },
-  {
-    "id": "2071058168906469565",
-    "title": "Run Qwen3.5 on Old GPU",
-    "summary": "Use a GeForce GTX 645 with 1GB VRAM to serve Qwen3.5-0.8B entirely from GPU using llama.cpp.",
-    "tags": [
-      "Local LLM",
-      "Hardware",
-      "Qwen",
-      "LLM Internals"
-    ],
-    "impressions": 2974,
-    "likes": 18,
-    "retweets": 4,
-    "bookmarks": 7,
-    "date": "2026-06-28",
-    "url": "https://x.com/michaelzsguo/status/2071058168906469565",
-    "text": "The previous model runs entirely on CPU. But what about that GeForce GTX 645 with 1GB VRAM?\n\nIt is small, but we still should not waste it.\n\nLuckily, there is an open model for that: Qwen3.5-0.8B.\n\nWith \"-ngl 99\", we can serve the entire model from GPU.\n\nIn the side-by-side… https://t.co/SWmBhqCRwf https://t.co/s4xgSB3agW",
-    "topics": [
-      "AI",
-      "Technology"
-    ],
-    "languages": [
-      "English"
-    ],
-    "classification": {
-      "version": "1:eabfece8065c",
-      "source": "llm",
-      "manual": false
-    }
-  },
-  {
-    "id": "2094532680645824614",
-    "title": "过去几天，我写了好几条关于 Lauren Tan @poteto 和她的 pstack skills",
-    "summary": "过去几天，我写了好几条关于 Lauren Tan @poteto 和她的 pstack skills. 今天她亲自下厨房，开始完整拆解这套能让她每个月提交2000个PR的系统，手把手演示怎么使用、怎么为自己的项目创建 skills",
-    "tags": [
-      "AI Agents",
-      "Skills",
-      "Software"
-    ],
-    "impressions": 2974,
-    "likes": 7,
-    "retweets": 1,
-    "bookmarks": 8,
-    "date": "2026-08-31",
-    "url": "https://x.com/Michaelzsguo/status/2094532680645824614",
-    "text": "过去几天，我写了好几条关于 Lauren Tan @poteto 和她的 pstack skills。\n\n今天她亲自下厨房，开始完整拆解这套能让她每个月提交2000个PR的系统，手把手演示怎么使用、怎么为自己的项目创建 skills。\n\n这是系列的第一篇，讲的是她认为最重要的能力：Verification。\n\n在Lauren看来， https://t.co/IdQQIBVeW9 https://t.co/MOef8l6dGl",
-    "topics": [
-      "AI",
-      "Technology"
-    ],
-    "languages": [
-      "Chinese"
-    ],
-    "classification": {
-      "version": "1:eabfece8065c",
-      "source": "llm",
-      "manual": false
-    }
-  },
-  {
-    "id": "2078807768400548254",
-    "title": "Created a new one with Qoder using Qwen 3",
-    "summary": "Created a new one with Qoder using Qwen 3. 8-max preview",
-    "tags": [
-      "Qwen",
-      "AI Tools"
-    ],
-    "impressions": 2965,
-    "likes": 2,
-    "retweets": 0,
-    "bookmarks": 2,
-    "date": "2026-07-19",
-    "url": "https://x.com/Michaelzsguo/status/2078807768400548254",
-    "text": "Created  a new one with Qoder using Qwen 3.8-max preview.\n\nwhich one you like better: 3.8-max, or Sol? https://t.co/ZftTFBWA3L https://t.co/VhzmPaYicf",
-    "topics": [
-      "AI",
-      "Technology"
-    ],
-    "languages": [
-      "English"
-    ],
-    "classification": {
-      "version": "1:eabfece8065c",
-      "source": "llm",
-      "manual": false
-    }
-  },
-  {
-    "id": "2035723417308045458",
-    "title": "国内被CC封号困扰的同学，可以尝试Pi + Kimi K2",
-    "summary": "国内被CC封号困扰的同学，可以尝试Pi + Kimi K2. Pi Coding Agent是支持Openclaw小龙虾的基座，Agent感很丝滑",
-    "tags": [
-      "AI Agents",
-      "Kimi",
-      "Software"
-    ],
-    "impressions": 2951,
-    "likes": 1,
-    "retweets": 0,
-    "bookmarks": 6,
-    "date": "2026-03-22",
-    "url": "https://x.com/michaelzsguo/status/2035723417308045458",
-    "text": "国内被CC封号困扰的同学，可以尝试Pi + Kimi K2.5组合。 Pi Coding Agent是支持Openclaw小龙虾的基座，Agent感很丝滑。Kimi K2.5是Cursor Composer2.0的基础LLM，在coding agent里我也是第一次用， 但使用感觉似乎和CC里并无二致。 （当然这只是开始，以后用复杂的工作再试试）… https://t.co/jPdGGXNcwe",
-    "topics": [
-      "AI",
-      "Technology"
-    ],
-    "languages": [
-      "Chinese"
-    ],
-    "classification": {
-      "version": "1:eabfece8065c",
-      "source": "llm",
-      "manual": false
-    }
-  },
-  {
-    "id": "2036443037597851889",
-    "title": "和它聊天稍微有点困难😂对比同样教育目的的Kaparthy的nanochat",
-    "summary": "和它聊天稍微有点困难😂对比同样教育目的的Kaparthy的nanochat",
-    "tags": [
-      "Model Research"
-    ],
-    "impressions": 2946,
-    "likes": 10,
-    "retweets": 0,
-    "bookmarks": 8,
-    "date": "2026-03-24",
-    "url": "https://x.com/michaelzsguo/status/2036443037597851889",
-    "text": "@vista8 和它聊天稍微有点困难😂对比同样教育目的的Kaparthy的nanochat https://t.co/O7NrLNqdex",
-    "topics": [
-      "AI"
-    ],
-    "languages": [
-      "Chinese"
-    ],
-    "classification": {
-      "version": "1:eabfece8065c",
-      "source": "llm",
-      "manual": false
-    }
-  },
-  {
-    "id": "2040625612222591263",
-    "title": "关键是干正经事😀\n\n如果是不干正经事也算的话， Grok还是很不错的辅助学习工具，尤其是在X上用， 针对当前的Post和",
-    "summary": "如果是不干正经事也算的话， Grok还是很不错的辅助学习工具，尤其是在X上用， 针对当前的Post和replies， 检索过往的",
-    "tags": [
-      "Grok",
-      "AI Tools"
-    ],
-    "impressions": 2944,
-    "likes": 3,
-    "retweets": 0,
-    "bookmarks": 0,
-    "date": "2026-04-05",
-    "url": "https://x.com/michaelzsguo/status/2040625612222591263",
-    "text": "@mtrainier2020 关键是干正经事😀\n\n如果是不干正经事也算的话， Grok还是很不错的辅助学习工具，尤其是在X上用， 针对当前的Post和replies， 检索过往的。",
-    "topics": [
-      "AI"
-    ],
-    "languages": [
-      "Chinese"
-    ],
-    "classification": {
-      "version": "1:eabfece8065c",
-      "source": "llm",
-      "manual": false
-    }
-  },
-  {
-    "id": "2042753552976638305",
-    "title": "嫌犯已经被抓住了。 他后来又回到OpenAI总部继续闹事， 估计是豁出去了。",
-    "summary": "他后来又回到OpenAI总部继续闹事， 估计是豁出去了",
-    "tags": [
-      "OpenAI"
-    ],
-    "impressions": 2943,
-    "likes": 8,
-    "retweets": 0,
-    "bookmarks": 0,
-    "date": "2026-04-10",
-    "url": "https://x.com/michaelzsguo/status/2042753552976638305",
-    "text": "@dotey 嫌犯已经被抓住了。 他后来又回到OpenAI总部继续闹事， 估计是豁出去了。 https://t.co/PoUkWEgATT",
-    "topics": [
-      "AI",
-      "Politics & Society"
-    ],
-    "languages": [
-      "Chinese"
-    ],
-    "classification": {
-      "version": "1:eabfece8065c",
-      "source": "llm",
-      "manual": false
-    }
-  },
-  {
-    "id": "2042766050979201426",
-    "title": "1 hour 40 minutes in, and they still haven’t extracted th...",
-    "summary": "1 hour 40 minutes in, and they still haven’t extracted the astronauts. @elonmusk why aren’t they using a SpaceX recovery vessel? I thought SpaceX was much faster at this",
-    "tags": [],
-    "impressions": 2938,
-    "likes": 2,
-    "retweets": 0,
-    "bookmarks": 0,
-    "date": "2026-04-11",
-    "url": "https://x.com/michaelzsguo/status/2042766050979201426",
-    "text": "1 hour 40 minutes in, and they still haven’t extracted the astronauts. @elonmusk why aren’t they using a SpaceX recovery vessel? I thought SpaceX was much faster at this. https://t.co/CivhjS3dFB",
-    "topics": [
-      "Science",
-      "Technology"
-    ],
-    "languages": [
-      "English"
-    ],
-    "classification": {
-      "version": "1:eabfece8065c",
-      "source": "llm",
-      "manual": false
-    }
-  },
-  {
-    "id": "2058593279529083012",
-    "title": "use tmux + ttyd + tailscale also gives you remote-control...",
-    "summary": "use tmux + ttyd + tailscale also gives you remote-control and multiplayer system",
-    "tags": [
-      "Remote Dev",
-      "Software"
-    ],
-    "impressions": 2934,
-    "likes": 13,
-    "retweets": 2,
-    "bookmarks": 40,
-    "date": "2026-05-24",
-    "url": "https://x.com/michaelzsguo/status/2058593279529083012",
-    "text": "@DavidOndrej1 use tmux + ttyd + tailscale also gives you remote-control and multiplayer system\n\nhttps://t.co/QdJB4fR2KF",
-    "topics": [
-      "Technology"
     ],
     "languages": [
       "English"
