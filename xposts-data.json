@@ -1662,7 +1662,8 @@
     },
     "text": "https://t.co/rlHwvna8d5",
     "topics": [
-      "AI"
+      "AI",
+      "Technology"
     ],
     "languages": [
       "English"
@@ -2699,11 +2700,11 @@
     "text": "https://t.co/pspm0SyK7r",
     "topics": [],
     "languages": [
-      "Chinese"
+      "Other"
     ],
     "classification": {
       "version": "1:eabfece8065c",
-      "source": "llm:website-metadata",
+      "source": "llm",
       "manual": false
     }
   },
@@ -3814,11 +3815,11 @@
     "text": "https://t.co/maDyDz5gHD",
     "topics": [],
     "languages": [
-      "Chinese"
+      "Other"
     ],
     "classification": {
       "version": "1:eabfece8065c",
-      "source": "llm:website-metadata",
+      "source": "llm",
       "manual": false
     }
   },
@@ -5138,11 +5139,11 @@
     "text": "https://t.co/cUxlIGqAC0",
     "topics": [],
     "languages": [
-      "Chinese"
+      "Other"
     ],
     "classification": {
       "version": "1:eabfece8065c",
-      "source": "llm:website-metadata",
+      "source": "llm",
       "manual": false
     }
   },
@@ -8305,7 +8306,8 @@
     },
     "text": "https://t.co/yl8cj2zWtD",
     "topics": [
-      "AI"
+      "AI",
+      "Technology"
     ],
     "languages": [
       "Chinese"
@@ -11527,7 +11529,7 @@
       "Technology"
     ],
     "languages": [
-      "Chinese"
+      "English"
     ],
     "classification": {
       "version": "1:eabfece8065c",
@@ -14473,11 +14475,11 @@
     "text": "https://t.co/UkPacprF9Z",
     "topics": [],
     "languages": [
-      "Chinese"
+      "Other"
     ],
     "classification": {
       "version": "1:eabfece8065c",
-      "source": "llm:website-metadata",
+      "source": "llm",
       "manual": false
     }
   },
